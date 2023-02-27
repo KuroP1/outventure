@@ -7,10 +7,14 @@
 
 <body>
     <h1>Search Products</h1>
-    <form method="post" action="search.php">
-        <label for="name">Product Name:</label>
-        <input type="text" name="name" id="name">
-        <input type="submit" value="Search">
+    <form action="search.php" method="get">
+        <label for="product_name">Product name:</label>
+        <input type="text" name="product_name" id="product_name">
+        <label for="product_color">Product color:</label>
+        <input type="text" name="product_color" id="product_color">
+        <label for="product_size">Product size:</label>
+        <input type="text" name="product_size" id="product_size">
+        <button type="submit" name="submit">Search</button>
     </form>
 </body>
 
