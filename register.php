@@ -28,27 +28,26 @@
             array_push($errors, "Password must be at least 8 characters");
         }
 
-        if(count($errors)>0){
-            foreach($errors as $error){
-                echo $error;
-            }
-        }else{
-            require_once "config/database.php";
-            $sql = "INSERT INTO users (email, password) VALUES (?,?)";
-            $stmt = mysqli_stmt_init($conn);
-            $prepareStmt = mysqli_stmt_prepare($stmt,$sql);
-            if($prepareStmt){
-                mysqli_stmt_bind_param($stmt, "ss", $email, $password);
-                mysqli_stmt_execute($stmt);
-                echo "Registered";
-            }else{
-                die("Something wrong");
-                var_dump($prepareStmt);
+        // if(count($errors)>0){
+        //     foreach($errors as $error){
+        //         echo $error;
+        //     }
+        // }else{
+            include 'config/database.php';
+            if ($stmt = mysqli_prepare($conn, $query = "INSERT INTO users (email, password) VALUES (?,?)")) {
+
+                mysqli_stmt_bind_param($stmt, 'ss', $email, $password);
+            
+                mysqli_stmt_execute($stmt) or die('Error when inserting:'.mysqli_error($conn));
+             }else{
+            die('Error when preparing '.mysqli_error($conn));
             }
             
+            
+
         }
 
-    }
+    
 
     ?>
     <form action="register.php" method="post">
