@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (isset($_SESSION["user"])) {
+    header("Location: index.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,56 +11,86 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <?php
+    <div class="container">
+        <?php
+        require_once "config/database.php";
+        if (isset($_POST["submit"])) {
 
-    if(isset($_POST["submit"])){
-        $email = $_POST["email"];
-        $password = $_POST["password"];
+            $email = $_POST["email"];
+            $password = $_POST["password"];
+
+
+            // $passwordHash = password_hash($password, PASSWORD_DEFAULT);
         
+            $errors = array();
 
-
-        $errors = array();
-        if(empty($email) OR empty($password)){
-            array_push($errors, "Email or password is empty");
-        }
-        if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-            array_push($errors, "Invalid email");
-        }
-        if(strlen($password) < 8){
-            array_push($errors, "Password must be at least 8 characters");
-        }
-
-        // if(count($errors)>0){
-        //     foreach($errors as $error){
-        //         echo $error;
-        //     }
-        // }else{
-            include 'config/database.php';
-            if ($stmt = mysqli_prepare($conn, $query = "INSERT INTO users (email, password) VALUES (?,?)")) {
-
-                mysqli_stmt_bind_param($stmt, 'ss', $email, $password);
-            
-                mysqli_stmt_execute($stmt) or die('Error when inserting:'.mysqli_error($conn));
-             }else{
-            die('Error when preparing '.mysqli_error($conn));
+            if (empty($email) or empty($password)) {
+                array_push($errors, "All fields are required");
             }
-            
-            
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                array_push($errors, "Email is not valid");
+            }
+            if (strlen($password) < 8) {
+                array_push($errors, "Password must be at least 8 charactes long");
+            }
+
+
+
+            $sql = "SELECT * FROM users WHERE email = '$email'";
+            $result = mysqli_query($conn, $sql);
+            $rowCount = mysqli_num_rows($result);
+            if ($rowCount > 0) {
+                array_push($errors, "Email already exists!");
+            }
+            if (count($errors) > 0) {
+                foreach ($errors as $error) {
+                    echo "<div class='alert alert-danger'>$error</div>";
+                }
+            } else {
+
+
+                $sql = "INSERT INTO users (email, password) VALUES ( ?, ? )";
+                $stmt = mysqli_stmt_init($conn);
+                $prepareStmt = mysqli_stmt_prepare($stmt, $sql);
+                if ($prepareStmt) {
+
+                    mysqli_stmt_bind_param($stmt, "ss", $email, $password);
+                    mysqli_stmt_execute($stmt);
+                    echo "<div class='alert alert-success'>You are registered successfully.</div>";
+                } else {
+                    die("Something went wrong");
+                }
+            }
+
 
         }
+        ?>
+        <form action="register.php" method="POST">
 
-    
+            <div class="form-group">
+                <input type="email" class="form-control" name="email" placeholder="Email:">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" name="password" placeholder="Password:">
+            </div>
 
-    ?>
-    <form action="register.php" method="post">
-        <input type="text" name="email" placeholder="Email">
-        <input type="password" name="password" placeholder="Password">
-        <button type="submit" value="Register" name="submit">Register</button>
-    </form>
+            <div class="form-btn">
+                <input type="submit" class="btn btn-primary" value="Register" name="submit">
+            </div>
+        </form>
+        <div>
+            <div>
+                <p>Already Registered <a href="login.php">Login Here</a></p>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
