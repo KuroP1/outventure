@@ -15,10 +15,13 @@ if (isset($_SESSION["user"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Outventure</title>
     <link rel="stylesheet" href="login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Poppins&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="main-container">
-        <div>
+        <div class="left-container">
             <img src="images/Login&Register/LeftBanner.png" alt="Left Banner" />
         </div>
         
@@ -43,20 +46,25 @@ if (isset($_SESSION["user"])) {
             }
         }
         ?>
-        <form action="login.php" method="post">
-            <div class="form-group">
-                <input type="email" placeholder="Enter Email:" name="email" class="">
-            </div>
-            <div class="form-group">
-                <input type="password" placeholder="Enter Password:" name="password" class="">
-            </div>
-            <div class="form-btn">
-                <input type="submit" value="Login" name="login" class="">
-            </div>
-        </form>
-        <div>
-            <p>Not registered yet <a href="register.php">Register Here</a></p>
+        <div class="right-container">
+            <img src="images/Logo.png" alt="Left Banner" width="250" />
+            <b class="top-text">Login to Your Account</b>
+            <form action="login.php" method="post">
+                <div>
+                    <input class="form-input" type="email" placeholder="Email Address or Username" name="email" class="">
+                </div>
+                <div>
+                    <input class="form-input" type="password" placeholder="Password:" name="password" class="">
+                </div>
+                <div>
+                    <input class="form-button" type="submit" value="Login" name="login" class="">
+                </div>
+            </form>
+
+            <p class="bottom-text">Do Not Have a Account ? <a href="register.php"><b>Sign Up</b></a></p>
         </div>
+
+
     </div>
 </body>
 
