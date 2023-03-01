@@ -1,31 +1,32 @@
+<!-- check is login only not -->
 <?php
 session_start();
+// if already login then redirect to index
 if (isset($_SESSION["user"])) {
     header("Location: index.php");
 }
 ?>
+<!-- html display part -->
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Form</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <title>Outventure</title>
+    <link rel="stylesheet" href="login.css">
 </head>
-
 <body>
-    <div class="container">
+    <div class="main-container">
+        <div>
+            <img src="images/Login&Register/LeftBanner.png" alt="Left Banner" />
+        </div>
+        
         <?php
         require_once "config/database.php";
         if (isset($_POST["login"])) {
             $email = $_POST["email"];
             $password = $_POST["password"];
-
-
 
             $sql = "SELECT * FROM users WHERE email= '$email' AND password='$password'";
             $result = mysqli_query($conn, $sql);
@@ -37,8 +38,6 @@ if (isset($_SESSION["user"])) {
                 $_SESSION["user"] = "$row[email]";
                 header("Location: index.php");
                 die();
-
-
             } else {
                 echo "Your username or password is incorrect!";
             }
@@ -46,13 +45,13 @@ if (isset($_SESSION["user"])) {
         ?>
         <form action="login.php" method="post">
             <div class="form-group">
-                <input type="email" placeholder="Enter Email:" name="email" class="form-control">
+                <input type="email" placeholder="Enter Email:" name="email" class="">
             </div>
             <div class="form-group">
-                <input type="password" placeholder="Enter Password:" name="password" class="form-control">
+                <input type="password" placeholder="Enter Password:" name="password" class="">
             </div>
             <div class="form-btn">
-                <input type="submit" value="Login" name="login" class="btn btn-primary">
+                <input type="submit" value="Login" name="login" class="">
             </div>
         </form>
         <div>
