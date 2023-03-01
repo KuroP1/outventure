@@ -29,12 +29,15 @@ if (isset($_SESSION["user"])) {
 
             $sql = "SELECT * FROM users WHERE email= '$email' AND password='$password'";
             $result = mysqli_query($conn, $sql);
-
+            $sql2 = "SELECT email FROM users WHERE email= '$email' AND password='$password'";
+            $result2 = mysqli_query($conn, $sql2);
+            $row2 = mysqli_fetch_assoc($result2);
             if ($row = mysqli_fetch_assoc($result)) {
                 session_start();
-                $_SESSION["user"] = "yes";
+                $_SESSION["user"] = "$row[email]";
                 header("Location: index.php");
                 die();
+
 
             } else {
                 echo "Your username or password is incorrect!";
