@@ -44,7 +44,7 @@ if (isset($_SESSION["user"])) {
                 header("Location: index.php");
                 die();
             } else {
-                echo "Your username or password is incorrect!";
+                echo '<script>alert("Invalid Email / Username or Password, Plz Try Again")</script>';
             }
         }
         ?>
@@ -52,9 +52,9 @@ if (isset($_SESSION["user"])) {
             <img class="Logo" src="images/Logo.png" alt="Logo"/>
             <b class="top-text">Login to Your Account</b>
             <form class="form" action="login.php" method="post">
-                <input class="form-input" type="email" placeholder="Email Address or Username" name="email" class="">
-                <input class="form-input" type="password" placeholder="Password:" name="password" class="">
-                <input class="form-button" type="submit" value="Login" name="login" class="">
+                <input class="form-input" type="email" placeholder="Email Address or Username" name="email">
+                <input class="form-input" type="password" placeholder="Password:" name="password">
+                <input class="form-button" type="submit" value="Login" name="submit">
             </form>
 
             <p class="bottom-text">Do Not Have a Account ? <a href="register.php"><b>Sign Up</b></a></p>
