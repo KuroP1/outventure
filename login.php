@@ -9,6 +9,7 @@ if (isset($_SESSION["user"])) {
 <!-- html display part -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,12 +20,13 @@ if (isset($_SESSION["user"])) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Poppins&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <div class="main-container">
         <div class="left-container">
             <img src="images/Login&Register/LeftBanner.png" alt="Left Banner" />
         </div>
-        
+
         <?php
         require_once "config/database.php";
         if (isset($_POST["login"])) {
@@ -47,18 +49,12 @@ if (isset($_SESSION["user"])) {
         }
         ?>
         <div class="right-container">
-            <img src="images/Logo.png" alt="Left Banner" width="250" />
+            <img class="Logo" src="images/Logo.png" alt="Logo"/>
             <b class="top-text">Login to Your Account</b>
-            <form action="login.php" method="post">
-                <div>
-                    <input class="form-input" type="email" placeholder="Email Address or Username" name="email" class="">
-                </div>
-                <div>
-                    <input class="form-input" type="password" placeholder="Password:" name="password" class="">
-                </div>
-                <div>
-                    <input class="form-button" type="submit" value="Login" name="login" class="">
-                </div>
+            <form class="form" action="login.php" method="post">
+                <input class="form-input" type="email" placeholder="Email Address or Username" name="email" class="">
+                <input class="form-input" type="password" placeholder="Password:" name="password" class="">
+                <input class="form-button" type="submit" value="Login" name="login" class="">
             </form>
 
             <p class="bottom-text">Do Not Have a Account ? <a href="register.php"><b>Sign Up</b></a></p>
