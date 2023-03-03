@@ -15,6 +15,7 @@ if (isset($_SESSION["currentUser"])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Outventure</title>
+    <link rel="stylesheet" href="../global.css">
     <link rel="stylesheet" href="login.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,7 +46,7 @@ if (isset($_SESSION["currentUser"])) {
                 if ($row = mysqli_fetch_assoc($result)) {
                     session_start();
                     $_SESSION["currentUser"] = $row['UserID'];
-                    header("Location: ../index.php");
+                    header("Location: ../profile/profile.php");
                     die();
                 } else {
                     echo '<script>alert("Invalid Email / Username or Password, Plz Try Again")</script>';
@@ -57,7 +58,7 @@ if (isset($_SESSION["currentUser"])) {
                 if ($row = mysqli_fetch_assoc($result)) {
                     session_start();
                     $_SESSION["currentUser"] = $row['UserID'];
-                    header("Location: ../index.php");
+                    header("Location: ../profile/profile.php");
                     die();
                 } else {
                     echo '<script>alert("Invalid Email / Username or Password, Plz Try Again")</script>';

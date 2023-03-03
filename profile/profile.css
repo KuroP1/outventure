@@ -1,0 +1,141 @@
+.main-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.top-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 50px 0 15px 0;
+}
+
+.content-container {
+    display: flex;
+}
+
+.left-container {
+    width: 35%;
+}
+
+.right-container {
+    width: 65%;
+}
+
+.user-info-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+.menu-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-text {
+    font-weight: 700;
+    font-size: 28px;
+}
+
+button {
+    background: #315E52;
+    border: 0;
+    border-radius: 50px;
+    -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    color: white;
+    padding: 10px 15px;
+    cursor: pointer;
+    outline: none;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #387D6B;
+    transition: 0.3s; 
+}
+
+hr {
+    height: 0px;
+    border: 1.7px solid #D3D3D3;
+    margin-bottom: 50px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;    
+}
+
+.avatar {
+    width: 140px;
+    margin: 3px 0 3px 0;
+}
+
+.username-text {
+    font-weight: 700;
+    font-size: 20px;
+    margin: 3px 0 3px 0;
+}
+
+.email-text {
+    font-weight: 400;
+    font-size: 14px;
+    color: #969696;
+    margin: 3px 0 3px 0;
+}
+
+.menu-text {
+    font-weight: 600;
+    font-size: 23px;
+    margin: 10px 0 10px 0;
+    transition: 0.3s; 
+}
+
+.menu-text:hover {
+    color: #387D6B;
+    cursor: pointer;
+    transition: 0.3s; 
+}
+
+.right-container-top-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.right-container-top-text-main {
+    font-weight: 700;
+    font-size: 28px;
+}
+
+.right-container-top-text-sub {
+    font-weight: 400;
+    font-size: 14px;
+    color: #969696;
+}
+
+.cards-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF;
+    border: 2px solid #EEEEEE;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 300px;
+    padding: 50px 35px 50px 35px;
+}
+
+.card-first {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
