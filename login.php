@@ -24,7 +24,7 @@ if (isset($_SESSION["user"])) {
 <body>
     <div class="main-container">
         <div class="left-container">
-            <img src="../images/Login&Register/LeftBanner.png" alt="Left Banner" />
+            <img src="images/Login&Register/LeftBanner.png" alt="Left Banner" />
         </div>
 
         <?php
