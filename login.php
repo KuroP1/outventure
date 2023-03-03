@@ -24,12 +24,12 @@ if (isset($_SESSION["user"])) {
 <body>
     <div class="main-container">
         <div class="left-container">
-            <img src="images/Login&Register/LeftBanner.png" alt="Left Banner" />
+            <img src="../images/Login&Register/LeftBanner.png" alt="Left Banner" />
         </div>
 
         <?php
         require_once "config/database.php";
-        if (isset($_POST["login"])) {
+        if (isset($_POST["submit"])) {
             $email = $_POST["email"];
             $password = $_POST["password"];
 
@@ -38,6 +38,13 @@ if (isset($_SESSION["user"])) {
             $sql2 = "SELECT email FROM users WHERE email= '$email' AND password='$password'";
             $result2 = mysqli_query($conn, $sql2);
             $row2 = mysqli_fetch_assoc($result2);
+
+            // while ($rc = mysqli_fetch_assoc($result))
+            // {
+            //     extract($rc);
+            //     var_dump($rc);
+            // }
+
             if ($row = mysqli_fetch_assoc($result)) {
                 session_start();
                 $_SESSION["user"] = "$row[email]";
