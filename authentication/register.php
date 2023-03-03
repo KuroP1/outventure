@@ -14,8 +14,8 @@ if (isset($_SESSION["currentUser"])) {
     <title>Outventure</title>
     <link rel="stylesheet" href="login.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Poppins&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -63,7 +63,7 @@ if (isset($_SESSION["currentUser"])) {
 
             if (count($errors) > 0) {
                 foreach ($errors as $error) {
-                    echo '<script>alert("'.$error.'");</script>';
+                    echo '<script>alert("' . $error . '");</script>';
                 }
             } else {
                 $sql = "INSERT INTO users (Email, Password, Username) VALUES ( ?, ?, ? )";
@@ -72,7 +72,7 @@ if (isset($_SESSION["currentUser"])) {
                 if ($prepareStmt) {
                     mysqli_stmt_bind_param($stmt, "sss", $email, $password, $username);
                     mysqli_stmt_execute($stmt);
-                    echo 
+                    echo
                     '<script>
                         alert("Registration Successful")
                         window.location.href = "login.php";
@@ -86,7 +86,7 @@ if (isset($_SESSION["currentUser"])) {
         ?>
         <div class="right-container">
             <form class="form" action="register.php" method="post">
-                <img class="Logo" src="../images/Logo.png" alt="Logo"/>
+                <img class="Logo" src="../images/Logo.png" alt="Logo" />
                 <b class="top-text">Register Your Account</b>
                 <input class="form-input" type="email" placeholder="Email Address" name="email">
                 <input class="form-input" maxlength="8" type="username" placeholder="Username <=6" name="username">
