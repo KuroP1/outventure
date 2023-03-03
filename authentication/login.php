@@ -2,7 +2,7 @@
 <?php
 session_start();
 // if already login then redirect to index
-if (isset($_SESSION["user"])) {
+if (isset($_SESSION["currentUser"])) {
     header("Location: index.php");
 }
 ?>
@@ -30,29 +30,46 @@ if (isset($_SESSION["user"])) {
         <?php
         require_once "../config/database.php";
         if (isset($_POST["submit"])) {
+
             $email = $_POST["email"];
             $password = $_POST["password"];
 
-            $sql = "SELECT * FROM users WHERE email= '$email' AND password='$password'";
-            $result = mysqli_query($conn, $sql);
-            $sql2 = "SELECT email FROM users WHERE email= '$email' AND password='$password'";
-            $result2 = mysqli_query($conn, $sql2);
-            $row2 = mysqli_fetch_assoc($result2);
-            if ($row = mysqli_fetch_assoc($result)) {
-                session_start();
-                $_SESSION["user"] = "$row[email]";
-                header("Location: ../index.php");
-                die();
+            if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $sql = "SELECT * FROM users WHERE email= '$email' AND password='$password'";
+                $result = mysqli_query($conn, $sql);
+
+                // $sql2 = "SELECT email FROM users WHERE email= '$email' AND password='$password'";
+                // $result2 = mysqli_query($conn, $sql2);
+                // $row2 = mysqli_fetch_assoc($result2);
+
+                if ($row = mysqli_fetch_assoc($result)) {
+                    session_start();
+                    $_SESSION["currentUser"] = $row['UserID'];
+                    header("Location: ../index.php");
+                    die();
+                } else {
+                    echo '<script>alert("Invalid Email / Username or Password, Plz Try Again")</script>';
+                }
             } else {
-                echo '<script>alert("Invalid Email / Username or Password, Plz Try Again")</script>';
+                $sql = "SELECT * FROM users WHERE username= '$email' AND password='$password'";
+                $result = mysqli_query($conn, $sql);
+
+                if ($row = mysqli_fetch_assoc($result)) {
+                    session_start();
+                    $_SESSION["currentUser"] = $row['UserID'];
+                    header("Location: ../index.php");
+                    die();
+                } else {
+                    echo '<script>alert("Invalid Email / Username or Password, Plz Try Again")</script>';
+                }
             }
         }
         ?>
         <div class="right-container">
             <form class="form" action="login.php" method="post">
-                <img class="Logo" src="../images/Logo.png" alt="Logo"/>
+                <img class="Logo" src="../images/Logo.png" alt="Logo" />
                 <b class="top-text">Login to Your Account</b>
-                <input class="form-input" type="email" placeholder="Email Address" name="email">
+                <input class="form-input" placeholder="Email Address or Username" name="email">
                 <input class="form-input" type="password" placeholder="Password:" name="password">
                 <input class="form-button" type="submit" value="Login" name="submit">
                 <p class="bottom-text">Do Not Have a Account ? <a href="register.php"><b>Sign Up</b></a></p>

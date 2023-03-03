@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION["user"])) {
+if (isset($_SESSION["currentUser"])) {
     header("Location: index.php");
 }
 ?>
@@ -66,7 +66,7 @@ if (isset($_SESSION["user"])) {
                     echo '<script>alert("'.$error.'");</script>';
                 }
             } else {
-                $sql = "INSERT INTO users (email, password, Username) VALUES ( ?, ?, ? )";
+                $sql = "INSERT INTO users (Email, Password, Username) VALUES ( ?, ?, ? )";
                 $stmt = mysqli_stmt_init($conn);
                 $prepareStmt = mysqli_stmt_prepare($stmt, $sql);
                 if ($prepareStmt) {
