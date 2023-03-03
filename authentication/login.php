@@ -24,11 +24,11 @@ if (isset($_SESSION["user"])) {
 <body>
     <div class="main-container">
         <div class="left-container">
-            <img src="images/Login&Register/LeftBanner.png" alt="Left Banner" />
+            <img src="../images/Login&Register/LeftBanner.png" alt="Left Banner" />
         </div>
 
         <?php
-        require_once "config/database.php";
+        require_once "../config/database.php";
         if (isset($_POST["submit"])) {
             $email = $_POST["email"];
             $password = $_POST["password"];
@@ -41,7 +41,7 @@ if (isset($_SESSION["user"])) {
             if ($row = mysqli_fetch_assoc($result)) {
                 session_start();
                 $_SESSION["user"] = "$row[email]";
-                header("Location: index.php");
+                header("Location: ../index.php");
                 die();
             } else {
                 echo '<script>alert("Invalid Email / Username or Password, Plz Try Again")</script>';
@@ -50,9 +50,9 @@ if (isset($_SESSION["user"])) {
         ?>
         <div class="right-container">
             <form class="form" action="login.php" method="post">
-                <img class="Logo" src="images/Logo.png" alt="Logo"/>
+                <img class="Logo" src="../images/Logo.png" alt="Logo"/>
                 <b class="top-text">Login to Your Account</b>
-                <input class="form-input" type="email" placeholder="Email Address or Username" name="email">
+                <input class="form-input" type="email" placeholder="Email Address" name="email">
                 <input class="form-input" type="password" placeholder="Password:" name="password">
                 <input class="form-button" type="submit" value="Login" name="submit">
                 <p class="bottom-text">Do Not Have a Account ? <a href="register.php"><b>Sign Up</b></a></p>

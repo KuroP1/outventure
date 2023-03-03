@@ -21,10 +21,10 @@ if (isset($_SESSION["user"])) {
 <body>
     <div class="main-container">
         <div class="left-container">
-            <img src="images/Login&Register/LeftBanner.png" alt="Left Banner" />
+            <img src="../images/Login&Register/LeftBanner.png" alt="Left Banner" />
         </div>
         <?php
-        require_once "config/database.php";
+        require_once "../config/database.php";
         if (isset($_POST["submit"])) {
 
             $email = $_POST["email"];
@@ -53,6 +53,14 @@ if (isset($_SESSION["user"])) {
                 array_push($errors, "Email already exists!");
             }
 
+            $sql2 = "SELECT * FROM users WHERE Username = '$username'";
+            $result2 = mysqli_query($conn, $sql2);
+            $rowCount2 = mysqli_num_rows($result2);
+
+            if ($rowCount2 > 0) {
+                array_push($errors, "Username already exists!");
+            }
+
             if (count($errors) > 0) {
                 foreach ($errors as $error) {
                     echo '<script>alert("'.$error.'");</script>';
@@ -78,7 +86,7 @@ if (isset($_SESSION["user"])) {
         ?>
         <div class="right-container">
             <form class="form" action="register.php" method="post">
-                <img class="Logo" src="images/Logo.png" alt="Logo"/>
+                <img class="Logo" src="../images/Logo.png" alt="Logo"/>
                 <b class="top-text">Register Your Account</b>
                 <input class="form-input" type="email" placeholder="Email Address" name="email">
                 <input class="form-input" maxlength="8" type="username" placeholder="Username <=6" name="username">
