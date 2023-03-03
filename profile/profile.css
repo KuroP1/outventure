@@ -24,10 +24,6 @@
     width: 65%;
 }
 
-/* #right-container-personal-information {
-    display: block;
-} */
-
 .user-info-container {
     display: flex;
     flex-direction: column;
@@ -92,14 +88,14 @@ a {
     margin: 3px 0 3px 0;
 }
 
-.menu-text {
+#menu-text-1, #menu-text-2, #menu-text-3, #menu-text-4  {
     font-weight: 600;
     font-size: 23px;
     margin: 10px 0 10px 0;
-    transition: 0.3s; 
+    transition: 0.3s;
 }
 
-.menu-text:hover {
+#menu-text-1:hover, #menu-text-2:hover, #menu-text-3:hover, #menu-text-4:hover  {
     color: #387D6B;
     cursor: pointer;
     transition: 0.3s; 

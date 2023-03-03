@@ -23,13 +23,13 @@ if (!isset($_SESSION["currentUser"])) {
 <body>
     <div>
         <!-- NavBar -->
-        <div class="sub-navbar">
+        <!-- <div class="sub-navbar">
             <div class="sub-navbar-container">
                 <img class="sub-navbar-logo" src="../images/Logo2.png" alt="Logo" />
                 <div class="sub-navbar-middle">
                     <span class="sub-navbar-middle-text">Product</span>
                     <span class="sub-navbar-middle-text">About Us</span>
-                    <span class="sub-navbar-middle-text">Profile</span>
+                    <span class="sub-navbar-middle-text" style="color: #FFC700;">Profile</span>
                 </div>
                 <div class="sub-navbar-right">
                     <div class="search-bar">
@@ -48,7 +48,7 @@ if (!isset($_SESSION["currentUser"])) {
                     </svg>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Profile Content -->
         <div class="main-container">
             <!-- Top Bar -->
@@ -75,10 +75,10 @@ if (!isset($_SESSION["currentUser"])) {
                         ?>
                     </div>
                     <div class="menu-container">
-                        <span onclick="MenuDisplay('pi')" class="menu-text">Personal Information</span>
-                        <span onclick="MenuDisplay('bp')" class="menu-text">Bill Payment</span>
-                        <span onclick="MenuDisplay('oh')" class="menu-text">Order History</span>
-                        <span onclick="MenuDisplay('gc')" class="menu-text">Gift Cards</span>
+                        <span onclick="MenuDisplay('pi')" id="menu-text-1" style="color: #387D6B;">Personal Information</span>
+                        <span onclick="MenuDisplay('bp')" id="menu-text-2" style="color: #000000;">Bill Payment</span>
+                        <span onclick="MenuDisplay('oh')" id="menu-text-3" style="color: #000000;">Order History</span>
+                        <span onclick="MenuDisplay('gc')" id="menu-text-4" style="color: #000000;">Gift Cards</span>
                     </div>
                 </div>
                 <!-- Right inforamtion display -->
