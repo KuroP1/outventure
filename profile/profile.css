@@ -1,7 +1,8 @@
 .main-container {
     width: 100%;
-    max-width: 1200px;
+    max-width: 300px;
     margin: 0 auto;
+    z-index: 1;
 }
 
 .top-container {
@@ -9,29 +10,63 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 100px 0 15px 0;
+    margin: 50px 0 15px 0;
 }
 
 .content-container {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .left-container {
-    width: 35%;
+    width: 100%;
 }
 
 .right-container {
-    width: 65%;
+    width: 100%;
 }
 
 .user-info-container {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 30px;
 }
 
-.menu-container {
+.burger-tag-container {
+    cursor: pointer;
+}
+
+#mobile-menu-container {
+    position: absolute;
+    left:0;
+    width: 100%;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #232323;
+    color: #FFFFFF;
+    z-index: 2;
+    transition: 0.6s;
+}
+
+#mobile-menu-text-1, #mobile-menu-text-2, #mobile-menu-text-3, #mobile-menu-text-4  {
+    font-weight: 300;
+    font-size: 16px;
+    padding: 13px 0 13px 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+
+.menu-container {
+    display: none;
     flex-direction: column;
 }
 
@@ -88,6 +123,16 @@ a {
     margin: 3px 0 3px 0;
 }
 
+.burger-tag-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.burger-tag {
+    align-self: center;
+}
+
 #menu-text-1, #menu-text-2, #menu-text-3, #menu-text-4  {
     font-weight: 600;
     font-size: 23px;
@@ -104,22 +149,28 @@ a {
 .right-container-top-text {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
 }
 
 .right-container-top-text-main {
     font-weight: 700;
-    font-size: 28px;
+    font-size: 20px;
 }
 
 .right-container-top-text-sub {
     font-weight: 400;
     font-size: 14px;
     color: #969696;
+    text-align: center;
 }
 
 .cards-container {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin-top: 30px;
 }
 
@@ -131,11 +182,316 @@ a {
     border-radius: 20px;
     width: 100%;
     max-width: 300px;
-    padding: 50px 35px 50px 35px;
+    padding: 50px 20px 50px 20px;
+    margin: 10px 0 10px 0;
 }
 
 .card-first {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+@media (min-width: 640px) {
+    .main-container {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+        z-index: 1;
+    }
+    
+    .content-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .top-container {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 50px 0 15px 0;
+    }
+    
+    .left-container {
+        width: 100%;
+    }
+    
+    .right-container {
+        width: 100%;
+    }
+
+    .avatar {
+        width: 140px;
+        margin: 0 0 10px 0;
+    }
+    
+    .username-text {
+        font-weight: 700;
+        font-size: 20px;
+        margin: 3px 0 3px 0;
+    }
+
+    .user-info-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+    
+    .burger-tag-container {
+        cursor: pointer;
+    }
+
+    .menu-container {
+        display: none;
+        flex-direction: column;
+    }
+
+    .right-container-top-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+    
+    .right-container-top-text-main {
+        font-weight: 700;
+        font-size: 20px;
+    }
+    
+    .right-container-top-text-sub {
+        font-weight: 400;
+        font-size: 14px;
+        color: #969696;
+        text-align: center;
+    }
+
+    .cards-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+    }
+    
+    .card {
+        display: flex;
+        flex-direction: column;
+        background: #FFFFFF;
+        border: 2px solid #EEEEEE;
+        border-radius: 20px;
+        width: 100%;
+        max-width: 300px;
+        padding: 50px 20px 50px 20px;
+        margin: 10px 0 10px 0;
+    }
+}
+
+@media (min-width: 768px) {
+    .main-container {
+        width: 100%;
+        max-width: 700px;
+        margin: 0 auto;
+        z-index: 1;
+    }
+    
+    .content-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .top-container {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 50px 0 15px 0;
+    }
+    
+    .left-container {
+        width: 100%;
+    }
+    
+    .right-container {
+        width: 100%;
+    }
+
+    .avatar {
+        width: 140px;
+        margin: 0 0 10px 0;
+    }
+    
+    .username-text {
+        font-weight: 700;
+        font-size: 20px;
+        margin: 3px 0 3px 0;
+    }
+
+    .user-info-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+    
+    .burger-tag-container {
+        cursor: pointer;
+    }
+
+    .menu-container {
+        display: none;
+        flex-direction: column;
+    }
+
+    .right-container-top-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+    
+    .right-container-top-text-main {
+        font-weight: 700;
+        font-size: 20px;
+    }
+    
+    .right-container-top-text-sub {
+        font-weight: 400;
+        font-size: 14px;
+        color: #969696;
+        text-align: center;
+    }
+
+    .cards-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+    }
+    
+    .card {
+        display: flex;
+        flex-direction: column;
+        background: #FFFFFF;
+        border: 2px solid #EEEEEE;
+        border-radius: 20px;
+        width: 100%;
+        max-width: 300px;
+        padding: 50px 20px 50px 20px;
+        margin: 10px 0 10px 0;
+    }    
+}
+
+@media (min-width: 1231px) {
+    .main-container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .content-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        align-items: start;
+    }
+
+    .top-container {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 100px 0 15px 0;
+    }
+
+    .left-container {
+        width: 35%;
+    }
+
+    
+    .right-container {
+        width: 65%;
+    }
+
+    .avatar {
+        width: 140px;
+        margin: 0 0 10px 0;
+    }
+    
+    .username-text {
+        font-weight: 700;
+        font-size: 20px;
+        margin: 3px 0 3px 0;
+    }
+
+    .user-info-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+        margin-bottom: 30px;
+    }
+
+    .burger-tag-container {
+        display: none;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .menu-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .right-container-top-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+        margin-top: 0px;
+    }
+    
+    .right-container-top-text-main {
+        font-weight: 700;
+        font-size: 28px;
+    }
+    
+    .right-container-top-text-sub {
+        font-weight: 400;
+        font-size: 14px;
+        color: #969696;
+        text-align: left;
+    }
+
+    .cards-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: start;
+        margin-top: 30px;
+    }
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        background: #FFFFFF;
+        border: 2px solid #EEEEEE;
+        border-radius: 20px;
+        width: 100%;
+        max-width: 300px;
+        padding: 50px 35px 50px 35px;
+        margin: 0 0 0 0;
+    }    
 }

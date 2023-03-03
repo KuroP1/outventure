@@ -18,14 +18,20 @@ if (!isset($_SESSION["currentUser"])) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <script src="profile.js"></script>
+    <script src="../navbar.js"></script>
 </head>
 
 <body>
     <div>
         <!-- NavBar -->
-        <!-- <div class="sub-navbar">
+        <div class="sub-navbar">
             <div class="sub-navbar-container">
                 <img class="sub-navbar-logo" src="../images/Logo2.png" alt="Logo" />
+                <div onclick="ShowMobileMainMenu()" class="main-burger-tag-container">
+                    <svg class="burger-tag" xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: msFilter;">
+                        <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"></path>
+                    </svg>
+                </div>
                 <div class="sub-navbar-middle">
                     <span class="sub-navbar-middle-text">Product</span>
                     <span class="sub-navbar-middle-text">About Us</span>
@@ -48,7 +54,12 @@ if (!isset($_SESSION["currentUser"])) {
                     </svg>
                 </div>
             </div>
-        </div> -->
+        </div>
+        <div id="mobile-sub-navbar-middle" style="transform: translateY(-100%); z-index: -1;">
+            <span id="mobile-sub-navbar-middle-text-1">Product</span>
+            <span id="mobile-sub-navbar-middle-text-2">About Us</span>
+            <span id="mobile-sub-navbar-middle-text-3" style="color: #FFC700;">Profile</span>
+        </div>
         <!-- Profile Content -->
         <div class="main-container">
             <!-- Top Bar -->
@@ -73,6 +84,17 @@ if (!isset($_SESSION["currentUser"])) {
                             echo "<span class='email-text'>{$row['Email']}</span>";
                         }
                         ?>
+                    </div>
+                    <div onclick="ShowMobileMenu()" class="burger-tag-container">
+                        <svg class="burger-tag" xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: msFilter;">
+                            <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"></path>
+                        </svg>
+                    </div>
+                    <div id="mobile-menu-container" style="transform: translateX(-100%);">
+                        <span onclick="MenuDisplay('pi')" id="mobile-menu-text-1" style="background-color: #FFFFFF; color: #232323;">Personal Information</span>
+                        <span onclick="MenuDisplay('bp')" id="mobile-menu-text-2" style="background-color: #232323; color: #FFFFFF;">Bill Payment</span>
+                        <span onclick="MenuDisplay('oh')" id="mobile-menu-text-3" style="background-color: #232323; color: #FFFFFF;">Order History</span>
+                        <span onclick="MenuDisplay('gc')" id="mobile-menu-text-4" style="background-color: #232323; color: #FFFFFF;">Gift Cards</span>
                     </div>
                     <div class="menu-container">
                         <span onclick="MenuDisplay('pi')" id="menu-text-1" style="color: #387D6B;">Personal Information</span>
