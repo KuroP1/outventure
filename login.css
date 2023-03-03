@@ -19,6 +19,11 @@ form {
     flex-direction: column;
     width: 100%;
     max-width: 300px;
+    background-color: #FFFFFF;
+    padding: 20px 30px 20px 30px;
+    border-radius: 10px;
+    -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
 .main-container {
@@ -38,15 +43,19 @@ form {
     align-items: center;
     width: 100%;
     height: 100vh;
+    background-image: url(images/Login&Register/LeftSmall.png);
+    background-size: cover;
 }
 
 .Logo {
     width: 200px;
+    align-self: center;
 }
 
 .top-text {
     margin: 35px 0 23px 0;
     font-size: 20px;
+    align-self: center;
 }
 
 .form-input {
@@ -89,6 +98,7 @@ form {
     color: #969696;
     text-decoration: none;
     font-size: 14px;
+    align-self: center;
 }
 
 @media (min-width: 640px) {
@@ -109,11 +119,13 @@ form {
 
     .Logo {
         width: 200px;
+        align-self: center;
     }
     
     .top-text {
         margin: 35px 0 23px 0;
         font-size: 20px;
+        align-self: center;
     }
 
     form {
@@ -121,6 +133,11 @@ form {
         flex-direction: column;
         width: 100%;
         max-width: 300px;
+        background-color: #FFFFFF;
+        padding: 20px 30px 20px 30px;
+        border-radius: 10px;
+        -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     }
 
     .form-input {
@@ -138,6 +155,7 @@ form {
         color: #969696;
         text-decoration: none;
         font-size: 14px;
+        align-self: center;
     }
 }
   
@@ -158,19 +176,26 @@ form {
     }
 
     .Logo {
-        width: 250px;
+        width: 200px;
+        align-self: center;
     }
-
+    
     .top-text {
         margin: 35px 0 23px 0;
-        font-size: 25px;
+        font-size: 20px;
+        align-self: center;
     }
 
     form {
         display: flex;
         flex-direction: column;
         width: 100%;
-        max-width: 450px;
+        max-width: 300px;
+        background-color: #FFFFFF;
+        padding: 20px 30px 20px 30px;
+        border-radius: 10px;
+        -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     }
 
     .form-input {
@@ -180,13 +205,15 @@ form {
         -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
                 filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
         padding: 15px 20px;
-        margin: 20px 0 20px 0;
+        margin: 15px 0 15px 0;
         outline: none;
     }
 
     .bottom-text {
         color: #969696;
         text-decoration: none;
+        font-size: 14px;
+        align-self: center;
     }
 }
   
@@ -204,15 +231,19 @@ form {
         align-items: center;
         width: 100%;
         height: 100vh;
+        background-image: url("");
+        background-size: cover;
     }
 
     .Logo {
         width: 250px;
+        align-self: center;
     }
 
     .top-text {
         margin: 35px 0 23px 0;
         font-size: 25px;
+        align-self: center;
     }
 
     form {
@@ -220,6 +251,10 @@ form {
         flex-direction: column;
         width: 100%;
         max-width: 450px;
+        padding: 0px 0px 0px 0px;
+        border-radius: 0px;
+        -webkit-filter: drop-shadow(0px 0px 0px rgba(255, 255, 255, 255));
+        filter: drop-shadow(0px 0px 0px rgba(255, 255, 255, 255));
     }
 
     .form-input {
@@ -236,5 +271,6 @@ form {
     .bottom-text {
         color: #969696;
         text-decoration: none;
+        align-self: center;
     }
 }

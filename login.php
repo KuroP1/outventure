@@ -38,13 +38,6 @@ if (isset($_SESSION["user"])) {
             $sql2 = "SELECT email FROM users WHERE email= '$email' AND password='$password'";
             $result2 = mysqli_query($conn, $sql2);
             $row2 = mysqli_fetch_assoc($result2);
-
-            // while ($rc = mysqli_fetch_assoc($result))
-            // {
-            //     extract($rc);
-            //     var_dump($rc);
-            // }
-
             if ($row = mysqli_fetch_assoc($result)) {
                 session_start();
                 $_SESSION["user"] = "$row[email]";
@@ -56,18 +49,15 @@ if (isset($_SESSION["user"])) {
         }
         ?>
         <div class="right-container">
-            <img class="Logo" src="images/Logo.png" alt="Logo"/>
-            <b class="top-text">Login to Your Account</b>
             <form class="form" action="login.php" method="post">
+                <img class="Logo" src="images/Logo.png" alt="Logo"/>
+                <b class="top-text">Login to Your Account</b>
                 <input class="form-input" type="email" placeholder="Email Address or Username" name="email">
                 <input class="form-input" type="password" placeholder="Password:" name="password">
                 <input class="form-button" type="submit" value="Login" name="submit">
+                <p class="bottom-text">Do Not Have a Account ? <a href="register.php"><b>Sign Up</b></a></p>
             </form>
-
-            <p class="bottom-text">Do Not Have a Account ? <a href="register.php"><b>Sign Up</b></a></p>
         </div>
-
-
     </div>
 </body>
 

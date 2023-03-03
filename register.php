@@ -77,19 +77,16 @@ if (isset($_SESSION["user"])) {
         }
         ?>
         <div class="right-container">
-            <img class="Logo" src="images/Logo.png" alt="Logo"/>
-            <b class="top-text">Register Your Account</b>
             <form class="form" action="register.php" method="post">
+                <img class="Logo" src="images/Logo.png" alt="Logo"/>
+                <b class="top-text">Register Your Account</b>
                 <input class="form-input" type="email" placeholder="Email Address" name="email">
                 <input class="form-input" maxlength="8" type="username" placeholder="Username <=6" name="username">
                 <input class="form-input" type="password" placeholder="Password: >=8" name="password">
                 <input class="form-button" type="submit" value="Register" name="submit">
+                <p class="bottom-text">Already Have a Account ? <a href="login.php"><b>Login</b></a></p>
             </form>
-
-            <p class="bottom-text">Already Have a Account ? <a href="login.php"><b>Login</b></a></p>
         </div>
-
-
     </div>
 </body>
 
