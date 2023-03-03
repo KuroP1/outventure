@@ -1,0 +1,288 @@
+body {
+    margin: 0px;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f6f5f8;
+}
+
+a {
+    color: #969696;
+    text-decoration: none; 
+    transition: 0.3s;
+}
+
+a:hover {
+    text-decoration: underline; 
+    transition: 0.3s;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+    background-color: #FFFFFF;
+    padding: 20px 30px 20px 30px;
+    border-radius: 10px;
+    -webkit-filter: drop-shadow(0px 10px 10px rgba(0, 0, 0, 0.25));
+    filter: drop-shadow(0px 10px 10px rgba(0, 0, 0, 0.25));
+    background-color: #f6f5f8;
+}
+
+.main-container {
+    display: flex;
+}
+
+.left-container {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+}
+
+.right-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-image: url(../images/Login&Register/LeftSmall.png);
+    background-size: cover;
+}
+
+.Logo {
+    width: 220px;
+    align-self: center;
+    margin-top: -97px;
+}
+
+.top-text {
+    margin: 35px 0 23px 0;
+    font-size: 20px;
+    align-self: center;
+}
+
+.form-input {
+    background: #FBFBFB;
+    border: 2px solid #FFFFFF;
+    border-radius: 50px;
+    -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    padding: 15px 20px;
+    margin: 15px 0 15px 0;
+    outline: none;
+}
+
+.form-input::placeholder {
+    color: #A2A2A2;
+    font-weight: 400;
+}
+
+.form-button {
+    background: #315E52;
+    border: 0;
+    border-radius: 50px;
+    -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    color: white;
+    padding: 15px 20px;
+    cursor: pointer;
+    margin: 20px 0 20px 0;
+    outline: none;
+    transition: 0.3s;
+}
+
+.form-button:hover {
+    background: #387D6B;
+    transition: 0.3s;
+    
+}
+
+.bottom-text {
+    color: #969696;
+    text-decoration: none;
+    font-size: 14px;
+    align-self: center;
+}
+
+@media (min-width: 640px) {
+    .left-container {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .right-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100vh;
+        background-image: url(../images/Login&Register/LeftSmall.png);
+        background-size: cover;
+    }
+
+    .Logo {
+        width: 220px;
+        align-self: center;
+        margin-top: -97px;
+    }
+    
+    .top-text {
+        margin: 35px 0 23px 0;
+        font-size: 20px;
+        align-self: center;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+        background-color: #f6f5f8;
+        padding: 20px 30px 20px 30px;
+        border-radius: 10px;
+        -webkit-filter: drop-shadow(0px 10px 10px rgba(0, 0, 0, 0.25));
+        filter: drop-shadow(0px 10px 10px rgba(0, 0, 0, 0.25));
+        background-color: #f6f5f8;
+    }
+
+    .form-input {
+        background: #FBFBFB;
+        border: 2px solid #FFFFFF;
+        border-radius: 50px;
+        -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+                filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        padding: 15px 20px;
+        margin: 15px 0 15px 0;
+        outline: none;
+    }
+
+    .bottom-text {
+        color: #969696;
+        text-decoration: none;
+        font-size: 14px;
+        align-self: center;
+    }
+}
+  
+@media (min-width: 768px) {
+    .left-container {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .right-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100vh;
+        background-image: url(../images/Login&Register/LeftSmall.png);
+        background-size: cover;
+    }
+
+    .Logo {
+        width: 220px;
+        align-self: center;
+        margin-top: -97px;
+    }
+    
+    .top-text {
+        margin: 35px 0 23px 0;
+        font-size: 20px;
+        align-self: center;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+        background-color: #FFFFFF;
+        padding: 20px 30px 20px 30px;
+        border-radius: 10px;
+        -webkit-filter: drop-shadow(0px 10px 10px rgba(0, 0, 0, 0.25));
+        filter: drop-shadow(0px 10px 10px rgba(0, 0, 0, 0.25));
+        background-color: #f6f5f8;
+    }
+
+    .form-input {
+        background: #FBFBFB;
+        border: 2px solid #FFFFFF;
+        border-radius: 50px;
+        -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+                filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        padding: 15px 20px;
+        margin: 15px 0 15px 0;
+        outline: none;
+    }
+
+    .bottom-text {
+        color: #969696;
+        text-decoration: none;
+        font-size: 14px;
+        align-self: center;
+    }
+}
+  
+@media (min-width: 1720px) {
+    .left-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .right-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100vh;
+        background-image: url("");
+        background-size: cover;
+    }
+
+    .Logo {
+        width: 250px;
+        align-self: center;
+    }
+
+    .top-text {
+        margin: 35px 0 23px 0;
+        font-size: 25px;
+        align-self: center;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 450px;
+        padding: 0px 0px 0px 0px;
+        border-radius: 0px;
+        -webkit-filter: drop-shadow(0px 0px 0px rgba(255, 255, 255, 255));
+        filter: drop-shadow(0px 0px 0px rgba(255, 255, 255, 255));
+        background-color: #f6f5f8;
+    }
+
+    .form-input {
+        background: #FBFBFB;
+        border: 2px solid #FFFFFF;
+        border-radius: 50px;
+        -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+                filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        padding: 15px 20px;
+        margin: 20px 0 20px 0;
+        outline: none;
+    }
+
+    .bottom-text {
+        color: #969696;
+        text-decoration: none;
+        align-self: center;
+    }
+}
