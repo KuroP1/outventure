@@ -3,3 +3,93 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color: #f6f5f8;
 }
+
+.sub-navbar {
+    width: 100%;
+    background-color: #232323;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 0 15px 0;
+}
+
+.sub-navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-weight: 300;
+    width: 100%;
+    max-width: 1350px;
+}
+
+.sub-navbar-logo {
+    width: 230px;
+}
+
+.sub-navbar-middle-text {
+    margin: 0 25px 0 25px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.sub-navbar-middle-text:hover {
+    margin: 0 25px 0 25px;
+    color: #FFC700;
+    transition: 0.3s;
+}
+
+.sub-navbar-right {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #232323;
+    border: 1px solid #FFFFFF;
+    border-right: none;
+    border-radius: 8px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    padding: 5px 0 6px 10px;
+    color: #FFFFFF;
+}
+
+.search-bar-input {
+    background-color: #232323;
+    border: 1px solid #FFFFFF;
+    border-left: none;
+    border-radius: 8px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    padding: 10px 20px 10px 8px;
+    color: #FFFFFF;
+    outline: none;
+}
+
+.search-bar-input::placeholder {
+    color: #FFFFFF;
+    font-weight: 300;
+}
+
+.search-icon {
+    position: absolute;
+    right: 280px;
+    color: #FFFFFF;
+}
+
+.sub-navbar-right-vline { 
+    font-weight: 100;
+    font-size: 40px;
+    margin: 0 20px 0 20px;
+}

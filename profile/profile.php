@@ -6,6 +6,7 @@ if (!isset($_SESSION["currentUser"])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,77 +17,135 @@ if (!isset($_SESSION["currentUser"])) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="profile.js"></script>
 </head>
+
 <body>
-    <div class="main-container">
-        <div class="top-container">
-            <span class="profile-text">Profile</span>
-            <button><a href="../logout.php">Log Out</a></button>
-        </div>
-        <hr>
-
-        <div class="content-container">
-            <div class="left-container">
-                <div class="user-info-container">
-                    <img class="avatar" src="../images/profile/avatar.png" alt="avatar" />
-                    <?php
-                    require_once "../config/database.php";
-                    $sql = "SELECT * FROM users WHERE UserID ='{$_SESSION['currentUser']}'";
-                    $result = mysqli_query($conn, $sql);
-
-                    if ($row = mysqli_fetch_assoc($result)) {
-                        echo "<span class='username-text'>{$row['Username']}</span>";
-                        echo "<span class='email-text'>{$row['Email']}</span>";
-                    }
-                    ?>
+    <div>
+        <!-- NavBar -->
+        <div class="sub-navbar">
+            <div class="sub-navbar-container">
+                <img class="sub-navbar-logo" src="../images/Logo2.png" alt="Logo" />
+                <div class="sub-navbar-middle">
+                    <span class="sub-navbar-middle-text">Product</span>
+                    <span class="sub-navbar-middle-text">About Us</span>
+                    <span class="sub-navbar-middle-text">Profile</span>
                 </div>
-                <div class="menu-container">
-                    <span class="menu-text">Personal Information</span>
-                    <span class="menu-text">Bill Payment</span>
-                    <span class="menu-text">Order History</span>
-                    <span class="menu-text">Gift Cards</span>
+                <div class="sub-navbar-right">
+                    <div class="search-bar">
+                        <button class="search-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: msFilter;">
+                                <path d="M19.023 16.977a35.13 35.13 0 0 1-1.367-1.384c-.372-.378-.596-.653-.596-.653l-2.8-1.337A6.962 6.962 0 0 0 16 9c0-3.859-3.14-7-7-7S2 5.141 2 9s3.14 7 7 7c1.763 0 3.37-.66 4.603-1.739l1.337 2.8s.275.224.653.596c.387.363.896.854 1.384 1.367l1.358 1.392.604.646 2.121-2.121-.646-.604c-.379-.372-.885-.866-1.391-1.36zM9 14c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z"></path>
+                            </svg>
+                        </button>
+                        <input class="search-bar-input" placeholder="Search Product" />
+                    </div>
+                    <span class="sub-navbar-right-vline">|</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: msFilter;">
+                        <path d="M21.822 7.431A1 1 0 0 0 21 7H7.333L6.179 4.23A1.994 1.994 0 0 0 4.333 3H2v2h2.333l4.744 11.385A1 1 0 0 0 10 17h8c.417 0 .79-.259.937-.648l3-8a1 1 0 0 0-.115-.921zM17.307 15h-6.64l-2.5-6h11.39l-2.25 6z"></path>
+                        <circle cx="10.5" cy="19.5" r="1.5"></circle>
+                        <circle cx="17.5" cy="19.5" r="1.5"></circle>
+                    </svg>
                 </div>
             </div>
-            <div class="right-container">
-                <div class="right-container-top-text">
-                    <span class="right-container-top-text-main">Personal Information</span>
-                    <span class="right-container-top-text-sub">Manage your information, including name, email address.</span>
-                </div>
-                <div class="cards-container">
-                    <div class="card">
-                        <div class="card-first">
-                            <span class="username-text">Username</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24" style="fill: rgba(49, 94, 82, 1);transform: msFilter;">
-                                <path d="M12 2A10.13 10.13 0 0 0 2 12a10 10 0 0 0 4 7.92V20h.1a9.7 9.7 0 0 0 11.8 0h.1v-.08A10 10 0 0 0 22 12 10.13 10.13 0 0 0 12 2zM8.07 18.93A3 3 0 0 1 11 16.57h2a3 3 0 0 1 2.93 2.36 7.75 7.75 0 0 1-7.86 0zm9.54-1.29A5 5 0 0 0 13 14.57h-2a5 5 0 0 0-4.61 3.07A8 8 0 0 1 4 12a8.1 8.1 0 0 1 8-8 8.1 8.1 0 0 1 8 8 8 8 0 0 1-2.39 5.64z"></path>
-                                <path d="M12 6a3.91 3.91 0 0 0-4 4 3.91 3.91 0 0 0 4 4 3.91 3.91 0 0 0 4-4 3.91 3.91 0 0 0-4-4zm0 6a1.91 1.91 0 0 1-2-2 1.91 1.91 0 0 1 2-2 1.91 1.91 0 0 1 2 2 1.91 1.91 0 0 1-2 2z"></path>
-                            </svg>
-                        </div>
+        </div>
+        <!-- Profile Content -->
+        <div class="main-container">
+            <!-- Top Bar -->
+            <div class="top-container">
+                <span class="profile-text">Profile</span>
+                <button class="logout-button"><a href="../logout.php">Log Out</a></button>
+            </div>
+            <hr>
+            <!-- Content -->
+            <div class="content-container">
+                <!-- Left inforamtion and menu -->
+                <div class="left-container">
+                    <div class="user-info-container">
+                        <img class="avatar" src="../images/profile/avatar.png" alt="avatar" />
                         <?php
                         require_once "../config/database.php";
                         $sql = "SELECT * FROM users WHERE UserID ='{$_SESSION['currentUser']}'";
                         $result = mysqli_query($conn, $sql);
 
                         if ($row = mysqli_fetch_assoc($result)) {
-                            echo "<span class='email-text'>{$row['Username']}</span>";
-                        }
-                        ?>
-                    </div>
-                    <div class="card">
-                        <div class="card-first">
-                            <span class="username-text">Email Address</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24" style="fill: rgba(49, 94, 82, 1);transform: msFilter;">
-                                <path d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2v.511l-8 6.223-8-6.222V6h16zM4 18V9.044l7.386 5.745a.994.994 0 0 0 1.228 0L20 9.044 20.002 18H4z"></path>
-                            </svg>
-                        </div>
-                        <?php
-                        require_once "../config/database.php";
-                        $sql = "SELECT * FROM users WHERE UserID ='{$_SESSION['currentUser']}'";
-                        $result = mysqli_query($conn, $sql);
-
-                        if ($row = mysqli_fetch_assoc($result)) {
+                            echo "<span class='username-text'>{$row['Username']}</span>";
                             echo "<span class='email-text'>{$row['Email']}</span>";
                         }
                         ?>
+                    </div>
+                    <div class="menu-container">
+                        <span onclick="MenuDisplay('pi')" class="menu-text">Personal Information</span>
+                        <span onclick="MenuDisplay('bp')" class="menu-text">Bill Payment</span>
+                        <span onclick="MenuDisplay('oh')" class="menu-text">Order History</span>
+                        <span onclick="MenuDisplay('gc')" class="menu-text">Gift Cards</span>
+                    </div>
+                </div>
+                <!-- Right inforamtion display -->
+                <div class="right-container">
+                    <div id="right-container-personal-information" style="display:block;">
+                        <div class="right-container-top-text">
+                            <span class="right-container-top-text-main">Personal Information</span>
+                            <span class="right-container-top-text-sub">Manage your information, including name, email address.</span>
+                        </div>
+                        <div class="cards-container">
+                            <div class="card">
+                                <div class="card-first">
+                                    <span class="username-text">Username</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24" style="fill: rgba(49, 94, 82, 1);transform: msFilter;">
+                                        <path d="M12 2A10.13 10.13 0 0 0 2 12a10 10 0 0 0 4 7.92V20h.1a9.7 9.7 0 0 0 11.8 0h.1v-.08A10 10 0 0 0 22 12 10.13 10.13 0 0 0 12 2zM8.07 18.93A3 3 0 0 1 11 16.57h2a3 3 0 0 1 2.93 2.36 7.75 7.75 0 0 1-7.86 0zm9.54-1.29A5 5 0 0 0 13 14.57h-2a5 5 0 0 0-4.61 3.07A8 8 0 0 1 4 12a8.1 8.1 0 0 1 8-8 8.1 8.1 0 0 1 8 8 8 8 0 0 1-2.39 5.64z"></path>
+                                        <path d="M12 6a3.91 3.91 0 0 0-4 4 3.91 3.91 0 0 0 4 4 3.91 3.91 0 0 0 4-4 3.91 3.91 0 0 0-4-4zm0 6a1.91 1.91 0 0 1-2-2 1.91 1.91 0 0 1 2-2 1.91 1.91 0 0 1 2 2 1.91 1.91 0 0 1-2 2z"></path>
+                                    </svg>
+                                </div>
+                                <?php
+                                require_once "../config/database.php";
+                                $sql = "SELECT * FROM users WHERE UserID ='{$_SESSION['currentUser']}'";
+                                $result = mysqli_query($conn, $sql);
+
+                                if ($row = mysqli_fetch_assoc($result)) {
+                                    echo "<span class='email-text'>{$row['Username']}</span>";
+                                }
+                                ?>
+                            </div>
+                            <div class="card">
+                                <div class="card-first">
+                                    <span class="username-text">Email Address</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24" style="fill: rgba(49, 94, 82, 1);transform: msFilter;">
+                                        <path d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2v.511l-8 6.223-8-6.222V6h16zM4 18V9.044l7.386 5.745a.994.994 0 0 0 1.228 0L20 9.044 20.002 18H4z"></path>
+                                    </svg>
+                                </div>
+                                <?php
+                                require_once "../config/database.php";
+                                $sql = "SELECT * FROM users WHERE UserID ='{$_SESSION['currentUser']}'";
+                                $result = mysqli_query($conn, $sql);
+
+                                if ($row = mysqli_fetch_assoc($result)) {
+                                    echo "<span class='email-text'>{$row['Email']}</span>";
+                                }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Bill Payment -->
+                    <div id="right-container-bill-payment" style="display:none;">
+                        <div class="right-container-top-text">
+                            <span class="right-container-top-text-main">Bill Payment</span>
+                            <span class="right-container-top-text-sub">Manage your information, including name, email address.</span>
+                        </div>
+                    </div>
+                    <!-- Order History -->
+                    <div id="right-container-order-history" style="display:none;">
+                        <div class="right-container-top-text">
+                            <span class="right-container-top-text-main">Order History</span>
+                            <span class="right-container-top-text-sub">Manage your information, including name, email address.</span>
+                        </div>
+                    </div>
+                    <!-- Gift Cards -->
+                    <div id="right-container-gift-cards" style="display:none;">
+                        <div class="right-container-top-text">
+                            <span class="right-container-top-text-main">Gift Card</span>
+                            <span class="right-container-top-text-sub">Manage your information, including name, email address.</span>
+                        </div>
                     </div>
                 </div>
             </div>

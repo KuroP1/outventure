@@ -9,7 +9,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 50px 0 15px 0;
+    margin: 100px 0 15px 0;
 }
 
 .content-container {
@@ -23,6 +23,10 @@
 .right-container {
     width: 65%;
 }
+
+/* #right-container-personal-information {
+    display: block;
+} */
 
 .user-info-container {
     display: flex;
@@ -40,7 +44,7 @@
     font-size: 28px;
 }
 
-button {
+.logout-button {
     background: #315E52;
     border: 0;
     border-radius: 50px;
@@ -53,7 +57,7 @@ button {
     transition: 0.3s;
 }
 
-button:hover {
+.logout-button:hover {
     background: #387D6B;
     transition: 0.3s; 
 }
@@ -67,12 +71,12 @@ hr {
 a {
     text-decoration: none;
     color: white;
-    font-weight: 500;    
+    font-weight: 600;    
 }
 
 .avatar {
     width: 140px;
-    margin: 3px 0 3px 0;
+    margin: 0 0 10px 0;
 }
 
 .username-text {
