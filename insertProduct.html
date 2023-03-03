@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Add Product</title>
+</head>
+
+<body>
+    <form action="insertProduct.php" method="POST">
+        <label for="productName">Product Name:</label>
+        <input type="text" name="productName" required><br>
+
+        <label for="productDescription">Product Description:</label>
+        <input type="text" name="productDescription" required><br>
+
+        <label for="productQuantity">Product Quantity:</label>
+        <input type="number" name="productQuantity" required><br>
+
+        <label for="productSize">Product Size:</label>
+        <input type="text" name="productSize"><br>
+
+        <label for="productColor">Product Color:</label>
+        <input type="text" name="productColor"><br>
+
+        <label for="categoryID">Category ID:</label>
+        <input type="number" name="categoryID" required><br>
+
+        <input type="submit" value="Add Product">
+    </form>
+</body>
+
+</html>
