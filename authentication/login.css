@@ -1,6 +1,7 @@
 body {
     margin: 0px;
     font-family: 'Oswald', sans-serif;
+    background-color: #f6f5f8;
 }
 
 a {
@@ -24,6 +25,7 @@ form {
     border-radius: 10px;
     -webkit-filter: drop-shadow(0px 10px 10px rgba(0, 0, 0, 0.25));
     filter: drop-shadow(0px 10px 10px rgba(0, 0, 0, 0.25));
+    background-color: #f6f5f8;
 }
 
 .main-container {
@@ -48,8 +50,9 @@ form {
 }
 
 .Logo {
-    width: 200px;
+    width: 220px;
     align-self: center;
+    margin-top: -97px;
 }
 
 .top-text {
@@ -120,8 +123,9 @@ form {
     }
 
     .Logo {
-        width: 200px;
+        width: 220px;
         align-self: center;
+        margin-top: -97px;
     }
     
     .top-text {
@@ -135,11 +139,12 @@ form {
         flex-direction: column;
         width: 100%;
         max-width: 300px;
-        background-color: #FFFFFF;
+        background-color: #f6f5f8;
         padding: 20px 30px 20px 30px;
         border-radius: 10px;
         -webkit-filter: drop-shadow(0px 10px 10px rgba(0, 0, 0, 0.25));
         filter: drop-shadow(0px 10px 10px rgba(0, 0, 0, 0.25));
+        background-color: #f6f5f8;
     }
 
     .form-input {
@@ -180,8 +185,9 @@ form {
     }
 
     .Logo {
-        width: 200px;
+        width: 220px;
         align-self: center;
+        margin-top: -97px;
     }
     
     .top-text {
@@ -200,6 +206,7 @@ form {
         border-radius: 10px;
         -webkit-filter: drop-shadow(0px 10px 10px rgba(0, 0, 0, 0.25));
         filter: drop-shadow(0px 10px 10px rgba(0, 0, 0, 0.25));
+        background-color: #f6f5f8;
     }
 
     .form-input {
@@ -259,6 +266,7 @@ form {
         border-radius: 0px;
         -webkit-filter: drop-shadow(0px 0px 0px rgba(255, 255, 255, 255));
         filter: drop-shadow(0px 0px 0px rgba(255, 255, 255, 255));
+        background-color: #f6f5f8;
     }
 
     .form-input {
