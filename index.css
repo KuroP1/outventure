@@ -1,6 +1,45 @@
+body {
+  width: 100%;
+  height: 100%;
+  background-color: red;
+}
+.navigationSection {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
 .banner {
-    width: 100%;
-    height: auto;
-    max-width: 100%;
-    margin: 0px;
+  width: 100%;
+  height: 100%;
+  background-image: url(images/Home/Banner.png);
+  background-size: cover;
+}
+.navBar {
+  width: 100%;
+  max-width: 1820px;
+  max-height: 78px;
+  position: absolute;
+  align-items: center;
+  display: flex;
+  top: 0;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.Logo {
+  height: 100%;
+  background-size: cover;
+}
+
+.navigation {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navItem {
+  color: white;
+  text-decoration: none;
+  font-size: 24px;
+  padding-right: 30px;
 }
