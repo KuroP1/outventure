@@ -1,6 +1,5 @@
 img {
     width: 350px;
-
 }
 
 .main-container {
@@ -11,17 +10,19 @@ img {
     margin: auto;
 }
 
-
 .product-detail-container {
     display: flex;
     justify-content: center;
     margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .product-detail-image-container {
+    display: flex;
+    align-items: center;
     background-color: #FFFFFF;
     border-radius: 20px;
-    padding: 80px 170px 80px 170px;
+    padding: 0 170px 0 170px;
     margin-right: 20px;
 }
 
@@ -80,10 +81,10 @@ img {
     font-size: 20px;
 }
 
-.product-detail-info-color-text,
-.product-detail-info-price-text {
+.product-detail-info-color-text, .product-detail-info-price-text {
     font-size: 12px;
     font-weight: 500;
+    margin: 0px 7px 0px 0px;
 }
 
 .product-detail-info-color-button {
