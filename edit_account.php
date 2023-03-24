@@ -32,7 +32,7 @@ $conn->close();
 <body>
     <h1>Edit Account</h1>
     <form method="post">
-        <input type="hidden" name="id" value="<?php echo $account["id"]; ?>">
+        <input type="hidden" name="id" value="<?php echo $account["UserID"]; ?>">
         <label for="email">Email:</label>
         <input type="text" name="email" id="email" value="<?php echo $account["email"]; ?>"><br>
         <label for="password">Password:</label>
