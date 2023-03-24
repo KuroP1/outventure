@@ -3,6 +3,7 @@
     max-width: 300px;
     margin: 0 auto;
     z-index: 1;
+    padding-bottom: 50px;
 }
 
 .top-container {
@@ -199,6 +200,7 @@ a {
         max-width: 300px;
         margin: 0 auto;
         z-index: 1;
+        padding-bottom: 50px;
     }
     
     .content-container {
@@ -300,6 +302,7 @@ a {
         max-width: 700px;
         margin: 0 auto;
         z-index: 1;
+        padding-bottom: 50px;
     }
     
     .content-container {
@@ -400,6 +403,7 @@ a {
         width: 100%;
         max-width: 1200px;
         margin: 0 auto;
+        padding-bottom: 50px;
     }
 
     .content-container {
