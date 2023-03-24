@@ -33,7 +33,7 @@
     $products = viewProducts();
     if (count($products) > 0) {
         echo "<table>";
-        echo "<tr><th>ID</th><th>Name</th><th>Description</th><th>Quantity</th><th>Size</th><th>Color</th><th>Category</th><th>Action</th></tr>";
+        echo "<tr><th>ID</th><th>Name</th><th>Description</th><th>Quantity</th><th>Size</th><th>Color</th><th>Positive Vote</th></th><th>Category</th><th>Action</th></tr>";
         foreach ($products as $product) {
             echo "<tr><td>" . $product["ProductID"] . "</td><td>" . $product["ProductName"] . "</td><td>" . $product["ProductDescription"] . "</td><td>" . $product["ProductQuantity"] . "</td><td>" . $product["ProductSize"] . "</td><td>" . $product["ProductColor"] . "</td><td>" . $product["PositiveVote"] . "</td><td>" . $product["CategoryID"] . "</td><td><a href='edit_product.php?id=" . $product["ProductID"] . "'>Edit</a></td></tr>";
         }
