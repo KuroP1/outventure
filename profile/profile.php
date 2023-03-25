@@ -26,7 +26,7 @@ if (!isset($_SESSION["currentUser"])) {
         <!-- NavBar -->
         <div class="sub-navbar">
             <div class="sub-navbar-container">
-                <a href="../index.php"><img class="sub-navbar-logo" src="../images/Logo2.png" alt="Logo" /></a>
+                <a href="../index.html"><img class="sub-navbar-logo" src="../images/Logo2.png" alt="Logo" /></a>
                 <div onclick="ShowMobileMainMenu()" class="main-burger-tag-container">
                     <svg class="burger-tag" xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: msFilter;">
                         <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"></path>
