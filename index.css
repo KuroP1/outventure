@@ -146,6 +146,45 @@ body {
   background-color: transparent;
   border: none;
 }
+.filter-section{
+  width: 100%;
+  height: 200px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  position: relative;
+  background-color: #232323;
+}
+
+.filter-section .product-label{
+  position: absolute;
+  border-radius: 10px;
+  font-family: "Oswald", sans-serif;
+  top: -40px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 48px;
+  font-weight: 700;
+  background-color: #FFC700;
+  max-width: 300px;
+  max-height: 80px;
+  height: 100%;
+  width: 100%;
+}
+.fliters{
+  width: 100%;
+  height: 92px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  background-color: transparent;
+  flex-direction: row;
+}
+.Sorting{
+
+}
 
 @media (min-width: 992px) {
   .navigation {
