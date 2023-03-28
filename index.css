@@ -2,6 +2,8 @@ body {
   width: 100%;
   height: 100%;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
 }
 .navigationSection {
   width: 100%;
@@ -10,6 +12,9 @@ body {
   align-items: center;
   display: flex;
   position: relative;
+}
+.banner-container {
+  display: flex;
 }
 .banner {
   width: 100%;
@@ -20,13 +25,14 @@ body {
 .navBar {
   width: 100%;
   max-height: 78px;
-  max-width: 1600px;
-  position: absolute;
+  max-width: 1920px;
+  position: static;
   align-items: center;
   display: flex;
   top: 0;
   justify-content: space-between;
   padding: 20px 0px;
+  background-color: #232323;
 }
 
 .Logo {
@@ -67,6 +73,7 @@ body {
   height: 40px;
   border-radius: 10px;
   margin: 0 20px 0 30px;
+  margin-left: 80px;
 }
 .shopping-cart {
   align-items: center;
@@ -79,7 +86,7 @@ body {
 }
 .menu-bar {
   width: 32px;
-  height: 32px;
+  height: 100%;
   background-size: cover;
   margin-right: 60px;
   z-index: 1;
@@ -154,5 +161,18 @@ body {
   }
   .menu-bar {
     display: none;
+  }
+
+  .navBar {
+    width: 100%;
+    max-height: 78px;
+    max-width: 1920px;
+    position: absolute;
+    align-items: center;
+    display: flex;
+    top: 0;
+    justify-content: space-between;
+    padding: 20px 0px;
+    background-color: transparent;
   }
 }
