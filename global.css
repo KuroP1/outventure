@@ -105,6 +105,9 @@ body {
   width: 200px;
   height: 40px;
 }
+.top-section{
+  width: 100%;
+}
 
 .search-icon {
   padding-left: 10px;

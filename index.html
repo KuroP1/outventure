@@ -77,19 +77,49 @@
             <span id="mobile-sub-navbar-middle-text-3" style="color: #FFC700;">Profile</span>
         </div> -->
     </div>
-    <div class="navigationSection">
-        <div class="navBar">
-            <img class="Logo" src="images/Logo2.png" alt="Logo" />
-            <div class="navigation">
-                <a class="navItem" href="index.php">Product</a>
-                <a class="navItem" href="index.php">About Us</a>
-                <a class="navItem" href="index.php">Profile</a>
-                <a class="navItem" href="index.php">Login</a>
+    <div class="top-section" id="top-section">
+        <div class="navigationSection">
+            <div class="navBar">
+                <img class="Logo" src="images/Logo2.png" alt="Logo" />
+                <div class="navigation">
+                    <a class="navItem" href="index.php">Product</a>
+                    <a class="navItem" href="index.php">About Us</a>
+                    <a class="navItem" href="index.php">Profile</a>
+                    <a class="navItem" href="index.php">Login</a>
+                </div>
+                <div class="product">
+                    <div class="search-bar">
+                        <input class="search-bar-input" placeholder="Search Product">
+                        <button class="search-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                style="fill: rgba(255, 255, 255, 1);transform: msFilter;">
+                                <path
+                                    d="M19.023 16.977a35.13 35.13 0 0 1-1.367-1.384c-.372-.378-.596-.653-.596-.653l-2.8-1.337A6.962 6.962 0 0 0 16 9c0-3.859-3.14-7-7-7S2 5.141 2 9s3.14 7 7 7c1.763 0 3.37-.66 4.603-1.739l1.337 2.8s.275.224.653.596c.387.363.896.854 1.384 1.367l1.358 1.392.604.646 2.121-2.121-.646-.604c-.379-.372-.885-.866-1.391-1.36zM9 14c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z">
+                                </path>
+                            </svg>
+                        </button>
+                        </input>
+                    </div>
+                    <div class="vl"></div>
+                    <div class="shopping-cart">
+                        <img class="shopping-cart-icon" src="images/Home/shopping-cart.png" alt="Shopping Cart" />
+                    </div>
+                </div>
+                <div class="menu-bar">
+                    <svg id="burger-btn" class="ham hamRotate ham1" viewBox="0 0 100 100" width="60"
+                        onclick="this.classList.toggle('active'), toggleActive()">
+                        <path class="line top"
+                            d="m 30,33 h 40 c 0,0 9.044436,-0.654587 9.044436,-8.508902 0,-7.854315 -8.024349,-11.958003 -14.89975,-10.85914 -6.875401,1.098863 -13.637059,4.171617 -13.637059,16.368042 v 40" />
+                        <path class="line middle" d="m 30,50 h 40" />
+                        <path class="line bottom"
+                            d="m 30,67 h 40 c 12.796276,0 15.357889,-11.717785 15.357889,-26.851538 0,-15.133752 -4.786586,-27.274118 -16.667516,-27.274118 -11.88093,0 -18.499247,6.994427 -18.435284,17.125656 l 0.252538,40" />
+                    </svg>
+                </div>
             </div>
-            <div class="product">
-                <div class="search-bar">
-                    <input class="search-bar-input" placeholder="Search Product">
-                    <button class="search-icon">
+            <div class="top-menu" id="top-menu">
+                <div class="search-bar-mobile">
+                    <input class="search-bar-input-mobile" placeholder="Search Product">
+                    <button class="search-icon-mobile">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             style="fill: rgba(255, 255, 255, 1);transform: msFilter;">
                             <path
@@ -99,51 +129,23 @@
                     </button>
                     </input>
                 </div>
-                <div class="vl"></div>
-                <div class="shopping-cart">
-                    <img class="shopping-cart-icon" src="images/Home/shopping-cart.png" alt="Shopping Cart" />
-                </div>
-            </div>
-            <div class="menu-bar">
-                <svg id="burger-btn" class="ham hamRotate ham1" viewBox="0 0 100 100" width="60"
-                    onclick="this.classList.toggle('active'), toggleActive()">
-                    <path class="line top"
-                        d="m 30,33 h 40 c 0,0 9.044436,-0.654587 9.044436,-8.508902 0,-7.854315 -8.024349,-11.958003 -14.89975,-10.85914 -6.875401,1.098863 -13.637059,4.171617 -13.637059,16.368042 v 40" />
-                    <path class="line middle" d="m 30,50 h 40" />
-                    <path class="line bottom"
-                        d="m 30,67 h 40 c 12.796276,0 15.357889,-11.717785 15.357889,-26.851538 0,-15.133752 -4.786586,-27.274118 -16.667516,-27.274118 -11.88093,0 -18.499247,6.994427 -18.435284,17.125656 l 0.252538,40" />
-                </svg>
+                <a class="navItem">
+                    Product
+                </a>
+                <a class="navItem">
+                    About Us
+                </a>
+                <a class="navItem">
+                    Profile
+                </a>
+                <a class="navItem">
+                    Login
+                </a>
             </div>
         </div>
-        <div class="top-menu" id="top-menu">
-            <div class="search-bar-mobile">
-                <input class="search-bar-input-mobile" placeholder="Search Product">
-                <button class="search-icon-mobile">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        style="fill: rgba(255, 255, 255, 1);transform: msFilter;">
-                        <path
-                            d="M19.023 16.977a35.13 35.13 0 0 1-1.367-1.384c-.372-.378-.596-.653-.596-.653l-2.8-1.337A6.962 6.962 0 0 0 16 9c0-3.859-3.14-7-7-7S2 5.141 2 9s3.14 7 7 7c1.763 0 3.37-.66 4.603-1.739l1.337 2.8s.275.224.653.596c.387.363.896.854 1.384 1.367l1.358 1.392.604.646 2.121-2.121-.646-.604c-.379-.372-.885-.866-1.391-1.36zM9 14c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z">
-                        </path>
-                    </svg>
-                </button>
-                </input>
-            </div>
-            <a class="navItem">
-                Product
-            </a>
-            <a class="navItem">
-                About Us
-            </a>
-            <a class="navItem">
-                Profile
-            </a>
-            <a class="navItem">
-                Login
-            </a>
+        <div class="banner-container">
+            <img class="banner" src="images/Home/Banner.png" alt="Banner" />
         </div>
-    </div>
-    <div class="banner-container">
-        <img class="banner" src="images/Home/Banner.png" alt="Banner" />
     </div>
 </body>
 
