@@ -44,7 +44,7 @@
     ?>
 
     <h2>Insert Product</h2>
-    <form action="insertProduct.php" method="POST">
+    <form action="insertProduct.php" method="POST" enctype="multipart/form-data">
         <label for="productName">Product Name:</label>
         <input type="text" name="productName" required><br>
 
@@ -63,7 +63,10 @@
         <label for="categoryID">Category ID:</label>
         <input type="number" name="categoryID" required><br>
 
-        <input type="submit" value="Add Product">
+        <label for="productImage">Product Image:</label>
+        <input type="file" name="productImage"><br>
+
+        <input type="submit" name="submit" value="Add Product">
     </form>
 
 </body>
