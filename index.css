@@ -232,6 +232,7 @@ body {
   display: flex;
   flex-direction: column;
   background-color: #f6f5f8;
+  overflow-x: hidden;
 }
 .grid-product-list {
   width: 100%;
@@ -252,10 +253,8 @@ body {
   display: flex;
   flex-direction: column;
   background-color: #fff;
-  margin-bottom: 50px;
   border-radius: 10px;
-  margin-left: 50px;
-
+  margin: 25px auto;
   position: relative;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
 }
@@ -331,6 +330,22 @@ body {
   color: #fff;
 }
 @media (min-width: 992px) {
+  .product-card {
+    width: 300px;
+    height: 400px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    margin-bottom: 50px;
+    border-radius: 10px;
+    margin-left: 50px;
+
+    position: relative;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+  }
+
   .navigation {
     height: 100%;
     display: flex;
