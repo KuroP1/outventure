@@ -12,6 +12,7 @@ function toggleActive() {
     height = topSection.offsetHeight;
     topMenu.style.height = height + "px";
     isOpen = true;
+    topMenu.style.zIndex = "50";
     topMenu.style.transitionDuration = "0.5s";
   } else if (isOpen) {
     topMenu.style.height = "0%";
