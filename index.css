@@ -146,9 +146,9 @@ body {
   background-color: transparent;
   border: none;
 }
-.filter-section{
+.filter-section {
   width: 100%;
-  height: 200px;
+  height: 350px;
   justify-content: center;
   align-items: center;
   display: flex;
@@ -156,7 +156,7 @@ body {
   background-color: #232323;
 }
 
-.filter-section .product-label{
+.filter-section .product-label {
   position: absolute;
   border-radius: 10px;
   font-family: "Oswald", sans-serif;
@@ -167,23 +167,46 @@ body {
   align-items: center;
   font-size: 48px;
   font-weight: 700;
-  background-color: #FFC700;
+  background-color: #ffc700;
   max-width: 300px;
   max-height: 80px;
   height: 100%;
   width: 100%;
 }
-.fliters{
+.fliters {
+  overflow-x: hidden;
   width: 100%;
-  height: 92px;
-  justify-content: center;
+  max-width: 1200px;
+  padding: 0px 20px;
+  height: 200px;
+  justify-content: space-between;
   align-items: center;
   display: flex;
   background-color: transparent;
-  flex-direction: row;
+  flex-direction: column;
 }
-.Sorting{
 
+.select-box {
+  width: 300px;
+  height: 100%;
+  display: flex;
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+  height: 45px;
+  border-radius: 0px 0px 6px 6px;
+  padding-left: 15px;
+  appearance: none;
+  background-image: url("images/Home/bottom-arrow.png");
+  background-repeat: no-repeat;
+  background-position: right 0.8rem top 50%;
+  background-size: 0.65rem auto;
+  font-family: "Oswald", sans-serif;
+}
+
+.select-box option {
+  color: #000;
+  background-color: #fff;
 }
 
 @media (min-width: 992px) {
@@ -213,5 +236,45 @@ body {
     justify-content: space-between;
     padding: 20px 0px;
     background-color: transparent;
+  }
+  .fliters {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0px 20px;
+    height: 92px;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    background-color: transparent;
+    flex-direction: row;
+  }
+  .filter-section {
+    width: 100%;
+    height: 200px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    position: relative;
+    background-color: #232323;
+  }
+}
+@media (min-width: 1200px) {
+  .select-box {
+    width: 360px;
+    height: 100%;
+    display: flex;
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+    height: 45px;
+    border-radius: 0px 0px 6px 6px;
+    padding-left: 15px;
+    appearance: none;
+    background-image: url("images/Home/bottom-arrow.png");
+    background-repeat: no-repeat;
+    background-position: right 0.8rem top 50%;
+    background-size: 0.65rem auto;
+    font-family: "Oswald", sans-serif;
   }
 }
