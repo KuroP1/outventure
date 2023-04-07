@@ -85,7 +85,7 @@
 
     if (mysqli_num_rows($res) > 0) {
         while ($images = mysqli_fetch_assoc($res)) {
-            echo "<img src='uploads/" . $images['image_path'] . "' width='100px' height='100px'>";
+            echo "<img src='" . $images['image_path'] . "' width='100px' height='100px'>";
         }
     }
 
