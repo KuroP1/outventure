@@ -87,7 +87,6 @@
             if ($images["ProductName"] == $_GET["name"]) {
                 echo "<img src='" . $images['ImagePath'] . "' width='100px' height='100px'>";
             }
-
         }
     }
     ?>

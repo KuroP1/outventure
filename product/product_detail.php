@@ -1,7 +1,19 @@
 <?php
-session_start();
-if (!isset($_SESSION["currentUser"])) {
-    header("Location: ../authentication/login.php");
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+require("../config/database.php");
+$viewSQL = "SELECT * FROM images ORDER BY ImageID";
+$res = mysqli_query($conn, $viewSQL);
+
+// image array
+$imageArray = array();
+
+if (mysqli_num_rows($res) > 0) {
+    while ($images = mysqli_fetch_assoc($res)) {
+        if ($images["ProductName"] == $_GET["name"]) {
+            array_push($imageArray, $images["ImagePath"]);
+        }
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -65,29 +77,37 @@ if (!isset($_SESSION["currentUser"])) {
         <div class="main-container">
             <div class="product-detail-container">
                 <div class="product-detail-image-container">
-                    <?php
-                    ini_set('display_errors', 1);
-                    error_reporting(E_ALL);
-                    require("../config/database.php");
-                    $viewSQL = "SELECT * FROM images ORDER BY ImageID";
-                    $res = mysqli_query($conn, $viewSQL);
-                    if (mysqli_num_rows($res) > 0) {
-                        while ($images = mysqli_fetch_assoc($res)) {
-                            if ($images["ProductName"] == $_GET["name"]) {
-                                echo "<img class='product-detail-image' src='../" . $images['ImagePath'] . "' alt='Product Image' />";
-
-                                
-                            }
-                        }
-                    }
-                    ?>
+                    <!-- slide show container -->
+                    <div class="slide-show-container">
+                        <!-- left react button -->
+                        <div class="left-react-button">
+                        </div>
+                        <!-- image -->
+                        <img class="slide" src="" alt="" width="500" height="500">
+                        <!-- right react button -->
+                        <div class="right-react-button">
+                        </div>
+                    </div>
                 </div>
-
 
                 <div class="product-detail-info-container">
                     <div class="product-detail-info">
                         <div class="product-detail-info-title">
-                            <span class="product-detail-info-title-text">Loowoko 50L Hiking Backpack</span>
+                            <span class='product-detail-info-title-text'>
+                                <?php
+                                ini_set('display_errors', 1);
+                                error_reporting(E_ALL);
+                                require_once("../view_products.php");
+                                $products = viewProducts();
+                                if (count($products) > 0) {
+                                    foreach ($products as $product) {
+                                        if ($product["ProductName"] == $_GET["name"]) {
+                                            echo $product["ProductName"];
+                                        }
+                                    }
+                                }
+                                ?>
+                            </span>
                         </div>
                         <div class="product-detail-info-cate">
                             <span class="product-detail-info-cate-text">Hiking Backpack</span>
@@ -111,27 +131,28 @@ if (!isset($_SESSION["currentUser"])) {
                     <div class="product-detail-spec">
                         <div class="product-detail-info-spec-title">
                             <span class="product-detail-info-spec-text">
-                                <center>Specification:</center>
+                                <center>Description:</center>
                             </span>
                         </div>
                         <div class="product-detail-info-spec-detail">
-                            <span class="product-detail-info-spec-detail-text">Item type: Hiking Day pack</span>
-                        </div>
-                        <div class="product-detail-info-spec-detail">
-                            <span class="product-detail-info-spec-detail-text">Capacity: 50L(45L+5L)</span>
-                        </div>
-                        <div class="product-detail-info-spec-detail">
-                            <span class="product-detail-info-spec-detail-text">Load-Bearing: 40KG(88lb)</span>
-                        </div>
-                        <div class="product-detail-info-spec-detail">
-                            <span class="product-detail-info-spec-detail-text">Size: . 65* 35 * 25cm / 25.6 * 13.8 *
-                                9.8in</span>
-                        </div>
-                        <div class="product-detail-info-spec-detail">
-                            <span class="product-detail-info-spec-detail-text">Weight: 1200g / 2.6 pounds</span>
-                        </div>
-                        <div class="product-detail-info-spec-detail">
-                            <span class="product-detail-info-spec-detail-text">Package Size: 22.28x14.72x2.75in</span>
+                            <span class="product-detail-info-spec-detail-text">
+                                <?php
+                                ini_set('display_errors', 1);
+                                error_reporting(E_ALL);
+                                require_once("../view_products.php");
+                                $products = viewProducts();
+                                if (count($products) > 0) {
+                                    foreach ($products as $product) {
+                                        if ($product["ProductName"] == $_GET["name"]) {     
+
+                                            $product["ProductDescription"] = str_replace("\\n" , "<p>", $product["ProductDescription"]); 
+                                            $product["ProductDescription"] = str_replace("\\" , "", $product["ProductDescription"]);                                                             
+                                            echo nl2br($product["ProductDescription"]);                                       
+                                        }
+                                    }
+                                }
+                                ?>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -141,3 +162,45 @@ if (!isset($_SESSION["currentUser"])) {
 </body>
 
 </html>
+
+<script>
+    // imageArray from php
+    var imageArray = <?php echo json_encode($imageArray); ?>;
+
+    // all array index
+    var currentImageArrayIndex = 0
+
+    // set first image
+    document.querySelector(".slide").src = "../" + imageArray[currentImageArrayIndex]
+
+    // handle image next or prev with passed action
+    function handleImage(action) {
+        if (action === "next") {
+            if (currentImageArrayIndex < imageArray.length - 1) {
+                currentImageArrayIndex++;
+                document.querySelector(".slide").src = "../" + imageArray[currentImageArrayIndex]
+            } else {
+                currentImageArrayIndex = 0;
+                document.querySelector(".slide").src = "../" + imageArray[currentImageArrayIndex]
+            }
+        } else {
+            if (currentImageArrayIndex > 0) {
+                currentImageArrayIndex--;
+                document.querySelector(".slide").src = "../" + imageArray[currentImageArrayIndex]
+            } else {
+                currentImageArrayIndex = imageArray.length - 1;
+                document.querySelector(".slide").src = "../" + imageArray[currentImageArrayIndex]
+            }
+        }
+    }
+
+    // add event listener to next and prev button
+    var slideNext = document.querySelector(".right-react-button")
+    slideNext.addEventListener("click", function() {
+        handleImage("next")
+    })
+    var slidePrev = document.querySelector(".left-react-button")
+    slidePrev.addEventListener("click", function() {
+        handleImage("prev")
+    })
+</script>

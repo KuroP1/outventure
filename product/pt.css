@@ -1,0 +1,56 @@
+body {
+    background-color: #E2E2E2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.slide-show-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    border: 15px solid #FFFFFF;
+    object-fit: cover;
+    margin: 0 20px 0 20px;
+}
+
+.left-react-button {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-top: 22px solid transparent;
+    border-bottom: 22px solid transparent;
+    border-right: 38px solid #848484;
+    border-left: 0;
+    cursor: pointer;
+    transition-duration: .1s;
+}
+
+.left-react-button:hover {
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-right: 41px solid #555555;
+}
+
+.right-react-button {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-top: 22px solid transparent;
+    border-bottom: 22px solid transparent;
+    border-left: 38px solid #848484;
+    border-right: 0;
+    cursor: pointer;
+    transition-duration: .1s;
+}
+
+.right-react-button:hover {
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-left: 41px solid #555555;
+}
