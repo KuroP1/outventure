@@ -26,3 +26,23 @@ body {
 .logo {
   margin: 30px;
 }
+.nav_section {
+  margin: 30px;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+.nav_section a {
+  font-size: 30px;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  margin: 25px 0px;
+  color: white;
+  text-decoration: none;
+}
+
+.nav_section a:hover {
+  color: #ffb800;
+  transition: 0.2s;
+}
