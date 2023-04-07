@@ -228,8 +228,9 @@ img {
 }
 
 @media (min-width: 1231px) {
-    img {
-        width: 350px;
+    .slide {
+        width: 520px;
+        height: 520px;
     }
 
     .main-container {
@@ -253,7 +254,7 @@ img {
         align-items: center;
         background-color: #FFFFFF;
         border-radius: 20px;
-        padding: 0 170px 0 170px;
+        padding: 0 50px 0 50px;
         margin-right: 20px;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     }
@@ -282,5 +283,56 @@ img {
         align-items: center;
         margin: 30px 0 0 0;
         text-align: center;
+    }
+
+    /* Slider */
+    .slide-show-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .left-react-button {
+        color: #006064;
+        display:block;
+        height: 35px; 
+        width: 35px;
+        border: 1px solid #000000;
+        border-width: 5px 5px 0 0;
+        transform: rotate(-135deg);
+        cursor: pointer;
+        transition-duration: .3s;
+    }
+    
+    .left-react-button:hover {
+        color: #006064;
+        display:block;
+        height: 35px; 
+        width: 35px;
+        border: 1px solid #555555;
+        border-width: 5px 5px 0 0;
+        transform: rotate(-135deg);
+    }
+    
+    .right-react-button {
+        color: #006064;
+        display:block;
+        height: 35px; 
+        width: 35px;
+        border: 1px solid #000000;
+        border-width: 5px 5px 0 0;
+        transform: rotate(45deg);
+        cursor: pointer;
+        transition-duration: .3s;
+    }
+    
+    .right-react-button:hover {
+        color: #006064;
+        display:block;
+        height: 35px; 
+        width: 35px;
+        border: 1px solid #555555;
+        border-width: 5px 5px 0 0;
+        transform: rotate(45deg);
     }
 }
