@@ -28,9 +28,11 @@ function toggleActive() {
     }
     //if windows size is greater than 768px, set top-menu to height of 0
     if (window.innerWidth > 992) {
-      burgerBtn.classList.toggle("active");
-      isOpen = false;
-      topMenu.style.height = "0%";
+      if (isOpen) {
+        burgerBtn.classList.toggle("active");
+        isOpen = false;
+        topMenu.style.height = "0%";
+      }
     }
   });
 }
