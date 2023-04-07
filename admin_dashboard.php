@@ -42,7 +42,12 @@
         echo "<p>No products found.</p>";
     }
     ?>
-
+    <?php
+    if (isset($_GET['error'])): ?>
+    <p>
+        <?php echo $_GET['error']; ?>
+    </p>
+    <?php endif; ?>
     <h2>Insert Product</h2>
     <form action="insertProduct.php" method="POST" enctype="multipart/form-data">
         <label for="productName">Product Name:</label>
@@ -68,6 +73,23 @@
 
         <input type="submit" name="submit" value="Add Product">
     </form>
+
+
+    <h2>All</h2>
+    <?php
+    ini_set('display_errors', 1);
+    error_reporting(E_ALL);
+    require("config/database.php");
+    $viewSQL = "SELECT * FROM products ORDER BY ProductID";
+    $res = mysqli_query($conn, $viewSQL);
+
+    if (mysqli_num_rows($res) > 0) {
+        while ($images = mysqli_fetch_assoc($res)) {
+            echo "<img src='uploads/" . $images['image_path'] . "' width='100px' height='100px'>";
+        }
+    }
+
+    ?>
 
 </body>
 
