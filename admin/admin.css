@@ -5,6 +5,7 @@ body {
   display: flex;
   flex-direction: row;
   margin: 0px;
+  overflow-y: hidden;
 }
 
 .side_bar {
@@ -19,10 +20,49 @@ body {
 .content {
   width: 100%;
   height: 100%;
+  padding: 40px;
   display: flex;
   flex-direction: column;
   background-color: #f6f5f8;
 }
+
+.content .title {
+  font-size: 28px;
+  font-weight: 700;
+  font-family: "Poppins", sans-serif;
+  margin: 0px;
+  color: #232323;
+}
+.content .sub-title {
+  font-size: 24px;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  margin: 0px;
+  color: #232323;
+}
+.top-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 15px 0px 0px 0px;
+}
+
+.line {
+  width: 100%;
+  height: 1.5px;
+  background-color: #d3d3d3;
+  margin: 20px 0px 20px 0px;
+  border: none;
+}
+.line2 {
+  width: 100%;
+  height: 1.5px;
+  background-color: #d3d3d3;
+  margin: 10px 0px 10px 0px;
+  border: none;
+}
+
 .logo {
   margin: 30px;
 }
@@ -34,7 +74,7 @@ body {
 }
 
 .nav_section a {
-  font-size: 30px;
+  font-size: 24px;
   font-weight: 600;
   font-family: "Poppins", sans-serif;
   margin: 25px 0px;
@@ -45,4 +85,168 @@ body {
 .nav_section a:hover {
   color: #ffb800;
   transition: 0.2s;
+  text-decoration: none;
+  transform: translateX(10px);
+}
+
+.product-add-button {
+  width: 100px;
+  height: 40px;
+  background-color: #ffb800;
+  border: none;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 10px;
+  font-family: "Poppins", sans-serif;
+  margin: 25px 0px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+/* when hover the button change to + */
+.product-add-button:hover {
+  background-color: #fff;
+  color: #ffb800;
+  border: 1px solid #ffb800;
+  transition: all 0.2s ease-in-out;
+  scale: 1.03;
+}
+
+.product-list-container {
+  width: 100%;
+  height: 550px;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.product-list-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin: 20px 0px 10px 0px;
+}
+
+.table-header {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+}
+.table-header-2 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+}
+
+.table-content {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.table-content-2 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+}
+
+.line3 {
+  width: 100%;
+  height: 1px;
+  background-color: #d3d3d3;
+  margin: 10px 0px 10px 0px;
+  border: none;
+}
+.product-name {
+  color: black !important;
+  white-space: nowrap;
+  width: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border: none !important;
+  border-bottom: none !important;
+}
+.product-description {
+  color: black !important;
+  white-space: nowrap;
+  width: 130px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border: none !important;
+  border-bottom: none !important;
+}
+
+.line {
+  fill: none;
+  transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+  stroke: black !important;
+  stroke-width: 5.5;
+  stroke-linecap: round;
+  display: none !important;
+}
+
+@media screen and (max-width: 1200px) {
+  .content {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: #f6f5f8;
+  }
+
+  .line {
+    fill: none;
+    transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+    stroke: black !important;
+    stroke-width: 5.5;
+    stroke-linecap: round;
+    display: block !important;
+  }
+
+  .product-list-container {
+    height: 65%;
+  }
+
+  .product-list-content {
+    padding: 0px;
+    margin: 30px 0px 10px 0px;
+  }
+
+  .table-content-2 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    color: #000;
+    display: none;
+  }
+  .table-header-2 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    color: #000;
+    display: none;
+  }
+  .side_bar {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #232323;
+    justify-content: space-between;
+    display: none;
+  }
+  .line {
+    width: 100%;
+    height: 1.5px;
+    background-color: #d3d3d3;
+    margin: 20px 0px 0px 0px;
+  }
+  .top-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0px 0px 0px 0px;
+  }
 }
