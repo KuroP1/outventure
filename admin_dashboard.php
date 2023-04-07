@@ -110,8 +110,6 @@
         echo "<p>No products found.</p>";
     }
     ?>
-
-
 </body>
 
 </html>
