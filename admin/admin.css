@@ -1,0 +1,28 @@
+body {
+  width: 100%;
+  height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: row;
+  margin: 0px;
+}
+
+.side_bar {
+  width: 300px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #232323;
+  justify-content: space-between;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #f6f5f8;
+}
+.logo {
+  margin: 30px;
+}

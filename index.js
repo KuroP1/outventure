@@ -6,7 +6,6 @@ function toggleActive() {
   const topSection = document.getElementById("top-section");
   const burgerBtn = document.getElementById("burger-btn");
   burgerBtn.classList.toggle("active");
-  //set top-menu to height of 100vh
   if (!isOpen) {
     //get height of top-section
     height = topSection.offsetHeight;
