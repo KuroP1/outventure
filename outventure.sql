@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 01, 2023 at 07:29 PM
+-- Generation Time: Apr 07, 2023 at 01:53 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATIONCONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
 --
@@ -42,44 +42,6 @@ INSERT INTO `Categories` (`CategoryID`, `CategoryName`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `FavoriteLists`
---
-
-CREATE TABLE `FavoriteLists` (
-  `FavoriteID` int(11) NOT NULL,
-  `ProductID` int(11) DEFAULT NULL,
-  `UserID` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Orders`
---
-
-CREATE TABLE `Orders` (
-  `OrderID` int(11) NOT NULL,
-  `OrderDate` date DEFAULT NULL,
-  `ProductID` int(11) DEFAULT NULL,
-  `UserID` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `ProductComments`
---
-
-CREATE TABLE `ProductComments` (
-  `CommentID` int(11) NOT NULL,
-  `CommentContent` varchar(255) DEFAULT NULL,
-  `CommentDate` date DEFAULT NULL,
-  `ProductID` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `Products`
 --
 
@@ -91,15 +53,19 @@ CREATE TABLE `Products` (
   `ProductSize` varchar(255) DEFAULT NULL,
   `ProductColor` varchar(255) DEFAULT NULL,
   `PositiveVote` int(11) DEFAULT NULL,
-  `CategoryID` int(11) DEFAULT NULL
+  `CategoryID` int(11) DEFAULT NULL,
+  `image_path` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `Products`
 --
 
-INSERT INTO `Products` (`ProductID`, `ProductName`, `ProductDescription`, `ProductQuantity`, `ProductSize`, `ProductColor`, `PositiveVote`, `CategoryID`) VALUES
-(1, 'Cookie', 'hehe', 5, 'L', 'red', 0, 1);
+INSERT INTO `Products` (`ProductID`, `ProductName`, `ProductDescription`, `ProductQuantity`, `ProductSize`, `ProductColor`, `PositiveVote`, `CategoryID`, `image_path`) VALUES
+(17, 'Elvis', 'Elvis', 12, 'Xl', 'Black', NULL, 1, NULL),
+(18, 'sadasdasdasd', 'asdasd', 12, 'x', 'fed', NULL, 1, NULL),
+(20, 'asdasdadadsadadas', 'asdasdad', 1212, 'xxx', 'lll', NULL, 1, 'product_image/IMG-642d58cc233726.50635512.jpg'),
+(21, 'asdasdass', 'asdasda', 121, '12', 'ss', NULL, 1, 'uploads/IMG-642d5ab1e8dd11.32167691.jpg');
 
 -- --------------------------------------------------------
 
@@ -134,29 +100,6 @@ ALTER TABLE `Categories`
   ADD PRIMARY KEY (`CategoryID`);
 
 --
--- Indexes for table `FavoriteLists`
---
-ALTER TABLE `FavoriteLists`
-  ADD PRIMARY KEY (`FavoriteID`),
-  ADD KEY `ProductID` (`ProductID`),
-  ADD KEY `UserID` (`UserID`);
-
---
--- Indexes for table `Orders`
---
-ALTER TABLE `Orders`
-  ADD PRIMARY KEY (`OrderID`),
-  ADD KEY `ProductID` (`ProductID`),
-  ADD KEY `UserID` (`UserID`);
-
---
--- Indexes for table `ProductComments`
---
-ALTER TABLE `ProductComments`
-  ADD PRIMARY KEY (`CommentID`),
-  ADD KEY `ProductID` (`ProductID`);
-
---
 -- Indexes for table `Products`
 --
 ALTER TABLE `Products`
@@ -174,34 +117,20 @@ ALTER TABLE `Users`
 --
 
 --
+-- AUTO_INCREMENT for table `Products`
+--
+ALTER TABLE `Products`
+  MODIFY `ProductID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
 -- AUTO_INCREMENT for table `Users`
 --
 ALTER TABLE `Users`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `FavoriteLists`
---
-ALTER TABLE `FavoriteLists`
-  ADD CONSTRAINT `favoritelists_ibfk_1` FOREIGN KEY (`ProductID`) REFERENCES `Products` (`ProductID`),
-  ADD CONSTRAINT `favoritelists_ibfk_2` FOREIGN KEY (`UserID`) REFERENCES `Users` (`UserID`);
-
---
--- Constraints for table `Orders`
---
-ALTER TABLE `Orders`
-  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`ProductID`) REFERENCES `Products` (`ProductID`),
-  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`UserID`) REFERENCES `Users` (`UserID`);
-
---
--- Constraints for table `ProductComments`
---
-ALTER TABLE `ProductComments`
-  ADD CONSTRAINT `productcomments_ibfk_1` FOREIGN KEY (`ProductID`) REFERENCES `Products` (`ProductID`);
 
 --
 -- Constraints for table `Products`

@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_FILES['productImage']) {
                     if ($error === 0) {
                         if ($img_size > 1250000) {
                             $em = "Sorry, your file is too large.";
-                            header("Location: insertProduct.php?error=$em");
+                            header("Location: admindashboard.php?error=$em");
                         } else {
                             $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
                             $img_ex_lc = strtolower($img_ex);
@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_FILES['productImage']) {
                                 $image_upload_path = 'uploads/' . $new_img_name;
                                 move_uploaded_file($tmpname, $image_upload_path);
 
-                                var_dump(move_uploaded_file($tmpname, $image_upload_path));
+
 
                                 // Insert into database
                                 $sql = "INSERT INTO Products (ProductName, ProductDescription, ProductQuantity, ProductSize, ProductColor, CategoryID, image_path) VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_FILES['productImage']) {
                                 }
                             } else {
                                 $em = "You can't upload files of this type";
-                                header("Location: insertProduct.php?error=$em");
+                                header("Location: admin_dashboard.php?error=$em");
                             }
 
 
