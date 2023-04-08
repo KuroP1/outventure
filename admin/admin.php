@@ -239,13 +239,15 @@
                                         </svg>
                                     </a>
                                 </div>
-                                <hr class='h-line3'>
-                                </div> ";
+                                
+                                </div> 
+                                <hr class='h-line3'>";
                             }
                         } else {
                             echo "<p>No products found.</p>";
                         }
                         ?>
+
                     </div>
                 </div>
             </div>
