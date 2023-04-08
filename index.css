@@ -53,6 +53,11 @@ body {
   text-decoration: none;
   font-size: 18px;
   padding-right: 20px;
+  text-decoration: none;
+}
+.navItem:hover {
+  color: #ffc700;
+  text-decoration: none;
 }
 .top-menu .navItem {
   color: white;
