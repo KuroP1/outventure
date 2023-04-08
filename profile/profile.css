@@ -22,12 +22,25 @@
   width: 100%;
 }
 
+.search-bar {
+  height: 44px !important;
+  margin-right: 80px;
+}
+
 .left-container {
   width: 100%;
 }
 
 .right-container {
   width: 100%;
+}
+
+.sub-navbar-end {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 300px;
 }
 
 .user-info-container {
