@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 08, 2023 at 12:42 PM
+-- Generation Time: Apr 08, 2023 at 01:48 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -20,6 +20,35 @@ SET time_zone = "+00:00";
 --
 -- Database: `outventure`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart`
+--
+
+CREATE TABLE `cart` (
+  `CartID` int(11) NOT NULL,
+  `ProductName` varchar(255) DEFAULT NULL,
+  `ProductThumbnail` varchar(255) DEFAULT NULL,
+  `BuyQuantity` int(11) DEFAULT NULL,
+  `ProductSize` varchar(255) DEFAULT NULL,
+  `ProductColor` varchar(255) DEFAULT NULL,
+  `CategoryName` varchar(255) DEFAULT NULL,
+  `SubCategoryName` varchar(255) DEFAULT NULL,
+  `Username` varchar(255) DEFAULT NULL,
+  `ProductPrice` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`CartID`, `ProductName`, `ProductThumbnail`, `BuyQuantity`, `ProductSize`, `ProductColor`, `CategoryName`, `SubCategoryName`, `Username`, `ProductPrice`) VALUES
+(1, 'asdadaas', NULL, 2, 'xdxxf', 'xdxdds', '1', 'asd', 'elvis', 123),
+(2, 'asdaas', NULL, 3, 'xdxf', 'xdxdds', '1', 'assss', 'elvis', 23),
+(3, 'dllm', NULL, 4, 'dllm', 'dllm', '1', 'dllm', 'elvis', 55),
+(4, 'xdxd', NULL, 2, 'xdxd', 'xdxd', '1', 'xdxd', 'tony', 77);
 
 -- --------------------------------------------------------
 
@@ -61,15 +90,16 @@ INSERT INTO `images` (`ImageID`, `ImagePath`, `ProductName`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Orders`
+-- Table structure for table `orders`
 --
 
-CREATE TABLE `Orders` (
+CREATE TABLE `orders` (
   `OrderID` int(11) NOT NULL,
   `OrderDate` date NOT NULL,
   `paymentMethod` varchar(255) NOT NULL,
   `orderStatus` varchar(255) NOT NULL,
-  `Username` varchar(255) DEFAULT NULL
+  `Username` varchar(255) NOT NULL,
+  `Amount` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -82,6 +112,7 @@ CREATE TABLE `products` (
   `ProductID` int(11) NOT NULL,
   `ProductName` varchar(255) DEFAULT NULL,
   `ProductDescription` varchar(255) DEFAULT NULL,
+  `ProductPrice` int(11) NOT NULL,
   `ProductThumbnail` varchar(255) DEFAULT NULL,
   `ProductQuantity` int(11) DEFAULT NULL,
   `ProductSize` varchar(255) DEFAULT NULL,
@@ -95,8 +126,10 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`ProductID`, `ProductName`, `ProductDescription`, `ProductThumbnail`, `ProductQuantity`, `ProductSize`, `ProductColor`, `PositiveVote`, `CategoryName`, `SubCategoryName`) VALUES
-(42, 'Lowe alpine Sirac 65L 男款登山露營背囊', 'The Sirac 65 is ideal for long backpacking trips and self-sufficient treks over difficult terrain.', '', 100, 'XL', 'Blacks', NULL, NULL, '');
+INSERT INTO `products` (`ProductID`, `ProductName`, `ProductDescription`, `ProductPrice`, `ProductThumbnail`, `ProductQuantity`, `ProductSize`, `ProductColor`, `PositiveVote`, `CategoryName`, `SubCategoryName`) VALUES
+(42, 'Lowe alpine Sirac 65L 男款登山露營背囊', 'The Sirac 65 is ideal for long backpacking trips and self-sufficient treks over difficult terrain.', 0, '', 100, 'XL', 'Blacks', NULL, NULL, ''),
+(43, 'ASd', 'asdasdasdasdasdasda', 123, NULL, 12, 'xd', 'xd', NULL, '1', 'asd'),
+(44, 'Tony', 'TOnyas', 22, NULL, 999, 'xdgf', 'asdq', NULL, '1', 'asds');
 
 -- --------------------------------------------------------
 
@@ -144,6 +177,12 @@ INSERT INTO `users` (`UserID`, `Username`, `Email`, `Password`, `isAdmin`) VALUE
 --
 
 --
+-- Indexes for table `cart`
+--
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`CartID`);
+
+--
 -- Indexes for table `categories`
 --
 ALTER TABLE `categories`
@@ -156,10 +195,11 @@ ALTER TABLE `images`
   ADD PRIMARY KEY (`ImageID`);
 
 --
--- Indexes for table `Orders`
+-- Indexes for table `orders`
 --
-ALTER TABLE `Orders`
-  ADD PRIMARY KEY (`OrderID`);
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`OrderID`),
+  ADD KEY `Username` (`Username`);
 
 --
 -- Indexes for table `products`
@@ -178,11 +218,18 @@ ALTER TABLE `SubCategories`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`UserID`);
+  ADD PRIMARY KEY (`UserID`),
+  ADD UNIQUE KEY `Username` (`Username`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `cart`
+--
+ALTER TABLE `cart`
+  MODIFY `CartID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `images`
@@ -191,16 +238,16 @@ ALTER TABLE `images`
   MODIFY `ImageID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
--- AUTO_INCREMENT for table `Orders`
+-- AUTO_INCREMENT for table `orders`
 --
-ALTER TABLE `Orders`
+ALTER TABLE `orders`
   MODIFY `OrderID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `ProductID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `ProductID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `SubCategories`
@@ -217,6 +264,12 @@ ALTER TABLE `users`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`Username`) REFERENCES `users` (`Username`);
 
 --
 -- Constraints for table `products`
