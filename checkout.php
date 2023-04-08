@@ -14,6 +14,8 @@
         // Assuming you have a valid mysqli connection in the $conn variable
         include 'config/database.php';
         $username = 'elvis';
+        ini_set('display_errors', 1);
+        error_reporting(E_ALL);
 
         $sql = "SELECT * FROM cart WHERE Username = '$username'";
 
