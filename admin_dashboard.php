@@ -17,7 +17,7 @@
         echo "<table>";
         echo "<tr><th>ID</th><th>Username</th><th>Email</th><th>Password</th><th>Admin</th><th>Action</th></tr>";
         foreach ($accounts as $account) {
-            echo "<tr><td>" . $account["UserID"] . "</td><td>" . $account["Username"] . "</td><td>" . $account["Email"] . "</td><td>" . $account["Password"] . "</td><td>" . $account["isAdmin"] . "</td><td><a href='edit_account.php?id=" . $account["UserID"] . "'>Edit</a></td></tr>";
+            echo "<tr><td>" . $account["UserID"] . "</td><td>" . $account["Username"] . "</td><td>" . $account["Email"] . "</td><td>" . $account["Password"] . "</td><td>" . $account["isAdmin"] . "</td><td><a href='edit_account.php?id=" . $account["UserID"] . "'>Edit</a></td></tr> . <td><a href='deleteUser.php?name=" . $account["Username"] . "'>Delete</a></td></tr>";
         }
         echo "</table>";
     } else {
@@ -33,9 +33,9 @@
     $products = viewProducts();
     if (count($products) > 0) {
         echo "<table>";
-        echo "<tr><th>ID</th><th>Name</th><th>Description</th><th>Quantity</th><th>Size</th><th>Color</th><th>Positive Vote</th></th><th>Category</th><th>Action</th><th>Action</th></tr>";
+        echo "<tr><th>ID</th><th>Name</th><th>Quantity</th><th>Size</th><th>Color</th><th>Positive Vote</th></th><th>Category</th><th>Action</th><th>Action</th></tr>";
         foreach ($products as $product) {
-            echo "<tr><td>" . $product["ProductID"] . "</td><td>" . $product["ProductName"] . "</td><td>" . $product["ProductDescription"] . "</td><td>" . $product["ProductQuantity"] . "</td><td>" . $product["ProductSize"] . "</td><td>" . $product["ProductColor"] . "</td><td>" . $product["PositiveVote"] . "</td><td>" . $product["CategoryID"] . "</td><td><a href='edit_product.php?id=" . $product["ProductID"] . "'>Edit</a></td><td><a href='deleteProduct.php?name=" . $product["ProductName"] . "'>Delete</a></td></tr>";
+            echo "<tr><td>" . $product["ProductID"] . "</td><td>" . $product["ProductName"] . "</td><td>" . "</td><td>" . $product["ProductQuantity"] . "</td><td>" . $product["ProductSize"] . "</td><td>" . $product["ProductColor"] . "</td><td>" . $product["PositiveVote"] . "</td><td>" . $product["CategoryName"] . "</td><td><a href='edit_product.php?id=" . $product["ProductID"] . "'>Edit</a></td><td><a href='deleteProduct.php?name=" . $product["ProductName"] . "'>Delete</a></td></tr>";
         }
         echo "</table>";
     } else {
@@ -112,7 +112,41 @@
     </form>
 
 
-    <h2>All</h2>
+    <h2>Insert Category</h2>
+    <form action="insertCategory.php" method="POST">
+        <label for="category">Category Name:</label>
+        <input type="text" name="category" required><br>
+
+        <label for="subCategory">Sub Category Name:</label>
+        <input type="text" name="subCategory" required><br>
+        
+        <input type="submit" name="submit" value="Add Category">
+    </form>
+
+    <h2>Insert Sub Category</h2>
+    <form action="insertCategory.php" method="POST">
+        <label for="category">Category:</label>
+        <select id="category" type="select" name="category" onchange="myFunction()" required>
+            <option value=""></option>
+            <?php
+            ini_set('display_errors', 1);
+            error_reporting(E_ALL);
+            require("config/database.php");
+            $viewSQL = "SELECT * FROM categories";
+            $res = mysqli_query($conn, $viewSQL);
+            if (mysqli_num_rows($res) > 0) {
+                while ($categories = mysqli_fetch_assoc($res)) {
+                    echo "<option value='" . $categories['CategoryName'] . "'>" . $categories['CategoryName'] . "</option>";
+                }
+            }
+            ?>
+        </select><br>
+
+        <label for="subCategory">Sub Category Name:</label>
+        <input type="text" name="subCategory" required><br>
+
+        <input type="submit" name="submit" value="Add Category">
+    </form>
 </body>
 
 </html>
