@@ -43,10 +43,10 @@
     }
     ?>
     <?php
-    if (isset($_GET['error'])) : ?>
-        <p>
-            <?php echo $_GET['error']; ?>
-        </p>
+    if (isset($_GET['error'])): ?>
+    <p>
+        <?php echo $_GET['error']; ?>
+    </p>
     <?php endif; ?>
     <h2>Insert Product</h2>
     <form action="insertProduct.php" method="POST" enctype="multipart/form-data">
@@ -95,22 +95,22 @@
     ?>
 
     <?php
-    ini_set('display_errors', 1);
-    error_reporting(E_ALL);
-    require_once("view_products.php");
-    $products = viewProducts();
-    if (count($products) > 0) {
-        echo "<table>";
-        echo "<tr><th>ID</th><th>Name</th><th>Description</th><th>Quantity</th><th>Size</th><th>Color</th><th>Positive Vote</th></th><th>Category</th><th>Action</th><th>Action</th></tr>";
-        foreach ($products as $product) {
-            if ($product["ProductName"] == $_GET["name"]) {
-                echo "<tr><td>" . $product["ProductID"] . "</td><td>" . $product["ProductName"] . "</td><td>" . $product["ProductDescription"] . "</td><td>" . $product["ProductQuantity"] . "</td><td>" . $product["ProductSize"] . "</td><td>" . $product["ProductColor"] . "</td><td>" . $product["PositiveVote"] . "</td><td>" . $product["CategoryID"] . "</td><td><a href='edit_product.php?id=" . $product["ProductID"] . "'>Edit</a></td><td><a href='deleteProduct.php?name=" . $product["ProductName"] . "'>Delete</a></td></tr>";
-            }
-        }
-        echo "</table>";
-    } else {
-        echo "<p>No products found.</p>";
-    }
+    // ini_set('display_errors', 1);
+    // error_reporting(E_ALL);
+    // require_once("view_products.php");
+    // $products = viewProducts();
+    // if (count($products) > 0) {
+    //     echo "<table>";
+    //     echo "<tr><th>ID</th><th>Name</th><th>Description</th><th>Quantity</th><th>Size</th><th>Color</th><th>Positive Vote</th></th><th>Category</th><th>Action</th><th>Action</th></tr>";
+    //     foreach ($products as $product) {
+    //         if ($product["ProductName"] == $_GET["name"]) {
+    //             echo "<tr><td>" . $product["ProductID"] . "</td><td>" . $product["ProductName"] . "</td><td>" . $product["ProductDescription"] . "</td><td>" . $product["ProductQuantity"] . "</td><td>" . $product["ProductSize"] . "</td><td>" . $product["ProductColor"] . "</td><td>" . $product["PositiveVote"] . "</td><td>" . $product["CategoryID"] . "</td><td><a href='edit_product.php?id=" . $product["ProductID"] . "'>Edit</a></td><td><a href='deleteProduct.php?name=" . $product["ProductName"] . "'>Delete</a></td></tr>";
+    //         }
+    //     }
+    //     echo "</table>";
+    // } else {
+    //     echo "<p>No products found.</p>";
+    // }
     ?>
 </body>
 
