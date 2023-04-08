@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (!isset($_SESSION["currentUser"])) {
+    header("Location: ../authentication/login.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +19,7 @@
         <?php
         // Assuming you have a valid mysqli connection in the $conn variable
         require_once 'config/database.php';
-        $username = 'elvis';
+        $username = $_SESSION["currentUser"];
         ini_set('display_errors', 1);
         error_reporting(E_ALL);
 
@@ -27,12 +33,11 @@
         echo "Number of rows: " . mysqli_num_rows($result);
         if (mysqli_num_rows($result) > 0) {
             echo "<table>";
-            echo "<tr><th>Cart ID</th><th>Product Name</th><th>Product Thumbnail</th><th>Buy Quantity</th><th>Product Size</th><th>Product Color</th><th>Category Name</th><th>Sub Category Name</th><th>Username</th><th>Product Price</th></tr>";
+            echo "<tr><th>Cart ID</th><th>Product Name</th><th>Buy Quantity</th><th>Product Size</th><th>Product Color</th><th>Category Name</th><th>Sub Category Name</th><th>Username</th><th>Product Price</th></tr>";
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<tr>";
                 echo "<td>" . $row['CartID'] . "</td>";
                 echo "<td>" . $row['ProductName'] . "</td>";
-                echo "<td>" . $row['ProductThumbnail'] . "</td>";
                 echo "<td>" . $row['BuyQuantity'] . "</td>";
                 echo "<td>" . $row['ProductSize'] . "</td>";
                 echo "<td>" . $row['ProductColor'] . "</td>";

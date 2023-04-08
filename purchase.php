@@ -1,10 +1,16 @@
 <?php
+session_start();
+if (!isset($_SESSION["currentUser"])) {
+    header("Location: ../authentication/login.php");
+}
+?>
+<?php
 include_once 'config/database.php';
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = 'elvis'; // Retrieve the username from the session or other secure source
+    $username = $_SESSION["currentUser"]; // Retrieve the username from the session or other secure source
 
     // Get all cart items for the user
     $sql = "SELECT * FROM cart WHERE Username = '$username'";
@@ -29,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 mysqli_query($conn, $sqlUpdate);
 
                 // Calculate the total amount
-                $amount = $productPrice * $buyQuantity;
+                $amount = $productPrice;
 
                 // Get the current date and time
                 $currentDate = date('Y-m-d');
@@ -47,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 mysqli_query($conn, $sqlUpdate);
 
                 // Calculate the total amount
-                $amount = $productPrice * $buyQuantity;
+                $amount = $productPrice;
 
                 // Get the current date and time
                 $currentDate = date('Y-m-d');
@@ -60,8 +66,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $sqlDelete = "DELETE FROM cart WHERE CartID = $cartID";
                 mysqli_query($conn, $sqlDelete);
             }
-
-
         }
         //add up all the total amounts  and display them where orderID= 1
 
