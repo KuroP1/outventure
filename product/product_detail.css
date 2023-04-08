@@ -116,6 +116,7 @@ img {
     padding: 8px 15px 8px 15px;
     transition: .2s;
     font-weight: 600;
+    cursor: pointer;
 }
 
 .product-detail-info-spec-detail-text {

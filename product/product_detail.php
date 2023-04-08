@@ -240,7 +240,10 @@
             }
             this.style.backgroundColor = "#FFC700";
             this.style.color = "white";
+            document.querySelector(".product-detail-info-addtocart-button").style.border = "#FFC700";
             selectedColor = this.innerHTML.trim();
+
+            console.log(selectedColor)
         });
     }
 
@@ -254,24 +257,30 @@
             }
             this.style.backgroundColor = "#FFC700";
             this.style.color = "white";
+            document.querySelector(".product-detail-info-addtocart-button").style.border = "#FFC700";
             selectedSize = this.innerHTML.trim();
+
+            console.log(selectedSize)
         });
     }
 
+    // handle add to cart button
     if (selectedColor === "" || selectedSize === "") {
         document.querySelector(".product-detail-info-addtocart-button").style.color = "white";
         document.querySelector(".product-detail-info-addtocart-button").style.backgroundColor = "gray";
         document.querySelector(".product-detail-info-addtocart-button").style.border = "gray";
+        document.querySelector(".product-detail-info-addtocart-button").style.cursor = "pointer";
     }
 
     document.querySelector(".product-detail-info-addtocart-button").addEventListener("mouseover", function() {
         if (selectedColor !== "" && selectedSize !== "") {
             document.querySelector(".product-detail-info-addtocart-button").style.color = "white";
             document.querySelector(".product-detail-info-addtocart-button").style.backgroundColor = "#FFC700";
+            document.querySelector(".product-detail-info-addtocart-button").style.border = "#FFC700";
+            document.querySelector(".product-detail-info-addtocart-button").style.cursor = "pointer";
         }
     });
 
-    // handle add to cart button
     document.querySelector(".product-detail-info-addtocart-button").addEventListener("click", function() {
         if (selectedColor === "" || selectedSize === "") {
             alert("Please select color and size");
