@@ -11,8 +11,8 @@ if (count($products) > 0) {
             $productQuantity = $product["ProductQuantity"];
             $productSize = $product["ProductSize"];
             $productColor = $product["ProductColor"];
-            $category = $product["CategoryName"];
-            $subCategory = $product["SubCategoryName"];
+            $productCategory = $product["CategoryName"];
+            $productSubCategory = $product["SubCategoryName"];
             $productPrice = $product["ProductPrice"];
         }
     }
@@ -175,7 +175,7 @@ if (count($products) > 0) {
                             <button class="product-detail-info-addtocart-button">Add to Cart</button>
                             <div class="counter">
                                 <span class="down" onClick='decreaseCount(event, this)'>-</span>
-                                <input type="number" value="1">
+                                <input type="text" value="1">
                                 <span class="up" onClick='increaseCount(event, this)'>+</span>
                             </div>
                         </div>
@@ -205,6 +205,18 @@ if (count($products) > 0) {
 </html>
 <!-- Option Button -->
 <script>
+    var colorArray = <?php echo json_encode($colorsArray); ?>;
+    var sizeArray = <?php echo json_encode($sizesArray); ?>;
+    // post value handle
+    var productName = <?php echo json_encode($productName); ?>;
+    var productPrice = <?php echo json_encode($productPrice); ?>;
+    var productCategory = <?php echo json_encode($productCategory); ?>;
+    var productSubCategory = <?php echo json_encode($productSubCategory); ?>;
+    var buyQuantity = 1;
+    var selectedColor = "";
+    var selectedSize = "";
+
+
     // handle counter
     function increaseCount(a, b) {
         var input = b.previousElementSibling;
@@ -212,6 +224,7 @@ if (count($products) > 0) {
         value = isNaN(value) ? 0 : value;
         value++;
         input.value = value;
+        buyQuantity = value;
     }
 
     function decreaseCount(a, b) {
@@ -221,14 +234,9 @@ if (count($products) > 0) {
             value = isNaN(value) ? 0 : value;
             value--;
             input.value = value;
+            buyQuantity = value;
         }
     }
-
-    var colorArray = <?php echo json_encode($colorsArray); ?>;
-    var sizeArray = <?php echo json_encode($sizesArray); ?>;
-
-    var selectedColor = "";
-    var selectedSize = "";
 
     for (var i = 0; i < colorArray.length; i++) {
         var button = document.createElement("button");
@@ -295,9 +303,31 @@ if (count($products) > 0) {
         if (selectedColor === "" || selectedSize === "") {
             alert("Please select color and size");
         } else {
+            addToCart();
             alert("Add to cart successfully");
         }
     });
+
+    // post value handle
+    function addToCart() {
+        let data = {
+            productName: productName,
+            productPrice: productPrice * buyQuantity,
+            buyQuantity: buyQuantity,
+            selectedSize: selectedSize,
+            selectedColor: selectedColor,
+            productCategory: productCategory,
+            productSubCategory: productSubCategory,
+        }
+
+        fetch("addToCart.php", {
+                method: "POST",
+                body: JSON.stringify(data),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            })
+    }
 </script>
 
 <!-- Image Slider -->

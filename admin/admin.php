@@ -239,7 +239,6 @@
                                         </svg>
                                     </a>
                                 </div>
-                                
                                 </div> 
                                 <hr class='h-line3'>";
                             }
