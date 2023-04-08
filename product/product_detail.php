@@ -1,3 +1,24 @@
+<?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+require_once("../view_products.php");
+$products = viewProducts();
+if (count($products) > 0) {
+    foreach ($products as $product) {
+        if ($product["ProductName"] == $_GET["name"]) {
+            $productName = $product["ProductName"];
+            $productDescription = $product["ProductDescription"];
+            $productQuantity = $product["ProductQuantity"];
+            $productSize = $product["ProductSize"];
+            $productColor = $product["ProductColor"];
+            $productCategory = $product["CategoryName"];
+            $productSubCategory = $product["SubCategoryName"];
+            $productPrice = $product["ProductPrice"];
+        }
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -95,17 +116,7 @@
                         <div class="product-detail-info-title">
                             <span class='product-detail-info-title-text'>
                                 <?php
-                                ini_set('display_errors', 1);
-                                error_reporting(E_ALL);
-                                require_once("../view_products.php");
-                                $products = viewProducts();
-                                if (count($products) > 0) {
-                                    foreach ($products as $product) {
-                                        if ($product["ProductName"] == $_GET["name"]) {
-                                            echo $product["ProductName"];
-                                        }
-                                    }
-                                }
+                                echo $productName;
                                 ?>
                             </span>
                         </div>
@@ -156,22 +167,17 @@
                             <span class="product-detail-info-price-text">
                                 Price:
                                 <?php
-                                ini_set('display_errors', 1);
-                                error_reporting(E_ALL);
-                                require_once("../view_products.php");
-                                $products = viewProducts();
-                                if (count($products) > 0) {
-                                    foreach ($products as $product) {
-                                        if ($product["ProductName"] == $_GET["name"]) {
-                                            echo "$" . $product["ProductPrice"];
-                                        }
-                                    }
-                                }
+                                echo "$" . $productPrice;
                                 ?>
                             </span>
                         </div>
                         <div class="product-detail-info-addtocart">
                             <button class="product-detail-info-addtocart-button">Add to Cart</button>
+                            <div class="counter">
+                                <span class="down" onClick='decreaseCount(event, this)'>-</span>
+                                <input type="text" value="1">
+                                <span class="up" onClick='increaseCount(event, this)'>+</span>
+                            </div>
                         </div>
                     </div>
                     <div class="product-detail-spec">
@@ -183,20 +189,9 @@
                         <div class="product-detail-info-spec-detail">
                             <span class="product-detail-info-spec-detail-text">
                                 <?php
-                                ini_set('display_errors', 1);
-                                error_reporting(E_ALL);
-                                require_once("../view_products.php");
-                                $products = viewProducts();
-                                if (count($products) > 0) {
-                                    foreach ($products as $product) {
-                                        if ($product["ProductName"] == $_GET["name"]) {
-
-                                            $product["ProductDescription"] = str_replace("\\n", "<p>", $product["ProductDescription"]);
-                                            $product["ProductDescription"] = str_replace("\\", "", $product["ProductDescription"]);
-                                            echo nl2br($product["ProductDescription"]);
-                                        }
-                                    }
-                                }
+                                $productDescription = str_replace("\\n", "<p>", $productDescription);
+                                $productDescription = str_replace("\\", "", $productDescription);
+                                echo nl2br($productDescription);
                                 ?>
                             </span>
                         </div>
@@ -212,9 +207,36 @@
 <script>
     var colorArray = <?php echo json_encode($colorsArray); ?>;
     var sizeArray = <?php echo json_encode($sizesArray); ?>;
-
+    // post value handle
+    var productName = <?php echo json_encode($productName); ?>;
+    var productPrice = <?php echo json_encode($productPrice); ?>;
+    var productCategory = <?php echo json_encode($productCategory); ?>;
+    var productSubCategory = <?php echo json_encode($productSubCategory); ?>;
+    var buyQuantity = 1;
     var selectedColor = "";
     var selectedSize = "";
+
+
+    // handle counter
+    function increaseCount(a, b) {
+        var input = b.previousElementSibling;
+        var value = parseInt(input.value, 10);
+        value = isNaN(value) ? 0 : value;
+        value++;
+        input.value = value;
+        buyQuantity = value;
+    }
+
+    function decreaseCount(a, b) {
+        var input = b.nextElementSibling;
+        var value = parseInt(input.value, 10);
+        if (value > 1) {
+            value = isNaN(value) ? 0 : value;
+            value--;
+            input.value = value;
+            buyQuantity = value;
+        }
+    }
 
     for (var i = 0; i < colorArray.length; i++) {
         var button = document.createElement("button");
@@ -281,9 +303,31 @@
         if (selectedColor === "" || selectedSize === "") {
             alert("Please select color and size");
         } else {
+            addToCart();
             alert("Add to cart successfully");
         }
     });
+
+    // post value handle
+    function addToCart() {
+        let data = {
+            productName: productName,
+            productPrice: productPrice * buyQuantity,
+            buyQuantity: buyQuantity,
+            selectedSize: selectedSize,
+            selectedColor: selectedColor,
+            productCategory: productCategory,
+            productSubCategory: productSubCategory,
+        }
+
+        fetch("addToCart.php", {
+                method: "POST",
+                body: JSON.stringify(data),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            })
+    }
 </script>
 
 <!-- Image Slider -->

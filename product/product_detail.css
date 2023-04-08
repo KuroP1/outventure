@@ -59,6 +59,8 @@ img {
 .product-detail-info-color,
 .product-detail-info-price,
 .product-detail-info-addtocart {
+    display: flex;
+    align-items: center;
     margin: 15px 0 15px 0;
 }
 
@@ -67,6 +69,36 @@ img {
     margin: 8px 0 8px 0;
 }
 
+
+.counter span {
+    background-color: transparent;
+    border: 1px solid #FFC700;
+    border-radius: 5px;
+    padding: 2px 8px 2px 8px;
+    margin: 0px 7px 0px 7px;
+    transition: .2s;
+    cursor: pointer;
+}
+
+.counter span:hover {
+    color: #FFFFFF;
+    background-color: #FFC700;
+    border: 1px solid #FFC700;
+    border-radius: 5px;
+    padding: 2px 8px 2px 8px;
+    margin: 0px 7px 0px 7px;
+    transition: .2s;
+    cursor: pointer;
+}
+
+.counter input {
+    width: 23px;
+    border: 1px solid #FFC700;
+    border-radius: 5px;
+    padding: 6.6px 10px 5px 10px;
+    transition: .2s;
+    text-align: center;
+}
 
 .product-detail-info-title-text,
 .product-detail-info-spec-text {
