@@ -35,18 +35,7 @@ if (isset($_POST["submit"])) {
 
 $conn->close();
 ?>
-<?php
-//write a edit account page
 
-//get user id from the url
-//get user info from the database
-//display user info in the form
-//update user info in the database
-//redirect to the admin dashboard
-
-
-
-?>
 <!DOCTYPE html>
 <html>
 
