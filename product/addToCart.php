@@ -33,7 +33,7 @@ if (isset($_POST)) {
         $result = mysqli_query($conn, $checkSameCartSQL);
         $rowCount = mysqli_num_rows($result);
         if ($rowCount > 0) {
-            $updateSameCartSQL = "UPDATE cart SET BuyQuantity = BuyQuantity + '$buyQuantity' WHERE ProductName = '$productName' AND ProductColor = '$productColor' AND ProductSize = '$productSize' AND Username = '$username'";
+            $updateSameCartSQL = "UPDATE cart SET BuyQuantity = BuyQuantity + '$buyQuantity', ProductPrice = ProductPrice + '$productPrice' WHERE ProductName = '$productName' AND ProductColor = '$productColor' AND ProductSize = '$productSize' AND Username = '$username'";
             mysqli_query($conn, $updateSameCartSQL);
         } else {
             mysqli_stmt_bind_param($stmt, "siisssss", $productName, $productPrice, $buyQuantity, $productSize, $productColor, $productCategory, $productSubCategory, $username);
