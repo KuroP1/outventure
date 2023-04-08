@@ -85,13 +85,14 @@ img {
 }
 
 .product-detail-info-color-text,
-.product-detail-info-price-text {
+.product-detail-info-price-text,
+.product-detail-info-size-text {
     font-size: 12px;
     font-weight: 500;
     margin: 0px 7px 0px 0px;
 }
 
-.product-detail-info-color-button {
+.product-detail-info-color-button, .product-detail-info-size-button {
     background-color: transparent;
     border: 1px solid #DCDCDC;
     border-radius: 5px;
@@ -100,7 +101,7 @@ img {
     transition: .2s;
 }
 
-.product-detail-info-color-button:hover {
+.product-detail-info-color-button:hover, .product-detail-info-size-button:hover {
     background-color: #FFC700;
     border: 1px solid #FFC700;
     color: #FFFFFF;

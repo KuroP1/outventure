@@ -1,21 +1,3 @@
-<?php
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-require("../config/database.php");
-$viewSQL = "SELECT * FROM images ORDER BY ImageID";
-$res = mysqli_query($conn, $viewSQL);
-
-// image array
-$imageArray = array();
-
-if (mysqli_num_rows($res) > 0) {
-    while ($images = mysqli_fetch_assoc($res)) {
-        if ($images["ProductName"] == $_GET["name"]) {
-            array_push($imageArray, $images["ImagePath"]);
-        }
-    }
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -83,6 +65,24 @@ if (mysqli_num_rows($res) > 0) {
                         <div class="left-react-button">
                         </div>
                         <!-- image -->
+                        <?php
+                        ini_set('display_errors', 1);
+                        error_reporting(E_ALL);
+                        require("../config/database.php");
+                        $viewSQL = "SELECT * FROM images ORDER BY ImageID";
+                        $res = mysqli_query($conn, $viewSQL);
+
+                        // image array
+                        $imageArray = array();
+
+                        if (mysqli_num_rows($res) > 0) {
+                            while ($images = mysqli_fetch_assoc($res)) {
+                                if ($images["ProductName"] == $_GET["name"]) {
+                                    array_push($imageArray, $images["ImagePath"]);
+                                }
+                            }
+                        }
+                        ?>
                         <img class="slide" src="" alt="" width="500" height="500">
                         <!-- right react button -->
                         <div class="right-react-button">
@@ -117,9 +117,39 @@ if (mysqli_num_rows($res) > 0) {
                         </div>
                         <div class="product-detail-info-color">
                             <span class="product-detail-info-color-text">Color: </span>
-                            <button class="product-detail-info-color-button">Blue</button>
-                            <button class="product-detail-info-color-button">Red</button>
-                            <button class="product-detail-info-color-button">Green</button>
+                            <?php
+                            ini_set('display_errors', 1);
+                            error_reporting(E_ALL);
+                            require_once("../view_products.php");
+
+                            $colorsArray = array();
+                            $products = viewProducts();
+                            if (count($products) > 0) {
+                                foreach ($products as $product) {
+                                    if ($product["ProductName"] == $_GET["name"]) {
+                                        $colorsArray = explode(",", $product["ProductColor"]);
+                                    }
+                                }
+                            }
+                            ?>
+                        </div>
+                        <div class="product-detail-info-size">
+                            <span class="product-detail-info-size-text">Size: </span>
+                            <?php
+                            ini_set('display_errors', 1);
+                            error_reporting(E_ALL);
+                            require_once("../view_products.php");
+
+                            $sizesArray = array();
+                            $products = viewProducts();
+                            if (count($products) > 0) {
+                                foreach ($products as $product) {
+                                    if ($product["ProductName"] == $_GET["name"]) {
+                                        $sizesArray = explode(",", $product["ProductSize"]);
+                                    }
+                                }
+                            }
+                            ?>
                         </div>
                         <div class="product-detail-info-price">
                             <span class="product-detail-info-price-text">Price: $500 HKD</span>
@@ -143,11 +173,11 @@ if (mysqli_num_rows($res) > 0) {
                                 $products = viewProducts();
                                 if (count($products) > 0) {
                                     foreach ($products as $product) {
-                                        if ($product["ProductName"] == $_GET["name"]) {     
+                                        if ($product["ProductName"] == $_GET["name"]) {
 
-                                            $product["ProductDescription"] = str_replace("\\n" , "<p>", $product["ProductDescription"]); 
-                                            $product["ProductDescription"] = str_replace("\\" , "", $product["ProductDescription"]);                                                             
-                                            echo nl2br($product["ProductDescription"]);                                       
+                                            $product["ProductDescription"] = str_replace("\\n", "<p>", $product["ProductDescription"]);
+                                            $product["ProductDescription"] = str_replace("\\", "", $product["ProductDescription"]);
+                                            echo nl2br($product["ProductDescription"]);
                                         }
                                     }
                                 }
@@ -162,7 +192,27 @@ if (mysqli_num_rows($res) > 0) {
 </body>
 
 </html>
+<!-- Option Button -->
+<script>
+    var colorArray = <?php echo json_encode($colorsArray); ?>;
+    var sizeArray = <?php echo json_encode($sizesArray); ?>;
 
+    for (var i = 0; i < colorArray.length; i++) {
+        var button = document.createElement("button");
+        button.className = "product-detail-info-color-button";
+        button.innerHTML = colorArray[i];
+        document.querySelector(".product-detail-info-color").appendChild(button);
+    }
+
+    for (var i = 0; i < sizeArray.length; i++) {
+        var button = document.createElement("button");
+        button.className = "product-detail-info-size-button";
+        button.innerHTML = sizeArray[i];
+        document.querySelector(".product-detail-info-size").appendChild(button);
+    }
+</script>
+
+<!-- Image Slider -->
 <script>
     // imageArray from php
     var imageArray = <?php echo json_encode($imageArray); ?>;
