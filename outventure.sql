@@ -89,7 +89,8 @@ CREATE TABLE `orders` (
   `OrderDate` date NOT NULL,
   `paymentMethod` varchar(255) NOT NULL,
   `orderStatus` varchar(255) NOT NULL,
-  `Username` varchar(255) DEFAULT NULL
+  `Username` varchar(255) NOT NULL,
+  `Amount` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -206,7 +207,8 @@ ALTER TABLE `subcategories`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`UserID`);
+  ADD PRIMARY KEY (`UserID`),
+  ADD UNIQUE KEY `Username` (`Username`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -251,6 +253,12 @@ ALTER TABLE `users`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`Username`) REFERENCES `users` (`Username`);
 
 --
 -- Constraints for table `products`
