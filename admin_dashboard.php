@@ -119,14 +119,14 @@
 
         <label for="subCategory">Sub Category Name:</label>
         <input type="text" name="subCategory" required><br>
-        
+
         <input type="submit" name="submit" value="Add Category">
     </form>
 
     <h2>Insert Sub Category</h2>
-    <form action="insertCategory.php" method="POST">
-        <label for="category">Category:</label>
-        <select id="category" type="select" name="category" onchange="myFunction()" required>
+    <form action="insertSubCategory.php" method="POST">
+        <label for="newCategory">Category:</label>
+        <select id="category" type="select" name="newCategory" onchange="myFunction()" required>
             <option value=""></option>
             <?php
             ini_set('display_errors', 1);
@@ -142,8 +142,8 @@
             ?>
         </select><br>
 
-        <label for="subCategory">Sub Category Name:</label>
-        <input type="text" name="subCategory" required><br>
+        <label for="newSubCategory">Sub Category Name:</label>
+        <input type="text" name="newSubCategory" required><br>
 
         <input type="submit" name="submit" value="Add Category">
     </form>
