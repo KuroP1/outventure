@@ -31,16 +31,6 @@ if (isset($_GET['id'])) {
         }
 
         if ($_FILES['productImage']) {
-            // delete the old images
-            $sql2 = "DELETE FROM images WHERE ProductName=?";
-            $stmt2 = mysqli_stmt_init($conn);
-            if (mysqli_stmt_prepare($stmt2, $sql2)) {
-                mysqli_stmt_bind_param($stmt2, "s", $productName);
-                mysqli_stmt_execute($stmt2);
-            } else {
-                die("Something went wrong");
-            }
-
             // insert the new images
             $countImg = count($_FILES["productImage"]["name"]);
             for ($i = 0; $i < $countImg; $i++) {
@@ -74,7 +64,7 @@ if (isset($_GET['id'])) {
                                 mysqli_stmt_bind_param($stmt2, "ss", $image_upload_path, $productName);
                                 mysqli_stmt_execute($stmt2);
 
-                                // header("Location: admin_dashboard.php");
+                                header("Location: admin_dashboard.php");
                             }
                         } else {
                             $em = "You can't upload files of this type";
@@ -118,7 +108,7 @@ if (isset($_GET['id'])) {
                     array_push($imagePath, $images['ImagePath']);
                 }
             }
-            var_dump($imagePath);
+            $imageCount = count($imagePath);
         } else {
             die("Product not found");
         }
@@ -151,7 +141,7 @@ if (isset($_GET['id'])) {
         <?php foreach ($imagePath as $image) { ?>
             <img src="<?php echo $image; ?>" alt="product image" width="100" height="100">
             <!-- handle delete image -->
-            <a href="deleteimage.php?image=<?php echo $image; ?>&name=<?php echo $product['ProductName']; ?>&id=<?php echo $productID; ?>">Delete</a>
+            <a href="deleteimage.php?image=<?php echo $image; ?>&name=<?php echo $product['ProductName']; ?>&id=<?php echo $productID; ?>&length=<?php echo $imageCount; ?>">Delete</a>
         <?php } ?>
 
         <br>

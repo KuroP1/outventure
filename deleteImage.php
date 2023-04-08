@@ -15,10 +15,14 @@ if (isset($_GET['image']) && !empty($_GET['image'])) {
     if (isset($_GET['name']) && !empty($_GET['name'])) {
         $productName = $_GET['name'];
         $path = $_GET['image'];
-        deleteImage($path, $productName, $conn);
 
-        // Redirect back to current page    
-        header("Location: edit_product.php?id=$_GET[id]");
+        if ($_GET['length'] <= 1) {
+            echo "<div class='alert alert-danger'>You cannot delete the last image.</div>";
+        } else {
+            deleteImage($path, $productName, $conn);
+            // Redirect back to current page    
+            header("Location: edit_product.php?id=$_GET[id]");
+        }
 
         exit();
     }
