@@ -76,7 +76,7 @@ if (!isset($_SESSION["currentUser"])) {
                         <img class="avatar" src="../images/profile/avatar.png" alt="avatar" />
                         <?php
                         require_once "../config/database.php";
-                        $sql = "SELECT * FROM users WHERE UserID ='{$_SESSION['currentUser']}'";
+                        $sql = "SELECT * FROM users WHERE Username ='{$_SESSION['currentUser']}'";
                         $result = mysqli_query($conn, $sql);
 
                         if ($row = mysqli_fetch_assoc($result)) {
@@ -121,7 +121,7 @@ if (!isset($_SESSION["currentUser"])) {
                                 </div>
                                 <?php
                                 require_once "../config/database.php";
-                                $sql = "SELECT * FROM users WHERE UserID ='{$_SESSION['currentUser']}'";
+                                $sql = "SELECT * FROM users WHERE Username ='{$_SESSION['currentUser']}'";
                                 $result = mysqli_query($conn, $sql);
 
                                 if ($row = mysqli_fetch_assoc($result)) {
@@ -138,7 +138,7 @@ if (!isset($_SESSION["currentUser"])) {
                                 </div>
                                 <?php
                                 require_once "../config/database.php";
-                                $sql = "SELECT * FROM users WHERE UserID ='{$_SESSION['currentUser']}'";
+                                $sql = "SELECT * FROM users WHERE Username ='{$_SESSION['currentUser']}'";
                                 $result = mysqli_query($conn, $sql);
 
                                 if ($row = mysqli_fetch_assoc($result)) {
