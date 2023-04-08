@@ -127,6 +127,7 @@
                             if (count($products) > 0) {
                                 foreach ($products as $product) {
                                     if ($product["ProductName"] == $_GET["name"]) {
+                                        // remove element space 
                                         $colorsArray = explode(",", $product["ProductColor"]);
                                     }
                                 }
@@ -153,7 +154,7 @@
                         </div>
                         <div class="product-detail-info-price">
                             <span class="product-detail-info-price-text">
-                                Price: 
+                                Price:
                                 <?php
                                 ini_set('display_errors', 1);
                                 error_reporting(E_ALL);
@@ -176,7 +177,7 @@
                     <div class="product-detail-spec">
                         <div class="product-detail-info-spec-title">
                             <span class="product-detail-info-spec-text">
-                                <center>Description:</center>
+                                <center>Descriptions:</center>
                             </span>
                         </div>
                         <div class="product-detail-info-spec-detail">
@@ -212,6 +213,9 @@
     var colorArray = <?php echo json_encode($colorsArray); ?>;
     var sizeArray = <?php echo json_encode($sizesArray); ?>;
 
+    var selectedColor = "";
+    var selectedSize = "";
+
     for (var i = 0; i < colorArray.length; i++) {
         var button = document.createElement("button");
         button.className = "product-detail-info-color-button";
@@ -225,6 +229,56 @@
         button.innerHTML = sizeArray[i];
         document.querySelector(".product-detail-info-size").appendChild(button);
     }
+
+    // handle color button
+    var colorButtons = document.querySelectorAll(".product-detail-info-color-button");
+    for (var i = 0; i < colorButtons.length; i++) {
+        colorButtons[i].addEventListener("click", function() {
+            for (var j = 0; j < colorButtons.length; j++) {
+                colorButtons[j].style.backgroundColor = "white";
+                colorButtons[j].style.color = "black";
+            }
+            this.style.backgroundColor = "#FFC700";
+            this.style.color = "white";
+            selectedColor = this.innerHTML.trim();
+        });
+    }
+
+    // handle size button
+    var sizeButtons = document.querySelectorAll(".product-detail-info-size-button");
+    for (var i = 0; i < sizeButtons.length; i++) {
+        sizeButtons[i].addEventListener("click", function() {
+            for (var j = 0; j < sizeButtons.length; j++) {
+                sizeButtons[j].style.backgroundColor = "white";
+                sizeButtons[j].style.color = "black";
+            }
+            this.style.backgroundColor = "#FFC700";
+            this.style.color = "white";
+            selectedSize = this.innerHTML.trim();
+        });
+    }
+
+    if (selectedColor === "" || selectedSize === "") {
+        document.querySelector(".product-detail-info-addtocart-button").style.color = "white";
+        document.querySelector(".product-detail-info-addtocart-button").style.backgroundColor = "gray";
+        document.querySelector(".product-detail-info-addtocart-button").style.border = "gray";
+    }
+
+    document.querySelector(".product-detail-info-addtocart-button").addEventListener("mouseover", function() {
+        if (selectedColor !== "" && selectedSize !== "") {
+            document.querySelector(".product-detail-info-addtocart-button").style.color = "white";
+            document.querySelector(".product-detail-info-addtocart-button").style.backgroundColor = "#FFC700";
+        }
+    });
+
+    // handle add to cart button
+    document.querySelector(".product-detail-info-addtocart-button").addEventListener("click", function() {
+        if (selectedColor === "" || selectedSize === "") {
+            alert("Please select color and size");
+        } else {
+            alert("Add to cart successfully");
+        }
+    });
 </script>
 
 <!-- Image Slider -->

@@ -99,6 +99,7 @@ img {
     padding: 5px 15px 5px 15px;
     margin: 0px 7px 0px 7px;
     transition: .2s;
+    cursor: pointer;
 }
 
 .product-detail-info-color-button:hover, .product-detail-info-size-button:hover {
