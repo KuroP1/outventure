@@ -211,7 +211,10 @@
                                     " . $product["PositiveVote"] . "
                                 </div>
                                 <div class='col table-content-2'>
-                                    " . $product["CategoryID"] . "
+                                    " . $product["CategoryName"] . "
+                                </div>
+                                <div class='col table-content-2'>
+                                    " . $product["SubCategoryName"] . "
                                 </div>
                                 <div class='col table-content'>
                                     <a href=''>
