@@ -13,9 +13,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_FILES['productImage']) {
     $productQuantity = $_POST['productQuantity'];
     $productSize = $_POST['productSize'];
     $productColor = $_POST['productColor'];
-    $categoryID = $_POST['categoryID'];
-    $productPrice = $_POST['productPrice'];
-
+    $category = $_POST['category'];
+    $subCategory = $_POST['subCategory'];
+    $productPrice = $_POST['productPrice']; 
 
     require_once 'config/database.php';
     if (!$conn) {
@@ -33,10 +33,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_FILES['productImage']) {
             echo "<div class='alert alert-danger'>Product is already exist.</div>";
         } else {
             //add a checking function if categoryID is valid, if valid then insert the product
-            $findCategoryquery = "SELECT * FROM Categories WHERE CategoryID=?";
+            $findCategoryquery = "SELECT * FROM Categories WHERE CategoryName=?";
             $findCategorystmt = mysqli_stmt_init($conn);
             if (mysqli_stmt_prepare($findCategorystmt, $findCategoryquery)) {
-                mysqli_stmt_bind_param($findCategorystmt, "i", $categoryID);
+                mysqli_stmt_bind_param($findCategorystmt, "i", $category);
                 mysqli_stmt_execute($findCategorystmt);
                 $findCategoryresult = mysqli_stmt_get_result($findCategorystmt);
                 if ($findCategoryresult->num_rows > 0) {
@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_FILES['productImage']) {
                                     move_uploaded_file($tmpname, $image_upload_path);
 
                                     // Insert into database
-                                    $sql = "INSERT INTO Products (ProductName, ProductDescription, ProductPrice, ProductQuantity, ProductSize, ProductColor, CategoryID) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                                    $sql = "INSERT INTO Products (ProductName, ProductDescription, ProductPrice, ProductQuantity, ProductSize, ProductColor, CategoryName, SubCategoryName) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
                                     $sql2 = "INSERT INTO Images (ImagePath, ProductName) VALUES (?, ?)";
                                     $stmt = mysqli_stmt_init($conn);
                                     $stmt2 = mysqli_stmt_init($conn);
@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_FILES['productImage']) {
                                     } else {
 
                                         if ($i == 0) {
-                                            mysqli_stmt_bind_param($stmt, "ssiissi", $productName, $productDescription, $productPrice, $productQuantity, $productSize, $productColor, $categoryID);
+                                            mysqli_stmt_bind_param($stmt, "ssiissss", $productName, $productDescription, $productPrice, $productQuantity, $productSize, $productColor, $category, $subCategory);
                                             mysqli_stmt_execute($stmt);
                                         }
 
