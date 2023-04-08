@@ -242,8 +242,6 @@
             this.style.color = "white";
             document.querySelector(".product-detail-info-addtocart-button").style.border = "#FFC700";
             selectedColor = this.innerHTML.trim();
-
-            console.log(selectedColor)
         });
     }
 
@@ -259,8 +257,6 @@
             this.style.color = "white";
             document.querySelector(".product-detail-info-addtocart-button").style.border = "#FFC700";
             selectedSize = this.innerHTML.trim();
-
-            console.log(selectedSize)
         });
     }
 

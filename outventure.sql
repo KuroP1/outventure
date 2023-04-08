@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Apr 08, 2023 at 12:42 PM
+-- Host: 127.0.0.1
+-- Generation Time: Apr 08, 2023 at 03:12 PM
 -- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- PHP Version: 8.0.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,6 +24,25 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `cart`
+--
+
+CREATE TABLE `cart` (
+  `CartID` int(11) NOT NULL,
+  `ProductName` varchar(255) DEFAULT NULL,
+  `ProductPrice` int(11) DEFAULT NULL,
+  `ProductThumbnail` varchar(255) DEFAULT NULL,
+  `BuyQuantity` int(11) DEFAULT NULL,
+  `ProductSize` varchar(255) DEFAULT NULL,
+  `ProductColor` varchar(255) DEFAULT NULL,
+  `CategoryName` varchar(255) DEFAULT NULL,
+  `SubCategoryName` varchar(255) DEFAULT NULL,
+  `Username` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `categories`
 --
 
@@ -36,7 +55,8 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`CategoryName`) VALUES
-('1');
+('Backpack'),
+('Swimming');
 
 -- --------------------------------------------------------
 
@@ -55,16 +75,16 @@ CREATE TABLE `images` (
 --
 
 INSERT INTO `images` (`ImageID`, `ImagePath`, `ProductName`) VALUES
-(27, 'uploads/IMG-64304a6920d892.15230912.jpg', 'Lowe alpine Sirac 65L 男款登山露營背囊'),
-(28, 'uploads/IMG-64304a6921afc8.27412156.jpg', 'Lowe alpine Sirac 65L 男款登山露營背囊');
+(29, 'uploads/IMG-64315b5c3b6343.64866180.jpg', 'Lowe alpine Sirac 65L 男款登山露營背囊'),
+(30, 'uploads/IMG-64315b5c3c6299.38904849.jpg', 'Lowe alpine Sirac 65L 男款登山露營背囊');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Orders`
+-- Table structure for table `orders`
 --
 
-CREATE TABLE `Orders` (
+CREATE TABLE `orders` (
   `OrderID` int(11) NOT NULL,
   `OrderDate` date NOT NULL,
   `paymentMethod` varchar(255) NOT NULL,
@@ -82,7 +102,7 @@ CREATE TABLE `products` (
   `ProductID` int(11) NOT NULL,
   `ProductName` varchar(255) DEFAULT NULL,
   `ProductDescription` varchar(255) DEFAULT NULL,
-  `ProductThumbnail` varchar(255) DEFAULT NULL,
+  `ProductPrice` int(11) DEFAULT NULL,
   `ProductQuantity` int(11) DEFAULT NULL,
   `ProductSize` varchar(255) DEFAULT NULL,
   `ProductColor` varchar(255) DEFAULT NULL,
@@ -95,27 +115,29 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`ProductID`, `ProductName`, `ProductDescription`, `ProductThumbnail`, `ProductQuantity`, `ProductSize`, `ProductColor`, `PositiveVote`, `CategoryName`, `SubCategoryName`) VALUES
-(42, 'Lowe alpine Sirac 65L 男款登山露營背囊', 'The Sirac 65 is ideal for long backpacking trips and self-sufficient treks over difficult terrain.', '', 100, 'XL', 'Blacks', NULL, NULL, '');
+INSERT INTO `products` (`ProductID`, `ProductName`, `ProductDescription`, `ProductPrice`, `ProductQuantity`, `ProductSize`, `ProductColor`, `PositiveVote`, `CategoryName`, `SubCategoryName`) VALUES
+(43, 'Lowe alpine Sirac 65L 男款登山露營背囊', 'Item type: Hiking Day pack \\\\n Capacity: 50L(45L+5L) \\\\n Load-Bearing: 40KG(88lb) \\\\n Size: . 65* 35 * 25cm / 25.6 * 13.8 * 9.8in \\\\n Weight: 1200g / 2.6 pounds \\\\n package Size: 22.28x14.72x2.75in', 550, 100, 'S, M, L, XL', 'Blue, Black, White', NULL, 'Backpack', 'Hiking');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `SubCategories`
+-- Table structure for table `subcategories`
 --
 
-CREATE TABLE `SubCategories` (
+CREATE TABLE `subcategories` (
   `SubCategoryID` int(11) NOT NULL,
   `SubCategoryName` varchar(255) DEFAULT NULL,
   `CategoryName` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `SubCategories`
+-- Dumping data for table `subcategories`
 --
 
-INSERT INTO `SubCategories` (`SubCategoryID`, `SubCategoryName`, `CategoryName`) VALUES
-(1, 'Hiking', 'Backpack');
+INSERT INTO `subcategories` (`SubCategoryID`, `SubCategoryName`, `CategoryName`) VALUES
+(1, 'Hiking', 'Backpack'),
+(2, 'Swimsuit', 'Swimming'),
+(3, 'Casual', 'Backpack');
 
 -- --------------------------------------------------------
 
@@ -144,6 +166,12 @@ INSERT INTO `users` (`UserID`, `Username`, `Email`, `Password`, `isAdmin`) VALUE
 --
 
 --
+-- Indexes for table `cart`
+--
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`CartID`);
+
+--
 -- Indexes for table `categories`
 --
 ALTER TABLE `categories`
@@ -156,9 +184,9 @@ ALTER TABLE `images`
   ADD PRIMARY KEY (`ImageID`);
 
 --
--- Indexes for table `Orders`
+-- Indexes for table `orders`
 --
-ALTER TABLE `Orders`
+ALTER TABLE `orders`
   ADD PRIMARY KEY (`OrderID`);
 
 --
@@ -169,9 +197,9 @@ ALTER TABLE `products`
   ADD KEY `CategoryName` (`CategoryName`);
 
 --
--- Indexes for table `SubCategories`
+-- Indexes for table `subcategories`
 --
-ALTER TABLE `SubCategories`
+ALTER TABLE `subcategories`
   ADD PRIMARY KEY (`SubCategoryID`);
 
 --
@@ -185,28 +213,34 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `cart`
+--
+ALTER TABLE `cart`
+  MODIFY `CartID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `ImageID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `ImageID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
--- AUTO_INCREMENT for table `Orders`
+-- AUTO_INCREMENT for table `orders`
 --
-ALTER TABLE `Orders`
+ALTER TABLE `orders`
   MODIFY `OrderID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `ProductID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `ProductID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
--- AUTO_INCREMENT for table `SubCategories`
+-- AUTO_INCREMENT for table `subcategories`
 --
-ALTER TABLE `SubCategories`
-  MODIFY `SubCategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `subcategories`
+  MODIFY `SubCategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
