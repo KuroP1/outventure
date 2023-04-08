@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 07, 2023 at 07:13 PM
+-- Host: localhost
+-- Generation Time: Apr 08, 2023 at 12:42 PM
 -- Server version: 10.4.27-MariaDB
--- PHP Version: 8.0.25
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,16 +28,15 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `categories` (
-  `CategoryID` int(11) NOT NULL,
-  `CategoryName` varchar(255) DEFAULT NULL
+  `CategoryName` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `categories`
 --
 
-INSERT INTO `categories` (`CategoryID`, `CategoryName`) VALUES
-(1, 'test');
+INSERT INTO `categories` (`CategoryName`) VALUES
+('1');
 
 -- --------------------------------------------------------
 
@@ -62,6 +61,20 @@ INSERT INTO `images` (`ImageID`, `ImagePath`, `ProductName`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `Orders`
+--
+
+CREATE TABLE `Orders` (
+  `OrderID` int(11) NOT NULL,
+  `OrderDate` date NOT NULL,
+  `paymentMethod` varchar(255) NOT NULL,
+  `orderStatus` varchar(255) NOT NULL,
+  `Username` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `products`
 --
 
@@ -69,19 +82,40 @@ CREATE TABLE `products` (
   `ProductID` int(11) NOT NULL,
   `ProductName` varchar(255) DEFAULT NULL,
   `ProductDescription` varchar(255) DEFAULT NULL,
+  `ProductThumbnail` varchar(255) DEFAULT NULL,
   `ProductQuantity` int(11) DEFAULT NULL,
   `ProductSize` varchar(255) DEFAULT NULL,
   `ProductColor` varchar(255) DEFAULT NULL,
   `PositiveVote` int(11) DEFAULT NULL,
-  `CategoryID` int(11) DEFAULT NULL
+  `CategoryName` varchar(255) DEFAULT NULL,
+  `SubCategoryName` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`ProductID`, `ProductName`, `ProductDescription`, `ProductQuantity`, `ProductSize`, `ProductColor`, `PositiveVote`, `CategoryID`) VALUES
-(42, 'Lowe alpine Sirac 65L 男款登山露營背囊', 'The Sirac 65 is ideal for long backpacking trips and self-sufficient treks over difficult terrain.', 100, 'XL', 'Black', NULL, 1);
+INSERT INTO `products` (`ProductID`, `ProductName`, `ProductDescription`, `ProductThumbnail`, `ProductQuantity`, `ProductSize`, `ProductColor`, `PositiveVote`, `CategoryName`, `SubCategoryName`) VALUES
+(42, 'Lowe alpine Sirac 65L 男款登山露營背囊', 'The Sirac 65 is ideal for long backpacking trips and self-sufficient treks over difficult terrain.', '', 100, 'XL', 'Blacks', NULL, NULL, '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `SubCategories`
+--
+
+CREATE TABLE `SubCategories` (
+  `SubCategoryID` int(11) NOT NULL,
+  `SubCategoryName` varchar(255) DEFAULT NULL,
+  `CategoryName` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `SubCategories`
+--
+
+INSERT INTO `SubCategories` (`SubCategoryID`, `SubCategoryName`, `CategoryName`) VALUES
+(1, 'Hiking', 'Backpack');
 
 -- --------------------------------------------------------
 
@@ -91,7 +125,7 @@ INSERT INTO `products` (`ProductID`, `ProductName`, `ProductDescription`, `Produ
 
 CREATE TABLE `users` (
   `UserID` int(11) NOT NULL,
-  `Username` varchar(255) DEFAULT NULL,
+  `Username` varchar(255) NOT NULL,
   `Email` varchar(255) DEFAULT NULL,
   `Password` varchar(255) DEFAULT NULL,
   `isAdmin` tinyint(1) DEFAULT NULL
@@ -102,7 +136,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`UserID`, `Username`, `Email`, `Password`, `isAdmin`) VALUES
-(1, 'Shiro', '1@1.com', '12345678', 0),
+(1, 'Shirosss', '12@1.com', '12345678', 0),
 (2, 'Kuro', '2@1.com', '12345678', 1);
 
 --
@@ -113,7 +147,7 @@ INSERT INTO `users` (`UserID`, `Username`, `Email`, `Password`, `isAdmin`) VALUE
 -- Indexes for table `categories`
 --
 ALTER TABLE `categories`
-  ADD PRIMARY KEY (`CategoryID`);
+  ADD PRIMARY KEY (`CategoryName`);
 
 --
 -- Indexes for table `images`
@@ -122,11 +156,23 @@ ALTER TABLE `images`
   ADD PRIMARY KEY (`ImageID`);
 
 --
+-- Indexes for table `Orders`
+--
+ALTER TABLE `Orders`
+  ADD PRIMARY KEY (`OrderID`);
+
+--
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`ProductID`),
-  ADD KEY `CategoryID` (`CategoryID`);
+  ADD KEY `CategoryName` (`CategoryName`);
+
+--
+-- Indexes for table `SubCategories`
+--
+ALTER TABLE `SubCategories`
+  ADD PRIMARY KEY (`SubCategoryID`);
 
 --
 -- Indexes for table `users`
@@ -145,10 +191,22 @@ ALTER TABLE `images`
   MODIFY `ImageID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
+-- AUTO_INCREMENT for table `Orders`
+--
+ALTER TABLE `Orders`
+  MODIFY `OrderID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
   MODIFY `ProductID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+
+--
+-- AUTO_INCREMENT for table `SubCategories`
+--
+ALTER TABLE `SubCategories`
+  MODIFY `SubCategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -164,7 +222,7 @@ ALTER TABLE `users`
 -- Constraints for table `products`
 --
 ALTER TABLE `products`
-  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`CategoryID`) REFERENCES `categories` (`CategoryID`);
+  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`CategoryName`) REFERENCES `categories` (`CategoryName`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
