@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 07, 2023 at 07:13 PM
+-- Host: localhost
+-- Generation Time: Apr 08, 2023 at 11:36 AM
 -- Server version: 10.4.27-MariaDB
--- PHP Version: 8.0.25
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,15 +29,16 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `categories` (
   `CategoryID` int(11) NOT NULL,
-  `CategoryName` varchar(255) DEFAULT NULL
+  `CategoryName` varchar(255) NOT NULL,
+  `SubCategory` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `categories`
 --
 
-INSERT INTO `categories` (`CategoryID`, `CategoryName`) VALUES
-(1, 'test');
+INSERT INTO `categories` (`CategoryID`, `CategoryName`, `SubCategory`) VALUES
+(1, 'test', '');
 
 -- --------------------------------------------------------
 
@@ -69,6 +70,7 @@ CREATE TABLE `products` (
   `ProductID` int(11) NOT NULL,
   `ProductName` varchar(255) DEFAULT NULL,
   `ProductDescription` varchar(255) DEFAULT NULL,
+  `ProductThumbnail` varchar(255) DEFAULT NULL,
   `ProductQuantity` int(11) DEFAULT NULL,
   `ProductSize` varchar(255) DEFAULT NULL,
   `ProductColor` varchar(255) DEFAULT NULL,
@@ -80,8 +82,8 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`ProductID`, `ProductName`, `ProductDescription`, `ProductQuantity`, `ProductSize`, `ProductColor`, `PositiveVote`, `CategoryID`) VALUES
-(42, 'Lowe alpine Sirac 65L 男款登山露營背囊', 'The Sirac 65 is ideal for long backpacking trips and self-sufficient treks over difficult terrain.', 100, 'XL', 'Black', NULL, 1);
+INSERT INTO `products` (`ProductID`, `ProductName`, `ProductDescription`, `ProductThumbnail`, `ProductQuantity`, `ProductSize`, `ProductColor`, `PositiveVote`, `CategoryID`) VALUES
+(42, 'Lowe alpine Sirac 65L 男款登山露營背囊', 'The Sirac 65 is ideal for long backpacking trips and self-sufficient treks over difficult terrain.', '', 100, 'XL', 'Blacks', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -102,7 +104,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`UserID`, `Username`, `Email`, `Password`, `isAdmin`) VALUES
-(1, 'Shiro', '1@1.com', '12345678', 0),
+(1, 'Shirosss', '12@1.com', '12345678', 0),
 (2, 'Kuro', '2@1.com', '12345678', 1);
 
 --
