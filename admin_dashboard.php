@@ -65,6 +65,9 @@
         <label for="productColor">Product Color:</label>
         <input type="text" name="productColor"><br>
 
+        <label for="productPrice">Price:</label>
+        <input type="number" name="productPrice" required><br>
+
         <label for="categoryID">Category ID:</label>
         <input type="number" name="categoryID" required><br>
 

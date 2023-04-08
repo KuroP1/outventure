@@ -152,7 +152,22 @@
                             ?>
                         </div>
                         <div class="product-detail-info-price">
-                            <span class="product-detail-info-price-text">Price: $500 HKD</span>
+                            <span class="product-detail-info-price-text">
+                                Price: 
+                                <?php
+                                ini_set('display_errors', 1);
+                                error_reporting(E_ALL);
+                                require_once("../view_products.php");
+                                $products = viewProducts();
+                                if (count($products) > 0) {
+                                    foreach ($products as $product) {
+                                        if ($product["ProductName"] == $_GET["name"]) {
+                                            echo "$" . $product["ProductPrice"];
+                                        }
+                                    }
+                                }
+                                ?>
+                            </span>
                         </div>
                         <div class="product-detail-info-addtocart">
                             <button class="product-detail-info-addtocart-button">Add to Cart</button>

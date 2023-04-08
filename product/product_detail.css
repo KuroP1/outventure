@@ -299,7 +299,7 @@ img {
         height: 35px; 
         width: 35px;
         border: 1px solid #000000;
-        border-width: 5px 5px 0 0;
+        border-width: 4px 4px 0 0;
         transform: rotate(-135deg);
         cursor: pointer;
         transition-duration: .3s;
@@ -311,7 +311,7 @@ img {
         height: 35px; 
         width: 35px;
         border: 1px solid #555555;
-        border-width: 5px 5px 0 0;
+        border-width: 4px 4px 0 0;
         transform: rotate(-135deg);
     }
     
@@ -321,7 +321,7 @@ img {
         height: 35px; 
         width: 35px;
         border: 1px solid #000000;
-        border-width: 5px 5px 0 0;
+        border-width: 4px 4px 0 0;
         transform: rotate(45deg);
         cursor: pointer;
         transition-duration: .3s;
@@ -333,7 +333,7 @@ img {
         height: 35px; 
         width: 35px;
         border: 1px solid #555555;
-        border-width: 5px 5px 0 0;
+        border-width: 4px 4px 0 0;
         transform: rotate(45deg);
     }
 }
