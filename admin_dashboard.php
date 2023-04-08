@@ -80,7 +80,6 @@
 
     <h2>All</h2>
     <?php
-<<<<<<< Updated upstream
     ini_set('display_errors', 1);
     error_reporting(E_ALL);
     require("config/database.php");
@@ -93,21 +92,6 @@
             }
         }
     }
-=======
-    // ini_set('display_errors', 1);
-    // error_reporting(E_ALL);
-    // require("config/database.php");
-    // $viewSQL = "SELECT * FROM images ORDER BY ImageID";
-    // $res = mysqli_query($conn, $viewSQL);
-    // if (mysqli_num_rows($res) > 0) {
-    //     while ($images = mysqli_fetch_assoc($res)) {
-    //         if ($images["ProductName"] == $_GET["name"]) {
-    //             echo "<img src='" . $images['ImagePath'] . "' width='100px' height='100px'>";
-    //         }
-    
-    //     }
-    // }
->>>>>>> Stashed changes
     ?>
 
     <?php
