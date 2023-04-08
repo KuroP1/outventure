@@ -240,7 +240,7 @@
                                     </a>
                                 </div>
                                 <hr class='h-line3'>
-                                ";
+                                </div> ";
                             }
                         } else {
                             echo "<p>No products found.</p>";

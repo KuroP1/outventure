@@ -4,8 +4,6 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 require('config/database.php');
 
-print_r(count($_FILES["productImage"]["name"]));
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_FILES['productImage']) {
     // get the form input values
     $productName = $_POST['productName'];
