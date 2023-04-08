@@ -12,15 +12,19 @@
     <form action="purchase.php" method="post">
         <?php
         // Assuming you have a valid mysqli connection in the $conn variable
-        include 'config/database.php';
+        require_once 'config/database.php';
         $username = 'elvis';
         ini_set('display_errors', 1);
         error_reporting(E_ALL);
 
         $sql = "SELECT * FROM cart WHERE Username = '$username'";
-
         $result = mysqli_query($conn, $sql);
-
+        if (!$result) {
+            printf("Error: %s\n", mysqli_error($conn));
+            exit();
+        }
+        echo "The SQL query is: <pre>$sql</pre>";
+        echo "Number of rows: " . mysqli_num_rows($result);
         if (mysqli_num_rows($result) > 0) {
             echo "<table>";
             echo "<tr><th>Cart ID</th><th>Product Name</th><th>Product Thumbnail</th><th>Buy Quantity</th><th>Product Size</th><th>Product Color</th><th>Category Name</th><th>Sub Category Name</th><th>Username</th><th>Product Price</th></tr>";
@@ -42,7 +46,7 @@
         } else {
             echo "No cart items found for user '$username'";
         }
-
+        var_dump($username);
 
 
         ?>

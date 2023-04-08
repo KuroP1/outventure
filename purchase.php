@@ -38,6 +38,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $sqlDelete = "DELETE FROM cart WHERE CartID = $cartID";
             mysqli_query($conn, $sqlDelete);
         }
+        //add up all the total amounts  and display them where orderID= 1
+        $sql = "SELECT SUM(Amount) FROM Orders WHERE OrderID = 1";
+        $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_assoc($result);
+        $total = $row['SUM(Amount)'];
+        echo "Total Amount: $total";
+
+
+
 
         echo "Purchase successful!";
     } else {
