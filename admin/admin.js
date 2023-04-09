@@ -81,6 +81,7 @@ function toOrderHistory() {
   const productManageBtn = document.getElementById("product-manage-btn");
   const userManageBtn = document.getElementById("user-manage-btn");
   const userManageSection = document.getElementById("user-manage-section");
+  const productEditSection = document.getElementById("product-edit-section");
   const productManageSection = document.getElementById(
     "product-manage-section"
   );
@@ -92,4 +93,27 @@ function toOrderHistory() {
   orderHistorySection.style.width = "100%";
   userManageSection.style.width = "0%";
   productManageSection.style.width = "0%";
+  productEditSection.style.width = "0%";
+}
+
+function toProductEdit() {
+  const productEditSection = document.getElementById("product-edit-section");
+  const userManageSection = document.getElementById("user-manage-section");
+  const productManageSection = document.getElementById(
+    "product-manage-section"
+  );
+  const orderHistorySection = document.getElementById("order-history-section");
+  const dropdownContainer = document.getElementById("dropdown-container");
+  const orderHistoryBtn = document.getElementById("order-history-btn");
+  const productManageBtn = document.getElementById("product-manage-btn");
+  const userManageBtn = document.getElementById("user-manage-btn");
+  dropdownContainer.style.height = "0%";
+  productManageBtn.style.color = "#ffb800";
+  orderHistoryBtn.style.color = "white";
+  userManageBtn.style.color = "white";
+  productEditSection.style.width = "100%";
+  userManageSection.style.width = "0%";
+  productManageSection.style.width = "0%";
+  orderHistorySection.style.width = "0%";
+  console.log("toProductEdit");
 }
