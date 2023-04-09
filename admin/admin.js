@@ -40,6 +40,7 @@ function toggleActive() {
 }
 
 function toUserManage() {
+  const userEditSection = document.getElementById("user-edit-section");
   const dropdownContainer = document.getElementById("dropdown-container");
   const orderHistoryBtn = document.getElementById("order-history-btn");
   const productManageBtn = document.getElementById("product-manage-btn");
@@ -49,6 +50,7 @@ function toUserManage() {
     "product-manage-section"
   );
   const orderHistorySection = document.getElementById("order-history-section");
+  const productEditSection = document.getElementById("product-edit-section");
   dropdownContainer.style.height = "0%";
   userManageBtn.style.color = "#ffb800";
   orderHistoryBtn.style.color = "white";
@@ -56,9 +58,12 @@ function toUserManage() {
   userManageSection.style.width = "100%";
   productManageSection.style.width = "0%";
   orderHistorySection.style.width = "0%";
+  productEditSection.style.width = "0%";
+  userEditSection.style.width = "0%";
 }
 function toProductManage() {
   const dropdownContainer = document.getElementById("dropdown-container");
+  const userEditSection = document.getElementById("user-edit-section");
   const orderHistoryBtn = document.getElementById("order-history-btn");
   const productManageBtn = document.getElementById("product-manage-btn");
   const userManageBtn = document.getElementById("user-manage-btn");
@@ -67,6 +72,8 @@ function toProductManage() {
     "product-manage-section"
   );
   const orderHistorySection = document.getElementById("order-history-section");
+  const productEditSection = document.getElementById("product-edit-section");
+
   dropdownContainer.style.height = "0%";
   productManageBtn.style.color = "#ffb800";
   orderHistoryBtn.style.color = "white";
@@ -74,8 +81,11 @@ function toProductManage() {
   productManageSection.style.width = "100%";
   userManageSection.style.width = "0%";
   orderHistorySection.style.width = "0%";
+  productEditSection.style.width = "0%";
+  userEditSection.style.width = "0%";
 }
 function toOrderHistory() {
+  const userEditSection = document.getElementById("user-edit-section");
   const dropdownContainer = document.getElementById("dropdown-container");
   const orderHistoryBtn = document.getElementById("order-history-btn");
   const productManageBtn = document.getElementById("product-manage-btn");
@@ -94,9 +104,11 @@ function toOrderHistory() {
   userManageSection.style.width = "0%";
   productManageSection.style.width = "0%";
   productEditSection.style.width = "0%";
+  userEditSection.style.width = "0%";
 }
 
 function toProductEdit() {
+  const userEditSection = document.getElementById("user-edit-section");
   const productEditSection = document.getElementById("product-edit-section");
   const userManageSection = document.getElementById("user-manage-section");
   const productManageSection = document.getElementById(
@@ -112,6 +124,31 @@ function toProductEdit() {
   orderHistoryBtn.style.color = "white";
   userManageBtn.style.color = "white";
   productEditSection.style.width = "100%";
+  userManageSection.style.width = "0%";
+  productManageSection.style.width = "0%";
+  orderHistorySection.style.width = "0%";
+  userEditSection.style.width = "0%";
+  console.log("toProductEdit");
+}
+
+function toUserEdit() {
+  const userEditSection = document.getElementById("user-edit-section");
+  const productEditSection = document.getElementById("product-edit-section");
+  const userManageSection = document.getElementById("user-manage-section");
+  const productManageSection = document.getElementById(
+    "product-manage-section"
+  );
+  const orderHistorySection = document.getElementById("order-history-section");
+  const dropdownContainer = document.getElementById("dropdown-container");
+  const orderHistoryBtn = document.getElementById("order-history-btn");
+  const productManageBtn = document.getElementById("product-manage-btn");
+  const userManageBtn = document.getElementById("user-manage-btn");
+  userEditSection.style.width = "100%";
+  dropdownContainer.style.height = "0%";
+  productManageBtn.style.color = "#ffb800";
+  orderHistoryBtn.style.color = "white";
+  userManageBtn.style.color = "white";
+  productEditSection.style.width = "0%";
   userManageSection.style.width = "0%";
   productManageSection.style.width = "0%";
   orderHistorySection.style.width = "0%";
