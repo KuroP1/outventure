@@ -43,7 +43,11 @@ if (!isset($_SESSION["currentUser"])) {
                 </div>
                 <div class="sub-navbar-right">
                     <div class="search-bar">
-                        <input class="search-bar-input" placeholder="Search Product">
+                        <form action="../search.php" method="GET">
+                            <input class="search-bar-input" placeholder="Search Product" type"text" name="name"
+                                id="name">
+
+                        </form>
                         <button class="search-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 style="fill: rgba(255, 255, 255, 1);transform: msFilter;">
@@ -55,17 +59,14 @@ if (!isset($_SESSION["currentUser"])) {
                         </input>
                     </div>
                     <span class="sub-navbar-right-vline">|</span>
-                    <a class="cart_icon" href="/outventure/shopping_cart/shopping_cart.php"
-                        class="sub-navbar-middle-text">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"
-                            style="fill: rgba(255, 255, 255, 1);transform: msFilter;">
-                            <path
-                                d="M21.822 7.431A1 1 0 0 0 21 7H7.333L6.179 4.23A1.994 1.994 0 0 0 4.333 3H2v2h2.333l4.744 11.385A1 1 0 0 0 10 17h8c.417 0 .79-.259.937-.648l3-8a1 1 0 0 0-.115-.921zM17.307 15h-6.64l-2.5-6h11.39l-2.25 6z">
-                            </path>
-                            <circle cx="10.5" cy="19.5" r="1.5"></circle>
-                            <circle cx="17.5" cy="19.5" r="1.5"></circle>
-                        </svg>
-                    </a>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"
+                        style="fill: rgba(255, 255, 255, 1);transform: msFilter;">
+                        <path
+                            d="M21.822 7.431A1 1 0 0 0 21 7H7.333L6.179 4.23A1.994 1.994 0 0 0 4.333 3H2v2h2.333l4.744 11.385A1 1 0 0 0 10 17h8c.417 0 .79-.259.937-.648l3-8a1 1 0 0 0-.115-.921zM17.307 15h-6.64l-2.5-6h11.39l-2.25 6z">
+                        </path>
+                        <circle cx="10.5" cy="19.5" r="1.5"></circle>
+                        <circle cx="17.5" cy="19.5" r="1.5"></circle>
+                    </svg>
                 </div>
             </div>
         </div>
