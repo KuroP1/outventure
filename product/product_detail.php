@@ -1,4 +1,5 @@
 <?php
+session_start();
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 require_once("../view_products.php");
@@ -42,7 +43,7 @@ if (count($products) > 0) {
         <!-- NavBar -->
         <div class="sub-navbar">
             <div class="sub-navbar-container">
-                <a href="../index.html"><img class="sub-navbar-logo" src="../images/Logo2.png" alt="Logo" /></a>
+                <a href="../index.php"><img class="sub-navbar-logo" src="../images/Logo2.png" alt="Logo" /></a>
                 <div onclick="ShowMobileMainMenu()" class="main-burger-tag-container">
                     <svg class="burger-tag" xmlns="http://www.w3.org/2000/svg" width="35" height="35"
                         viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: msFilter;">
@@ -51,8 +52,15 @@ if (count($products) > 0) {
                 </div>
                 <div class="sub-navbar-middle">
                     <span class="sub-navbar-middle-text">Product</span>
-                    <span class="sub-navbar-middle-text">About Us</span>
-                    <span class="sub-navbar-middle-text" style="color: #FFC700;">Profile</span>
+                    <a href="/outventure/about_us/about_us.php" class="sub-navbar-middle-text">About Us</a>
+                    <a href="/outventure/profile/profile.php" class="sub-navbar-middle-text">Profile</a>
+                    <?php
+                    if (isset($_SESSION["currentUser"])) {
+                        echo '<a href="/outventure/authentication/logout.php" class="sub-navbar-middle-text">Logout</a>';
+                    } else {
+                        echo '<a href="/outventure/authentication/login.php" class="sub-navbar-middle-text">Login</a>';
+                    }
+                    ?>
                 </div>
                 <div class="sub-navbar-right">
                     <div class="search-bar">
@@ -64,7 +72,11 @@ if (count($products) > 0) {
                                 </path>
                             </svg>
                         </button>
-                        <input class="search-bar-input" placeholder="Search Product" />
+                        <form action="../search.php" method="GET">
+                            <input class="search-bar-input" placeholder="Search Product" type"text" name="name"
+                                id="name">
+
+                        </form>
                     </div>
                     <span class="sub-navbar-right-vline">|</span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"

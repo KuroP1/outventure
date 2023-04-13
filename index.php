@@ -1,8 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION["currentUser"])) {
-    header("Location: authentication/login.php");
-}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,11 +34,21 @@ if (!isset($_SESSION["currentUser"])) {
                     <a class="navItem" href="index.php">Product</a>
                     <a class="navItem" href="/outventure/about_us/about_us.php">About Us</a>
                     <a class="navItem" href="/outventure/profile/profile.php">Profile</a>
-                    <a class="navItem" href="index.php">Login</a>
+                    <?php
+                    if (isset($_SESSION["currentUser"])) {
+                        echo '<a href="/outventure/authentication/logout.php" class="sub-navbar-middle-text">Logout</a>';
+                    } else {
+                        echo '<a href="/outventure/authentication/login.php" class="sub-navbar-middle-text">Login</a>';
+                    }
+                    ?>
                 </div>
                 <div class="product">
                     <div class="search-bar">
-                        <input class="search-bar-input" placeholder="Search Product">
+                        <form action="search.php" method="GET">
+                            <input class="search-bar-input" placeholder="Search Product" type"text" name="name"
+                                id="name">
+
+                        </form>
                         <button class="search-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 style="fill: rgba(255, 255, 255, 1);transform: msFilter;">
@@ -69,7 +77,11 @@ if (!isset($_SESSION["currentUser"])) {
             </div>
             <div class="top-menu" id="top-menu">
                 <div class="search-bar-mobile">
-                    <input class="search-bar-input-mobile" placeholder="Search Product">
+
+                    <form action="../search.php" method="GET">
+                        <input class="search-bar-input" placeholder="Search Product" type"text" name="name" id="name">
+
+                    </form>
                     <button class="search-icon-mobile">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             style="fill: rgba(255, 255, 255, 1);transform: msFilter;">
@@ -83,7 +95,14 @@ if (!isset($_SESSION["currentUser"])) {
                 <a class="navItem" href="index.php">Product</a>
                 <a class="navItem" href="/outventure/about_us/about_us.php">About Us</a>
                 <a class="navItem" href="/outventure/profile/profile.php">Profile</a>
-                <a class="navItem" href="index.php">Login</a>
+                <?php
+                if (isset($_SESSION["currentUser"])) {
+                    echo '<a href="/outventure/authentication/logout.php" class="sub-navbar-middle-text">Logout</a>';
+                } else {
+                    echo '<a href="/outventure/authentication/login.php" class="sub-navbar-middle-text">Login</a>';
+                }
+                ?>
+
             </div>
         </div>
         <div class="banner-container">

@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION["currentUser"]) && !isset($_SESSION["isAdmin"])) {
-    header("Location: ../authentication/login.php");
+    header("Location: ../index.php");
 }
 ?>
 <!DOCTYPE html>
@@ -39,7 +39,13 @@ if (!isset($_SESSION["currentUser"]) && !isset($_SESSION["isAdmin"])) {
                     <a href="/outventure/" class="sub-navbar-middle-text">Product</a>
                     <a href="/outventure/about_us/about_us.php" class="sub-navbar-middle-text">About Us</a>
                     <a href="#" class="sub-navbar-middle-text" style="color: #FFC700;">Profile</a>
-                    <a href="#" class="sub-navbar-middle-text">Login</a>
+                    <?php
+                    if (isset($_SESSION["currentUser"])) {
+                        echo '<a href="/outventure/authentication/logout.php" class="sub-navbar-middle-text">Logout</a>';
+                    } else {
+                        echo '<a href="/outventure/authentication/login.php" class="sub-navbar-middle-text">Login</a>';
+                    }
+                    ?>
                 </div>
                 <div class=" sub-navbar-right">
                     <div class="search-bar">
@@ -77,14 +83,20 @@ if (!isset($_SESSION["currentUser"]) && !isset($_SESSION["isAdmin"])) {
             <a href="/outventure/" class="sub-navbar-middle-text">Product</a>
             <a href="/outventure/about_us/about_us.php" class="sub-navbar-middle-text">About Us</a>
             <a href="#" class="sub-navbar-middle-text" style="color: #FFC700;">Profile</a>
-            <a href="#" class="sub-navbar-middle-text">Login</a>
+            <?php
+            if (isset($_SESSION["currentUser"])) {
+                echo '<a href="/outventure/authentication/logout.php" class="sub-navbar-middle-text">Logout</a>';
+            } else {
+                echo '<a href="/outventure/authentication/login.php" class="sub-navbar-middle-text">Login</a>';
+            }
+            ?>
         </div>
         <!-- Profile Content -->
         <div class="main-container">
             <!-- Top Bar -->
             <div class="top-container">
                 <span class="profile-text">Profile</span>
-                <button class="logout-button"><a href="../logout.php">Log Out</a></button>
+                <button class="logout-button"><a href="/authentication/logout.php">Log Out</a></button>
             </div>
             <hr>
             <!-- Content -->
