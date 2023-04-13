@@ -347,27 +347,28 @@ var imageArray = <?php echo json_encode($imageArray); ?>;
 var currentImageArrayIndex = 0
 
 // set first image
-document.querySelector(".slide").src = "../" + imageArray[currentImageArrayIndex]
+document.querySelector(".slide").src = imageArray[currentImageArrayIndex]
 
 // handle image next or prev with passed action
 function handleImage(action) {
     if (action === "next") {
         if (currentImageArrayIndex < imageArray.length - 1) {
             currentImageArrayIndex++;
-            document.querySelector(".slide").src = "../" + imageArray[currentImageArrayIndex]
+            document.querySelector(".slide").src = imageArray[currentImageArrayIndex]
         } else {
             currentImageArrayIndex = 0;
-            document.querySelector(".slide").src = "../" + imageArray[currentImageArrayIndex]
+            document.querySelector(".slide").src = imageArray[currentImageArrayIndex]
         }
     } else {
         if (currentImageArrayIndex > 0) {
             currentImageArrayIndex--;
-            document.querySelector(".slide").src = "../" + imageArray[currentImageArrayIndex]
+            document.querySelector(".slide").src = imageArray[currentImageArrayIndex]
         } else {
             currentImageArrayIndex = imageArray.length - 1;
-            document.querySelector(".slide").src = "../" + imageArray[currentImageArrayIndex]
+            document.querySelector(".slide").src = imageArray[currentImageArrayIndex]
         }
     }
+}
 }
 
 // add event listener to next and prev button
