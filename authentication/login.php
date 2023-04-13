@@ -1,11 +1,5 @@
 <!-- check is login only not -->
-<?php
-session_start();
-// if already login then redirect to index
-if (isset($_SESSION["currentUser"])) {
-    header("Location: index.php");
-}
-?>
+
 <!-- html display part -->
 <!DOCTYPE html>
 <html lang="en">

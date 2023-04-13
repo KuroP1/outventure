@@ -1,4 +1,12 @@
 <?php
+
+//check session isAdmin is >0
+session_start();
+if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] <= 0) {
+    header("Location: ../index.php");
+    exit();
+}
+
 require_once '../config/database.php';
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
