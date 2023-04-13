@@ -11,6 +11,11 @@ error_reporting(E_ALL);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_SESSION["currentUser"]; // Retrieve the username from the session or other secure source
+    $dataFromJS = file_get_contents('php://input');
+    $data = json_decode($dataFromJS, true);
+
+    $address = $data['address'];
+    $paymentMethod = $data['payment'];
 
     // Get all cart items for the user
     $sql = "SELECT * FROM cart WHERE Username = '$username'";
@@ -21,10 +26,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         while ($cartRow = mysqli_fetch_assoc($result)) {
             $cartID = intval($cartRow['CartID']);
             $productName = $cartRow['ProductName'];
+            $productColor = $cartRow['ProductColor'];
+            $productSize = $cartRow['ProductSize'];
             $buyQuantity = intval($cartRow['BuyQuantity']);
             $productPrice = floatval($cartRow['ProductPrice']);
             $orderID = rand(0, 999999);
-            $paymentMethod = 'Cash';
+
+            var_dump($productColor);
+            var_dump($productSize);
+
             //check order id is unique
             $sqlCheck = "SELECT * FROM Orders WHERE OrderID = $orderID";
             $resultCheck = mysqli_query($conn, $sqlCheck);
@@ -41,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $currentDate = date('Y-m-d');
 
                 // Insert the order into the Orders table
-                $sqlInsert = "INSERT INTO Orders (OrderDate, OrderID, paymentMethod, orderStatus, Username, Amount, ProductName, BuyQuantity ) VALUES ('$currentDate', '$orderID', '$paymentMethod', '$orderStatus', '$username', $amount, '$productName', $buyQuantity)";
+                $sqlInsert = "INSERT INTO Orders (OrderDate, OrderID, paymentMethod, orderStatus, Username, Address, Amount, ProductName, BuyQuantity, ProductColor, ProductSize) VALUES ('$currentDate', '$orderID', '$paymentMethod', '$orderStatus', '$username', '$address', $amount, '$productName', $buyQuantity, '$productColor', '$productSize')";
                 mysqli_query($conn, $sqlInsert);
 
                 // Remove item from the cart
@@ -59,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $currentDate = date('Y-m-d');
 
                 // Insert the order into the Orders table
-                $sqlInsert = "INSERT INTO Orders (OrderDate, OrderID, paymentMethod, orderStatus, Username, Amount, ProductName, BuyQuantity ) VALUES ('$currentDate', '$orderID', '$paymentMethod', '$orderStatus', '$username', $amount, '$productName', $buyQuantity)";
+                $sqlInsert = "INSERT INTO Orders (OrderDate, OrderID, paymentMethod, orderStatus, Username, Address, Amount, ProductName, BuyQuantity, ProductColor, ProductSize) VALUES ('$currentDate', '$orderID', '$paymentMethod', '$orderStatus', '$username', '$address', $amount, '$productName', $buyQuantity, '$productColor', '$productSize')";
                 mysqli_query($conn, $sqlInsert);
 
                 // Remove item from the cart
@@ -69,18 +79,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
         //add up all the total amounts  and display them where orderID= 1
 
-        //select sum(amount) from orders where orderid = $orderID
-        $sql = "SELECT SUM(Amount) FROM Orders WHERE OrderID = $orderID";
+        // //select sum(amount) from orders where orderid = $orderID
+        // $sql = "SELECT SUM(Amount) FROM Orders WHERE OrderID = $orderID";
 
-        $result = mysqli_query($conn, $sql);
-        $row = mysqli_fetch_assoc($result);
-        $total = $row['SUM(Amount)'];
-        echo "Total Amount: $total";
+        // $result = mysqli_query($conn, $sql);
+        // $row = mysqli_fetch_assoc($result);
+        // $total = $row['SUM(Amount)'];
+        // echo "Total Amount: $total";
 
-
-
-
-        echo "Purchase successful!";
+        // echo "Purchase successful!";
     } else {
         echo "No cart items found";
     }

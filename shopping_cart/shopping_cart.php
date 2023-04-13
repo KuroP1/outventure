@@ -12,6 +12,7 @@ session_start();
     <title>Outventure</title>
     <link rel='stylesheet' href='../global.css'>
     <link rel='stylesheet' href='shopping_cart.css'>
+    <link rel='stylesheet' href='modal.css'>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css'>
     <link rel='preconnect' href='https://fonts.googleapis.com'>
     <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
@@ -311,19 +312,19 @@ session_start();
                                 <div class='title'>
                                     Block
                                 </div>
-                                <input class='location_block' type='text' name='address' id='address' placeholder='Address'>
+                                <input class='location_block' type='text' name='block' id='block' placeholder='Address'>
                             </div>
                             <div class='location_input_content'>
                                 <div class='title'>
                                     Floor
                                 </div>
-                                <input class='location_floor' type='text' name='address' id='address' placeholder='Address'>
+                                <input class='location_floor' type='text' name='floor' id='floor' placeholder='Address'>
                             </div>
                             <div class='location_input_content'>
                                 <div class='title'>
                                     Room
                                 </div>
-                                <input class='location_room' type='text' name='address' id='address' placeholder='Address'>
+                                <input class='location_room' type='text' name='room' id='room' placeholder='Address'>
                             </div>
                         </div>
                     </div>
@@ -334,23 +335,23 @@ session_start();
                 <div class='description'> Select your payment method</div>
                 <div class='container'>
                     <div class='row'>
-                        <button class='col payment'>
-                            <img width='80' src='../images/Shopping_Cart/alipay.png' alt='alipay' />
-                        </button>
-                        <button class='col payment'>
-                            <img width='80' src='../images/Shopping_Cart/cash-payment.png' alt='cash-payment' />
-                        </button>
-                    </div>
-                    <div class='row'>
-                        <button class='col payment'>
+                        <button onclick="SetPayment('fps')" class='col payment fps'>
                             <img width='70' src='../images/Shopping_Cart/fps.png' alt='fps' />
                         </button>
-                        <button class='col payment'>
+                        <button onclick="SetPayment('payme')" class='col payment'>
                             <img width='100' src='../images/Shopping_Cart/payme.png' alt='payme' />
                         </button>
                     </div>
+                    <div class='row'>
+                        <button onclick="SetPayment('alipay')" class='col payment'>
+                            <img width='80' src='../images/Shopping_Cart/alipay.png' alt='alipay' />
+                        </button>
+                        <button onclick="SetPayment('cash')" class='col payment'>
+                            <img width='80' src='../images/Shopping_Cart/cash-payment.png' alt='cash-payment' />
+                        </button>
+                    </div>
                 </div>
-                <button class='btn btn-primary' type='submit'>Confirm</button>
+                <button onclick="OpenPopup()" id="checkOutButton" class='btn btn-primary' type='submit'>Confirm</button>
             </div>
         </div>
     </div>
@@ -384,22 +385,108 @@ session_start();
             </div>
         </div>
     </div>
-
+    <!-- The Modal -->
+    <div id="checkOutModal" class="checkOutModal">
+        <!-- Modal content -->
+        <div class="checkOutModal-content">
+            <span class="close">&times;</span>
+            <div class="modal-detail">
+                <h3>Address Detail:</h3>
+                <span id="addressInfo1"></span>
+                <span id="addressInfo2"></span>
+                <span id="addressInfo3"></span>
+                <span id="addressInfo4"></span>
+                <span id="addressInfo5"></span>
+                <h3 id="paymentMethod"></h3>
+                <span id="message" class="message"></span>
+                <img id="paymentCode" src="" width="250">
+                <button onclick="Checkout()" id="checkOutButton" class='btn btn-primary' type='submit'>Check Out</button>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
 
 <script>
-    // get value handle
+    var payment = ""
+    var district = ""
     var address = ""
-    var district = document.getElementById("district").value
+    var block = ""
+    var floor = ""
+    var room = ""
 
-    console.log(district)
-    
+    // Get the modal
+    var modal = document.getElementById("checkOutModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("checkOutButton");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    function SetPayment(pay) {
+        if (pay === "alipay") {
+            payment = "Alipay"
+            document.getElementById("paymentMethod").innerHTML = "Payment: Alipay"
+            document.getElementById("paymentCode").src = "../images/Shopping_Cart/AlipayQRCode.png"
+            document.getElementById("message").innerHTML = "Scan the following QR Code to pay and click \"Check Out\". After checkout, please send us the payment verification by screen cap to +852 5577 8560."
+        } else if (pay === "cash") {
+            payment = "Cash On Delivery"
+            document.getElementById("paymentMethod").innerHTML = "Payment: Cash"
+            document.getElementById("paymentCode").src = ""
+            document.getElementById("message").innerHTML = "Click \"Check Out\" to order and pay for cash upon delivery"
+        } else if (pay === "fps") {
+            payment = "FPS"
+            document.getElementById("paymentMethod").innerHTML = "Payment: FPS"
+            document.getElementById("paymentCode").src = "../images/Shopping_Cart/FPSQRCode.png"
+            document.getElementById("message").innerHTML = "Scan the following QR Code to pay and click \"Check Out\". After checkout, please send us the payment verification by screen cap to +852 5577 8560."
+        } else if (pay === "payme") {
+            payment = "PayMe"
+            document.getElementById("paymentMethod").innerHTML = "Payment: PayMe"
+            document.getElementById("paymentCode").src = "../images/Shopping_Cart/PayMeQRCode.png"
+            document.getElementById("message").innerHTML = "Scan the following QR Code to pay and click \"Check Out\". After checkout, please send us the payment verification by screen cap to +852 5577 8560."
+        }
+    }
+
+    // function popup() {}
+    function OpenPopup() {
+        district = document.getElementById("district").value
+        address = document.getElementById("address").value
+        block = document.getElementById("block").value
+        floor = document.getElementById("floor").value
+        room = document.getElementById("room").value
+        if (district == "" || address == "" || block == "" || floor == "" || room == "") {
+            alert("Please fill in all the address information")
+        } else {
+            document.getElementById("addressInfo1").innerHTML = "District: " + district
+            document.getElementById("addressInfo2").innerHTML = "Address: " + address
+            document.getElementById("addressInfo3").innerHTML = "Block: " + block
+            document.getElementById("addressInfo4").innerHTML = "Floor: " + floor
+            document.getElementById("addressInfo5").innerHTML = "Room: " + room
+            modal.style.display = "block";
+        }
+    }
+
     // post value handle
     function Checkout() {
-        let data = {
+        var wholeAddress = district + "," + address + "," + block + "," + floor + "," + room
 
+        let data = {
+            address: wholeAddress,
+            payment: payment
         }
 
         fetch("purchase.php", {
@@ -409,9 +496,10 @@ session_start();
                 "Content-type": "application/json; charset=UTF-8"
             }
         }).then(
-            alert('Added To Cart!')
+            alert('Successful Payment!')
         )
 
-        window.location.href = "../shopping_cart/shopping_cart.php"
+        window.location.href = "../profile/profile.php"
+
     }
 </script>

@@ -220,6 +220,34 @@ a {
   align-items: center;
 }
 
+.card-first span {
+  font-weight: 700;
+  font-size: 16x;
+}
+
+.order-history-container {
+  background-color: white;
+  display: none;
+}
+
+.order-history-card {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border: 2px solid #eeeeee;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 738px;
+  padding: 50px 20px 50px 20px;
+  margin: 10px 0 10px 0;
+}
+
+.order-history-card-first {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 @media (min-width: 640px) {
   .main-container {
     width: 100%;
