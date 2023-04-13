@@ -1,9 +1,17 @@
 <?php
-require_once 'config/database.php';
+
+//check session isAdmin is >0
+session_start();
+if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] <= 0) {
+    header("Location: ../index.php");
+    exit();
+}
+
+require_once '../config/database.php';
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
-require_once('config/database.php');
-function deleteProduct($username, $conn)
+require_once('../config/database.php');
+function deleteUser($username, $conn)
 {
     $deleteUserSQL = "DELETE FROM Users WHERE Username = ?";
     $stmt = $conn->prepare($deleteUserSQL);
@@ -13,10 +21,10 @@ function deleteProduct($username, $conn)
 
 if (isset($_GET['name']) && !empty($_GET['name'])) {
     $usernametemp = $_GET['name'];
-    deleteProduct($usernametemp, $conn);
+    deleteUser($usernametemp, $conn);
 
     // Redirect back to the admin dashboard or another page
-    header("Location: admin_dashboard.php");
+    header("Location: user.php");
     exit();
 } else {
     error_log("Error: Invalid product name.");

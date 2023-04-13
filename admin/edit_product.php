@@ -24,7 +24,6 @@ if (isset($_GET['id'])) {
         $productPrice = $_POST['productPrice'];
 
         if (empty($productName) === true || empty($productSize) === true || empty($productColor) === true) {
-            var_dump($productName);
             echo "<script>
             alert('Fill cannot be empty.');
             window.location.href='edit_product.php?id=$_GET[id]';
@@ -194,27 +193,27 @@ if (isset($_GET['id'])) {
                                 <div class="col-3 pt-3">
                                     <div class='field'>
                                         <b>Name:</b>
-                                        <input class='name-edit-input' type="text" name="productName" value="<?php echo $product['ProductName']; ?>" id="productName">
+                                        <input class='name-edit-input' type="text" name="productName" value="<?php echo $product['ProductName']; ?>" id="productName" require>
                                         </input>
                                     </div>
                                 </div>
                                 <div class="col-3 pt-3">
                                     <div class='field'>
                                         <b>Price:</b>
-                                        <input class='name-edit-input' type="number" name="productPrice" value="<?php echo $product['ProductPrice']; ?>" id="productQuantity" min="1">
+                                        <input class='name-edit-input' type="number" name="productPrice" value="<?php echo $product['ProductPrice']; ?>" id="productQuantity" min="1" require>
                                         </input>
                                     </div>
                                 </div>
                                 <div class="col-3 pt-3">
                                     <div class='field'>
                                         <b>Stock:</b>
-                                        <input class='name-edit-input' type="number" name="productQuantity" value="<?php echo $product['ProductQuantity']; ?>" id="productQuantity" min="1">
+                                        <input class='name-edit-input' type="number" name="productQuantity" value="<?php echo $product['ProductQuantity']; ?>" id="productQuantity" min="1" require>
                                         </input>
                                     </div>
                                 </div>
                                 <div class="col-3 edit-btn-container">
                                     <label class="edit-btn">
-                                        <input id="upload_img" style="display:none;" type="file" name="productImage[]" multiple>
+                                        <input id="upload_img" style="display:none;" type="file" name="productImage[]" multiple require>
                                         <div id="file-upload-filename">
                                             <span>Upload Image</span>
                                             <svg class='mb-1' width=" 18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -228,13 +227,13 @@ if (isset($_GET['id'])) {
                                 <div class='col-12'>
                                     <div class='field'>
                                         <b>Description: Type \\n when you want to start a new line</b>
-                                        <textarea class='name-edit-inputarea' type="text" id="productDescription" name="productDescription" "><?php echo $product['ProductDescription']; ?> </textarea>
+                                        <textarea class='name-edit-inputarea' type="text" id="productDescription" name="productDescription" required><?php echo $product['ProductDescription']; ?> </textarea>
                                     </div>
                                 </div>
                                 <div class=" col-6">
                                     <div class='field'>
                                         <b>Size: Type , when input more than one size (e.g. S, M)</b>
-                                        <input class='name-edit-input' type="text" id="size" name="productSize" value="<?php echo $product['ProductSize']; ?>"  placeholder="Size">
+                                        <input class='name-edit-input' type="text" id="size" name="productSize" value="<?php echo $product['ProductSize']; ?>"  required>
                                         </input>
                                     </div>
                                     <div class='field'>
@@ -262,7 +261,7 @@ if (isset($_GET['id'])) {
                                 <div class="col-6">
                                     <div class='field'>
                                         <b>Color: Type , when input more than one color (e.g. Red, Yellow)</b> 
-                                        <input class='name-edit-input' type="category" name="productColor" value="<?php echo $product['ProductColor']; ?>" id="category" placeholder="Category">
+                                        <input class='name-edit-input' type="category" name="productColor" value="<?php echo $product['ProductColor']; ?>" id="category" placeholder="Category" required>
                                         </input>
                                     </div>
                                     <div class='field'>

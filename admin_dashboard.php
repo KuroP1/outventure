@@ -161,10 +161,10 @@
         echo "<table>";
         //order table have OrderDate OrderID paymentMethod orderStatus Username Amount ProductName BuyQuantity 
     
-        echo "<tr><th>OrderID</th><th>ProductName</th><th>BuyQuantity</th><th>Amount</th><th>Username</th><th>OrderStatus</th></th><th>OrderDate</th><th>Action</th></tr>";
+        echo "<tr><th>OrderID</th><th>ProductName</th><th>BuyQuantity</th><th>Amount</th><th>Username</th><th>OrderStatus</th></th><th>OrderDate</th><th>Action</th><th>Delete</th></tr>";
 
         while ($orders = mysqli_fetch_assoc($resOrder)) {
-            echo "<tr><td>" . $orders['OrderID'] . "</td><td>" . $orders['ProductNames'] . "</td><td>" . $orders['BuyQuantities'] . "</td><td>" . $orders['TotalAmount'] . "</td><td>" . $orders['Username'] . "</td><td>" . $orders['orderStatus'] . "</td><td>" . $orders['OrderDate'] . "</td><td><a href='edit_order.php?id=" . $orders["OrderID"] . "'>Edit</a></td></tr>";
+            echo "<tr><td>" . $orders['OrderID'] . "</td><td>" . $orders['ProductNames'] . "</td><td>" . $orders['BuyQuantities'] . "</td><td>" . $orders['TotalAmount'] . "</td><td>" . $orders['Username'] . "</td><td>" . $orders['orderStatus'] . "</td><td>" . $orders['OrderDate'] . "</td><td><a href='edit_order.php?id=" . $orders["OrderID"] . "'>Edit</a></td><td><a href='delete_order.php?id=" . $orders["OrderID"] . "'>Delete</a></td></tr>";
         }
         echo "</table>";
     } else {

@@ -1,11 +1,5 @@
 <!-- check is login only not -->
-<?php
-session_start();
-// if already login then redirect to index
-if (isset($_SESSION["currentUser"])) {
-    header("Location: index.php");
-}
-?>
+
 <!-- html display part -->
 <!DOCTYPE html>
 <html lang="en">
@@ -52,12 +46,14 @@ if (isset($_SESSION["currentUser"])) {
                     //if yes then redirect to admin dashboard
                     if ($checkAdminRow = mysqli_fetch_assoc($checkAdminResult)) {
                         session_start();
-                        $_SESSION["Admin"] = $row['Username'];
-                        header("Location: ../admin_dashboard.php");
+                        $_SESSION["currentUser"] = $row['Username'];
+                        $_SESSION["isAdmin"] = $row['isAdmin'];
+                        header("Location: ../profile/profile.php");
                         die();
                     }
                     session_start();
                     $_SESSION["currentUser"] = $row['Username'];
+                    $_SESSION["isAdmin"] = $row['isAdmin'];
                     header("Location: ../profile/profile.php");
                     die();
                 } else {
@@ -74,13 +70,15 @@ if (isset($_SESSION["currentUser"])) {
                     //if yes then redirect to admin dashboard
                     if ($checkAdminRow = mysqli_fetch_assoc($checkAdminResult)) {
                         session_start();
-                        $_SESSION["Admin"] = $row['Username'];
-                        header("Location: ../admin_dashboard.php");
+                        $_SESSION["currentUser"] = $row['Username'];
+                        $_SESSION["isAdmin"] = $row['isAdmin'];
+                        header("Location: ../profile/profile.php");
                         die();
                     }
 
                     session_start();
                     $_SESSION["currentUser"] = $row['Username'];
+                    $_SESSION["isAdmin"] = $row['isAdmin'];
                     header("Location: ../profile/profile.php");
                     die();
                 } else {
