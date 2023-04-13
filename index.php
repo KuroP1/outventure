@@ -172,7 +172,7 @@ session_start();
                                         <div class='col-3'>
                                             <div class='product-card'>
                                                 <div class='product-image-container'>
-                                                    <a href=''><img class='product-image' src='$imagePath' alt='Product' /></a>
+                                                    <a href='/outventure/product/product_detail.php?name=". $product["ProductName"] ."'><img class='product-image' src='$imagePath' alt='Product' /></a>
                                                 </div>
                                                 <div class='product-name'> " . $product["ProductName"] . "</div>
                                                 <div class='product-category'>" . $product["CategoryName"] . " > " . $product["SubCategoryName"] . "</div>
