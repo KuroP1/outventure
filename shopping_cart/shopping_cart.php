@@ -12,6 +12,7 @@ session_start();
     <title>Outventure</title>
     <link rel='stylesheet' href='../global.css'>
     <link rel='stylesheet' href='shopping_cart.css'>
+    <link rel='stylesheet' href='modal.css'>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css'>
     <link rel='preconnect' href='https://fonts.googleapis.com'>
     <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
@@ -350,7 +351,7 @@ session_start();
                         </button>
                     </div>
                 </div>
-                <button onclick="Checkout()" class='btn btn-primary' type='submit'>Confirm</button>
+                <button onclick="OpenPopup()" id="checkOutButton" class='btn btn-primary' type='submit'>Confirm</button>
             </div>
         </div>
     </div>
@@ -384,56 +385,121 @@ session_start();
             </div>
         </div>
     </div>
-
+    <!-- The Modal -->
+    <div id="checkOutModal" class="checkOutModal">
+        <!-- Modal content -->
+        <div class="checkOutModal-content">
+            <span class="close">&times;</span>
+            <div class="modal-detail">
+                <h3>Address Detail:</h3>
+                <span id="addressInfo1"></span>
+                <span id="addressInfo2"></span>
+                <span id="addressInfo3"></span>
+                <span id="addressInfo4"></span>
+                <span id="addressInfo5"></span>
+                <h3 id="paymentMethod"></h3>
+                <span id="message" class="message"></span>
+                <img id="paymentCode" src="" width="250">
+                <button onclick="Checkout()" id="checkOutButton" class='btn btn-primary' type='submit'>Check Out</button>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
 
 <script>
     var payment = ""
+    var district = ""
+    var address = ""
+    var block = ""
+    var floor = ""
+    var room = ""
+
+    // Get the modal
+    var modal = document.getElementById("checkOutModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("checkOutButton");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
 
     function SetPayment(pay) {
         if (pay === "alipay") {
             payment = "Alipay"
+            document.getElementById("paymentMethod").innerHTML = "Payment: Alipay"
+            document.getElementById("paymentCode").src = "../images/Shopping_Cart/AlipayQRCode.png"
+            document.getElementById("message").innerHTML = "Scan the following QR Code to pay and click \"Check Out\". After checkout, please send us the payment verification by screen cap to +852 5577 8560."
         } else if (pay === "cash") {
             payment = "Cash On Delivery"
+            document.getElementById("paymentMethod").innerHTML = "Payment: Cash"
+            document.getElementById("paymentCode").src = ""
+            document.getElementById("message").innerHTML = "Click \"Check Out\" to order and pay for cash upon delivery"
         } else if (pay === "fps") {
             payment = "FPS"
+            document.getElementById("paymentMethod").innerHTML = "Payment: FPS"
+            document.getElementById("paymentCode").src = "../images/Shopping_Cart/FPSQRCode.png"
+            document.getElementById("message").innerHTML = "Scan the following QR Code to pay and click \"Check Out\". After checkout, please send us the payment verification by screen cap to +852 5577 8560."
         } else if (pay === "payme") {
             payment = "PayMe"
+            document.getElementById("paymentMethod").innerHTML = "Payment: PayMe"
+            document.getElementById("paymentCode").src = "../images/Shopping_Cart/PayMeQRCode.png"
+            document.getElementById("message").innerHTML = "Scan the following QR Code to pay and click \"Check Out\". After checkout, please send us the payment verification by screen cap to +852 5577 8560."
+        }
+    }
+
+    // function popup() {}
+    function OpenPopup() {
+        district = document.getElementById("district").value
+        address = document.getElementById("address").value
+        block = document.getElementById("block").value
+        floor = document.getElementById("floor").value
+        room = document.getElementById("room").value
+        if (district == "" || address == "" || block == "" || floor == "" || room == "") {
+            alert("Please fill in all the address information")
+        } else {
+            document.getElementById("addressInfo1").innerHTML = "District: " + district
+            document.getElementById("addressInfo2").innerHTML = "Address: " + address
+            document.getElementById("addressInfo3").innerHTML = "Block: " + block
+            document.getElementById("addressInfo4").innerHTML = "Floor: " + floor
+            document.getElementById("addressInfo5").innerHTML = "Room: " + room
+            modal.style.display = "block";
         }
     }
 
     // post value handle
     function Checkout() {
-        var district = document.getElementById("district").value
-        var address = document.getElementById("address").value
-        var block = document.getElementById("block").value
-        var floor = document.getElementById("floor").value
-        var room = document.getElementById("room").value
+        var wholeAddress = district + "," + address + "," + block + "," + floor + "," + room
 
-        if (district === "" || address === "" || block === "" || floor === "" || room === "" || payment === "") {
-            alert("Please fill in all the information!")
-            return
-        } else {
-            var wholeAddress = district + "," + address + "," + block + "," + floor + "," + room
-
-            let data = {
-                address: wholeAddress,
-                payment: payment
-            }
-
-            fetch("purchase.php", {
-                method: "POST",
-                body: JSON.stringify(data),
-                headers: {
-                    "Content-type": "application/json; charset=UTF-8"
-                }
-            }).then(
-                alert('Successful Payment!')
-            )
-
-            window.location.href = "../profile/profile.php"
+        let data = {
+            address: wholeAddress,
+            payment: payment
         }
+
+        fetch("purchase.php", {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        }).then(
+            alert('Successful Payment!')
+        )
+
+        window.location.href = "../profile/profile.php"
+
     }
 </script>
