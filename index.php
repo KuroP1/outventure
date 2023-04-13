@@ -178,11 +178,10 @@ session_start();
                                                 <div class='product-category'>" . $product["CategoryName"] . " > " . $product["SubCategoryName"] . "</div>
                                                 <div class='product-price'>$" . $product["ProductPrice"] . "</div>
                                                 <div class='product-star-rating'>
-                            
+                                                    " . "Like: " . $product["PositiveVote"] . "
                                                 </div>
                                                 <div class='botton-section'>
-                                                    <a href=''>Buy Now</a>
-                                                    <a href=''>View More</a>
+                                                    <a href='/outventure/product/product_detail.php?name=". $product["ProductName"] ."'>View More</a>
                                                 </div>
                                             </div>
                                         </div>
