@@ -1,3 +1,109 @@
+<?php
+// include the database connection code here
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+require('../config/database.php');
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_FILES['productImage']) {
+    // get the form input values
+    $productName = $_POST['productName'];
+    $productDescription = $_POST['productDescription'];
+    $productQuantity = $_POST['productQuantity'];
+    $productSize = $_POST['productSize'];
+    $productColor = $_POST['productColor'];
+    $category = $_POST['category'];
+    $subCategory = $_POST['subCategory'];
+    $productPrice = $_POST['productPrice'];
+
+    require_once '../config/database.php';
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+
+    //add a checking function if product is already exist
+    $productfindquery = "SELECT * FROM Products WHERE ProductName=?";
+    $productfindstmt = mysqli_stmt_init($conn);
+    if (mysqli_stmt_prepare($productfindstmt, $productfindquery)) {
+        mysqli_stmt_bind_param($productfindstmt, "s", $productName);
+        mysqli_stmt_execute($productfindstmt);
+        $productfindresult = mysqli_stmt_get_result($productfindstmt);
+        if ($productfindresult->num_rows > 0) {
+            echo "<div class='alert alert-danger'>Product is already exist.</div>";
+        } else {
+            //add a checking function if categoryID is valid, if valid then insert the product
+            $findCategoryquery = "SELECT * FROM Categories WHERE CategoryName=?";
+            $findCategorystmt = mysqli_stmt_init($conn);
+            if (mysqli_stmt_prepare($findCategorystmt, $findCategoryquery)) {
+                mysqli_stmt_bind_param($findCategorystmt, "i", $category);
+                mysqli_stmt_execute($findCategorystmt);
+                $findCategoryresult = mysqli_stmt_get_result($findCategorystmt);
+                if ($findCategoryresult->num_rows > 0) {
+                    // multiple images
+                    $countImg = count($_FILES["productImage"]["name"]);
+                    for ($i = 0; $countImg; $i++) {
+                        $tmpname = $_FILES['productImage']['tmp_name'][$i];
+                        $error = $_FILES['productImage']['error'][$i];
+                        if ($error === 0) {
+                            // count how many files are uploaded
+                            $img_name = $_FILES['productImage']['name'][$i];
+                            $img_size = $_FILES['productImage']['size'][$i];
+
+                            if ($img_size > 1250000) {
+                                $em = "Sorry, your file is too large.";
+                                header("Location: admindashboard.php?error=$em");
+                            } else {
+                                $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
+                                $img_ex_lc = strtolower($img_ex);
+
+                                $allowed_exs = array("jpg", "jpeg", "png");
+
+                                if (in_array($img_ex_lc, $allowed_exs)) {
+                                    $new_img_name = uniqid("IMG-", true) . '.' . $img_ex_lc;
+                                    $image_upload_path = '../uploads/' . $new_img_name;
+                                    move_uploaded_file($tmpname, $image_upload_path);
+
+                                    // Insert into database
+                                    $sql = "INSERT INTO Products (ProductName, ProductDescription, ProductPrice, ProductQuantity, ProductSize, ProductColor, CategoryName, SubCategoryName) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                                    $sql2 = "INSERT INTO Images (ImagePath, ProductName) VALUES (?, ?)";
+                                    $stmt = mysqli_stmt_init($conn);
+                                    $stmt2 = mysqli_stmt_init($conn);
+                                    if (!mysqli_stmt_prepare($stmt, $sql) || !mysqli_stmt_prepare($stmt2, $sql2)) {
+                                        echo "SQL statement failed!";
+                                    } else {
+
+                                        if ($i == 0) {
+                                            mysqli_stmt_bind_param($stmt, "ssiissss", $productName, $productDescription, $productPrice, $productQuantity, $productSize, $productColor, $category, $subCategory);
+                                            mysqli_stmt_execute($stmt);
+                                        }
+
+                                        mysqli_stmt_bind_param($stmt2, "ss", $image_upload_path, $productName);
+                                        mysqli_stmt_execute($stmt2);
+
+                                        header("Location: product.php");
+                                    }
+                                } else {
+                                    $em = "You can't upload files of this type";
+                                    header("Location: product.php?error=$em");
+                                }
+                            }
+                        } else {
+                            die("Something went wrong");
+                        }
+                    }
+                } else {
+                    echo "<div class='alert alert-danger'>Category ID is not valid.</div>";
+                }
+            } else {
+                die("Something went wrong");
+            }
+        }
+    }
+}
+
+//close the database connection
+mysqli_close($conn);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,21 +148,28 @@
                     <div class="product-edit-content">
                         <div class="container">
                             <div class="row">
-                                <div class="col-4 pt-3">
+                                <div class="col-3 pt-3">
                                     <div class='field'>
                                         <b>Name:</b>
-                                        <input class='name-edit-input' type="text" name="productName" value="<?php echo $product['ProductName']; ?>" id="productName">
+                                        <input class='name-edit-input' type="text" name="productName" id="productName" required>
                                         </input>
                                     </div>
                                 </div>
-                                <div class="col-4 pt-3">
+                                <div class="col-3 pt-3">
+                                    <div class='field'>
+                                        <b>Price:</b>
+                                        <input class='name-edit-input' type="number" name="productPrice" min="1" required>
+                                        </input>
+                                    </div>
+                                </div>
+                                <div class="col-3 pt-3">
                                     <div class='field'>
                                         <b>Stock:</b>
-                                        <input class='name-edit-input' type="number" name="productQuantity" value="<?php echo $product['ProductQuantity']; ?>" id="productQuantity" min="1" max="999">
+                                        <input class='name-edit-input' type="number" name="productQuantity" min="1" required>
                                         </input>
                                     </div>
                                 </div>
-                                <div class="col-4 edit-btn-container">
+                                <div class="col-3 edit-btn-container">
                                     <label class="edit-btn">
                                         <input id="upload_img" style="display:none;" type="file" name="productImage[]" multiple>
                                         <div id="file-upload-filename">
@@ -72,18 +185,19 @@
                                 <div class='col-12'>
                                     <div class='field'>
                                         <b>Description: Type \\n when you want to start a new line</b>
-                                        <textarea class='name-edit-inputarea' type="text" id="productDescription" name="productDescription" "><?php echo $product['ProductDescription']; ?> </textarea>
+                                        <textarea class='name-edit-inputarea' type="text" id="productDescription" name="productDescription"></textarea>
                                     </div>
                                 </div>
                                 <div class=" col-6">
                                     <div class='field'>
                                         <b>Size: Type , when input more than one size (e.g. S, M)</b>
-                                        <input class='name-edit-input' type="text" id="size" name="productSize" value="<?php echo $product['ProductSize']; ?>"  placeholder="Size">
+                                        <input class='name-edit-input' type="text" id="size" name="productSize">
                                         </input>
                                     </div>
                                     <div class='field'>
-                                        <b>Category</b> 
+                                        <b>Category</b>
                                         <select class='name-edit-input' id="category" type="select" name="category" onchange="myFunction()" required>
+                                            <option value=""></option>
                                             <?php
                                             ini_set('display_errors', 1);
                                             error_reporting(E_ALL);
@@ -92,11 +206,7 @@
                                             $res = mysqli_query($conn, $viewSQL);
                                             if (mysqli_num_rows($res) > 0) {
                                                 while ($categories = mysqli_fetch_assoc($res)) {
-                                                    if ($categories['CategoryName'] == $product['CategoryName']) {
-                                                        echo "<option value='" . $categories['CategoryName'] . "' selected>" . $categories['CategoryName'] . "</option>";
-                                                    } else {
-                                                        echo "<option value='" . $categories['CategoryName'] . "'>" . $categories['CategoryName'] . "</option>";
-                                                    }
+                                                    echo "<option value='" . $categories['CategoryName'] . "'>" . $categories['CategoryName'] . "</option>";
                                                 }
                                             }
                                             ?>
@@ -105,65 +215,37 @@
                                 </div>
                                 <div class="col-6">
                                     <div class='field'>
-                                        <b>Color: Type , when input more than one color (e.g. Red, Yellow)</b> 
-                                        <input class='name-edit-input' type="category" name="productColor" value="<?php echo $product['ProductColor']; ?>" id="category" placeholder="Category">
+                                        <b>Color: Type , when input more than one color (e.g. Red, Yellow)</b>
+                                        <input class='name-edit-input' type="category" name="productColor">
                                         </input>
                                     </div>
                                     <div class='field'>
-                                        <b>Sub-Category</b> 
-                                        <select class='name-edit-input'  id="subCategory" type="select" name="subCategory" required>
-                                        <?php
-                                        ini_set('display_errors', 1);
-                                        error_reporting(E_ALL);
-                                        require("../config/database.php");
-                                        $viewSQL = "SELECT * FROM subcategories";
-                                        $res = mysqli_query($conn, $viewSQL);
-                                        $subCategoriesArray = array();
+                                        <b>Sub-Category</b>
+                                        <select class='name-edit-input' id="subCategory" type="select" name="subCategory" required>
+                                            <?php
+                                            ini_set('display_errors', 1);
+                                            error_reporting(E_ALL);
+                                            require("../config/database.php");
+                                            $viewSQL = "SELECT * FROM subcategories";
+                                            $res = mysqli_query($conn, $viewSQL);
+                                            $subCategoriesArray = array();
 
-                                        // print out categories select value
-                                        if (mysqli_num_rows($res) > 0) {
-                                            while ($subCategories = mysqli_fetch_assoc($res)) {
-                                                // display subcategories based on category select value
-                                                array_push($subCategoriesArray, $subCategories['SubCategoryName'], $subCategories['CategoryName']);
+                                            // print out categories select value
+                                            if (mysqli_num_rows($res) > 0) {
+                                                while ($subCategories = mysqli_fetch_assoc($res)) {
+                                                    // display subcategories based on category select value
+                                                    array_push($subCategoriesArray, $subCategories['SubCategoryName'], $subCategories['CategoryName']);
+                                                }
                                             }
-                                        }
-                                        ?>
+                                            ?>
                                         </select>
                                     </div>
                                 </div>
                             </div>
                             <div class='button-section'>
-                                <button class='update-btn'>
-                                    Update
-                                    <svg class='mb-1' width="15" height="15" 0 viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <g clip-path="url(#clip0_185_1067)">
-                                            <path d="M8.47266 17.5251C5.73932 17.5251 3.27266 16.1084 1.80599 13.7001V17.5251H0.472656V11.1501H6.47266V12.5667H2.67266C3.87266 14.7626 6.00599 16.1084 8.47266 16.1084C12.1393 16.1084 15.1393 12.9209 15.1393 9.02505H16.4727C16.4727 13.7001 12.8727 17.5251 8.47266 17.5251ZM1.80599 9.02505H0.472656C0.472656 4.35005 4.07266 0.525055 8.47266 0.525055C11.206 0.525055 13.6727 1.94172 15.1393 4.35005V0.525055H16.4727V6.90005H10.4727V5.48339H14.2727C13.0727 3.28755 10.9393 1.94172 8.47266 1.94172C4.80599 1.94172 1.80599 5.12922 1.80599 9.02505Z" fill="white" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_185_1067">
-                                                <rect width="16" height="17" fill="white" transform="translate(0.472656 0.525055)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
+                                <button class='update-btn' type="submit">
+                                    Add Product
                                 </button>
-
-                                <a href="/outventuire<?php echo $product['ProductName']; ?>" onclick='toProductManage()'>
-                                    <button class='delete-btn'>
-                                        Delete
-                                        <svg class='mb-1' width="18" height="18" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <g clip-path="url(#clip0_185_1073)">
-                                                <path d="M8.7313 16.2285C8.54366 16.2485 8.37559 16.1115 8.3558 15.9225L7.74409 10.0722C7.72437 9.88334 7.86044 9.71405 8.04809 9.69419L8.3878 9.65819C8.57544 9.63834 8.74359 9.77534 8.7633 9.96419L9.37501 15.8146C9.3948 16.0035 9.25873 16.1727 9.07109 16.1926L8.7313 16.2285Z" fill="white" />
-                                                <path d="M11.8059 16.1926C11.6183 16.1727 11.4822 16.0035 11.5019 15.8146L12.1136 9.96419C12.1334 9.77534 12.3015 9.63834 12.4891 9.65819L12.8288 9.69419C13.0165 9.71405 13.1526 9.88334 13.1328 10.0722L12.5211 15.9225C12.5014 16.1115 12.3333 16.2485 12.1456 16.2285L11.8059 16.1926Z" fill="white" />
-                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M8.78394 0.734131C8.37401 0.734131 8.00344 0.980095 7.84194 1.35945L7.08333 3.14154H3.77661C3.02194 3.14154 2.41016 3.75745 2.41016 4.5172V6.23677C2.41016 6.93787 2.93111 7.51649 3.60457 7.60163L5.71683 18.7526C5.7807 19.0741 6.06111 19.3056 6.38679 19.3056H14.8035C15.1417 19.3056 15.429 19.0565 15.4792 18.7198L17.0149 7.58813C17.6468 7.46713 18.1244 6.9081 18.1244 6.23677V4.5172C18.1244 3.75745 17.5127 3.14154 16.758 3.14154H13.4502L12.6916 1.35945C12.5301 0.980095 12.1596 0.734131 11.7496 0.734131H8.78394ZM11.9635 3.14154L11.7018 2.52667C11.5942 2.27377 11.3471 2.1098 11.0738 2.1098H9.45973C9.18644 2.1098 8.93944 2.27377 8.83173 2.52667L8.57001 3.14154H11.9635ZM15.6026 7.91385C15.6264 7.74185 15.4926 7.58849 15.3189 7.58892L5.34894 7.61163C5.17023 7.61206 5.03576 7.77456 5.06881 7.9502L6.83734 17.3477C6.90088 17.6853 7.19576 17.9299 7.5393 17.9299H13.5929C13.9496 17.9299 14.2516 17.6668 14.3005 17.3136L15.6026 7.91385ZM16.0747 6.23677C16.4521 6.23677 16.758 5.92882 16.758 5.54894V5.20503C16.758 4.82515 16.4521 4.5172 16.0747 4.5172H4.45985C4.08251 4.5172 3.77661 4.82515 3.77661 5.20503V5.54894C3.77661 5.92882 4.08251 6.23677 4.45984 6.23677H16.0747Z" fill="white" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_185_1073">
-                                                    <rect width="20" height="20" fill="white" transform="translate(0.267578 0.0198364)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                    </button>
-                                </a>
                             </div>
                         </div>
                     </div>
@@ -194,16 +276,9 @@
 </html>
 
 <script>
-    // set default textarea value for description
     var fullCategoriesArray = <?php echo json_encode($subCategoriesArray); ?>;
     var categoriesArray = [];
     var subCategoriesArray = [];
-
-    console.log(categoriesArray)
-    console.log(subCategoriesArray)
-
-    var currentCate = <?php echo json_encode($product['CategoryName']); ?>;
-    var currentSubCate = <?php echo json_encode($product['SubCategoryName']); ?>;
 
     for (var i = 0; i < fullCategoriesArray.length; i++) {
         if (i % 2 == 0) {
@@ -234,40 +309,18 @@
         }
     }
 
-    function setDefaultSubCategory() {
-        var selectElement = document.getElementById('subCategory');
-        while (selectElement.options.length > 0) {
-            selectElement.remove(0);
-        }
-
-        for (var i = 0; i < categoriesArray.length; i++) {
-            if (currentCate == categoriesArray[i]) {
-                // create option for subcategory
-                var mySelect = document.getElementById('subCategory'),
-                    newOption = document.createElement('option');
-                newOption.value = subCategoriesArray[i];
-                newOption.innerHTML = subCategoriesArray[i];
-                mySelect.appendChild(newOption);
-            }
-        }
-
-        document.getElementById("subCategory").value = currentSubCate;
-    }
-
-    setDefaultSubCategory();
-
     // image upload handling
     var input = document.getElementById('upload_img');
-    var infoArea = document.getElementById( 'file-upload-filename' );
+    var infoArea = document.getElementById('file-upload-filename');
 
     input.addEventListener('change', showFileName);
 
     function showFileName(event) {
         var input = event.srcElement;
-        
+
         if (input.files.length === 1) {
             var fileName = input.files[0].name;
-        
+
             infoArea.textContent = 'File name: ' + fileName;
         } else {
             infoArea.textContent = input.files.length + " files added";

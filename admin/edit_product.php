@@ -21,6 +21,7 @@ if (isset($_GET['id'])) {
         $productColor = $_POST['productColor'];
         $category = $_POST['category'];
         $subCategory = $_POST['subCategory'];
+        $productPrice = $_POST['productPrice'];
 
         if (empty($productName) === true || empty($productSize) === true || empty($productColor) === true) {
             var_dump($productName);
@@ -30,10 +31,10 @@ if (isset($_GET['id'])) {
             </script>";
         } else {
             // update the product record in the database
-            $sql = "UPDATE Products SET ProductName=?, ProductDescription=?, ProductQuantity=?, ProductSize=?, ProductColor=?, CategoryName=?, SubCategoryName=? WHERE ProductID=?";
+            $sql = "UPDATE Products SET ProductName=?, ProductDescription=?, ProductQuantity=?, ProductSize=?, ProductColor=?, CategoryName=?, SubCategoryName=?, ProductPrice=? WHERE ProductID=?";
             $stmt = mysqli_stmt_init($conn);
             if (mysqli_stmt_prepare($stmt, $sql)) {
-                mysqli_stmt_bind_param($stmt, "ssissssi", $productName, $productDescription, $productQuantity, $productSize, $productColor, $category, $subCategory, $productID);
+                mysqli_stmt_bind_param($stmt, "ssissssii", $productName, $productDescription, $productQuantity, $productSize, $productColor, $category, $subCategory, $productPrice, $productID);
                 mysqli_stmt_execute($stmt);
             } else {
                 die("query failed");
@@ -190,21 +191,28 @@ if (isset($_GET['id'])) {
                                 <?php } ?>
                             </div>
                             <div class="row">
-                                <div class="col-4 pt-3">
+                                <div class="col-3 pt-3">
                                     <div class='field'>
                                         <b>Name:</b>
                                         <input class='name-edit-input' type="text" name="productName" value="<?php echo $product['ProductName']; ?>" id="productName">
                                         </input>
                                     </div>
                                 </div>
-                                <div class="col-4 pt-3">
+                                <div class="col-3 pt-3">
                                     <div class='field'>
-                                        <b>Stock:</b>
-                                        <input class='name-edit-input' type="number" name="productQuantity" value="<?php echo $product['ProductQuantity']; ?>" id="productQuantity" min="1" max="999">
+                                        <b>Price:</b>
+                                        <input class='name-edit-input' type="number" name="productPrice" value="<?php echo $product['ProductPrice']; ?>" id="productQuantity" min="1">
                                         </input>
                                     </div>
                                 </div>
-                                <div class="col-4 edit-btn-container">
+                                <div class="col-3 pt-3">
+                                    <div class='field'>
+                                        <b>Stock:</b>
+                                        <input class='name-edit-input' type="number" name="productQuantity" value="<?php echo $product['ProductQuantity']; ?>" id="productQuantity" min="1">
+                                        </input>
+                                    </div>
+                                </div>
+                                <div class="col-3 edit-btn-container">
                                     <label class="edit-btn">
                                         <input id="upload_img" style="display:none;" type="file" name="productImage[]" multiple>
                                         <div id="file-upload-filename">

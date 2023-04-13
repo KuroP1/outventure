@@ -35,9 +35,11 @@
                 <div class="sub-title">
                     Product List
                 </div>
-                <button onclick="SetButtonLink('add_product')" class="product-add-button">
-                    Add Product
-                </button>
+                <a href="/outventure/admin/add_product.php">
+                    <button class="product-add-button">
+                        Add Product
+                    </button>
+                </a>
             </div>
             <div class="product-list-container">
                 <div class="product-list-content">
