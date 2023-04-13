@@ -113,14 +113,14 @@ if (!isset($_SESSION["currentUser"]) && !isset($_SESSION["isAdmin"])) {
                         </svg>
                     </div>
                     <div id="mobile-menu-container" style="transform: translateX(-100%);">
-                        <span onclick="MenuDisplay('pi')" id="mobile-menu-text-1" style="background-color: #FFFFFF; color: #232323;">Personal Information</span>
-                        <span onclick="MenuDisplay('oh')" id="mobile-menu-text-3" style="background-color: #232323; color: #FFFFFF;">Order History</span>
+                        <span onclick="Back('pi')" id="mobile-menu-text-1" style="background-color: #FFFFFF; color: #232323;">Personal Information</span>
+                        <span onclick="Back('oh')" id="mobile-menu-text-3" style="background-color: #232323; color: #FFFFFF;">Order History</span>
 
                     </div>
                     <div class="menu-container">
-                        <span onclick="MenuDisplay('pi')" id="menu-text-1" style="color: #387D6B;">Personal
+                        <span onclick="Back('pi')" id="menu-text-1" style="color: #387D6B;">Personal
                             Information</span>
-                        <span onclick="MenuDisplay('oh')" id="menu-text-3" style="color: #000000;">Order History</span>
+                        <span onclick="Back('oh')" id="menu-text-3" style="color: #000000;">Order History</span>
                     </div>
                 </div>
                 <!-- Right inforamtion display -->
@@ -189,44 +189,85 @@ if (!isset($_SESSION["currentUser"]) && !isset($_SESSION["isAdmin"])) {
                         </div>
                         <div class=".order-history-container">
                             <div class="order-history-card">
-                                <table>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Create Date</th>
-                                        <th>Total Price</th>
-                                        <th>Payment Method</th>
-                                        <th>Status</th>
-                                    </tr>
+                                <div class="order-detail-table">
+                                    <table>
+                                        <tr>
+                                            <th>Image</th>
+                                            <th>Name</th>
+                                            <th>Color</th>
+                                            <th>Size</th>
+                                            <th>Price</th>
+                                        </tr>
 
+                                        <?php
+                                        ini_set('display_errors', 1);
+                                        error_reporting(E_ALL);
+                                        require("../config/database.php");
+
+                                        $currentOrderID = $_GET['id'];
+                                        $viewOrderProductSQL = "SELECT * from orders WHERE OrderID='$currentOrderID'";
+                                        $result = mysqli_query($conn, $viewOrderProductSQL);
+                                        $orderProduct = array();
+                                        if (mysqli_num_rows($result) > 0) {
+                                            while ($row = mysqli_fetch_assoc($result)) {
+                                                $orderProduct[] = $row;
+                                            }
+                                            foreach ($orderProduct as $resOrderProduct) {
+                                                $productName = $resOrderProduct['ProductName'];
+                                                $imageSQL = "SELECT ImagePath FROM images WHERE ProductName = '$productName' LIMIT 1";
+                                                $res2 = mysqli_query($conn, $imageSQL);
+                                                $imagePath = '';
+
+                                                if (mysqli_num_rows($res2) > 0) {
+                                                    $image = mysqli_fetch_assoc($res2);
+                                                    $imagePath = $image['ImagePath'];
+                                                }
+                                                echo
+                                                "
+                                                <tr>
+                                                    <td>" . "<img src='$imagePath' alt='image' width='80'>" . "</td>
+                                                    <td>" . $resOrderProduct["ProductName"] . "</td>
+                                                    <td>" . $resOrderProduct["ProductColor"] . "</td>
+                                                    <td>" . $resOrderProduct["ProductSize"] . "</td>
+                                                    <td>" . $resOrderProduct["Amount"] . "</td>
+                                                </tr>
+                                                ";
+                                            }
+                                        }
+                                        ?>
+                                    </table>
+                                </div>
+                                <div class="order-detail-text">
                                     <?php
                                     ini_set('display_errors', 1);
                                     error_reporting(E_ALL);
                                     require("../config/database.php");
+
                                     $viewOrderSQL = "SELECT OrderID, GROUP_CONCAT(ProductName) as ProductNames, GROUP_CONCAT(BuyQuantity) as BuyQuantities, SUM(Amount) as TotalAmount, Username, OrderDate, paymentMethod, orderStatus
-                                    FROM orders WHERE Username ='{$_SESSION['currentUser']}'
-                                    GROUP BY OrderID, Username, OrderDate, paymentMethod, orderStatus
-                                    ORDER BY OrderDate DESC";
+                        FROM orders WHERE OrderID='$currentOrderID'
+                        GROUP BY OrderID, Username, OrderDate, paymentMethod, orderStatus";
                                     $resOrder = mysqli_query($conn, $viewOrderSQL);
-                                    if ($resOrder) { // Check if the result is not false
-                                        if (mysqli_num_rows($resOrder) > 0) {
-                                            while ($orders = mysqli_fetch_assoc($resOrder)) {
-                                                echo "
-                                                    <tr onclick='GoToDetail(" . $orders["OrderID"] . ")'>
-                                                        <td>" . $orders["OrderID"] . "</td>
-                                                        <td>" . $orders["OrderDate"] . "</td>
-                                                        <td>" . $orders["TotalAmount"] . "</td>
-                                                        <td>" . $orders["paymentMethod"] . "</td>
-                                                        <td>" . $orders["orderStatus"] . "</td>
-                                                    </tr>
-                                                    ";
-                                            }
-                                        }
-                                    } else {
-                                        // Display the error message
-                                        echo "Error: " . mysqli_error($conn);
-                                    }
+                                    $orders = mysqli_fetch_assoc($resOrder);
+                                    echo
+                                    "
+                                <div>
+                                    <span>Create Date: </span> " . $orders["OrderDate"] . "
+                                </div>
+                                <div>
+                                    <span>Username: </span> " . $orders["Username"] . "
+                                </div>
+                                <div>
+                                    <span>Total Price: </span>    " . $orders["TotalAmount"] . "
+                                </div>
+                                <div>
+                                    <span>Payment Method: </span>     " . $orders["paymentMethod"] . "
+                                </div>
+                                <div>
+                                    <span>Status: </span>     " . $orders["orderStatus"] . "
+                                </div>
+                                ";
                                     ?>
-                                </table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -239,7 +280,9 @@ if (!isset($_SESSION["currentUser"]) && !isset($_SESSION["isAdmin"])) {
 </html>
 
 <script>
-    function GoToDetail(id) {
-        window.location.href = "profile_order_detail.php?id=" + id;
+    MenuDisplay("oh")
+
+    function Back(link) {
+        window.location.href = "profile.php";
     }
 </script>

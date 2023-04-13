@@ -233,19 +233,74 @@ a {
 .order-history-card {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   background: #ffffff;
   border: 2px solid #eeeeee;
   border-radius: 20px;
   width: 100%;
   max-width: 738px;
-  padding: 50px 20px 50px 20px;
-  margin: 10px 0 10px 0;
+  padding: 20px 20px 50px 20px;
+  margin: 28px 0 10px 0;
+  overflow-y: scroll;
+  height: 400px;
 }
 
 .order-history-card-first {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.order-line{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #232323;
+  color: #9D9D9D;
+  z-index: 2;
+  opacity: 0.8;
+}
+
+.card-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+td,
+th {
+  border: 0 0 1px 0 solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+tr:not(:first-child) {
+  cursor: pointer;
+}
+
+tr:hover:not(:first-child) {
+  background-color: #387d6b;
+  color: white;
+}
+
+.order-detail-table {
+  overflow-y: scroll;
+  height: 600px;
+}
+
+.order-detail-text {
+  font-weight: 400;
+  font-size: 16px;
+  color: #9D9D9D;
 }
 
 @media (min-width: 640px) {
