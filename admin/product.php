@@ -108,7 +108,7 @@ if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] <= 0) {
                                 </div>
                                 <div class='col table-content'>
                                 <div class='product-name'>
-                                    " . $product["ProductPrice"] . "
+                                    ".'$' . $product["ProductPrice"] . "
                                 </div>
                             </div>
                                 
