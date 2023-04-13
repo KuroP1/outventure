@@ -12,7 +12,7 @@ ob_start();
 </head>
 
 <body>
-    <h1>Search Results</h1>
+
 
     <?php
     require_once("config/database.php");
@@ -36,7 +36,8 @@ ob_start();
         header("Location: /outventure/product/product_detail.php?name=" . $search_query);
 
     } else {
-        echo "No products found matching your search.";
+        echo '<script>alert("Invaild Product Name   ")</script>';
+        echo '<script>window.location.href = "/outventure/index.php";</script>';
     }
 
     // Close the database connection
