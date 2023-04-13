@@ -33,7 +33,9 @@ if (count($products) > 0) {
     <link rel="stylesheet" href="product_detail.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
     <script src="../navbar.js"></script>
 </head>
 
@@ -45,7 +47,8 @@ if (count($products) > 0) {
                 <a href="/outventure/">
                     <a href="../index.php"><img class="sub-navbar-logo" src="../images/Logo2.png" alt="Logo" /></a>
                     <div onclick="ShowMobileMainMenu()" class="main-burger-tag-container">
-                        <svg class="burger-tag" xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: msFilter;">
+                        <svg class="burger-tag" xmlns="http://www.w3.org/2000/svg" width="35" height="35"
+                            viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: msFilter;">
                             <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"></path>
                         </svg>
                     </div>
@@ -70,20 +73,25 @@ if (count($products) > 0) {
                     <div class="sub-navbar-right">
                         <div class="search-bar">
                             <form action="../search.php" method="GET">
-                                <input class="search-bar-input" placeholder="Search Product" type"text" name="name" id="name">
+                                <input class="search-bar-input" placeholder="Search Product" type"text" name="name"
+                                    id="name">
 
                             </form>
                             <button class="search-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: msFilter;">
-                                    <path d="M19.023 16.977a35.13 35.13 0 0 1-1.367-1.384c-.372-.378-.596-.653-.596-.653l-2.8-1.337A6.962 6.962 0 0 0 16 9c0-3.859-3.14-7-7-7S2 5.141 2 9s3.14 7 7 7c1.763 0 3.37-.66 4.603-1.739l1.337 2.8s.275.224.653.596c.387.363.896.854 1.384 1.367l1.358 1.392.604.646 2.121-2.121-.646-.604c-.379-.372-.885-.866-1.391-1.36zM9 14c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    style="fill: rgba(255, 255, 255, 1);transform: msFilter;">
+                                    <path
+                                        d="M19.023 16.977a35.13 35.13 0 0 1-1.367-1.384c-.372-.378-.596-.653-.596-.653l-2.8-1.337A6.962 6.962 0 0 0 16 9c0-3.859-3.14-7-7-7S2 5.141 2 9s3.14 7 7 7c1.763 0 3.37-.66 4.603-1.739l1.337 2.8s.275.224.653.596c.387.363.896.854 1.384 1.367l1.358 1.392.604.646 2.121-2.121-.646-.604c-.379-.372-.885-.866-1.391-1.36zM9 14c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z">
                                     </path>
                                 </svg>
                             </button>
                             </input>
                         </div>
                         <span class="sub-navbar-right-vline">|</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: msFilter;">
-                            <path d="M21.822 7.431A1 1 0 0 0 21 7H7.333L6.179 4.23A1.994 1.994 0 0 0 4.333 3H2v2h2.333l4.744 11.385A1 1 0 0 0 10 17h8c.417 0 .79-.259.937-.648l3-8a1 1 0 0 0-.115-.921zM17.307 15h-6.64l-2.5-6h11.39l-2.25 6z">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"
+                            style="fill: rgba(255, 255, 255, 1);transform: msFilter;">
+                            <path
+                                d="M21.822 7.431A1 1 0 0 0 21 7H7.333L6.179 4.23A1.994 1.994 0 0 0 4.333 3H2v2h2.333l4.744 11.385A1 1 0 0 0 10 17h8c.417 0 .79-.259.937-.648l3-8a1 1 0 0 0-.115-.921zM17.307 15h-6.64l-2.5-6h11.39l-2.25 6z">
                             </path>
                             <circle cx="10.5" cy="19.5" r="1.5"></circle>
                             <circle cx="17.5" cy="19.5" r="1.5"></circle>
@@ -105,7 +113,9 @@ if (count($products) > 0) {
                         <div class="slide-show-container">
                             <!-- left react button -->
                             <div class="left-react-button">
-                                <svg fill="#000000" width="100%" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 511.787 511.787" xml:space="preserve">
+                                <svg fill="#000000" width="100%" version="1.1" id="Layer_1"
+                                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    viewBox="0 0 511.787 511.787" xml:space="preserve">
                                     <g>
                                         <g>
                                             <path d="M508.667,125.707c-4.16-4.16-10.88-4.16-15.04,0L255.76,363.573L18,125.707c-4.267-4.053-10.987-3.947-15.04,0.213
@@ -137,7 +147,9 @@ if (count($products) > 0) {
                             <img class="slide" src="" alt="">
                             <!-- right react button -->
                             <div class="right-react-button">
-                                <svg fill="#000000" width="100%" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 511.787 511.787" xml:space="preserve">
+                                <svg fill="#000000" width="100%" version="1.1" id="Layer_1"
+                                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    viewBox="0 0 511.787 511.787" xml:space="preserve">
                                     <g>
                                         <g>
                                             <path d="M508.667,125.707c-4.16-4.16-10.88-4.16-15.04,0L255.76,363.573L18,125.707c-4.267-4.053-10.987-3.947-15.04,0.213
@@ -193,17 +205,21 @@ if (count($products) > 0) {
                                     }
 
                                     echo
-                                    "
+                                        "
                                         <a href='/outventure/add_to_favourite.php?name=" . $productName . "' style='text-decoration:none;'>
                                             <div class='product-star-rating'>
                                                     <?xml version='1.0' encoding='utf-8'?>
-                                                    <svg width='20px' class='like_btn' height='20px' viewBox='0 0 24 24' fill='" . $svgFillColor . "' xmlns='http://www.w3.org/2000/svg'>
-                                                    <path d='M8 10V20M8 10L4 9.99998V20L8 20M8 10L13.1956 3.93847C13.6886 3.3633 14.4642 3.11604 15.1992 3.29977L15.2467 3.31166C16.5885 3.64711 17.1929 5.21057 16.4258 6.36135L14 9.99998H18.5604C19.8225 9.99998 20.7691 11.1546 20.5216 12.3922L19.3216 18.3922C19.1346 19.3271 18.3138 20 17.3604 20L8 20' stroke='#000000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/>
-                                                    </svg>
-                                                    " . $productRating . "
-                                            </div>
-                                        </a>
-                                        ";
+                                    <svg width='20px' class='like_btn' height='20px' viewBox='0 0 24 24'
+                                        fill='" . $svgFillColor . "' xmlns='http://www.w3.org/2000/svg'>
+                                        <path
+                                            d='M8 10V20M8 10L4 9.99998V20L8 20M8 10L13.1956 3.93847C13.6886 3.3633 14.4642 3.11604 15.1992 3.29977L15.2467 3.31166C16.5885 3.64711 17.1929 5.21057 16.4258 6.36135L14 9.99998H18.5604C19.8225 9.99998 20.7691 11.1546 20.5216 12.3922L19.3216 18.3922C19.1346 19.3271 18.3138 20 17.3604 20L8 20'
+                                            stroke='#000000' stroke-width='1.5' stroke-linecap='round'
+                                            stroke-linejoin='round' />
+                                    </svg>
+                                    " . $productRating . "
+                            </div>
+                            </a>
+                            ";
 
                                     ?>
                                 </span>
@@ -286,17 +302,60 @@ if (count($products) > 0) {
                     Comment
                 </div>
                 <div class="product-detail-comment">
+
                     <div class='comment_content'>
                         <div class='top-section'>
-                            tonywong123
+                            <?php
+                            //get username
+                            
+                            $username = $_SESSION['currentUser'];
+                            echo $username;
+                            ?>
                             <div class='name'>
-                                dd/mm/yy
+                                <?php
+                                //get date
+                                $date = date("d/m/Y");
+                                echo $date;
+
+                                ?>
                             </div>
                         </div>
                         <div class="comment">
-                            <textarea class='comment' name="comment" id="comment" cols="30" rows="10"></textarea>
+                            <form action="" method="post">
+                                <textarea class='comment' name="comment" id="comment" cols="30" rows="10"></textarea>
+                                <button type='submit' class='reply-btn'>Reply</button>
+                            </form>
+                            <?php
+                            //user input comment and saved to database
+                            if (isset($_POST['comment'])) {
+                                $comment = $_POST['comment'];
+                                $username = $_SESSION['currentUser'];
+                                $date = date("Y-m-d");
+                                $product_name = $_GET["name"];
+                                // Connect to the database
+                                require("../config/database.php");
+
+                                // Check the connection
+                                if ($conn->connect_error) {
+                                    die("Connection failed: " . $conn->connect_error);
+                                }
+
+                                // Prepare the SQL query to insert the comment
+                                $InsertCommentsql = "INSERT INTO Comments (Comment, Username, ProductName,CommentDate ) VALUES (?, ?, ?, ?)";
+                                $InsertCommentstmt = $conn->prepare($InsertCommentsql);
+                                $InsertCommentstmt->bind_param("ssss", $comment, $username, $product_name, $date);
+
+                                // Execute the query
+                                $InsertCommentstmt->execute();
+
+                                // Close the connection
+                                $InsertCommentstmt->close();
+                                $conn->close();
+                            }
+                            ?>
+
                         </div>
-                        <button type='submit' class='reply-btn'>Reply</button>
+
                     </div>
                 </div>
                 <div class="product-detail-comment">
@@ -307,10 +366,63 @@ if (count($products) > 0) {
                                 dd/mm/yy
                             </div>
                         </div>
+                        <?php
 
-                        <div class="comment">
-                            <textarea class='comment' readonly name="comment" id="comment" cols="30" rows="10">Don't be shy</textarea>
-                        </div>
+
+                        //get comment
+                        ini_set('display_errors', 1);
+                        error_reporting(E_ALL);
+
+                        $product_name = $_GET["name"];
+                        //view all the comments of the product use sql
+                        function view_all_comments($product_name)
+                        {
+                            // Connect to the database
+                            require("../config/database.php");
+
+                            // Check the connection
+                            if ($conn->connect_error) {
+                                die("Connection failed: " . $conn->connect_error);
+                            }
+
+                            // Prepare the SQL query to fetch comments for the given product name
+                            $ViewCommentsql = "SELECT * FROM Comments WHERE ProductName = ?";
+                            $ViewCommentstmt = $conn->prepare($ViewCommentsql);
+                            $ViewCommentstmt->bind_param("s", $product_name);
+
+                            // Execute the query
+                            $ViewCommentstmt->execute();
+
+                            // Fetch the results as an associative array
+                            $ViewCommentresult = $ViewCommentstmt->get_result();
+                            $comments = $ViewCommentresult->fetch_all(MYSQLI_ASSOC);
+
+                            // Close the connection
+                            $ViewCommentstmt->close();
+                            $conn->close();
+
+                            // Return the comments
+                            return $comments;
+                        }
+                        $comments = view_all_comments($product_name);
+
+
+
+
+
+
+
+
+
+                        //display all the comments
+                        foreach ($comments as $comment) {
+
+                            echo "Comment: " . $comment['Comment'] . "<br>";
+                            echo "Username: " . $comment['Username'] . "<br>";
+
+                        }
+                        ?>
+
                     </div>
                 </div>
             </div>
@@ -373,7 +485,7 @@ if (count($products) > 0) {
     // handle color button
     var colorButtons = document.querySelectorAll(".product-detail-info-color-button");
     for (var i = 0; i < colorButtons.length; i++) {
-        colorButtons[i].addEventListener("click", function() {
+        colorButtons[i].addEventListener("click", function () {
             for (var j = 0; j < colorButtons.length; j++) {
                 colorButtons[j].style.backgroundColor = "white";
                 colorButtons[j].style.color = "black";
@@ -388,7 +500,7 @@ if (count($products) > 0) {
     // handle size button
     var sizeButtons = document.querySelectorAll(".product-detail-info-size-button");
     for (var i = 0; i < sizeButtons.length; i++) {
-        sizeButtons[i].addEventListener("click", function() {
+        sizeButtons[i].addEventListener("click", function () {
             for (var j = 0; j < sizeButtons.length; j++) {
                 sizeButtons[j].style.backgroundColor = "white";
                 sizeButtons[j].style.color = "black";
@@ -408,7 +520,7 @@ if (count($products) > 0) {
         document.querySelector(".product-detail-info-addtocart-button").style.cursor = "pointer";
     }
 
-    document.querySelector(".product-detail-info-addtocart-button").addEventListener("mouseover", function() {
+    document.querySelector(".product-detail-info-addtocart-button").addEventListener("mouseover", function () {
         if (selectedColor !== "" && selectedSize !== "") {
             document.querySelector(".product-detail-info-addtocart-button").style.color = "white";
             document.querySelector(".product-detail-info-addtocart-button").style.backgroundColor = "#FFC700";
@@ -417,7 +529,7 @@ if (count($products) > 0) {
         }
     });
 
-    document.querySelector(".product-detail-info-addtocart-button").addEventListener("click", function() {
+    document.querySelector(".product-detail-info-addtocart-button").addEventListener("click", function () {
         if (selectedColor === "" || selectedSize === "") {
             alert("Please select color and size");
         } else {
@@ -486,11 +598,11 @@ if (count($products) > 0) {
 
     // add event listener to next and prev button
     var slideNext = document.querySelector(".right-react-button")
-    slideNext.addEventListener("click", function() {
+    slideNext.addEventListener("click", function () {
         handleImage("next")
     })
     var slidePrev = document.querySelector(".left-react-button")
-    slidePrev.addEventListener("click", function() {
+    slidePrev.addEventListener("click", function () {
         handleImage("prev")
     })
 </script>

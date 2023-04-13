@@ -367,6 +367,13 @@ body {
   font-weight: 500;
   width: 100%;
 }
+.field-2 {
+  padding-top: 20px;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  width: 100%;
+}
 .row .col-12 {
   justify-content: center;
   align-items: center;
@@ -644,6 +651,7 @@ body {
 
   .product-list-container {
     height: 65%;
+    font-family: "Poppins", sans-serif;
   }
 
   .product-list-content {
