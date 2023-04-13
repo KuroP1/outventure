@@ -168,6 +168,7 @@ session_start();
                         ?>
                     </select>
                 </div>
+
             </div>
         </div>
     </div>
@@ -176,17 +177,30 @@ session_start();
             <div class="container-fluid">
                 <div class="row align-items-center justify-content-center">
 
+                    <button id="searchProduct" onclick="searchProduct()">Search</button>
+
                     <?php
                     ini_set('display_errors', 1);
                     error_reporting(E_ALL);
+
+                    $dataFromJS = file_get_contents('php://input');
+                    $data = json_decode($dataFromJS, true);
+
+                    if (isset($_POST['category']) && isset($_POST['subCategory'])) {
+                        $cate = $_POST['category'];
+                        $subCate = $_POST['subCategory'];
+
+                    
+
                     require("config/database.php");
-                    $productSQL = "SELECT * FROM products";
-                    $res = mysqli_query($conn, $productSQL);
+
+                    $SortproductSQL = "SELECT * FROM products WHERE CategoryName = '$cate' AND SubCategoryName = '$subCate'";
+                    $Sortres = mysqli_query($conn, $SortproductSQL);
 
 
 
-                    if (mysqli_num_rows($res) > 0) {
-                        while ($product = mysqli_fetch_assoc($res)) {
+                    if (mysqli_num_rows($Sortres) > 0) {
+                        while ($product = mysqli_fetch_assoc($Sortres)) {
                             $productName = $product['ProductName'];
                             $imageSQL = "SELECT ImagePath FROM images WHERE ProductName = '$productName' LIMIT 1";
                             $res2 = mysqli_query($conn, $imageSQL);
@@ -238,48 +252,92 @@ session_start();
             </div>
         </div>
         ";
-                        }
-                    }
-                    ?>
-                </div>
-            </div>
-        </div>
+        }
+        }
+        }
+        ?>
+    </div>
+    </div>
+    </div>
     </div>
 </body>
 
 </html>
 
 <script>
-    var fullCategoriesArray = <?php echo json_encode($subCategoriesArray); ?>;
-    var subCategoriesArray = [];
-    var categoriesArray = [];
+var fullCategoriesArray = <?php echo json_encode($subCategoriesArray); ?>;
+var subCategoriesArray = [];
+var categoriesArray = [];
 
-    for (var i = 0; i < fullCategoriesArray.length; i++) {
-        if (i % 2 == 0) {
-            subCategoriesArray.push(fullCategoriesArray[i]);
-        } else {
-            categoriesArray.push(fullCategoriesArray[i]);
-        }
+for (var i = 0; i < fullCategoriesArray.length; i++) {
+    if (i % 2 == 0) {
+        subCategoriesArray.push(fullCategoriesArray[i]);
+    } else {
+        categoriesArray.push(fullCategoriesArray[i]);
+    }
+}
+
+
+
+function myFunction() {
+    // clear select
+    var selectElement = document.getElementById('subCategory');
+    while (selectElement.options.length > 0) {
+        selectElement.remove(0);
     }
 
-    function myFunction() {
-        // clear select
-        var selectElement = document.getElementById('subCategory');
-        while (selectElement.options.length > 0) {
-            selectElement.remove(0);
-        }
+    var categoryName = document.getElementById("category").value;
 
-        var categoryName = document.getElementById("category").value;
-
-        for (var i = 0; i < categoriesArray.length; i++) {
-            if (categoryName == categoriesArray[i]) {
-                // create option for subcategory
-                var mySelect = document.getElementById('subCategory'),
-                    newOption = document.createElement('option');
-                newOption.value = subCategoriesArray[i];
-                newOption.innerHTML = subCategoriesArray[i];
-                mySelect.appendChild(newOption);
-            }
+    for (var i = 0; i < categoriesArray.length; i++) {
+        if (categoryName == categoriesArray[i]) {
+            // create option for subcategory
+            var mySelect = document.getElementById('subCategory'),
+                newOption = document.createElement('option');
+            newOption.value = subCategoriesArray[i];
+            newOption.innerHTML = subCategoriesArray[i];
+            mySelect.appendChild(newOption);
         }
     }
+}
+
+// function searchProduct() {
+//     var cate = document.getElementById("category").value;
+//     var subCate = document.getElementById("subCategory").value;
+
+//     let data = {
+//         category: cate,
+//         subcategory: subCate
+//     }
+
+//     fetch("index.php", {
+//         method: "POST",
+//         body: JSON.stringify(data),
+//         headers: {
+//             "Content-type": "application/json; charset=UTF-8"
+//         }
+//     }).then(
+//         alert('Search Success!')
+//     )
+
+
+// }
+function searchProduct() {
+    var cate = document.getElementById("category").value;
+    var subCate = document.getElementById("subCategory").value;
+
+    let formData = new FormData();
+    formData.append("category", cate);
+    formData.append("subCategory", subCate);
+
+    fetch("index.php", {
+            method: "POST",
+            body: formData,
+        })
+        .then(response => response.text())
+        .then(data => {
+            // Update your page with the new data, e.g., by updating the DOM
+            console.log(data);
+        })
+        .catch(err => console.error(err));
+}
 </script>
