@@ -416,6 +416,7 @@
 .payment_method_container .container .row .col:focus {
   border: 2px solid #ffb800 !important;
 }
+
 @media screen and (max-width: 1200px) {
   .content_container {
     display: flex;
