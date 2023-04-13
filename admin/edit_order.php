@@ -167,7 +167,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                         </defs>
                                     </svg>
                                 </button>
-                                <a href="#" onclick='toOrderHistory()'>
+                                <a href="/outventure/admin/delete_order.php?id=<?php echo $currentOrderID; ?>" onclick='toOrderHistory()'>
                                     <button class='delete-btn' type="button">
                                         Delete
                                         <svg class='mb-1' width="18" height="18" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
