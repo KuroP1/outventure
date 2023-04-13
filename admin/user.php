@@ -30,7 +30,7 @@ if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] <= 0) {
             <a href="/outventure/admin/product.php" id="product-manage-btn" onclick="toProductManage()">Product
                 Manage</a>
             <a href="/outventure/admin/order.php" id="order-history-btn" onclick="toOrderHistory()">Order History</a>
-            <a href="/outventure/admin/insert_category.php" id="order-history-btn" onclick="toOrderHistory()">
+            <a href="/outventure/admin/category.php" id="order-history-btn" onclick="toOrderHistory()">
                 Category Manage</a>
         </div>
         <img class="logo" src="../images/Logo.png" alt="logo2" class="logo2">
@@ -147,7 +147,7 @@ if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] <= 0) {
                             Manage</a>
                         <a href="/outventure/admin/order.php" id="order-history-btn" onclick="toOrderHistory()">Order
                             History</a>
-                        <a href="/outventure/admin/insert_category.php" id="order-history-btn"
+                        <a href="/outventure/admin/category.php" id="order-history-btn"
                             onclick="toOrderHistory()">
                             Category Manage</a>
                     </div>
