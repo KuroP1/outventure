@@ -135,15 +135,14 @@ if (!isset($_SESSION["currentUser"]) && !isset($_SESSION["isAdmin"])) {
                             style="background-color: #232323; color: #FFFFFF;">Bill Payment</span>
                         <span onclick="MenuDisplay('oh')" id="mobile-menu-text-3"
                             style="background-color: #232323; color: #FFFFFF;">Order History</span>
-                        <span onclick="MenuDisplay('gc')" id="mobile-menu-text-4"
-                            style="background-color: #232323; color: #FFFFFF;">Gift Cards</span>
+
                     </div>
                     <div class="menu-container">
                         <span onclick="MenuDisplay('pi')" id="menu-text-1" style="color: #387D6B;">Personal
                             Information</span>
-                        <span onclick="MenuDisplay('bp')" id="menu-text-2" style="color: #000000;">Bill Payment</span>
+
                         <span onclick="MenuDisplay('oh')" id="menu-text-3" style="color: #000000;">Order History</span>
-                        <span onclick="MenuDisplay('gc')" id="menu-text-4" style="color: #000000;">Gift Cards</span>
+
                     </div>
                 </div>
                 <!-- Right inforamtion display -->
@@ -200,14 +199,7 @@ if (!isset($_SESSION["currentUser"]) && !isset($_SESSION["isAdmin"])) {
                             </div>
                         </div>
                     </div>
-                    <!-- Bill Payment -->
-                    <div id="right-container-bill-payment" style="display:none;">
-                        <div class="right-container-top-text">
-                            <span class="right-container-top-text-main">Bill Payment</span>
-                            <span class="right-container-top-text-sub">Manage your information, including name, email
-                                address.</span>
-                        </div>
-                    </div>
+
                     <!-- Order History -->
                     <div id="right-container-order-history" style="display:none;">
                         <div class="right-container-top-text">
@@ -216,14 +208,7 @@ if (!isset($_SESSION["currentUser"]) && !isset($_SESSION["isAdmin"])) {
                                 address.</span>
                         </div>
                     </div>
-                    <!-- Gift Cards -->
-                    <div id="right-container-gift-cards" style="display:none;">
-                        <div class="right-container-top-text">
-                            <span class="right-container-top-text-main">Gift Card</span>
-                            <span class="right-container-top-text-sub">Manage your information, including name, email
-                                address.</span>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>
