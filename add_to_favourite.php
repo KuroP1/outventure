@@ -42,8 +42,8 @@ if (isset($_GET['name']) && !empty($_GET['name'])) {
     $productnametemp = $_GET['name'];
     addToFavourite($productnametemp, $conn);
 
-    // Redirect back to the admin dashboard or another page
-    header("Location: index.php");
+    // Redirect to currnet page
+    header("Location: " . $_SERVER['HTTP_REFERER']);
     exit();
 } else {
     error_log("Error: Invalid product name.");
