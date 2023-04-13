@@ -121,6 +121,21 @@ body {
   transform: translateX(10px);
 }
 
+.user-add-button {
+  width: 100px;
+  height: 40px;
+  background-color: #ffb800;
+  border: none;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 10px;
+  font-family: "Poppins", sans-serif;
+  margin: 25px 0px;
+  transition: all 0.2s ease-in-out;
+  opacity: 0;
+}
+
 .product-add-button {
   width: 100px;
   height: 40px;
