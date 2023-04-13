@@ -42,10 +42,18 @@ session_start();
                         <?php
                         if (isset($_SESSION["currentUser"])) {
                             echo '<a href="/outventure/authentication/logout.php" class="sub-navbar-middle-text">Logout</a>';
+
                         } else {
                             echo '<a href="/outventure/authentication/login.php" class="sub-navbar-middle-text">Login</a>';
                         }
                         ?>
+
+                        <?php
+                        if (isset($_SESSION["currentUser"]) && $_SESSION["isAdmin"] > "0") {
+                            echo '<a href="/outventure/admin/admin.php" class="sub-navbar-middle-text">Admin</a>';
+                        }
+                        ?>
+
 
 
 
@@ -180,32 +188,40 @@ session_start();
             <div class="text-content-container">
                 <h2>Welcome to Campify</h2>
                 <p>
-                    we are a camping company based in Hong Kong! We are a team of camping enthusiasts who are
+                    we are a camping company based in Hong Kong! We are a team of camping enthusiasts who
+                    are
                     dedicated
                     to provide high-quality camping products and services to our customers.
                 </p>
                 <p>
                     At Campify, we offer a wide range of camping products for sale, including tents,
-                    sleeping bags, backpacks, camping stoves, and more. We believe that everyone should have the
-                    opportunity to experience the great outdoors and enjoy the beauty of nature, which is why we
+                    sleeping bags, backpacks, camping stoves, and more. We believe that everyone should have
+                    the
+                    opportunity to experience the great outdoors and enjoy the beauty of nature, which is
+                    why we
                     offer affordable pricing for all of our products.
                 </p>
                 We are committed to promoting responsible and
-                sustainable camping practices. We encourage our customers to practice Leave No Trace principles,
+                sustainable camping practices. We encourage our customers to practice Leave No Trace
+                principles,
                 and we offer eco-friendly camping products and options whenever possible.
                 <p>
 
                     Our team at Campify is
-                    made up of experienced camping experts who are always happy to provide advice and guidance to
-                    our customers. Whether you're a seasoned camper or new to the world of camping, we're here to
+                    made up of experienced camping experts who are always happy to provide advice and
+                    guidance to
+                    our customers. Whether you're a seasoned camper or new to the world of camping, we're
+                    here to
                     help you make the most of your outdoor adventure.
                 </p>
                 <p>
                     If you have any questions about our products
-                    or services, please don't hesitate to contact us and we'll get back to you as soon as possible.
+                    or services, please don't hesitate to contact us and we'll get back to you as soon as
+                    possible.
                 </p>
                 <p>
-                    Thank you for considering Campify for your camping needs. We look forward to helping you make
+                    Thank you for considering Campify for your camping needs. We look forward to helping you
+                    make
                     your next camping trip a success!
                 </p>
                 <p class='contact'>

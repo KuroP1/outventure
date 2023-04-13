@@ -41,6 +41,12 @@ session_start();
                         echo '<a href="/outventure/authentication/login.php" class="sub-navbar-middle-text">Login</a>';
                     }
                     ?>
+
+                    <?php
+                        if (isset($_SESSION["currentUser"]) && $_SESSION["isAdmin"] > "0") {
+                            echo '<a href="/outventure/admin/admin.php" class="sub-navbar-middle-text">Admin</a>';
+                        }
+                        ?>
                 </div>
                 <div class="product">
                     <div class="search-bar">
@@ -162,20 +168,20 @@ session_start();
                                     <div class="product-price">HKD 500</div>
                                     <div class="product-star-rating">
                                         <script>
-                                            function ratingStar(rating) {
-                                                //return a div with text hello world
-                                                for (var i = 0; i < rating; i++) {
-                                                    document.write(
-                                                        '<img class="star" src="images/Home/star-full-icon.png" alt="Star" />'
-                                                    );
-                                                }
-                                                for (var i = 0; i < 5 - rating; i++) {
-                                                    document.write(
-                                                        '<img class="star" src="images/Home/star-empty-icon.png" alt="Star" />'
-                                                    );
-                                                }
+                                        function ratingStar(rating) {
+                                            //return a div with text hello world
+                                            for (var i = 0; i < rating; i++) {
+                                                document.write(
+                                                    '<img class="star" src="images/Home/star-full-icon.png" alt="Star" />'
+                                                );
                                             }
-                                            ratingStar(2);
+                                            for (var i = 0; i < 5 - rating; i++) {
+                                                document.write(
+                                                    '<img class="star" src="images/Home/star-empty-icon.png" alt="Star" />'
+                                                );
+                                            }
+                                        }
+                                        ratingStar(2);
                                         </script>
                                     </div>
                                     <div class="botton-section">
@@ -194,20 +200,20 @@ session_start();
                                     <div class="product-price">HKD 500</div>
                                     <div class="product-star-rating">
                                         <script>
-                                            function ratingStar(rating) {
-                                                //return a div with text hello world
-                                                for (var i = 0; i < rating; i++) {
-                                                    document.write(
-                                                        '<img class="star" src="images/Home/star-full-icon.png" alt="Star" />'
-                                                    );
-                                                }
-                                                for (var i = 0; i < 5 - rating; i++) {
-                                                    document.write(
-                                                        '<img class="star" src="images/Home/star-empty-icon.png" alt="Star" />'
-                                                    );
-                                                }
+                                        function ratingStar(rating) {
+                                            //return a div with text hello world
+                                            for (var i = 0; i < rating; i++) {
+                                                document.write(
+                                                    '<img class="star" src="images/Home/star-full-icon.png" alt="Star" />'
+                                                );
                                             }
-                                            ratingStar(2);
+                                            for (var i = 0; i < 5 - rating; i++) {
+                                                document.write(
+                                                    '<img class="star" src="images/Home/star-empty-icon.png" alt="Star" />'
+                                                );
+                                            }
+                                        }
+                                        ratingStar(2);
                                         </script>
                                     </div>
                                     <div class="botton-section">
@@ -228,20 +234,20 @@ session_start();
                                     <div class="product-price">HKD 500</div>
                                     <div class="product-star-rating">
                                         <script>
-                                            function ratingStar(rating) {
-                                                //return a div with text hello world
-                                                for (var i = 0; i < rating; i++) {
-                                                    document.write(
-                                                        '<img class="star" src="images/Home/star-full-icon.png" alt="Star" />'
-                                                    );
-                                                }
-                                                for (var i = 0; i < 5 - rating; i++) {
-                                                    document.write(
-                                                        '<img class="star" src="images/Home/star-empty-icon.png" alt="Star" />'
-                                                    );
-                                                }
+                                        function ratingStar(rating) {
+                                            //return a div with text hello world
+                                            for (var i = 0; i < rating; i++) {
+                                                document.write(
+                                                    '<img class="star" src="images/Home/star-full-icon.png" alt="Star" />'
+                                                );
                                             }
-                                            ratingStar(2);
+                                            for (var i = 0; i < 5 - rating; i++) {
+                                                document.write(
+                                                    '<img class="star" src="images/Home/star-empty-icon.png" alt="Star" />'
+                                                );
+                                            }
+                                        }
+                                        ratingStar(2);
                                         </script>
                                     </div>
                                     <div class="botton-section">
@@ -260,20 +266,20 @@ session_start();
                                     <div class="product-price">HKD 500</div>
                                     <div class="product-star-rating">
                                         <script>
-                                            function ratingStar(rating) {
-                                                //return a div with text hello world
-                                                for (var i = 0; i < rating; i++) {
-                                                    document.write(
-                                                        '<img class="star" src="images/Home/star-full-icon.png" alt="Star" />'
-                                                    );
-                                                }
-                                                for (var i = 0; i < 5 - rating; i++) {
-                                                    document.write(
-                                                        '<img class="star" src="images/Home/star-empty-icon.png" alt="Star" />'
-                                                    );
-                                                }
+                                        function ratingStar(rating) {
+                                            //return a div with text hello world
+                                            for (var i = 0; i < rating; i++) {
+                                                document.write(
+                                                    '<img class="star" src="images/Home/star-full-icon.png" alt="Star" />'
+                                                );
                                             }
-                                            ratingStar(2);
+                                            for (var i = 0; i < 5 - rating; i++) {
+                                                document.write(
+                                                    '<img class="star" src="images/Home/star-empty-icon.png" alt="Star" />'
+                                                );
+                                            }
+                                        }
+                                        ratingStar(2);
                                         </script>
                                     </div>
                                     <div class="botton-section">
@@ -296,20 +302,20 @@ session_start();
                                     <div class="product-price">HKD 500</div>
                                     <div class="product-star-rating">
                                         <script>
-                                            function ratingStar(rating) {
-                                                //return a div with text hello world
-                                                for (var i = 0; i < rating; i++) {
-                                                    document.write(
-                                                        '<img class="star" src="images/Home/star-full-icon.png" alt="Star" />'
-                                                    );
-                                                }
-                                                for (var i = 0; i < 5 - rating; i++) {
-                                                    document.write(
-                                                        '<img class="star" src="images/Home/star-empty-icon.png" alt="Star" />'
-                                                    );
-                                                }
+                                        function ratingStar(rating) {
+                                            //return a div with text hello world
+                                            for (var i = 0; i < rating; i++) {
+                                                document.write(
+                                                    '<img class="star" src="images/Home/star-full-icon.png" alt="Star" />'
+                                                );
                                             }
-                                            ratingStar(2);
+                                            for (var i = 0; i < 5 - rating; i++) {
+                                                document.write(
+                                                    '<img class="star" src="images/Home/star-empty-icon.png" alt="Star" />'
+                                                );
+                                            }
+                                        }
+                                        ratingStar(2);
                                         </script>
                                     </div>
                                     <div class="botton-section">
@@ -328,20 +334,20 @@ session_start();
                                     <div class="product-price">HKD 500</div>
                                     <div class="product-star-rating">
                                         <script>
-                                            function ratingStar(rating) {
-                                                //return a div with text hello world
-                                                for (var i = 0; i < rating; i++) {
-                                                    document.write(
-                                                        '<img class="star" src="images/Home/star-full-icon.png" alt="Star" />'
-                                                    );
-                                                }
-                                                for (var i = 0; i < 5 - rating; i++) {
-                                                    document.write(
-                                                        '<img class="star" src="images/Home/star-empty-icon.png" alt="Star" />'
-                                                    );
-                                                }
+                                        function ratingStar(rating) {
+                                            //return a div with text hello world
+                                            for (var i = 0; i < rating; i++) {
+                                                document.write(
+                                                    '<img class="star" src="images/Home/star-full-icon.png" alt="Star" />'
+                                                );
                                             }
-                                            ratingStar(2);
+                                            for (var i = 0; i < 5 - rating; i++) {
+                                                document.write(
+                                                    '<img class="star" src="images/Home/star-empty-icon.png" alt="Star" />'
+                                                );
+                                            }
+                                        }
+                                        ratingStar(2);
                                         </script>
                                     </div>
                                     <div class="botton-section">
@@ -362,20 +368,20 @@ session_start();
                                     <div class="product-price">HKD 500</div>
                                     <div class="product-star-rating">
                                         <script>
-                                            function ratingStar(rating) {
-                                                //return a div with text hello world
-                                                for (var i = 0; i < rating; i++) {
-                                                    document.write(
-                                                        '<img class="star" src="images/Home/star-full-icon.png" alt="Star" />'
-                                                    );
-                                                }
-                                                for (var i = 0; i < 5 - rating; i++) {
-                                                    document.write(
-                                                        '<img class="star" src="images/Home/star-empty-icon.png" alt="Star" />'
-                                                    );
-                                                }
+                                        function ratingStar(rating) {
+                                            //return a div with text hello world
+                                            for (var i = 0; i < rating; i++) {
+                                                document.write(
+                                                    '<img class="star" src="images/Home/star-full-icon.png" alt="Star" />'
+                                                );
                                             }
-                                            ratingStar(2);
+                                            for (var i = 0; i < 5 - rating; i++) {
+                                                document.write(
+                                                    '<img class="star" src="images/Home/star-empty-icon.png" alt="Star" />'
+                                                );
+                                            }
+                                        }
+                                        ratingStar(2);
                                         </script>
                                     </div>
                                     <div class="botton-section">
@@ -394,20 +400,20 @@ session_start();
                                     <div class="product-price">HKD 500</div>
                                     <div class="product-star-rating">
                                         <script>
-                                            function ratingStar(rating) {
-                                                //return a div with text hello world
-                                                for (var i = 0; i < rating; i++) {
-                                                    document.write(
-                                                        '<img class="star" src="images/Home/star-full-icon.png" alt="Star" />'
-                                                    );
-                                                }
-                                                for (var i = 0; i < 5 - rating; i++) {
-                                                    document.write(
-                                                        '<img class="star" src="images/Home/star-empty-icon.png" alt="Star" />'
-                                                    );
-                                                }
+                                        function ratingStar(rating) {
+                                            //return a div with text hello world
+                                            for (var i = 0; i < rating; i++) {
+                                                document.write(
+                                                    '<img class="star" src="images/Home/star-full-icon.png" alt="Star" />'
+                                                );
                                             }
-                                            ratingStar(2);
+                                            for (var i = 0; i < 5 - rating; i++) {
+                                                document.write(
+                                                    '<img class="star" src="images/Home/star-empty-icon.png" alt="Star" />'
+                                                );
+                                            }
+                                        }
+                                        ratingStar(2);
                                         </script>
                                     </div>
                                     <div class="botton-section">
