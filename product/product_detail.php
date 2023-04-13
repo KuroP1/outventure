@@ -66,7 +66,7 @@ if (count($products) > 0) {
 
                         <?php
                         if (isset($_SESSION["currentUser"]) && $_SESSION["isAdmin"] > "0") {
-                            echo '<a href="/outventure/admin/admin.php" class="sub-navbar-middle-text">Admin</a>';
+                            echo '<a href="/outventure/admin/user.php" class="sub-navbar-middle-text">Admin</a>';
                         }
                         ?>
                     </div>
