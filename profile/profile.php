@@ -43,7 +43,11 @@ if (!isset($_SESSION["currentUser"])) {
                 </div>
                 <div class=" sub-navbar-right">
                     <div class="search-bar">
-                        <input class="search-bar-input" placeholder="Search Product">
+                        <form action="../search.php" method="GET">
+                            <input class="search-bar-input" placeholder="Search Product" type"text" name="name"
+                                id="name">
+
+                        </form>
                         <button class="search-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 style="fill: rgba(255, 255, 255, 1);transform: msFilter;">
