@@ -373,7 +373,10 @@ a {
     align-items: center;
     margin-bottom: 30px;
   }
-
+  .cart_icon {
+    width: 30px;
+    height: 30px;
+  }
   .burger-tag-container {
     cursor: pointer;
   }

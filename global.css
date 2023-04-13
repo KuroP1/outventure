@@ -103,7 +103,7 @@ body {
   position: relative;
   display: none;
   width: 200px;
-  height: 40px;
+  height: 44px;
 }
 .top-section {
   width: 100%;
@@ -268,7 +268,6 @@ body {
   .menu-bar {
     display: none;
   }
-  
 }
 @media (min-width: 1024px) {
   .sub-navbar-container {
