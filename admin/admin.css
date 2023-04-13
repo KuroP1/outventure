@@ -181,7 +181,38 @@ body {
   padding: 10px;
   margin: 20px 0px 10px 0px;
 }
-
+.avatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin: 0px 0px 0px 0px;
+  background-color: #ff9307;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin: 10px 0px 10px 0px;
+}
+.avatar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.avatar .avatar-text {
+  font-size: 100px;
+  font-weight: 300;
+  font-family: "Poppins", sans-serif;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
 .table-header {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
@@ -301,6 +332,7 @@ body {
   flex-direction: column;
   padding-top: 20px;
 }
+
 .field {
   padding-top: 0px;
   font-size: 16px;
@@ -351,6 +383,7 @@ body {
   justify-content: end;
   align-items: end;
 }
+
 .edit-btn {
   width: 100%;
   height: 40px;
@@ -367,6 +400,23 @@ body {
   justify-content: center;
   align-items: center;
 }
+.edit-image-btn {
+  width: 100%;
+  height: 40px;
+  border: 1px solid #d3d3d3;
+  border-radius: 10px;
+  padding: 10px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  background-color: #ffc700;
+  color: #fff;
+  margin: 10px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .edit-btn:hover {
   scale: 1.05;
   transition: 0.2s;
