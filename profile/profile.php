@@ -46,7 +46,7 @@ if (!isset($_SESSION["currentUser"]) && !isset($_SESSION["isAdmin"])) {
 
                     <?php
                     if (isset($_SESSION["currentUser"]) && $_SESSION["isAdmin"] > "0") {
-                        echo '<a href="/outventure/admin/admin.php" class="sub-navbar-middle-text">Admin</a>';
+                        echo '<a href="/outventure/admin/user.php" class="sub-navbar-middle-text">Admin</a>';
                     }
                     ?>
                 </div>
@@ -80,13 +80,7 @@ if (!isset($_SESSION["currentUser"]) && !isset($_SESSION["isAdmin"])) {
             <a href="/outventure/" class="sub-navbar-middle-text">Product</a>
             <a href="/outventure/about_us/about_us.php" class="sub-navbar-middle-text">About Us</a>
             <a href="#" class="sub-navbar-middle-text" style="color: #FFC700;">Profile</a>
-            <?php
-            if (isset($_SESSION["currentUser"])) {
-                echo '<a href="/outventure/authentication/logout.php" class="sub-navbar-middle-text">Logout</a>';
-            } else {
-                echo '<a href="/outventure/authentication/login.php" class="sub-navbar-middle-text">Login</a>';
-            }
-            ?>
+            <a href="#" class="sub-navbar-middle-text">Login</a>
         </div>
         <!-- Profile Content -->
         <div class="main-container">
@@ -119,15 +113,27 @@ if (!isset($_SESSION["currentUser"]) && !isset($_SESSION["isAdmin"])) {
                         </svg>
                     </div>
                     <div id="mobile-menu-container" style="transform: translateX(-100%);">
+<<<<<<< Updated upstream
                         <span onclick="MenuDisplay('pi')" id="mobile-menu-text-1" style="background-color: #FFFFFF; color: #232323;">Personal Information</span>
                         <span onclick="MenuDisplay('oh')" id="mobile-menu-text-3" style="background-color: #232323; color: #FFFFFF;">Order History</span>
 
+=======
+                        <span onclick="MenuDisplay('pi')" id="mobile-menu-text-1"
+                            style="background-color: #FFFFFF; color: #232323;">Personal Information</span>
+                        <span onclick="MenuDisplay('bp')" id="mobile-menu-text-2"
+                            style="background-color: #232323; color: #FFFFFF;">Bill Payment</span>
+                        <span onclick="MenuDisplay('oh')" id="mobile-menu-text-3"
+                            style="background-color: #232323; color: #FFFFFF;">Order History</span>
+                        <span onclick="MenuDisplay('gc')" id="mobile-menu-text-4"
+                            style="background-color: #232323; color: #FFFFFF;">Gift Cards</span>
+>>>>>>> Stashed changes
                     </div>
                     <div class="menu-container">
                         <span onclick="MenuDisplay('pi')" id="menu-text-1" style="color: #387D6B;">Personal
                             Information</span>
+                        <span onclick="MenuDisplay('bp')" id="menu-text-2" style="color: #000000;">Bill Payment</span>
                         <span onclick="MenuDisplay('oh')" id="menu-text-3" style="color: #000000;">Order History</span>
-
+                        <span onclick="MenuDisplay('gc')" id="menu-text-4" style="color: #000000;">Gift Cards</span>
                     </div>
                 </div>
                 <!-- Right inforamtion display -->
@@ -179,7 +185,14 @@ if (!isset($_SESSION["currentUser"]) && !isset($_SESSION["isAdmin"])) {
                             </div>
                         </div>
                     </div>
-
+                    <!-- Bill Payment -->
+                    <div id="right-container-bill-payment" style="display:none;">
+                        <div class="right-container-top-text">
+                            <span class="right-container-top-text-main">Bill Payment</span>
+                            <span class="right-container-top-text-sub">Manage your information, including name, email
+                                address.</span>
+                        </div>
+                    </div>
                     <!-- Order History -->
                     <div id="right-container-order-history" style="display:none;">
                         <div class="right-container-top-text">
@@ -201,6 +214,17 @@ if (!isset($_SESSION["currentUser"]) && !isset($_SESSION["isAdmin"])) {
                             </div>
                         </div>
                     </div>
+<<<<<<< Updated upstream
+=======
+                    <!-- Gift Cards -->
+                    <div id="right-container-gift-cards" style="display:none;">
+                        <div class="right-container-top-text">
+                            <span class="right-container-top-text-main">Gift Card</span>
+                            <span class="right-container-top-text-sub">Manage your information, including name, email
+                                address.</span>
+                        </div>
+                    </div>
+>>>>>>> Stashed changes
                 </div>
             </div>
         </div>
