@@ -233,6 +233,7 @@ a {
 .order-history-card {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   background: #ffffff;
   border: 2px solid #eeeeee;
   border-radius: 20px;
@@ -289,6 +290,17 @@ tr:not(:first-child) {
 tr:hover:not(:first-child) {
   background-color: #387d6b;
   color: white;
+}
+
+.order-detail-table {
+  overflow-y: scroll;
+  height: 600px;
+}
+
+.order-detail-text {
+  font-weight: 400;
+  font-size: 16px;
+  color: #9D9D9D;
 }
 
 @media (min-width: 640px) {

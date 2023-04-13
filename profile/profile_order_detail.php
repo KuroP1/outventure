@@ -189,40 +189,41 @@ if (!isset($_SESSION["currentUser"]) && !isset($_SESSION["isAdmin"])) {
                         </div>
                         <div class=".order-history-container">
                             <div class="order-history-card">
-                                <table>
-                                    <tr>
-                                        <th>Image</th>
-                                        <th>Name</th>
-                                        <th>Color</th>
-                                        <th>Size</th>
-                                        <th>Price</th>
-                                    </tr>
+                                <div class="order-detail-table">
+                                    <table>
+                                        <tr>
+                                            <th>Image</th>
+                                            <th>Name</th>
+                                            <th>Color</th>
+                                            <th>Size</th>
+                                            <th>Price</th>
+                                        </tr>
 
-                                    <?php
-                                    ini_set('display_errors', 1);
-                                    error_reporting(E_ALL);
-                                    require("../config/database.php");
+                                        <?php
+                                        ini_set('display_errors', 1);
+                                        error_reporting(E_ALL);
+                                        require("../config/database.php");
 
-                                    $currentOrderID = $_GET['id'];
-                                    $viewOrderProductSQL = "SELECT * from orders WHERE OrderID='$currentOrderID'";
-                                    $result = mysqli_query($conn, $viewOrderProductSQL);
-                                    $orderProduct = array();
-                                    if (mysqli_num_rows($result) > 0) {
-                                        while ($row = mysqli_fetch_assoc($result)) {
-                                            $orderProduct[] = $row;
-                                        }
-                                        foreach ($orderProduct as $resOrderProduct) {
-                                            $productName = $resOrderProduct['ProductName'];
-                                            $imageSQL = "SELECT ImagePath FROM images WHERE ProductName = '$productName' LIMIT 1";
-                                            $res2 = mysqli_query($conn, $imageSQL);
-                                            $imagePath = '';
-
-                                            if (mysqli_num_rows($res2) > 0) {
-                                                $image = mysqli_fetch_assoc($res2);
-                                                $imagePath = $image['ImagePath'];
+                                        $currentOrderID = $_GET['id'];
+                                        $viewOrderProductSQL = "SELECT * from orders WHERE OrderID='$currentOrderID'";
+                                        $result = mysqli_query($conn, $viewOrderProductSQL);
+                                        $orderProduct = array();
+                                        if (mysqli_num_rows($result) > 0) {
+                                            while ($row = mysqli_fetch_assoc($result)) {
+                                                $orderProduct[] = $row;
                                             }
-                                            echo
-                                            "
+                                            foreach ($orderProduct as $resOrderProduct) {
+                                                $productName = $resOrderProduct['ProductName'];
+                                                $imageSQL = "SELECT ImagePath FROM images WHERE ProductName = '$productName' LIMIT 1";
+                                                $res2 = mysqli_query($conn, $imageSQL);
+                                                $imagePath = '';
+
+                                                if (mysqli_num_rows($res2) > 0) {
+                                                    $image = mysqli_fetch_assoc($res2);
+                                                    $imagePath = $image['ImagePath'];
+                                                }
+                                                echo
+                                                "
                                                 <tr>
                                                     <td>" . "<img src='$imagePath' alt='image' width='80'>" . "</td>
                                                     <td>" . $resOrderProduct["ProductName"] . "</td>
@@ -231,10 +232,42 @@ if (!isset($_SESSION["currentUser"]) && !isset($_SESSION["isAdmin"])) {
                                                     <td>" . $resOrderProduct["Amount"] . "</td>
                                                 </tr>
                                                 ";
+                                            }
                                         }
-                                    }
+                                        ?>
+                                    </table>
+                                </div>
+                                <div class="order-detail-text">
+                                    <?php
+                                    ini_set('display_errors', 1);
+                                    error_reporting(E_ALL);
+                                    require("../config/database.php");
+
+                                    $viewOrderSQL = "SELECT OrderID, GROUP_CONCAT(ProductName) as ProductNames, GROUP_CONCAT(BuyQuantity) as BuyQuantities, SUM(Amount) as TotalAmount, Username, OrderDate, paymentMethod, orderStatus
+                        FROM orders WHERE OrderID='$currentOrderID'
+                        GROUP BY OrderID, Username, OrderDate, paymentMethod, orderStatus";
+                                    $resOrder = mysqli_query($conn, $viewOrderSQL);
+                                    $orders = mysqli_fetch_assoc($resOrder);
+                                    echo
+                                    "
+                                <div>
+                                    <span>Create Date: </span> " . $orders["OrderDate"] . "
+                                </div>
+                                <div>
+                                    <span>Username: </span> " . $orders["Username"] . "
+                                </div>
+                                <div>
+                                    <span>Total Price: </span>    " . $orders["TotalAmount"] . "
+                                </div>
+                                <div>
+                                    <span>Payment Method: </span>     " . $orders["paymentMethod"] . "
+                                </div>
+                                <div>
+                                    <span>Status: </span>     " . $orders["orderStatus"] . "
+                                </div>
+                                ";
                                     ?>
-                                </table>
+                                </div>
                             </div>
                         </div>
                     </div>

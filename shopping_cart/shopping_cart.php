@@ -499,7 +499,7 @@ session_start();
             alert('Successful Payment!')
         )
 
-        window.location.href = "../profile/profile.php"
+        window.location.href = "../index.php"
 
     }
 </script>
