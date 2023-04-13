@@ -46,6 +46,12 @@ if (!isset($_SESSION["currentUser"]) && !isset($_SESSION["isAdmin"])) {
                         echo '<a href="/outventure/authentication/login.php" class="sub-navbar-middle-text">Login</a>';
                     }
                     ?>
+
+                    <?php
+                    if (isset($_SESSION["currentUser"]) && $_SESSION["isAdmin"] > "0") {
+                        echo '<a href="/outventure/admin/admin.php" class="sub-navbar-middle-text">Admin</a>';
+                    }
+                    ?>
                 </div>
                 <div class=" sub-navbar-right">
                     <div class="search-bar">
