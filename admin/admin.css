@@ -363,6 +363,9 @@ body {
   background-color: #ffc700;
   color: #fff;
   margin: 10px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .edit-btn:hover {
   scale: 1.05;
@@ -370,6 +373,9 @@ body {
 }
 .edit-btn:focus {
   outline: none;
+}
+.edit-btn span {
+  margin-right: 10px;
 }
 .button-section {
   display: flex;
@@ -443,6 +449,16 @@ body {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-size: 24px;
+}
+
+.image-column {
+  display: flex;
+}
+
+.image-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 50px 0 0;
 }
 
 @media screen and (max-width: 1200px) {
@@ -558,5 +574,12 @@ body {
     align-items: start;
     padding: 10px 0px 20px 0px;
     width: 100%;
+  }
+
+  .image-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }

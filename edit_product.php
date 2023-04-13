@@ -29,10 +29,11 @@ if (isset($_GET['id'])) {
         } else {
             die("Something went wrong");
         }
-
+        
         if ($_FILES['productImage']) {
             // insert the new images
             $countImg = count($_FILES["productImage"]["name"]);
+            
             for ($i = 0; $i < $countImg; $i++) {
                 $tmpname = $_FILES['productImage']['tmp_name'][$i];
                 $error = $_FILES['productImage']['error'][$i];
@@ -71,9 +72,8 @@ if (isset($_GET['id'])) {
                             header("Location: admin_dashboard.php?error=$em");
                         }
                     }
-                } else {
-                    die("Something went wrong");
-                }
+                    
+                } 
             }
         }
     }
@@ -115,8 +115,6 @@ if (isset($_GET['id'])) {
     } else {
         die("Something went wrong");
     }
-
-
 
     // close the database connection
     mysqli_close($conn);

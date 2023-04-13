@@ -1,8 +1,8 @@
 <?php
-require_once 'config/database.php';
+require_once '../config/database.php';
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
-require_once('config/database.php');
+
 function deleteImage($image_upload_path, $productName, $conn)
 {
     $deleteProductSQL2 = "DELETE FROM Images WHERE ProductName = ? AND ImagePath = ?";
