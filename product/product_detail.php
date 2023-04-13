@@ -106,170 +106,206 @@ if (count($products) > 0) {
         </div>
         <!-- product detail content -->
         <div class="main-container">
-            <div class="product-detail-container">
-                <div class="product-detail-image-container">
-                    <!-- slide show container -->
-                    <div class="slide-show-container">
-                        <!-- left react button -->
-                        <div class="left-react-button">
-                            <svg fill="#000000" width="100%" version="1.1" id="Layer_1"
-                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                viewBox="0 0 511.787 511.787" xml:space="preserve">
-                                <g>
+            <div class='col-content-container'>
+                <div class="product-detail-container">
+                    <div class="product-detail-image-container">
+                        <!-- slide show container -->
+                        <div class="slide-show-container">
+                            <!-- left react button -->
+                            <div class="left-react-button">
+                                <svg fill="#000000" width="100%" version="1.1" id="Layer_1"
+                                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    viewBox="0 0 511.787 511.787" xml:space="preserve">
                                     <g>
-                                        <path d="M508.667,125.707c-4.16-4.16-10.88-4.16-15.04,0L255.76,363.573L18,125.707c-4.267-4.053-10.987-3.947-15.04,0.213
-            c-3.947,4.16-3.947,10.667,0,14.827L248.293,386.08c4.16,4.16,10.88,4.16,15.04,0l245.333-245.333
-            C512.827,136.693,512.827,129.867,508.667,125.707z" />
+                                        <g>
+                                            <path d="M508.667,125.707c-4.16-4.16-10.88-4.16-15.04,0L255.76,363.573L18,125.707c-4.267-4.053-10.987-3.947-15.04,0.213
+                                            c-3.947,4.16-3.947,10.667,0,14.827L248.293,386.08c4.16,4.16,10.88,4.16,15.04,0l245.333-245.333
+                                            C512.827,136.693,512.827,129.867,508.667,125.707z" />
+                                        </g>
                                     </g>
-                                </g>
-                            </svg>
-                        </div>
-                        <!-- image -->
-                        <?php
-                        ini_set('display_errors', 1);
-                        error_reporting(E_ALL);
-                        require("../config/database.php");
-                        $viewSQL = "SELECT * FROM images ORDER BY ImageID";
-                        $res = mysqli_query($conn, $viewSQL);
+                                </svg>
+                            </div>
+                            <!-- image -->
+                            <?php
+                            ini_set('display_errors', 1);
+                            error_reporting(E_ALL);
+                            require("../config/database.php");
+                            $viewSQL = "SELECT * FROM images ORDER BY ImageID";
+                            $res = mysqli_query($conn, $viewSQL);
 
-                        // image array
-                        $imageArray = array();
+                            // image array
+                            $imageArray = array();
 
-                        if (mysqli_num_rows($res) > 0) {
-                            while ($images = mysqli_fetch_assoc($res)) {
-                                if ($images["ProductName"] == $_GET["name"]) {
-                                    array_push($imageArray, $images["ImagePath"]);
+                            if (mysqli_num_rows($res) > 0) {
+                                while ($images = mysqli_fetch_assoc($res)) {
+                                    if ($images["ProductName"] == $_GET["name"]) {
+                                        array_push($imageArray, $images["ImagePath"]);
+                                    }
                                 }
                             }
-                        }
-                        ?>
-                        <img class="slide" src="" alt="">
-                        <!-- right react button -->
-                        <div class="right-react-button">
-                            <svg fill="#000000" width="100%" version="1.1" id="Layer_1"
-                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                viewBox="0 0 511.787 511.787" xml:space="preserve">
-                                <g>
+                            ?>
+                            <img class="slide" src="" alt="">
+                            <!-- right react button -->
+                            <div class="right-react-button">
+                                <svg fill="#000000" width="100%" version="1.1" id="Layer_1"
+                                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    viewBox="0 0 511.787 511.787" xml:space="preserve">
                                     <g>
-                                        <path d="M508.667,125.707c-4.16-4.16-10.88-4.16-15.04,0L255.76,363.573L18,125.707c-4.267-4.053-10.987-3.947-15.04,0.213
-            c-3.947,4.16-3.947,10.667,0,14.827L248.293,386.08c4.16,4.16,10.88,4.16,15.04,0l245.333-245.333
-            C512.827,136.693,512.827,129.867,508.667,125.707z" />
+                                        <g>
+                                            <path d="M508.667,125.707c-4.16-4.16-10.88-4.16-15.04,0L255.76,363.573L18,125.707c-4.267-4.053-10.987-3.947-15.04,0.213
+                                             c-3.947,4.16-3.947,10.667,0,14.827L248.293,386.08c4.16,4.16,10.88,4.16,15.04,0l245.333-245.333
+                                            C512.827,136.693,512.827,129.867,508.667,125.707z" />
+                                        </g>
                                     </g>
-                                </g>
-                            </svg>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-detail-info-container">
+                        <div class="product-detail-info">
+                            <div class="product-detail-info-title">
+                                <span class='product-detail-info-title-text'>
+                                    <?php
+                                    echo $productName;
+                                    ?>
+                                </span>
+                            </div>
+                            <div class="product-detail-info-cate">
+                                <?php
+                                ini_set('display_errors', 1);
+                                error_reporting(E_ALL);
+                                require_once("../view_products.php");
+
+                                $colorsArray = array();
+                                $products = viewProducts();
+                                if (count($products) > 0) {
+                                    foreach ($products as $product) {
+                                        if ($product["ProductName"] == $_GET["name"]) {
+                                            // remove element space 
+                                            $colorsArray = explode(",", $product["ProductColor"]);
+                                        }
+                                    }
+                                }
+                                ?>
+                                <span class="product-detail-info-cate-text">
+                                    <?php
+                                    echo "$productCategory > $productSubCategory";
+                                    ?>
+                                </span>
+                            </div>
+                            <div class="product-detail-info-star">
+                                <span
+                                    class="product-detail-info-star-text">&#9733;&nbsp;&#9733;&nbsp;&#9733;&nbsp;&#9733;</span>
+                            </div>
+                            <div class="product-detail-info-color">
+                                <span class="product-detail-info-color-text">Color: </span>
+                                <?php
+                                ini_set('display_errors', 1);
+                                error_reporting(E_ALL);
+                                require_once("../view_products.php");
+
+                                $colorsArray = array();
+                                $products = viewProducts();
+                                if (count($products) > 0) {
+                                    foreach ($products as $product) {
+                                        if ($product["ProductName"] == $_GET["name"]) {
+                                            // remove element space 
+                                            $colorsArray = explode(",", $product["ProductColor"]);
+                                        }
+                                    }
+                                }
+                                ?>
+                            </div>
+                            <div class="product-detail-info-size">
+                                <span class="product-detail-info-size-text">Size: </span>
+                                <?php
+                                ini_set('display_errors', 1);
+                                error_reporting(E_ALL);
+                                require_once("../view_products.php");
+
+                                $sizesArray = array();
+                                $products = viewProducts();
+                                if (count($products) > 0) {
+                                    foreach ($products as $product) {
+                                        if ($product["ProductName"] == $_GET["name"]) {
+                                            $sizesArray = explode(",", $product["ProductSize"]);
+                                        }
+                                    }
+                                }
+                                ?>
+                            </div>
+                            <div class="product-detail-info-price">
+                                <span class="product-detail-info-price-text">
+                                    Price:
+                                    <?php
+                                    echo "$" . $productPrice;
+                                    ?>
+                                </span>
+                            </div>
+                            <div class="counter">
+                                <span class="down" onClick='decreaseCount(event, this)'>-</span>
+                                <input type="text" value="1">
+                                <span class="up" onClick='increaseCount(event, this)'>+</span>
+                            </div>
+                            <div class="product-detail-info-addtocart">
+                                <button class="product-detail-info-addtocart-button">Add to Cart</button>
+
+                            </div>
+                        </div>
+                        <div class="product-detail-spec">
+                            <div class="product-detail-info-spec-title">
+                                <span class="product-detail-info-spec-text">
+                                    <center>Descriptions:</center>
+                                </span>
+                            </div>
+                            <div class="product-detail-info-spec-detail">
+                                <span class="product-detail-info-spec-detail-text">
+                                    <?php
+                                    $productDescription = str_replace("\\n", "<p>", $productDescription);
+                                    $productDescription = str_replace("\\", "", $productDescription);
+                                    echo nl2br($productDescription);
+                                    ?>
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="product-detail-info-container">
-                    <div class="product-detail-info">
-                        <div class="product-detail-info-title">
-                            <span class='product-detail-info-title-text'>
-                                <?php
-                                echo $productName;
-                                ?>
-                            </span>
+                <div class='title'>
+                    Comment
+                </div>
+                <div class="product-detail-comment">
+                    <div class='comment_content'>
+                        <div class='top-section'>
+                            tonywong123
+                            <div class='name'>
+                                dd/mm/yy
+                            </div>
                         </div>
-                        <div class="product-detail-info-cate">
-                            <?php
-                            ini_set('display_errors', 1);
-                            error_reporting(E_ALL);
-                            require_once("../view_products.php");
-
-                            $colorsArray = array();
-                            $products = viewProducts();
-                            if (count($products) > 0) {
-                                foreach ($products as $product) {
-                                    if ($product["ProductName"] == $_GET["name"]) {
-                                        // remove element space 
-                                        $colorsArray = explode(",", $product["ProductColor"]);
-                                    }
-                                }
-                            }
-                            ?>
-                            <span class="product-detail-info-cate-text">
-                                <?php
-                                echo "$productCategory > $productSubCategory";
-                                ?>
-                            </span>
+                        <div class="comment">
+                            <textarea class='comment' name="comment" id="comment" cols="30" rows="10"></textarea>
                         </div>
-                        <div class="product-detail-info-star">
-                            <span
-                                class="product-detail-info-star-text">&#9733;&nbsp;&#9733;&nbsp;&#9733;&nbsp;&#9733;</span>
-                        </div>
-                        <div class="product-detail-info-color">
-                            <span class="product-detail-info-color-text">Color: </span>
-                            <?php
-                            ini_set('display_errors', 1);
-                            error_reporting(E_ALL);
-                            require_once("../view_products.php");
-
-                            $colorsArray = array();
-                            $products = viewProducts();
-                            if (count($products) > 0) {
-                                foreach ($products as $product) {
-                                    if ($product["ProductName"] == $_GET["name"]) {
-                                        // remove element space 
-                                        $colorsArray = explode(",", $product["ProductColor"]);
-                                    }
-                                }
-                            }
-                            ?>
-                        </div>
-                        <div class="product-detail-info-size">
-                            <span class="product-detail-info-size-text">Size: </span>
-                            <?php
-                            ini_set('display_errors', 1);
-                            error_reporting(E_ALL);
-                            require_once("../view_products.php");
-
-                            $sizesArray = array();
-                            $products = viewProducts();
-                            if (count($products) > 0) {
-                                foreach ($products as $product) {
-                                    if ($product["ProductName"] == $_GET["name"]) {
-                                        $sizesArray = explode(",", $product["ProductSize"]);
-                                    }
-                                }
-                            }
-                            ?>
-                        </div>
-                        <div class="product-detail-info-price">
-                            <span class="product-detail-info-price-text">
-                                Price:
-                                <?php
-                                echo "$" . $productPrice;
-                                ?>
-                            </span>
-                        </div>
-                        <div class="counter">
-                            <span class="down" onClick='decreaseCount(event, this)'>-</span>
-                            <input type="text" value="1">
-                            <span class="up" onClick='increaseCount(event, this)'>+</span>
-                        </div>
-                        <div class="product-detail-info-addtocart">
-                            <button class="product-detail-info-addtocart-button">Add to Cart</button>
-
-                        </div>
+                        <button type='submit' class='reply-btn'>Reply</button>
                     </div>
-                    <div class="product-detail-spec">
-                        <div class="product-detail-info-spec-title">
-                            <span class="product-detail-info-spec-text">
-                                <center>Descriptions:</center>
-                            </span>
+                </div>
+                <div class="product-detail-comment">
+                    <div class='comment_content'>
+                        <div class='top-section'>
+                            tonywong123
+                            <div class='name'>
+                                dd/mm/yy
+                            </div>
                         </div>
-                        <div class="product-detail-info-spec-detail">
-                            <span class="product-detail-info-spec-detail-text">
-                                <?php
-                                $productDescription = str_replace("\\n", "<p>", $productDescription);
-                                $productDescription = str_replace("\\", "", $productDescription);
-                                echo nl2br($productDescription);
-                                ?>
-                            </span>
+
+                        <div class="comment">
+                            <textarea class='comment' readonly name="comment" id="comment" cols="30"
+                                rows="10">Don't be shy</textarea>
                         </div>
                     </div>
                 </div>
             </div>
+
+
         </div>
     </div>
 </body>
