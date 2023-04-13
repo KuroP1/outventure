@@ -73,6 +73,43 @@
                 <input type="submit" name="submit" value="Add Sub Category">
             </form>
 
+            <div>
+                <h2>View Category</h2>
+                <b>Category</b>
+                <b>Sub-Category</b>
+
+                <?php
+                ini_set('display_errors', 1);
+                error_reporting(E_ALL);
+                require("../config/database.php");
+
+                $viewSQL = "SELECT * FROM categories";
+                $res = mysqli_query($conn, $viewSQL);
+
+                $viewSubSQL = "SELECT * FROM subcategories";
+                $resSub = mysqli_query($conn, $viewSubSQL);
+                if (mysqli_num_rows($res) > 0) {
+                    while ($categories = mysqli_fetch_assoc($res)) {
+                        echo "
+                        <div class='col table-content-2'>
+                            " . $categories["CategoryName"] . "
+                        </div>
+                        ";
+
+                        // Reset the pointer of the subcategories result set
+                        mysqli_data_seek($resSub, 0);
+
+                        while ($subCategories = mysqli_fetch_assoc($resSub)) {
+                            if ($categories['CategoryName'] == $subCategories['CategoryName']) {
+                                echo $subCategories['SubCategoryName'];
+                            }
+                        }
+                    }
+                }
+                ?>
+
+            </div>
+
             <!-- end of table -->
             <div class=" burger_container">
                 <svg id="burger-btn" class="ham hamRotate ham1" viewBox="0 0 100 100" width="60" onclick="toggleActive()">
