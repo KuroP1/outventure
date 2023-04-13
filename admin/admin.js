@@ -40,117 +40,59 @@ function toggleActive() {
 }
 
 function toUserManage() {
-  const userEditSection = document.getElementById("user-edit-section");
-  const dropdownContainer = document.getElementById("dropdown-container");
   const orderHistoryBtn = document.getElementById("order-history-btn");
   const productManageBtn = document.getElementById("product-manage-btn");
   const userManageBtn = document.getElementById("user-manage-btn");
-  const userManageSection = document.getElementById("user-manage-section");
-  const productManageSection = document.getElementById(
-    "product-manage-section"
-  );
-  const orderHistorySection = document.getElementById("order-history-section");
-  const productEditSection = document.getElementById("product-edit-section");
-  dropdownContainer.style.height = "0%";
   userManageBtn.style.color = "#ffb800";
   orderHistoryBtn.style.color = "white";
   productManageBtn.style.color = "white";
-  userManageSection.style.width = "100%";
-  productManageSection.style.width = "0%";
-  orderHistorySection.style.width = "0%";
-  productEditSection.style.width = "0%";
-  userEditSection.style.width = "0%";
 }
 function toProductManage() {
-  const dropdownContainer = document.getElementById("dropdown-container");
-  const userEditSection = document.getElementById("user-edit-section");
   const orderHistoryBtn = document.getElementById("order-history-btn");
   const productManageBtn = document.getElementById("product-manage-btn");
   const userManageBtn = document.getElementById("user-manage-btn");
-  const userManageSection = document.getElementById("user-manage-section");
-  const productManageSection = document.getElementById(
-    "product-manage-section"
-  );
-  const orderHistorySection = document.getElementById("order-history-section");
-  const productEditSection = document.getElementById("product-edit-section");
 
-  dropdownContainer.style.height = "0%";
   productManageBtn.style.color = "#ffb800";
   orderHistoryBtn.style.color = "white";
   userManageBtn.style.color = "white";
-  productManageSection.style.width = "100%";
-  userManageSection.style.width = "0%";
-  orderHistorySection.style.width = "0%";
-  productEditSection.style.width = "0%";
-  userEditSection.style.width = "0%";
 }
 function toOrderHistory() {
-  const userEditSection = document.getElementById("user-edit-section");
-  const dropdownContainer = document.getElementById("dropdown-container");
   const orderHistoryBtn = document.getElementById("order-history-btn");
   const productManageBtn = document.getElementById("product-manage-btn");
   const userManageBtn = document.getElementById("user-manage-btn");
-  const userManageSection = document.getElementById("user-manage-section");
-  const productEditSection = document.getElementById("product-edit-section");
-  const productManageSection = document.getElementById(
-    "product-manage-section"
-  );
-  const orderHistorySection = document.getElementById("order-history-section");
-  dropdownContainer.style.height = "0%";
   orderHistoryBtn.style.color = "#ffb800";
   productManageBtn.style.color = "white";
   userManageBtn.style.color = "white";
-  orderHistorySection.style.width = "100%";
-  userManageSection.style.width = "0%";
-  productManageSection.style.width = "0%";
-  productEditSection.style.width = "0%";
-  userEditSection.style.width = "0%";
 }
 
 function toProductEdit() {
-  const userEditSection = document.getElementById("user-edit-section");
-  const productEditSection = document.getElementById("product-edit-section");
-  const userManageSection = document.getElementById("user-manage-section");
-  const productManageSection = document.getElementById(
-    "product-manage-section"
-  );
-  const orderHistorySection = document.getElementById("order-history-section");
-  const dropdownContainer = document.getElementById("dropdown-container");
   const orderHistoryBtn = document.getElementById("order-history-btn");
   const productManageBtn = document.getElementById("product-manage-btn");
   const userManageBtn = document.getElementById("user-manage-btn");
-  dropdownContainer.style.height = "0%";
   productManageBtn.style.color = "#ffb800";
   orderHistoryBtn.style.color = "white";
   userManageBtn.style.color = "white";
-  productEditSection.style.width = "100%";
-  userManageSection.style.width = "0%";
-  productManageSection.style.width = "0%";
-  orderHistorySection.style.width = "0%";
-  userEditSection.style.width = "0%";
   console.log("toProductEdit");
 }
 
 function toUserEdit() {
-  const userEditSection = document.getElementById("user-edit-section");
-  const productEditSection = document.getElementById("product-edit-section");
-  const userManageSection = document.getElementById("user-manage-section");
-  const productManageSection = document.getElementById(
-    "product-manage-section"
-  );
-  const orderHistorySection = document.getElementById("order-history-section");
-  const dropdownContainer = document.getElementById("dropdown-container");
   const orderHistoryBtn = document.getElementById("order-history-btn");
   const productManageBtn = document.getElementById("product-manage-btn");
   const userManageBtn = document.getElementById("user-manage-btn");
-  userEditSection.style.width = "100%";
-  dropdownContainer.style.height = "0%";
   productManageBtn.style.color = "#ffb800";
   orderHistoryBtn.style.color = "white";
   userManageBtn.style.color = "white";
-  productEditSection.style.width = "0%";
-  userManageSection.style.width = "0%";
-  productManageSection.style.width = "0%";
-  orderHistorySection.style.width = "0%";
   console.log("toProductEdit");
+}
+
+function toCategory() {
+  console.log("toCategory");
+  const orderHistoryBtn = document.getElementById("order-history-btn");
+  const productManageBtn = document.getElementById("product-manage-btn");
+  const userManageBtn = document.getElementById("user-manage-btn");
+  const categoryBtn = document.getElementById("category-btn");
+  productManageBtn.style.color = "white";
+  orderHistoryBtn.style.color = "white";
+  userManageBtn.style.color = "white";
+  categoryBtn.style.color = "#ffb800";
 }
