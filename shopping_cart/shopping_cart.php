@@ -388,3 +388,30 @@ session_start();
 </body>
 
 </html>
+
+<script>
+    // get value handle
+    var address = ""
+    var district = document.getElementById("district").value
+
+    console.log(district)
+    
+    // post value handle
+    function Checkout() {
+        let data = {
+
+        }
+
+        fetch("purchase.php", {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        }).then(
+            alert('Added To Cart!')
+        )
+
+        window.location.href = "../shopping_cart/shopping_cart.php"
+    }
+</script>
