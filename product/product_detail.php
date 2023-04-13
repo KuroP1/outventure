@@ -275,17 +275,60 @@ if (count($products) > 0) {
                     Comment
                 </div>
                 <div class="product-detail-comment">
+
                     <div class='comment_content'>
                         <div class='top-section'>
-                            tonywong123
+                            <?php
+                            //get username
+                            
+                            $username = $_SESSION['currentUser'];
+                            echo $username;
+                            ?>
                             <div class='name'>
-                                dd/mm/yy
+                                <?php
+                                //get date
+                                $date = date("d/m/Y");
+                                echo $date;
+
+                                ?>
                             </div>
                         </div>
                         <div class="comment">
-                            <textarea class='comment' name="comment" id="comment" cols="30" rows="10"></textarea>
+                            <form action="" method="post">
+                                <textarea class='comment' name="comment" id="comment" cols="30" rows="10"></textarea>
+                                <button type='submit' class='reply-btn'>Reply</button>
+                            </form>
+                            <?php
+                            //user input comment and saved to database
+                            if (isset($_POST['comment'])) {
+                                $comment = $_POST['comment'];
+                                $username = $_SESSION['currentUser'];
+                                $date = date("Y-m-d");
+                                $product_name = $_GET["name"];
+                                // Connect to the database
+                                require("../config/database.php");
+
+                                // Check the connection
+                                if ($conn->connect_error) {
+                                    die("Connection failed: " . $conn->connect_error);
+                                }
+
+                                // Prepare the SQL query to insert the comment
+                                $InsertCommentsql = "INSERT INTO Comments (Comment, Username, ProductName,CommentDate ) VALUES (?, ?, ?, ?)";
+                                $InsertCommentstmt = $conn->prepare($InsertCommentsql);
+                                $InsertCommentstmt->bind_param("ssss", $comment, $username, $product_name, $date);
+
+                                // Execute the query
+                                $InsertCommentstmt->execute();
+
+                                // Close the connection
+                                $InsertCommentstmt->close();
+                                $conn->close();
+                            }
+                            ?>
+
                         </div>
-                        <button type='submit' class='reply-btn'>Reply</button>
+
                     </div>
                 </div>
                 <div class="product-detail-comment">
@@ -296,11 +339,61 @@ if (count($products) > 0) {
                                 dd/mm/yy
                             </div>
                         </div>
+                        <?php
 
-                        <div class="comment">
-                            <textarea class='comment' readonly name="comment" id="comment" cols="30"
-                                rows="10">Don't be shy</textarea>
-                        </div>
+                        //get comment
+                        ini_set('display_errors', 1);
+                        error_reporting(E_ALL);
+
+                        $product_name = $_GET["name"];
+                        //view all the comments of the product use sql
+                        function view_all_comments($product_name)
+                        {
+                            // Connect to the database
+                            require("../config/database.php");
+
+                            // Check the connection
+                            if ($conn->connect_error) {
+                                die("Connection failed: " . $conn->connect_error);
+                            }
+
+                            // Prepare the SQL query to fetch comments for the given product name
+                            $ViewCommentsql = "SELECT * FROM Comments WHERE ProductName = ?";
+                            $ViewCommentstmt = $conn->prepare($ViewCommentsql);
+                            $ViewCommentstmt->bind_param("s", $product_name);
+
+                            // Execute the query
+                            $ViewCommentstmt->execute();
+
+                            // Fetch the results as an associative array
+                            $ViewCommentresult = $ViewCommentstmt->get_result();
+                            $comments = $ViewCommentresult->fetch_all(MYSQLI_ASSOC);
+
+                            // Close the connection
+                            $ViewCommentstmt->close();
+                            $conn->close();
+
+                            // Return the comments
+                            return $comments;
+                        }
+                        $comments = view_all_comments($product_name);
+
+
+
+
+
+
+
+
+
+                        //display all the comments
+                        foreach ($comments as $comment) {
+
+                            echo "Comment: " . $comment['Comment'] . "<br>";
+                            echo "Username: " . $comment['Username'] . "<br>";
+
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
