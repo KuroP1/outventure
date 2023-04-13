@@ -162,14 +162,12 @@ a {
   margin: 0 0 10px 0;
 }
 .email-text-1 {
-  background-color: #ffffff;
   border: 0;
   border-radius: 10px;
   padding: 5px 0px;
   font-size: 14px;
   font-family: "Poppins", sans-serif;
   color: #969696;
-  padding: 10px 20px 10px 20px;
 }
 .username-text {
   font-weight: 700;

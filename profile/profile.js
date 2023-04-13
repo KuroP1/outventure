@@ -3,16 +3,21 @@ function MenuDisplay(link) {
     "right-container-personal-information"
   );
   var orderHistory = document.getElementById("right-container-order-history");
+  var favourite = document.getElementById("right-container-favourite");
   var menuText1 = document.getElementById("menu-text-1");
   var menuText3 = document.getElementById("menu-text-3");
+  var menuText4 = document.getElementById("menu-text-4");
   var mobileMenuText1 = document.getElementById("mobile-menu-text-1");
   var mobileMenuText3 = document.getElementById("mobile-menu-text-3");
+  var mobileMenuText4 = document.getElementById("mobile-menu-text-4");
 
   if (link === "pi" && personalInfromation.style.display === "none") {
     personalInfromation.style.display = "block";
     orderHistory.style.display = "none";
+    favourite.style.display = "none";
     menuText1.style.color = "#387D6B";
     menuText3.style.color = "#000000";
+    menuText4.style.color = "#000000";
     mobileMenuText1.style.color = "#232323";
     mobileMenuText1.style.backgroundColor = "#FFFFFF";
     mobileMenuText3.style.color = "#FFFFFF";
@@ -20,8 +25,21 @@ function MenuDisplay(link) {
   } else if (link === "oh" && orderHistory.style.display === "none") {
     personalInfromation.style.display = "none";
     orderHistory.style.display = "block";
+    favourite.style.display = "none";
     menuText1.style.color = "#000000";
     menuText3.style.color = "#387D6B";
+    menuText4.style.color = "#000000";
+    mobileMenuText1.style.color = "#FFFFFF";
+    mobileMenuText1.style.backgroundColor = "#232323";
+    mobileMenuText3.style.color = "#232323";
+    mobileMenuText3.style.backgroundColor = "#FFFFFF";
+  } else if (link === "fp" && favourite.style.display === "none") {
+    personalInfromation.style.display = "none";
+    orderHistory.style.display = "none";
+    favourite.style.display = "block";
+    menuText1.style.color = "#000000";
+    menuText3.style.color = "#000000";
+    menuText4.style.color = "#387D6B";
     mobileMenuText1.style.color = "#FFFFFF";
     mobileMenuText1.style.backgroundColor = "#232323";
     mobileMenuText3.style.color = "#232323";
