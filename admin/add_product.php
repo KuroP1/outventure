@@ -1,142 +1,3 @@
-<?php
-require_once '../config/database.php';
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-
-if (isset($_GET['id'])) {
-    $productID = $_GET['id'];
-
-    $oldSql = "SELECT * FROM Products WHERE ProductID = $productID";
-    $oldResult = mysqli_query($conn, $oldSql);
-    $row = mysqli_fetch_assoc($oldResult);
-    $oldProductName = $row['ProductName'];
-
-    // check if the form is submitted
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        // get the form input values
-        $productName = $_POST['productName'];
-        $productDescription = $_POST['productDescription'];
-        $productQuantity = $_POST['productQuantity'];
-        $productSize = $_POST['productSize'];
-        $productColor = $_POST['productColor'];
-        $category = $_POST['category'];
-        $subCategory = $_POST['subCategory'];
-
-        if (empty($productName) === true || empty($productSize) === true || empty($productColor) === true) {
-            var_dump($productName);
-            echo "<script>
-            alert('Fill cannot be empty.');
-            window.location.href='edit_product.php?id=$_GET[id]';
-            </script>";
-        } else {
-            // update the product record in the database
-            $sql = "UPDATE Products SET ProductName=?, ProductDescription=?, ProductQuantity=?, ProductSize=?, ProductColor=?, CategoryName=?, SubCategoryName=? WHERE ProductID=?";
-            $stmt = mysqli_stmt_init($conn);
-            if (mysqli_stmt_prepare($stmt, $sql)) {
-                mysqli_stmt_bind_param($stmt, "ssissssi", $productName, $productDescription, $productQuantity, $productSize, $productColor, $category, $subCategory, $productID);
-                mysqli_stmt_execute($stmt);
-            } else {
-                die("query failed");
-            }
-
-            // update the image name record in the database
-            $sql2 = "UPDATE images SET ProductName=? WHERE ProductName=?";
-            $stmt2 = mysqli_stmt_init($conn);
-            if (mysqli_stmt_prepare($stmt2, $sql2)) {
-                mysqli_stmt_bind_param($stmt2, "ss", $productName, $oldProductName);
-                mysqli_stmt_execute($stmt2);
-            } else {
-                die("query 2 failed");
-            }
-
-            if ($_FILES['productImage']) {
-                // insert the new images
-                $countImg = count($_FILES["productImage"]["name"]);
-                for ($i = 0; $i < $countImg; $i++) {
-                    $tmpname = $_FILES['productImage']['tmp_name'][$i];
-                    $error = $_FILES['productImage']['error'][$i];
-                    if ($error === 0) {
-                        // count how many files are uploaded
-                        $img_name = $_FILES['productImage']['name'][$i];
-                        $img_size = $_FILES['productImage']['size'][$i];
-
-                        if ($img_size > 1250000) {
-                            $em = "Sorry, your file is too large.";
-                            header("Location: admindashboard.php?error=$em");
-                        } else {
-                            $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
-                            $img_ex_lc = strtolower($img_ex);
-
-                            $allowed_exs = array("jpg", "jpeg", "png");
-
-                            if (in_array($img_ex_lc, $allowed_exs)) {
-                                $new_img_name = uniqid("IMG-", true) . '.' . $img_ex_lc;
-                                $image_upload_path = '../uploads/' . $new_img_name;
-                                move_uploaded_file($tmpname, $image_upload_path);
-
-                                // Insert into database
-                                $sql2 = "INSERT INTO Images (ImagePath, ProductName) VALUES (?, ?)";
-                                $stmt2 = mysqli_stmt_init($conn);
-                                if (!mysqli_stmt_prepare($stmt2, $sql2)) {
-                                    echo "SQL statement failed!";
-                                } else {
-                                    mysqli_stmt_bind_param($stmt2, "ss", $image_upload_path, $productName);
-                                    mysqli_stmt_execute($stmt2);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            header("Location: product.php");
-        }
-    }
-
-    // get the current product record from the database
-    $sql = "SELECT * FROM Products WHERE ProductID=?";
-    $stmt = mysqli_stmt_init($conn);
-    if (mysqli_stmt_prepare($stmt, $sql)) {
-        mysqli_stmt_bind_param($stmt, "i", $productID);
-        mysqli_stmt_execute($stmt);
-        $result = mysqli_stmt_get_result($stmt);
-        if ($result->num_rows > 0) {
-            $product = $result->fetch_assoc();
-        } else {
-            die("Product not found");
-        }
-    } else {
-        die("current product record failed");
-    }
-
-    // get the current image
-    $sql2 = "SELECT * FROM images WHERE ProductName=?";
-    $stmt2 = mysqli_stmt_init($conn);
-    if (mysqli_stmt_prepare($stmt2, $sql2)) {
-        mysqli_stmt_bind_param($stmt2, "i", $product['ProductName']);
-        mysqli_stmt_execute($stmt2);
-        $imagePath = array();
-        $result = mysqli_stmt_get_result($stmt2);
-        if ($result->num_rows > 0) {
-            while ($images = $result->fetch_assoc()) {
-                if ($images['ProductName'] == $product['ProductName']) {
-                    array_push($imagePath, $images['ImagePath']);
-                }
-            }
-            $imageCount = count($imagePath);
-        } else {
-            die("Product not found");
-        }
-    } else {
-        die("current product images record failed");
-    }
-
-    // close the database connection
-    mysqli_close($conn);
-} else {
-    header("Location: edit_product.php?id=$_GET[id]");
-    exit();
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -172,23 +33,14 @@ if (isset($_GET['id'])) {
             <hr class="h-line">
             <div class="top-section">
                 <div class="sub-title">
-                    Product Edit
+                    Add Product
                 </div>
             </div>
 
-            <form action="edit_product.php?id=<?php echo $productID; ?>" method="POST" enctype="multipart/form-data">
+            <form action="add_product.php" method="POST" enctype="multipart/form-data">
                 <div class="product-edit-container">
                     <div class="product-edit-content">
                         <div class="container">
-                            <div class="image-column">
-                                <?php foreach ($imagePath as $image) { ?>
-                                    <div class="image-container">
-                                        <img src="<?php echo $image; ?>" width="100%" alt="product_image" class="product_image">
-                                        <!-- handle delete image -->
-                                        <a href="/outventure/admin/delete_product_image.php?image=<?php echo $image; ?>&name=<?php echo $product['ProductName']; ?>&id=<?php echo $productID; ?>&length=<?php echo $imageCount; ?>">Delete</a>
-                                    </div>
-                                <?php } ?>
-                            </div>
                             <div class="row">
                                 <div class="col-4 pt-3">
                                     <div class='field'>
@@ -281,7 +133,7 @@ if (isset($_GET['id'])) {
                                 </div>
                             </div>
                             <div class='button-section'>
-                                <button class='update-btn' type="submit">
+                                <button class='update-btn'>
                                     Update
                                     <svg class='mb-1' width="15" height="15" 0 viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g clip-path="url(#clip0_185_1067)">
@@ -294,8 +146,9 @@ if (isset($_GET['id'])) {
                                         </defs>
                                     </svg>
                                 </button>
-                                <a href="/outventure/admin/delete_product.php?name=<?php echo $product['ProductName']; ?>" onclick='toProductManage()'>
-                                    <button class='delete-btn' type="button">
+
+                                <a href="/outventuire<?php echo $product['ProductName']; ?>" onclick='toProductManage()'>
+                                    <button class='delete-btn'>
                                         Delete
                                         <svg class='mb-1' width="18" height="18" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <g clip-path="url(#clip0_185_1073)">
@@ -316,7 +169,6 @@ if (isset($_GET['id'])) {
                     </div>
                 </div>
             </form>
-
             <!-- end of table -->
             <div class=" burger_container">
                 <svg id="burger-btn" class="ham hamRotate ham1" viewBox="0 0 100 100" width="60" onclick="toggleActive()">

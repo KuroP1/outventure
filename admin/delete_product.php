@@ -1,8 +1,8 @@
 <?php
-require_once 'config/database.php';
+require_once('../config/database.php');
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
-require_once('config/database.php');
+
 function deleteProduct($product_name, $conn)
 {
     $deleteProductSQL = "DELETE FROM Products WHERE ProductName = ?";
@@ -20,8 +20,10 @@ if (isset($_GET['name']) && !empty($_GET['name'])) {
     $product_name = $_GET['name'];
     deleteProduct($product_name, $conn);
 
+    var_dump($product_name);
+
     // Redirect back to the admin dashboard or another page
-    header("Location: admin_dashboard.php");
+    header("Location: product.php");
     exit();
 } else {
     error_log("Error: Invalid product name.");
