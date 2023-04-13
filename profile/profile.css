@@ -228,6 +228,7 @@ a {
 .order-history-container {
   background-color: white;
   display: none;
+  margin-top: 20px;
 }
 
 .order-history-card {
