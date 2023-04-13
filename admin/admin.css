@@ -9,7 +9,7 @@ body {
 }
 
 .product-manage-section {
-  width: 0%;
+  width: 100%;
   overflow-x: hidden;
   height: 100%;
   display: flex;
@@ -26,7 +26,7 @@ body {
   background-color: red;
 }
 .order-history-section {
-  width: 0%;
+  width: 100%;
   overflow-x: hidden;
   height: 100%;
   display: flex;
@@ -289,7 +289,7 @@ body {
   display: none;
 }
 .product-edit-section {
-  width: 0%;
+  width: 100%;
   overflow-x: hidden;
   height: 100%;
   display: flex;
@@ -480,7 +480,7 @@ body {
 }
 
 .user-edit-section {
-  width: 0%;
+  width: 100%;
   overflow-x: hidden;
   height: 100%;
   display: flex;

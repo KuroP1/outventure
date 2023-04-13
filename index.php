@@ -184,273 +184,49 @@ session_start();
                 <div class="row">
                     <div class="row justify-content-center">
                         <div class="row">
-                            <div class="col">
-                                <div class="product-card">
-                                    <div class="product-image-container">
-                                        <img class="product-image" src="images/Home/product.png" alt="Product" />
-                                    </div>
-                                    <div class="product-name">Loowoko 50L Hiking Backpack</div>
-                                    <div class="product-category">Hiking Backpack</div>
-                                    <div class="product-price">HKD 500</div>
-                                    <div class="product-star-rating">
-                                        <script>
-                                            function ratingStar(rating) {
-                                                //return a div with text hello world
-                                                for (var i = 0; i < rating; i++) {
-                                                    document.write(
-                                                        '<img class="star" src="images/Home/star-full-icon.png" alt="Star" />'
-                                                    );
-                                                }
-                                                for (var i = 0; i < 5 - rating; i++) {
-                                                    document.write(
-                                                        '<img class="star" src="images/Home/star-empty-icon.png" alt="Star" />'
-                                                    );
-                                                }
-                                            }
-                                            ratingStar(2);
-                                        </script>
-                                    </div>
-                                    <div class="botton-section">
-                                        <a href="">Buy Now</a>
-                                        <a href="">View More</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="product-card">
-                                    <div class="product-image-container">
-                                        <img class="product-image" src="images/Home/product.png" alt="Product" />
-                                    </div>
-                                    <div class="product-name">Loowoko 50L Hiking Backpack</div>
-                                    <div class="product-category">Hiking Backpack</div>
-                                    <div class="product-price">HKD 500</div>
-                                    <div class="product-star-rating">
-                                        <script>
-                                            function ratingStar(rating) {
-                                                //return a div with text hello world
-                                                for (var i = 0; i < rating; i++) {
-                                                    document.write(
-                                                        '<img class="star" src="images/Home/star-full-icon.png" alt="Star" />'
-                                                    );
-                                                }
-                                                for (var i = 0; i < 5 - rating; i++) {
-                                                    document.write(
-                                                        '<img class="star" src="images/Home/star-empty-icon.png" alt="Star" />'
-                                                    );
-                                                }
-                                            }
-                                            ratingStar(2);
-                                        </script>
-                                    </div>
-                                    <div class="botton-section">
-                                        <a href="">Buy Now</a>
-                                        <a href="">View More</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="product-card">
-                                    <div class="product-image-container">
-                                        <img class="product-image" src="images/Home/product.png" alt="Product" />
-                                    </div>
-                                    <div class="product-name">Loowoko 50L Hiking Backpack</div>
-                                    <div class="product-category">Hiking Backpack</div>
-                                    <div class="product-price">HKD 500</div>
-                                    <div class="product-star-rating">
-                                        <script>
-                                            function ratingStar(rating) {
-                                                //return a div with text hello world
-                                                for (var i = 0; i < rating; i++) {
-                                                    document.write(
-                                                        '<img class="star" src="images/Home/star-full-icon.png" alt="Star" />'
-                                                    );
-                                                }
-                                                for (var i = 0; i < 5 - rating; i++) {
-                                                    document.write(
-                                                        '<img class="star" src="images/Home/star-empty-icon.png" alt="Star" />'
-                                                    );
-                                                }
-                                            }
-                                            ratingStar(2);
-                                        </script>
-                                    </div>
-                                    <div class="botton-section">
-                                        <a href="">Buy Now</a>
-                                        <a href="">View More</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="product-card">
-                                    <div class="product-image-container">
-                                        <img class="product-image" src="images/Home/product.png" alt="Product" />
-                                    </div>
-                                    <div class="product-name">Loowoko 50L Hiking Backpack</div>
-                                    <div class="product-category">Hiking Backpack</div>
-                                    <div class="product-price">HKD 500</div>
-                                    <div class="product-star-rating">
-                                        <script>
-                                            function ratingStar(rating) {
-                                                //return a div with text hello world
-                                                for (var i = 0; i < rating; i++) {
-                                                    document.write(
-                                                        '<img class="star" src="images/Home/star-full-icon.png" alt="Star" />'
-                                                    );
-                                                }
-                                                for (var i = 0; i < 5 - rating; i++) {
-                                                    document.write(
-                                                        '<img class="star" src="images/Home/star-empty-icon.png" alt="Star" />'
-                                                    );
-                                                }
-                                            }
-                                            ratingStar(2);
-                                        </script>
-                                    </div>
-                                    <div class="botton-section">
-                                        <a href="">Buy Now</a>
-                                        <a href="">View More</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row justify-content-center">
-                        <div class="row">
-                            <div class="col">
-                                <div class="product-card">
-                                    <div class="product-image-container">
-                                        <img class="product-image" src="images/Home/product.png" alt="Product" />
-                                    </div>
-                                    <div class="product-name">Loowoko 50L Hiking Backpack</div>
-                                    <div class="product-category">Hiking Backpack</div>
-                                    <div class="product-price">HKD 500</div>
-                                    <div class="product-star-rating">
-                                        <script>
-                                            function ratingStar(rating) {
-                                                //return a div with text hello world
-                                                for (var i = 0; i < rating; i++) {
-                                                    document.write(
-                                                        '<img class="star" src="images/Home/star-full-icon.png" alt="Star" />'
-                                                    );
-                                                }
-                                                for (var i = 0; i < 5 - rating; i++) {
-                                                    document.write(
-                                                        '<img class="star" src="images/Home/star-empty-icon.png" alt="Star" />'
-                                                    );
-                                                }
-                                            }
-                                            ratingStar(2);
-                                        </script>
-                                    </div>
-                                    <div class="botton-section">
-                                        <a href="">Buy Now</a>
-                                        <a href="">View More</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="product-card">
-                                    <div class="product-image-container">
-                                        <img class="product-image" src="images/Home/product.png" alt="Product" />
-                                    </div>
-                                    <div class="product-name">Loowoko 50L Hiking Backpack</div>
-                                    <div class="product-category">Hiking Backpack</div>
-                                    <div class="product-price">HKD 500</div>
-                                    <div class="product-star-rating">
-                                        <script>
-                                            function ratingStar(rating) {
-                                                //return a div with text hello world
-                                                for (var i = 0; i < rating; i++) {
-                                                    document.write(
-                                                        '<img class="star" src="images/Home/star-full-icon.png" alt="Star" />'
-                                                    );
-                                                }
-                                                for (var i = 0; i < 5 - rating; i++) {
-                                                    document.write(
-                                                        '<img class="star" src="images/Home/star-empty-icon.png" alt="Star" />'
-                                                    );
-                                                }
-                                            }
-                                            ratingStar(2);
-                                        </script>
-                                    </div>
-                                    <div class="botton-section">
-                                        <a href="">Buy Now</a>
-                                        <a href="">View More</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="product-card">
-                                    <div class="product-image-container">
-                                        <img class="product-image" src="images/Home/product.png" alt="Product" />
-                                    </div>
-                                    <div class="product-name">Loowoko 50L Hiking Backpack</div>
-                                    <div class="product-category">Hiking Backpack</div>
-                                    <div class="product-price">HKD 500</div>
-                                    <div class="product-star-rating">
-                                        <script>
-                                            function ratingStar(rating) {
-                                                //return a div with text hello world
-                                                for (var i = 0; i < rating; i++) {
-                                                    document.write(
-                                                        '<img class="star" src="images/Home/star-full-icon.png" alt="Star" />'
-                                                    );
-                                                }
-                                                for (var i = 0; i < 5 - rating; i++) {
-                                                    document.write(
-                                                        '<img class="star" src="images/Home/star-empty-icon.png" alt="Star" />'
-                                                    );
-                                                }
-                                            }
-                                            ratingStar(2);
-                                        </script>
-                                    </div>
-                                    <div class="botton-section">
-                                        <a href="">Buy Now</a>
-                                        <a href="">View More</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="product-card">
-                                    <div class="product-image-container">
-                                        <img class="product-image" src="images/Home/product.png" alt="Product" />
-                                    </div>
-                                    <div class="product-name">Loowoko 50L Hiking Backpack</div>
-                                    <div class="product-category">Hiking Backpack</div>
-                                    <div class="product-price">HKD 500</div>
-                                    <div class="product-star-rating">
-                                        <script>
-                                            function ratingStar(rating) {
-                                                //return a div with text hello world
-                                                for (var i = 0; i < rating; i++) {
-                                                    document.write(
-                                                        '<img class="star" src="images/Home/star-full-icon.png" alt="Star" />'
-                                                    );
-                                                }
-                                                for (var i = 0; i < 5 - rating; i++) {
-                                                    document.write(
-                                                        '<img class="star" src="images/Home/star-empty-icon.png" alt="Star" />'
-                                                    );
-                                                }
-                                            }
-                                            ratingStar(2);
-                                        </script>
-                                    </div>
-                                    <div class="botton-section">
-                                        <a href="">Buy Now</a>
-                                        <a href="">View More</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                            <?php
+                            ini_set('display_errors', 1);
+                            error_reporting(E_ALL);
+                            require("config/database.php");
+                            $productSQL = "SELECT * FROM products";
+                            $res = mysqli_query($conn, $productSQL);
 
+                            if (mysqli_num_rows($res) > 0) {
+                                while ($product = mysqli_fetch_assoc($res)) {
+                                    $productName = $product['ProductName'];
+                                    $imageSQL = "SELECT ImagePath FROM images WHERE ProductName = '$productName' LIMIT 1";
+                                    $res2 = mysqli_query($conn, $imageSQL);
+                                    $imagePath = '';
+
+                                    if (mysqli_num_rows($res2) > 0) {
+                                        $image = mysqli_fetch_assoc($res2);
+                                        $imagePath = $image['ImagePath'];
+                                        $imagePath = str_replace("../", "", $imagePath);
+                                    }
+
+                                    echo "
+                                        <div class='col-3'>
+                                            <div class='product-card'>
+                                                <div class='product-image-container'>
+                                                    <a href='/outventure/product/product_detail.php?name=". $product["ProductName"] ."'><img class='product-image' src='$imagePath' alt='Product' /></a>
+                                                </div>
+                                                <div class='product-name'> " . $product["ProductName"] . "</div>
+                                                <div class='product-category'>" . $product["CategoryName"] . " > " . $product["SubCategoryName"] . "</div>
+                                                <div class='product-price'>$" . $product["ProductPrice"] . "</div>
+                                                <div class='product-star-rating'>
+                                                    " . "Like: " . $product["PositiveVote"] . "
+                                                </div>
+                                                <div class='botton-section'>
+                                                    <a href='/outventure/product/product_detail.php?name=". $product["ProductName"] ."'>View More</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        ";
+                                }
+                            }
+                            ?>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -460,61 +236,61 @@ session_start();
 </html>
 
 <script>
-    var fullCategoriesArray = <?php echo json_encode($subCategoriesArray); ?>;
-    var categoriesArray = [];
-    var subCategoriesArray = [];
+var fullCategoriesArray = <?php echo json_encode($subCategoriesArray); ?>;
+var categoriesArray = [];
+var subCategoriesArray = [];
 
-    var currentCate = <?php echo json_encode($product['CategoryName']); ?>;
-    var currentSubCate = <?php echo json_encode($product['SubCategoryName']); ?>;
+var currentCate = <?php echo json_encode($product['CategoryName']); ?>;
+var currentSubCate = <?php echo json_encode($product['SubCategoryName']); ?>;
 
-    for (var i = 0; i < fullCategoriesArray.length; i++) {
-        if (i % 2 == 0) {
-            subCategoriesArray.push(fullCategoriesArray[i]);
-        } else {
-            categoriesArray.push(fullCategoriesArray[i]);
+for (var i = 0; i < fullCategoriesArray.length; i++) {
+    if (i % 2 == 0) {
+        subCategoriesArray.push(fullCategoriesArray[i]);
+    } else {
+        categoriesArray.push(fullCategoriesArray[i]);
+    }
+}
+
+function myFunction() {
+    // clear select
+    var selectElement = document.getElementById('subCategory');
+    while (selectElement.options.length > 0) {
+        selectElement.remove(0);
+    }
+
+    var categoryName = document.getElementById("category").value;
+
+    for (var i = 0; i < categoriesArray.length; i++) {
+        if (categoryName == categoriesArray[i]) {
+            // create option for subcategory
+            var mySelect = document.getElementById('subCategory'),
+                newOption = document.createElement('option');
+            newOption.value = subCategoriesArray[i];
+            newOption.innerHTML = subCategoriesArray[i];
+            mySelect.appendChild(newOption);
+        }
+    }
+}
+
+function setDefaultSubCategory() {
+    var selectElement = document.getElementById('subCategory');
+    while (selectElement.options.length > 0) {
+        selectElement.remove(0);
+    }
+
+    for (var i = 0; i < categoriesArray.length; i++) {
+        if (currentCate == categoriesArray[i]) {
+            // create option for subcategory
+            var mySelect = document.getElementById('subCategory'),
+                newOption = document.createElement('option');
+            newOption.value = subCategoriesArray[i];
+            newOption.innerHTML = subCategoriesArray[i];
+            mySelect.appendChild(newOption);
         }
     }
 
-    function myFunction() {
-        // clear select
-        var selectElement = document.getElementById('subCategory');
-        while (selectElement.options.length > 0) {
-            selectElement.remove(0);
-        }
+    document.getElementById("subCategory").value = currentSubCate;
+}
 
-        var categoryName = document.getElementById("category").value;
-
-        for (var i = 0; i < categoriesArray.length; i++) {
-            if (categoryName == categoriesArray[i]) {
-                // create option for subcategory
-                var mySelect = document.getElementById('subCategory'),
-                    newOption = document.createElement('option');
-                newOption.value = subCategoriesArray[i];
-                newOption.innerHTML = subCategoriesArray[i];
-                mySelect.appendChild(newOption);
-            }
-        }
-    }
-
-    function setDefaultSubCategory() {
-        var selectElement = document.getElementById('subCategory');
-        while (selectElement.options.length > 0) {
-            selectElement.remove(0);
-        }
-
-        for (var i = 0; i < categoriesArray.length; i++) {
-            if (currentCate == categoriesArray[i]) {
-                // create option for subcategory
-                var mySelect = document.getElementById('subCategory'),
-                    newOption = document.createElement('option');
-                newOption.value = subCategoriesArray[i];
-                newOption.innerHTML = subCategoriesArray[i];
-                mySelect.appendChild(newOption);
-            }
-        }
-
-        document.getElementById("subCategory").value = currentSubCate;
-    }
-
-    setDefaultSubCategory();
+setDefaultSubCategory();
 </script>

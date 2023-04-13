@@ -5,7 +5,7 @@ if (!isset($_SESSION["currentUser"])) {
 }
 ?>
 <?php
-include_once 'config/database.php';
+include_once '../config/database.php';
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
