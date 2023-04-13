@@ -47,7 +47,23 @@ body {
   height: 100%;
   display: none;
 }
-
+.sub-navbar-middle-text {
+  color: #fff;
+  font-size: 18px;
+  font-family: "poppins", sans-serif;
+  font-weight: 300 !important;
+  text-decoration: none;
+  margin: 0;
+  padding: 0 10px;
+  transition: 0.3s;
+}
+.sub-navbar-middle-text:hover {
+  color: #ffc700;
+  text-decoration: none;
+  transition: all;
+  padding: 0 2px;
+  transition-duration: 0.5s;
+}
 .navItem {
   color: white;
   text-decoration: none;
@@ -77,6 +93,30 @@ body {
   padding-right: 20px;
   display: none;
   flex-direction: row;
+}
+
+.like_btn {
+  width: 24px;
+  height: 24px;
+  background-size: cover;
+  background-image: url("images/Home/like.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  margin-right: 5px;
+}
+.product-star-rating {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin-bottom: 40px;
+  background-color: #ffc700;
+  font-size: 20px;
+  border-radius: 8px;
+  width: 60px;
+  color: white !important;
+  padding: 2px 0px;
 }
 
 .vl {

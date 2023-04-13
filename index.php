@@ -181,52 +181,53 @@ session_start();
     <div class="product-section">
         <div class="grid-product-list">
             <div class="container-fluid">
-                <div class="row">
-                    <div class="row justify-content-center">
-                        <div class="row">
-                            <?php
-                            ini_set('display_errors', 1);
-                            error_reporting(E_ALL);
-                            require("config/database.php");
-                            $productSQL = "SELECT * FROM products";
-                            $res = mysqli_query($conn, $productSQL);
+                <div class="row align-items-center justify-content-center">
 
-                            if (mysqli_num_rows($res) > 0) {
-                                while ($product = mysqli_fetch_assoc($res)) {
-                                    $productName = $product['ProductName'];
-                                    $imageSQL = "SELECT ImagePath FROM images WHERE ProductName = '$productName' LIMIT 1";
-                                    $res2 = mysqli_query($conn, $imageSQL);
-                                    $imagePath = '';
+                    <?php
+                    ini_set('display_errors', 1);
+                    error_reporting(E_ALL);
+                    require("config/database.php");
+                    $productSQL = "SELECT * FROM products";
+                    $res = mysqli_query($conn, $productSQL);
 
-                                    if (mysqli_num_rows($res2) > 0) {
-                                        $image = mysqli_fetch_assoc($res2);
-                                        $imagePath = $image['ImagePath'];
-                                        $imagePath = str_replace("../", "", $imagePath);
-                                    }
+                    if (mysqli_num_rows($res) > 0) {
+                        while ($product = mysqli_fetch_assoc($res)) {
+                            $productName = $product['ProductName'];
+                            $imageSQL = "SELECT ImagePath FROM images WHERE ProductName = '$productName' LIMIT 1";
+                            $res2 = mysqli_query($conn, $imageSQL);
+                            $imagePath = '';
 
-                                    echo "
-                                        <div class='col-3'>
+                            if (mysqli_num_rows($res2) > 0) {
+                                $image = mysqli_fetch_assoc($res2);
+                                $imagePath = $image['ImagePath'];
+                                $imagePath = str_replace("../", "", $imagePath);
+                            }
+
+                            echo "
+                                        <div class='col-12 col-md-6 col-xl-3'>
                                             <div class='product-card'>
                                                 <div class='product-image-container'>
-                                                    <a href='/outventure/product/product_detail.php?name=". $product["ProductName"] ."'><img class='product-image' src='$imagePath' alt='Product' /></a>
+                                                    <a href='/outventure/product/product_detail.php?name=" . $product["ProductName"] . "'><img class='product-image' src='$imagePath' alt='Product' /></a>
                                                 </div>
                                                 <div class='product-name'> " . $product["ProductName"] . "</div>
                                                 <div class='product-category'>" . $product["CategoryName"] . " > " . $product["SubCategoryName"] . "</div>
                                                 <div class='product-price'>$" . $product["ProductPrice"] . "</div>
                                                 <div class='product-star-rating'>
-                                                    " . "Like: " . $product["PositiveVote"] . "
+                                                <?xml version='1.0' encoding='utf-8'?>
+<svg width='20px' class='like_btn' height='20px' viewBox='0 0 24 24' fill=  'white' xmlns='http://www.w3.org/2000/svg'>
+<path d='M8 10V20M8 10L4 9.99998V20L8 20M8 10L13.1956 3.93847C13.6886 3.3633 14.4642 3.11604 15.1992 3.29977L15.2467 3.31166C16.5885 3.64711 17.1929 5.21057 16.4258 6.36135L14 9.99998H18.5604C19.8225 9.99998 20.7691 11.1546 20.5216 12.3922L19.3216 18.3922C19.1346 19.3271 18.3138 20 17.3604 20L8 20' stroke='#000000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/>
+</svg>
+                                                    " . $product["PositiveVote"] . "
                                                 </div>
                                                 <div class='botton-section'>
-                                                    <a href='/outventure/product/product_detail.php?name=". $product["ProductName"] ."'>View More</a>
+                                                    <a href='/outventure/product/product_detail.php?name=" . $product["ProductName"] . "'>View More</a>
                                                 </div>
                                             </div>
                                         </div>
                                         ";
-                                }
-                            }
-                            ?>
-                        </div>
-                    </div>
+                        }
+                    }
+                    ?>
                 </div>
             </div>
         </div>
@@ -236,61 +237,61 @@ session_start();
 </html>
 
 <script>
-var fullCategoriesArray = <?php echo json_encode($subCategoriesArray); ?>;
-var categoriesArray = [];
-var subCategoriesArray = [];
+    var fullCategoriesArray = <?php echo json_encode($subCategoriesArray); ?>;
+    var categoriesArray = [];
+    var subCategoriesArray = [];
 
-var currentCate = <?php echo json_encode($product['CategoryName']); ?>;
-var currentSubCate = <?php echo json_encode($product['SubCategoryName']); ?>;
+    var currentCate = <?php echo json_encode($product['CategoryName']); ?>;
+    var currentSubCate = <?php echo json_encode($product['SubCategoryName']); ?>;
 
-for (var i = 0; i < fullCategoriesArray.length; i++) {
-    if (i % 2 == 0) {
-        subCategoriesArray.push(fullCategoriesArray[i]);
-    } else {
-        categoriesArray.push(fullCategoriesArray[i]);
-    }
-}
-
-function myFunction() {
-    // clear select
-    var selectElement = document.getElementById('subCategory');
-    while (selectElement.options.length > 0) {
-        selectElement.remove(0);
-    }
-
-    var categoryName = document.getElementById("category").value;
-
-    for (var i = 0; i < categoriesArray.length; i++) {
-        if (categoryName == categoriesArray[i]) {
-            // create option for subcategory
-            var mySelect = document.getElementById('subCategory'),
-                newOption = document.createElement('option');
-            newOption.value = subCategoriesArray[i];
-            newOption.innerHTML = subCategoriesArray[i];
-            mySelect.appendChild(newOption);
-        }
-    }
-}
-
-function setDefaultSubCategory() {
-    var selectElement = document.getElementById('subCategory');
-    while (selectElement.options.length > 0) {
-        selectElement.remove(0);
-    }
-
-    for (var i = 0; i < categoriesArray.length; i++) {
-        if (currentCate == categoriesArray[i]) {
-            // create option for subcategory
-            var mySelect = document.getElementById('subCategory'),
-                newOption = document.createElement('option');
-            newOption.value = subCategoriesArray[i];
-            newOption.innerHTML = subCategoriesArray[i];
-            mySelect.appendChild(newOption);
+    for (var i = 0; i < fullCategoriesArray.length; i++) {
+        if (i % 2 == 0) {
+            subCategoriesArray.push(fullCategoriesArray[i]);
+        } else {
+            categoriesArray.push(fullCategoriesArray[i]);
         }
     }
 
-    document.getElementById("subCategory").value = currentSubCate;
-}
+    function myFunction() {
+        // clear select
+        var selectElement = document.getElementById('subCategory');
+        while (selectElement.options.length > 0) {
+            selectElement.remove(0);
+        }
 
-setDefaultSubCategory();
+        var categoryName = document.getElementById("category").value;
+
+        for (var i = 0; i < categoriesArray.length; i++) {
+            if (categoryName == categoriesArray[i]) {
+                // create option for subcategory
+                var mySelect = document.getElementById('subCategory'),
+                    newOption = document.createElement('option');
+                newOption.value = subCategoriesArray[i];
+                newOption.innerHTML = subCategoriesArray[i];
+                mySelect.appendChild(newOption);
+            }
+        }
+    }
+
+    function setDefaultSubCategory() {
+        var selectElement = document.getElementById('subCategory');
+        while (selectElement.options.length > 0) {
+            selectElement.remove(0);
+        }
+
+        for (var i = 0; i < categoriesArray.length; i++) {
+            if (currentCate == categoriesArray[i]) {
+                // create option for subcategory
+                var mySelect = document.getElementById('subCategory'),
+                    newOption = document.createElement('option');
+                newOption.value = subCategoriesArray[i];
+                newOption.innerHTML = subCategoriesArray[i];
+                mySelect.appendChild(newOption);
+            }
+        }
+
+        document.getElementById("subCategory").value = currentSubCate;
+    }
+
+    setDefaultSubCategory();
 </script>
