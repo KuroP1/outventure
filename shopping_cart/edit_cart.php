@@ -1,8 +1,8 @@
 <?php
 
-//check session isAdmin is >0
+//check session login or not
 session_start();
-if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] <= 0) {
+if (!isset($_SESSION['currentUser'])) {
     header("Location: ../index.php");
     exit();
 }
@@ -12,7 +12,7 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 require_once('../config/database.php');
 function updateCart($cart, $action, $cartNumber, $conn)
-{   
+{
     if ($action == "add") {
         $updateCartSQL2 = "UPDATE Cart SET ProductPrice = ProductPrice + (ProductPrice / BuyQuantity)  WHERE CartID = ?";
         $stmt2 = $conn->prepare($updateCartSQL2);
