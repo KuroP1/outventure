@@ -2,7 +2,7 @@
 // include the database connection code here
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
-require('config/database.php');
+require('../config/database.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // get the form input values
@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     mysqli_stmt_bind_param($stmt2, "ss", $subCategoryArray[$i], $category);
                     mysqli_stmt_execute($stmt2);
 
-                    header("Location: admin_dashboard.php");
+                    header("Location: category.php");
                 }
             }
         }

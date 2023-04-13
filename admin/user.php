@@ -30,6 +30,8 @@ if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] <= 0) {
             <a href="/outventure/admin/product.php" id="product-manage-btn" onclick="toProductManage()">Product
                 Manage</a>
             <a href="/outventure/admin/order.php" id="order-history-btn" onclick="toOrderHistory()">Order History</a>
+            <a href="/outventure/admin/category.php" id="order-history-btn" onclick="toOrderHistory()">
+                Category Manage</a>
         </div>
         <img class="logo" src="../images/Logo.png" alt="logo2" class="logo2">
     </div>
@@ -138,9 +140,16 @@ if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] <= 0) {
                 <div class="dropdown-content">
                     <img class="logo" src="/images/Logo2.png" alt="logo2" class="logo2">
                     <div class="nav_section">
-                        <a href="#" onclick="toUserManage()">User Manage</a>
-                        <a href="#" onclick="toProductManage()">Product Manage</a>
-                        <a href="#" onclick="toOrderHistory()">Order History</a>
+                        <a href="/outventure/admin/user.php" id="user-manage-btn" onclick="toUserManage()">User
+                            Manage</a>
+                        <a href="/outventure/admin/product.php" id="product-manage-btn"
+                            onclick="toProductManage()">Product
+                            Manage</a>
+                        <a href="/outventure/admin/order.php" id="order-history-btn" onclick="toOrderHistory()">Order
+                            History</a>
+                        <a href="/outventure/admin/category.php" id="order-history-btn"
+                            onclick="toOrderHistory()">
+                            Category Manage</a>
                     </div>
                 </div>
             </div>

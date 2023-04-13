@@ -30,6 +30,8 @@ if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] <= 0) {
             <a href="/outventure/admin/product.php" id="product-manage-btn" onclick="toProductManage()">Product
                 Manage</a>
             <a href="/outventure/admin/order.php" id="order-history-btn" onclick="toOrderHistory()">Order History</a>
+            <a href="/outventure/admin/category.php" id="order-history-btn" onclick="toOrderHistory()">
+                Category Manage</a>
         </div>
         <img class="logo" src="../images/Logo.png" alt="logo2" class="logo2">
     </div>
@@ -60,7 +62,9 @@ if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] <= 0) {
                             <div class="col table-header">
                                 Name
                             </div>
-
+                            <div class="col table-header">
+                                Price
+                            </div>
                             <div class="col table-header-2">
                                 Description
                             </div>
@@ -102,6 +106,12 @@ if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] <= 0) {
                                         " . $product["ProductName"] . "
                                     </div>
                                 </div>
+                                <div class='col table-content'>
+                                <div class='product-name'>
+                                    " . $product["ProductPrice"] . "
+                                </div>
+                            </div>
+                                
                                 <div class='col table-content-2'>
                                     <div class='product-description'>
                                         " . $product["ProductDescription"] . "
@@ -174,6 +184,8 @@ if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] <= 0) {
                             onclick="toProductManage()">Product Manage</a>
                         <a href="/outventure/admin/order.php" id="order-history-btn" onclick="toOrderHistory()">Order
                             History</a>
+                        <a href="/outventure/admin/category.php" id="order-history-btn"
+                            onclick="toOrderHistory()">Category Manage</a>
                     </div>
                 </div>
             </div>
