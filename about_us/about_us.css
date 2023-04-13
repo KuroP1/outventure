@@ -33,6 +33,10 @@
   margin: 50px;
   border-radius: 10px;
 }
+.cart_icon {
+  width: 30px;
+  height: 30px;
+}
 .profile-logo {
   max-width: 700px;
   padding-top: 50px;
