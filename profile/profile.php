@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION["currentUser"])) {
+if (!isset($_SESSION["currentUser"]) && !isset($_SESSION["isAdmin"])) {
     header("Location: ../authentication/login.php");
 }
 ?>
