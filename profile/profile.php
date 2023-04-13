@@ -36,11 +36,12 @@ if (!isset($_SESSION["currentUser"])) {
                     </svg>
                 </div>
                 <div class="sub-navbar-middle">
-                    <span class="sub-navbar-middle-text">Product</span>
-                    <span class="sub-navbar-middle-text">About Us</span>
-                    <span class="sub-navbar-middle-text" style="color: #FFC700;">Profile</span>
+                    <a href="/outventure/" class="sub-navbar-middle-text">Product</a>
+                    <a href="/outventure/about_us/about_us.php" class="sub-navbar-middle-text">About Us</a>
+                    <a href="#" class="sub-navbar-middle-text" style="color: #FFC700;">Profile</a>
+                    <a href="#" class="sub-navbar-middle-text">Login</a>
                 </div>
-                <div class="sub-navbar-right">
+                <div class=" sub-navbar-right">
                     <div class="search-bar">
                         <input class="search-bar-input" placeholder="Search Product">
                         <button class="search-icon">
@@ -66,9 +67,10 @@ if (!isset($_SESSION["currentUser"])) {
             </div>
         </div>
         <div id="mobile-sub-navbar-middle" style="transform: translateY(-100%); z-index: -1;">
-            <span id="mobile-sub-navbar-middle-text-1">Product</span>
-            <span id="mobile-sub-navbar-middle-text-2">About Us</span>
-            <span id="mobile-sub-navbar-middle-text-3" style="color: #FFC700;">Profile</span>
+            <a href="/outventure/" class="sub-navbar-middle-text">Product</a>
+            <a href="/outventure/about_us/about_us.php" class="sub-navbar-middle-text">About Us</a>
+            <a href="#" class="sub-navbar-middle-text" style="color: #FFC700;">Profile</a>
+            <a href="#" class="sub-navbar-middle-text">Login</a>
         </div>
         <!-- Profile Content -->
         <div class="main-container">
