@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="admin.css">
-    <link rel="stylesheet" href="../../global.css">
+    <link rel="stylesheet" href="../global.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="admin.js"></script>
     <title>Document</title>
@@ -28,51 +28,53 @@
         <img class="logo" src="../images/Logo.png" alt="logo2" class="logo2">
     </div>
 
-    <div class="product-edit-section" id="product-edit-section">
-        <div class="content" id="content">
+    <div class="category-section" id="category-section">
+        <div class="category-content" id="content">
             <div class="title">
                 Category Manage
             </div>
             <hr class="h-line">
-            <div class="top-section">
+            <div class='category-container'>
+                <div class='Insert-category'>
+                    <h2 class="insert_title">Insert Category</h2>
+                    <form action="insert_category.php" method="POST">
+                        <label class="insert_item" for="category">Category Name:</label>
+                        <input class="insert_select" type="text" name="category" required><br>
+
+                        <label class="insert_item" for="subCategory">Sub Category Name:</label>
+                        <input class="insert_input" type="text" name="subCategory" required><br>
+
+                        <input class="submit_btn" type="submit" name="submit" value="Add Category">
+                    </form>
+                </div>
+                <div class='Insert-sub-category'>
+                    <h2 class='insert_title'>Insert Sub Category</h2>
+                    <form action="insert_subCategory.php" method="POST">
+                        <label class="insert_item" for="newCategory">Category:</label>
+                        <select class="insert_select" id="category" type="select" name="newCategory"
+                            onchange="myFunction()" required>
+                            <option value=""></option>
+                            <?php
+                            ini_set('display_errors', 1);
+                            error_reporting(E_ALL);
+                            require("../config/database.php");
+                            $viewSQL = "SELECT * FROM categories";
+                            $res = mysqli_query($conn, $viewSQL);
+                            if (mysqli_num_rows($res) > 0) {
+                                while ($categories = mysqli_fetch_assoc($res)) {
+                                    echo "<option value='" . $categories['CategoryName'] . "'>" . $categories['CategoryName'] . "</option>";
+                                }
+                            }
+                            ?>
+                        </select><br>
+
+                        <label class="insert_item" for="newSubCategory">Sub Category Name:</label>
+                        <input class='insert_input' type="text" name="newSubCategory" required><br>
+
+                        <input class="submit_btn" type="submit" name="submit" value="Add Sub Category">
+                    </form>
+                </div>
             </div>
-
-            <h2>Insert Category</h2>
-            <form action="insert_category.php" method="POST">
-                <label for="category">Category Name:</label>
-                <input type="text" name="category" required><br>
-
-                <label for="subCategory">Sub Category Name:</label>
-                <input type="text" name="subCategory" required><br>
-
-                <input type="submit" name="submit" value="Add Category">
-            </form>
-
-            <h2>Insert Sub Category</h2>
-            <form action="insert_subCategory.php" method="POST">
-                <label for="newCategory">Category:</label>
-                <select id="category" type="select" name="newCategory" onchange="myFunction()" required>
-                    <option value=""></option>
-                    <?php
-                    ini_set('display_errors', 1);
-                    error_reporting(E_ALL);
-                    require("../config/database.php");
-                    $viewSQL = "SELECT * FROM categories";
-                    $res = mysqli_query($conn, $viewSQL);
-                    if (mysqli_num_rows($res) > 0) {
-                        while ($categories = mysqli_fetch_assoc($res)) {
-                            echo "<option value='" . $categories['CategoryName'] . "'>" . $categories['CategoryName'] . "</option>";
-                        }
-                    }
-                    ?>
-                </select><br>
-
-                <label for="newSubCategory">Sub Category Name:</label>
-                <input type="text" name="newSubCategory" required><br>
-
-                <input type="submit" name="submit" value="Add Sub Category">
-            </form>
-
             <!-- end of table -->
             <div class=" burger_container">
                 <svg id="burger-btn" class="ham hamRotate ham1" viewBox="0 0 100 100" width="60"
@@ -101,6 +103,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 </body>
 
