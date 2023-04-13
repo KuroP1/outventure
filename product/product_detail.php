@@ -303,7 +303,7 @@ if (count($products) > 0) {
                 </div>
                 <div class="product-detail-comment">
 
-                    <div class='comment_content'>
+                    <div class='comment_content-2'>
                         <div class='top-section'>
                             <?php
                             //get username
@@ -358,78 +358,65 @@ if (count($products) > 0) {
 
                     </div>
                 </div>
-                <div class="product-detail-comment">
-                    <div class='comment_content'>
-                        <div class='top-section'>
-                            tonywong123
-                            <div class='name'>
-                                dd/mm/yy
-                            </div>
-                        </div>
-                        <?php
+
+                <?php
+                //get comment
+                ini_set('display_errors', 1);
+                error_reporting(E_ALL);
+
+                $product_name = $_GET["name"];
+                //view all the comments of the product use sql
+                function view_all_comments($product_name)
+                {
+                    // Connect to the database
+                    require("../config/database.php");
+
+                    // Check the connection
+                    if ($conn->connect_error) {
+                        die("Connection failed: " . $conn->connect_error);
+                    }
+
+                    // Prepare the SQL query to fetch comments for the given product name
+                    $ViewCommentsql = "SELECT * FROM Comments WHERE ProductName = ?";
+                    $ViewCommentstmt = $conn->prepare($ViewCommentsql);
+                    $ViewCommentstmt->bind_param("s", $product_name);
+
+                    // Execute the query
+                    $ViewCommentstmt->execute();
+
+                    // Fetch the results as an associative array
+                    $ViewCommentresult = $ViewCommentstmt->get_result();
+                    $comments = $ViewCommentresult->fetch_all(MYSQLI_ASSOC);
+
+                    // Close the connection
+                    $ViewCommentstmt->close();
+                    $conn->close();
+
+                    // Return the comments
+                    return $comments;
+                }
+                $comments = view_all_comments($product_name);
+
+                //display all the comments
+                foreach ($comments as $comment) {
+                    echo "<div class='product-detail-comment'>";
+                    echo "<div class='comment_content'>";
+                    echo $comment['Username'] . "<br>";
+
+                    echo "<br>";
+                    echo "<textarea class='comment' name='comment' id='comment' cols='30' rows='10>";
+                    echo "</textarea>";
+                    echo "<br>";
+                    echo "Date: " . $comment['CommentDate'] . "<br>";
+                    echo "</div>";
+                    echo "</div>";
+                }
+                ?>
 
 
-                        //get comment
-                        ini_set('display_errors', 1);
-                        error_reporting(E_ALL);
 
-                        $product_name = $_GET["name"];
-                        //view all the comments of the product use sql
-                        function view_all_comments($product_name)
-                        {
-                            // Connect to the database
-                            require("../config/database.php");
-
-                            // Check the connection
-                            if ($conn->connect_error) {
-                                die("Connection failed: " . $conn->connect_error);
-                            }
-
-                            // Prepare the SQL query to fetch comments for the given product name
-                            $ViewCommentsql = "SELECT * FROM Comments WHERE ProductName = ?";
-                            $ViewCommentstmt = $conn->prepare($ViewCommentsql);
-                            $ViewCommentstmt->bind_param("s", $product_name);
-
-                            // Execute the query
-                            $ViewCommentstmt->execute();
-
-                            // Fetch the results as an associative array
-                            $ViewCommentresult = $ViewCommentstmt->get_result();
-                            $comments = $ViewCommentresult->fetch_all(MYSQLI_ASSOC);
-
-                            // Close the connection
-                            $ViewCommentstmt->close();
-                            $conn->close();
-
-                            // Return the comments
-                            return $comments;
-                        }
-                        $comments = view_all_comments($product_name);
-
-
-
-
-
-
-
-
-
-                        //display all the comments
-                        foreach ($comments as $comment) {
-
-                            echo "Comment: " . $comment['Comment'] . "<br>";
-                            echo "Username: " . $comment['Username'] . "<br>";
-
-                        }
-                        ?>
-
-                    </div>
-                </div>
             </div>
-
-
         </div>
-    </div>
 </body>
 
 </html>
