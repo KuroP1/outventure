@@ -258,8 +258,8 @@ body {
 }
 .product-description {
   color: black !important;
-  white-space: nowrap;
-  width: 130px;
+  width: 80px;
+  height: 45px;
   overflow: hidden;
   text-overflow: ellipsis;
   border: none !important;
