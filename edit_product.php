@@ -29,11 +29,11 @@ if (isset($_GET['id'])) {
         } else {
             die("Something went wrong");
         }
-        
+
         if ($_FILES['productImage']) {
             // insert the new images
             $countImg = count($_FILES["productImage"]["name"]);
-            
+
             for ($i = 0; $i < $countImg; $i++) {
                 $tmpname = $_FILES['productImage']['tmp_name'][$i];
                 $error = $_FILES['productImage']['error'][$i];
@@ -72,8 +72,8 @@ if (isset($_GET['id'])) {
                             header("Location: admin_dashboard.php?error=$em");
                         }
                     }
-                    
-                } 
+
+                }
             }
         }
     }
@@ -139,7 +139,8 @@ if (isset($_GET['id'])) {
         <?php foreach ($imagePath as $image) { ?>
             <img src="<?php echo $image; ?>" alt="product image" width="100" height="100">
             <!-- handle delete image -->
-            <a href="deleteimage.php?image=<?php echo $image; ?>&name=<?php echo $product['ProductName']; ?>&id=<?php echo $productID; ?>&length=<?php echo $imageCount; ?>">Delete</a>
+            <a
+                href="deleteimage.php?image=<?php echo $image; ?>&name=<?php echo $product['ProductName']; ?>&id=<?php echo $productID; ?>&length=<?php echo $imageCount; ?>">Delete</a>
         <?php } ?>
 
         <br>

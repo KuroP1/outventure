@@ -55,6 +55,8 @@ body {
   padding-right: 10px;
   padding-left: 10px;
   text-decoration: none;
+  font-family: "poppins", sans-serif;
+  font-weight: 300 !important;
 }
 .navItem:hover {
   color: #ffc700;
