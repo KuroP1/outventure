@@ -86,6 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             $orderProduct[] = $row;
                         }
                     }
+
                     echo $currentOrderID;
                     ?>
                 </div>
@@ -98,7 +99,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col table-header">
-                                Product Name
+                                Image
+                            </div>
+                            <div class="col table-header-2">
+                                Name
+                            </div>
+                            <div class="col table-header-2">
+                                Color
+                            </div>
+                            <div class="col table-header-2">
+                                Size
+                            </div>
+                            <div class="col table-header-2">
+                                Quantity
                             </div>
                             <div class="col table-header-2">
                                 Price
@@ -107,12 +120,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <hr class="h-line2">
                         <?php
                         foreach ($orderProduct as $resOrderProduct) {
+                            $productName = $resOrderProduct['ProductName'];
+                            $imageSQL = "SELECT ImagePath FROM images WHERE ProductName = '$productName' LIMIT 1";
+                            $res2 = mysqli_query($conn, $imageSQL);
+                            $imagePath = '';
+
+                            if (mysqli_num_rows($res2) > 0) {
+                                $image = mysqli_fetch_assoc($res2);
+                                $imagePath = $image['ImagePath'];
+                            }
                             echo
-                            "
+                            "                                   
                             <div class='row'>
-                                <div class='col table-content'>
-                                    " . $resOrderProduct["ProductName"] . "
-                                </div>
+                            <div class='col table-content'>
+                            " . "<img src='$imagePath' alt='image' width='80'>" . "
+                            </div>
+                            <div class='col table-content'>
+                                " . $resOrderProduct["ProductName"] . "
+                            </div>
+                            <div class='col table-content'>
+                                " . $resOrderProduct["ProductColor"] . "
+                            </div>
+                            <div class='col table-content'>
+                                " . $resOrderProduct["ProductSize"] . "
+                            </div>
+                            <div class='col table-content'>
+                                " . $resOrderProduct["BuyQuantity"] . "
+                            </div>
                             <div class='col table-content'>
                                 " . $resOrderProduct["Amount"] . "
                             </div>
