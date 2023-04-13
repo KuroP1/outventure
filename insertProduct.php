@@ -102,3 +102,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_FILES['productImage']) {
 
 //close the database connection
 mysqli_close($conn);
+?>
