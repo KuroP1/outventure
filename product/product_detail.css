@@ -78,6 +78,9 @@ a:hover {
   font-size: 14px;
   margin: 0;
 }
+.like_btn {
+  padding-right: 5px;
+}
 .product-detail-comment .comment {
   width: 100%;
   font-size: 18px;
