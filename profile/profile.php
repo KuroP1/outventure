@@ -112,7 +112,7 @@ if (!isset($_SESSION["currentUser"]) && !isset($_SESSION["isAdmin"])) {
 
                         if ($row = mysqli_fetch_assoc($result)) {
                             echo "<span class='username-text'>{$row['Username']}</span>";
-                            echo "<span class='email-text'>{$row['Email']}</span>";
+                            echo "<span class='email-text-1'>{$row['Email']}</span>";
                         }
                         ?>
                     </div>
