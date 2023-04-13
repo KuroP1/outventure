@@ -359,7 +359,7 @@ if (isset($_GET['id'])) {
             </form>
 
             <!-- end of table -->
-            <div class=" burger_container">
+            <div class="burger_container">
                 <svg id="burger-btn" class="ham hamRotate ham1" viewBox="0 0 100 100" width="60"
                     onclick="toggleActive()">
                     <path class="line top"
