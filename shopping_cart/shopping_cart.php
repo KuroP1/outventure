@@ -311,19 +311,19 @@ session_start();
                                 <div class='title'>
                                     Block
                                 </div>
-                                <input class='location_block' type='text' name='address' id='address' placeholder='Address'>
+                                <input class='location_block' type='text' name='block' id='block' placeholder='Address'>
                             </div>
                             <div class='location_input_content'>
                                 <div class='title'>
                                     Floor
                                 </div>
-                                <input class='location_floor' type='text' name='address' id='address' placeholder='Address'>
+                                <input class='location_floor' type='text' name='floor' id='floor' placeholder='Address'>
                             </div>
                             <div class='location_input_content'>
                                 <div class='title'>
                                     Room
                                 </div>
-                                <input class='location_room' type='text' name='address' id='address' placeholder='Address'>
+                                <input class='location_room' type='text' name='room' id='room' placeholder='Address'>
                             </div>
                         </div>
                     </div>
@@ -334,23 +334,23 @@ session_start();
                 <div class='description'> Select your payment method</div>
                 <div class='container'>
                     <div class='row'>
-                        <button class='col payment'>
-                            <img width='80' src='../images/Shopping_Cart/alipay.png' alt='alipay' />
-                        </button>
-                        <button class='col payment'>
-                            <img width='80' src='../images/Shopping_Cart/cash-payment.png' alt='cash-payment' />
-                        </button>
-                    </div>
-                    <div class='row'>
-                        <button class='col payment'>
+                        <button onclick="SetPayment('fps')" class='col payment fps'>
                             <img width='70' src='../images/Shopping_Cart/fps.png' alt='fps' />
                         </button>
-                        <button class='col payment'>
+                        <button onclick="SetPayment('payme')" class='col payment'>
                             <img width='100' src='../images/Shopping_Cart/payme.png' alt='payme' />
                         </button>
                     </div>
+                    <div class='row'>
+                        <button onclick="SetPayment('alipay')" class='col payment'>
+                            <img width='80' src='../images/Shopping_Cart/alipay.png' alt='alipay' />
+                        </button>
+                        <button onclick="SetPayment('cash')" class='col payment'>
+                            <img width='80' src='../images/Shopping_Cart/cash-payment.png' alt='cash-payment' />
+                        </button>
+                    </div>
                 </div>
-                <button class='btn btn-primary' type='submit'>Confirm</button>
+                <button onclick="Checkout()" class='btn btn-primary' type='submit'>Confirm</button>
             </div>
         </div>
     </div>
@@ -390,28 +390,50 @@ session_start();
 </html>
 
 <script>
-    // get value handle
-    var address = ""
-    var district = document.getElementById("district").value
+    var payment = ""
 
-    console.log(district)
-    
+    function SetPayment(pay) {
+        if (pay === "alipay") {
+            payment = "Alipay"
+        } else if (pay === "cash") {
+            payment = "Cash On Delivery"
+        } else if (pay === "fps") {
+            payment = "FPS"
+        } else if (pay === "payme") {
+            payment = "PayMe"
+        }
+    }
+
     // post value handle
     function Checkout() {
-        let data = {
+        var district = document.getElementById("district").value
+        var address = document.getElementById("address").value
+        var block = document.getElementById("block").value
+        var floor = document.getElementById("floor").value
+        var room = document.getElementById("room").value
 
-        }
+        if (district === "" || address === "" || block === "" || floor === "" || room === "" || payment === "") {
+            alert("Please fill in all the information!")
+            return
+        } else {
+            var wholeAddress = district + "," + address + "," + block + "," + floor + "," + room
 
-        fetch("purchase.php", {
-            method: "POST",
-            body: JSON.stringify(data),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8"
+            let data = {
+                address: wholeAddress,
+                payment: payment
             }
-        }).then(
-            alert('Added To Cart!')
-        )
 
-        window.location.href = "../shopping_cart/shopping_cart.php"
+            fetch("purchase.php", {
+                method: "POST",
+                body: JSON.stringify(data),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            }).then(
+                alert('Successful Payment!')
+            )
+
+            window.location.href = "../profile/profile.php"
+        }
     }
 </script>
