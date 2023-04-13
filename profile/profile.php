@@ -131,8 +131,6 @@ if (!isset($_SESSION["currentUser"]) && !isset($_SESSION["isAdmin"])) {
                     <div id="mobile-menu-container" style="transform: translateX(-100%);">
                         <span onclick="MenuDisplay('pi')" id="mobile-menu-text-1"
                             style="background-color: #FFFFFF; color: #232323;">Personal Information</span>
-                        <span onclick="MenuDisplay('bp')" id="mobile-menu-text-2"
-                            style="background-color: #232323; color: #FFFFFF;">Bill Payment</span>
                         <span onclick="MenuDisplay('oh')" id="mobile-menu-text-3"
                             style="background-color: #232323; color: #FFFFFF;">Order History</span>
 
@@ -140,7 +138,6 @@ if (!isset($_SESSION["currentUser"]) && !isset($_SESSION["isAdmin"])) {
                     <div class="menu-container">
                         <span onclick="MenuDisplay('pi')" id="menu-text-1" style="color: #387D6B;">Personal
                             Information</span>
-
                         <span onclick="MenuDisplay('oh')" id="menu-text-3" style="color: #000000;">Order History</span>
 
                     </div>
