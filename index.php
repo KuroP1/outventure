@@ -210,7 +210,7 @@ session_start();
                             }
 
                             echo
-                            "
+                                "
                                         <div class='col-12 col-md-6 col-xl-3'>
                                             <div class='product-card'>
                                                 <div class='product-image-container'>
@@ -238,48 +238,48 @@ session_start();
             </div>
         </div>
         ";
-        }
-        }
-        ?>
-    </div>
-    </div>
-    </div>
+                        }
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 
 </html>
 
 <script>
-var fullCategoriesArray = <?php echo json_encode($subCategoriesArray); ?>;
-var subCategoriesArray = [];
-var categoriesArray = [];
+    var fullCategoriesArray = <?php echo json_encode($subCategoriesArray); ?>;
+    var subCategoriesArray = [];
+    var categoriesArray = [];
 
-for (var i = 0; i < fullCategoriesArray.length; i++) {
-    if (i % 2 == 0) {
-        subCategoriesArray.push(fullCategoriesArray[i]);
-    } else {
-        categoriesArray.push(fullCategoriesArray[i]);
-    }
-}
-
-function myFunction() {
-    // clear select
-    var selectElement = document.getElementById('subCategory');
-    while (selectElement.options.length > 0) {
-        selectElement.remove(0);
-    }
-
-    var categoryName = document.getElementById("category").value;
-
-    for (var i = 0; i < categoriesArray.length; i++) {
-        if (categoryName == categoriesArray[i]) {
-            // create option for subcategory
-            var mySelect = document.getElementById('subCategory'),
-                newOption = document.createElement('option');
-            newOption.value = subCategoriesArray[i];
-            newOption.innerHTML = subCategoriesArray[i];
-            mySelect.appendChild(newOption);
+    for (var i = 0; i < fullCategoriesArray.length; i++) {
+        if (i % 2 == 0) {
+            subCategoriesArray.push(fullCategoriesArray[i]);
+        } else {
+            categoriesArray.push(fullCategoriesArray[i]);
         }
     }
-}
+
+    function myFunction() {
+        // clear select
+        var selectElement = document.getElementById('subCategory');
+        while (selectElement.options.length > 0) {
+            selectElement.remove(0);
+        }
+
+        var categoryName = document.getElementById("category").value;
+
+        for (var i = 0; i < categoriesArray.length; i++) {
+            if (categoryName == categoriesArray[i]) {
+                // create option for subcategory
+                var mySelect = document.getElementById('subCategory'),
+                    newOption = document.createElement('option');
+                newOption.value = subCategoriesArray[i];
+                newOption.innerHTML = subCategoriesArray[i];
+                mySelect.appendChild(newOption);
+            }
+        }
+    }
 </script>
