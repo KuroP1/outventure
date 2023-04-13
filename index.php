@@ -208,7 +208,7 @@ session_start();
                                         <div class='col-3'>
                                             <div class='product-card'>
                                                 <div class='product-image-container'>
-                                                    <a href='/outventure/product/product_detail.php?name=". $product["ProductName"] ."'><img class='product-image' src='$imagePath' alt='Product' /></a>
+                                                    <a href='/outventure/product/product_detail.php?name=" . $product["ProductName"] . "'><img class='product-image' src='$imagePath' alt='Product' /></a>
                                                 </div>
                                                 <div class='product-name'> " . $product["ProductName"] . "</div>
                                                 <div class='product-category'>" . $product["CategoryName"] . " > " . $product["SubCategoryName"] . "</div>
@@ -217,7 +217,7 @@ session_start();
                                                     " . "Like: " . $product["PositiveVote"] . "
                                                 </div>
                                                 <div class='botton-section'>
-                                                    <a href='/outventure/product/product_detail.php?name=". $product["ProductName"] ."'>View More</a>
+                                                    <a href='/outventure/product/product_detail.php?name=" . $product["ProductName"] . "'>View More</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -236,61 +236,61 @@ session_start();
 </html>
 
 <script>
-var fullCategoriesArray = <?php echo json_encode($subCategoriesArray); ?>;
-var categoriesArray = [];
-var subCategoriesArray = [];
+    var fullCategoriesArray = <?php echo json_encode($subCategoriesArray); ?>;
+    var categoriesArray = [];
+    var subCategoriesArray = [];
 
-var currentCate = <?php echo json_encode($product['CategoryName']); ?>;
-var currentSubCate = <?php echo json_encode($product['SubCategoryName']); ?>;
+    var currentCate = <?php echo json_encode($product['CategoryName']); ?>;
+    var currentSubCate = <?php echo json_encode($product['SubCategoryName']); ?>;
 
-for (var i = 0; i < fullCategoriesArray.length; i++) {
-    if (i % 2 == 0) {
-        subCategoriesArray.push(fullCategoriesArray[i]);
-    } else {
-        categoriesArray.push(fullCategoriesArray[i]);
-    }
-}
-
-function myFunction() {
-    // clear select
-    var selectElement = document.getElementById('subCategory');
-    while (selectElement.options.length > 0) {
-        selectElement.remove(0);
-    }
-
-    var categoryName = document.getElementById("category").value;
-
-    for (var i = 0; i < categoriesArray.length; i++) {
-        if (categoryName == categoriesArray[i]) {
-            // create option for subcategory
-            var mySelect = document.getElementById('subCategory'),
-                newOption = document.createElement('option');
-            newOption.value = subCategoriesArray[i];
-            newOption.innerHTML = subCategoriesArray[i];
-            mySelect.appendChild(newOption);
-        }
-    }
-}
-
-function setDefaultSubCategory() {
-    var selectElement = document.getElementById('subCategory');
-    while (selectElement.options.length > 0) {
-        selectElement.remove(0);
-    }
-
-    for (var i = 0; i < categoriesArray.length; i++) {
-        if (currentCate == categoriesArray[i]) {
-            // create option for subcategory
-            var mySelect = document.getElementById('subCategory'),
-                newOption = document.createElement('option');
-            newOption.value = subCategoriesArray[i];
-            newOption.innerHTML = subCategoriesArray[i];
-            mySelect.appendChild(newOption);
+    for (var i = 0; i < fullCategoriesArray.length; i++) {
+        if (i % 2 == 0) {
+            subCategoriesArray.push(fullCategoriesArray[i]);
+        } else {
+            categoriesArray.push(fullCategoriesArray[i]);
         }
     }
 
-    document.getElementById("subCategory").value = currentSubCate;
-}
+    function myFunction() {
+        // clear select
+        var selectElement = document.getElementById('subCategory');
+        while (selectElement.options.length > 0) {
+            selectElement.remove(0);
+        }
 
-setDefaultSubCategory();
+        var categoryName = document.getElementById("category").value;
+
+        for (var i = 0; i < categoriesArray.length; i++) {
+            if (categoryName == categoriesArray[i]) {
+                // create option for subcategory
+                var mySelect = document.getElementById('subCategory'),
+                    newOption = document.createElement('option');
+                newOption.value = subCategoriesArray[i];
+                newOption.innerHTML = subCategoriesArray[i];
+                mySelect.appendChild(newOption);
+            }
+        }
+    }
+
+    function setDefaultSubCategory() {
+        var selectElement = document.getElementById('subCategory');
+        while (selectElement.options.length > 0) {
+            selectElement.remove(0);
+        }
+
+        for (var i = 0; i < categoriesArray.length; i++) {
+            if (currentCate == categoriesArray[i]) {
+                // create option for subcategory
+                var mySelect = document.getElementById('subCategory'),
+                    newOption = document.createElement('option');
+                newOption.value = subCategoriesArray[i];
+                newOption.innerHTML = subCategoriesArray[i];
+                mySelect.appendChild(newOption);
+            }
+        }
+
+        document.getElementById("subCategory").value = currentSubCate;
+    }
+
+    setDefaultSubCategory();
 </script>
