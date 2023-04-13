@@ -22,7 +22,7 @@ if (isset($_GET['id'])) {
         $category = $_POST['category'];
         $subCategory = $_POST['subCategory'];
 
-        if (empty($productName) === true || empty($productSize) === true || empty($productColor) === true)  {
+        if (empty($productName) === true || empty($productSize) === true || empty($productColor) === true) {
             var_dump($productName);
             echo "<script>
             alert('Fill cannot be empty.');
@@ -38,7 +38,7 @@ if (isset($_GET['id'])) {
             } else {
                 die("query failed");
             }
-    
+
             // update the image name record in the database
             $sql2 = "UPDATE images SET ProductName=? WHERE ProductName=?";
             $stmt2 = mysqli_stmt_init($conn);
@@ -48,7 +48,7 @@ if (isset($_GET['id'])) {
             } else {
                 die("query 2 failed");
             }
-    
+
             if ($_FILES['productImage']) {
                 // insert the new images
                 $countImg = count($_FILES["productImage"]["name"]);
@@ -59,21 +59,21 @@ if (isset($_GET['id'])) {
                         // count how many files are uploaded
                         $img_name = $_FILES['productImage']['name'][$i];
                         $img_size = $_FILES['productImage']['size'][$i];
-    
+
                         if ($img_size > 1250000) {
                             $em = "Sorry, your file is too large.";
                             header("Location: admindashboard.php?error=$em");
                         } else {
                             $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
                             $img_ex_lc = strtolower($img_ex);
-    
+
                             $allowed_exs = array("jpg", "jpeg", "png");
-    
+
                             if (in_array($img_ex_lc, $allowed_exs)) {
                                 $new_img_name = uniqid("IMG-", true) . '.' . $img_ex_lc;
                                 $image_upload_path = '../uploads/' . $new_img_name;
                                 move_uploaded_file($tmpname, $image_upload_path);
-    
+
                                 // Insert into database
                                 $sql2 = "INSERT INTO Images (ImagePath, ProductName) VALUES (?, ?)";
                                 $stmt2 = mysqli_stmt_init($conn);
@@ -145,7 +145,7 @@ if (isset($_GET['id'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="admin.css">
-    <link rel="stylesheet" href="../global.css">
+    <link rel="stylesheet" href="../../global.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="admin.js"></script>
     <title>Document</title>

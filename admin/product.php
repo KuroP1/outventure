@@ -116,7 +116,7 @@
                                     </a>
                                 </div>
                                 <div class='col table-content-2'>
-                                    <a href=''>
+                                    <a href='/outventure/admin/edit_product.php?id=" . $product["ProductID"] . "' onclick='toProductEdit()'>
                                         <svg width='26' height='26' viewBox='0 0 26 26' fill='none' xmlns='http://www.w3.org/2000/svg'>
                                             <g clip-path='url(#clip0_124_294)'>
                                                 <path d='M10.8633 21.213C10.6288 21.2379 10.4187 21.0667 10.394 20.8305L9.62933 13.5176C9.60468 13.2815 9.77477 13.0699 10.0093 13.0451L10.434 13.0001C10.6685 12.9753 10.8787 13.1465 10.9033 13.3826L11.668 20.6955C11.6927 20.9317 11.5226 21.1432 11.2881 21.168L10.8633 21.213Z' fill='#BA1A1A' />
@@ -154,9 +154,9 @@
                 <div class="dropdown-content">
                     <img class="logo" src="/images/Logo2.png" alt="logo2" class="logo2">
                     <div class="nav_section">
-                        <a href="#" onclick="toUserManage()">User Manage</a>
-                        <a href="#" onclick="toProductManage()">Product Manage</a>
-                        <a href="#" onclick="toOrderHistory()">Order History</a>
+                        <a href="/outventure/admin/user.php" id="user-manage-btn" onclick="toUserManage()">User Manage</a>
+                        <a href="/outventure/admin/product.php" id="product-manage-btn" onclick="toProductManage()">Product Manage</a>
+                        <a href="/outventure/admin/order.php" id="order-history-btn" onclick="toOrderHistory()">Order History</a>
                     </div>
                 </div>
             </div>
