@@ -1,8 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['currentUser'])) {
-    header("Location: ../index.php");
-    exit();
+
 }
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
@@ -288,10 +287,24 @@ if (count($products) > 0) {
                             <input type="text" value="1">
                             <span class="up" onClick='increaseCount(event, this)'>+</span>
                         </div>
-                        <div class="product-detail-info-addtocart">
-                            <button class="product-detail-info-addtocart-button">Add to Cart</button>
+                        <?php
+                            if (isset($_SESSION['currentUser'])) {
+                                //<div class="product-detail-info-addtocart">
+                                //<button class="product-detail-info-addtocart-button">Add to Cart</button>
+                                // </div>
+                                // echo the add to cart button
+                                echo
+                                    "
+                                <div class='product-detail-info-addtocart'>
+                                    <a href='/outventure/add_to_cart.php?name=" . $productName . "' style='text-decoration:none;'>
+                                        <button class='product-detail-info-addtocart-button'>Add to Cart</button>
+                                    </a>
+                                </div>
+                                ";
 
-                        </div>
+                            }
+                            ?>
+
                     </div>
                     <div class="product-detail-spec">
                         <div class="product-detail-info-spec-title">
@@ -311,32 +324,54 @@ if (count($products) > 0) {
                     </div>
                 </div>
             </div>
+
             <div class='title'>
                 Comment
             </div>
             <div class="product-detail-comment">
 
                 <div class='comment_content-2'>
-                    <div class='top-section'>
-                        <?php
+                    <?php
+                        //if login, show comment box
+                        if (
+                            isset($_SESSION['currentUser']
+                        )
+                        ) {
+
+                            echo " <div class='top-section'>";
+
+
+
+
                             //get username
-                            
+                        
                             $username = $_SESSION['currentUser'];
                             echo $username;
-                            ?>
-                        <div class='name'>
-                            <?php
-                                //get date
-                                $date = date("d/m/Y");
-                                echo $date;
 
-                                ?>
-                        </div>
-                    </div>
+                            echo "<div class='name'>";
+
+                            //get date
+                            $date = date("d/m/Y");
+                            echo $date;
+
+
+
+                            echo "</div>";
+                            echo "</div>";
+                        }
+                        ?>
+
+
+
                     <div class="comment">
                         <form action="" method="post">
                             <textarea class='comment' name="comment" id="comment" cols="30" rows="10"></textarea>
-                            <button type='submit' class='reply-btn'>Reply</button>
+                            <?php
+                                if (isset($_SESSION['currentUser'])) {
+                                    echo "<button type='submit' class='reply-btn'>Reply</button>";
+                                }
+                                ?>
+
                         </form>
                         <?php
                             //user input comment and saved to database
