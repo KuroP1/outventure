@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (!isset($_SESSION['currentUser'])) {
+    header("Location: ../index.php");
+    exit();
+}
 
 ?>
 <!DOCTYPE html>
@@ -16,7 +20,9 @@ session_start();
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css'>
     <link rel='preconnect' href='https://fonts.googleapis.com'>
     <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
-    <link href='https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap' rel='stylesheet'>
+    <link
+        href='https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'
+        rel='stylesheet'>
     <script src='shopping_cart.js'></script>
     <script src='../navbar.js'></script>
 </head>
@@ -28,7 +34,8 @@ session_start();
             <div class='sub-navbar-container'>
                 <a href='/outventure'><img class='sub-navbar-logo' src='../images/Logo2.png' alt='Logo' /></a>
                 <div onclick='ShowMobileMainMenu()' class='main-burger-tag-container'>
-                    <svg class='burger-tag' xmlns='http://www.w3.org/2000/svg' width='35' height='35' viewBox='0 0 24 24' style='fill: rgba(255, 255, 255, 1);transform: msFilter;'>
+                    <svg class='burger-tag' xmlns='http://www.w3.org/2000/svg' width='35' height='35'
+                        viewBox='0 0 24 24' style='fill: rgba(255, 255, 255, 1);transform: msFilter;'>
                         <path d='M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z'></path>
                     </svg>
                 </div>
@@ -42,16 +49,20 @@ session_start();
                     <div class='search-bar'>
                         <input class='search-bar-input' placeholder='Search Product'>
                         <button class='search-icon'>
-                            <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' style='fill: rgba(255, 255, 255, 1);transform: msFilter;'>
-                                <path d='M19.023 16.977a35.13 35.13 0 0 1-1.367-1.384c-.372-.378-.596-.653-.596-.653l-2.8-1.337A6.962 6.962 0 0 0 16 9c0-3.859-3.14-7-7-7S2 5.141 2 9s3.14 7 7 7c1.763 0 3.37-.66 4.603-1.739l1.337 2.8s.275.224.653.596c.387.363.896.854 1.384 1.367l1.358 1.392.604.646 2.121-2.121-.646-.604c-.379-.372-.885-.866-1.391-1.36zM9 14c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z'>
+                            <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'
+                                style='fill: rgba(255, 255, 255, 1);transform: msFilter;'>
+                                <path
+                                    d='M19.023 16.977a35.13 35.13 0 0 1-1.367-1.384c-.372-.378-.596-.653-.596-.653l-2.8-1.337A6.962 6.962 0 0 0 16 9c0-3.859-3.14-7-7-7S2 5.141 2 9s3.14 7 7 7c1.763 0 3.37-.66 4.603-1.739l1.337 2.8s.275.224.653.596c.387.363.896.854 1.384 1.367l1.358 1.392.604.646 2.121-2.121-.646-.604c-.379-.372-.885-.866-1.391-1.36zM9 14c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z'>
                                 </path>
                             </svg>
                         </button>
                         </input>
                     </div>
                     <span class='sub-navbar-right-vline'>|</span>
-                    <svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 24 24' style='fill: rgba(255, 255, 255, 1);transform: msFilter;'>
-                        <path d='M21.822 7.431A1 1 0 0 0 21 7H7.333L6.179 4.23A1.994 1.994 0 0 0 4.333 3H2v2h2.333l4.744 11.385A1 1 0 0 0 10 17h8c.417 0 .79-.259.937-.648l3-8a1 1 0 0 0-.115-.921zM17.307 15h-6.64l-2.5-6h11.39l-2.25 6z'>
+                    <svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 24 24'
+                        style='fill: rgba(255, 255, 255, 1);transform: msFilter;'>
+                        <path
+                            d='M21.822 7.431A1 1 0 0 0 21 7H7.333L6.179 4.23A1.994 1.994 0 0 0 4.333 3H2v2h2.333l4.744 11.385A1 1 0 0 0 10 17h8c.417 0 .79-.259.937-.648l3-8a1 1 0 0 0-.115-.921zM17.307 15h-6.64l-2.5-6h11.39l-2.25 6z'>
                         </path>
                         <circle cx='10.5' cy='19.5' r='1.5'></circle>
                         <circle cx='17.5' cy='19.5' r='1.5'></circle>
@@ -400,7 +411,8 @@ session_start();
                 <h3 id="paymentMethod"></h3>
                 <span id="message" class="message"></span>
                 <img id="paymentCode" src="" width="250">
-                <button onclick="Checkout()" id="checkOutButton" class='btn btn-primary' type='submit'>Check Out</button>
+                <button onclick="Checkout()" id="checkOutButton" class='btn btn-primary' type='submit'>Check
+                    Out</button>
             </div>
         </div>
     </div>
@@ -426,12 +438,12 @@ session_start();
     var span = document.getElementsByClassName("close")[0];
 
     // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
+    span.onclick = function () {
         modal.style.display = "none";
     }
 
     // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
+    window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
         }
@@ -442,7 +454,8 @@ session_start();
             payment = "Alipay"
             document.getElementById("paymentMethod").innerHTML = "Payment: Alipay"
             document.getElementById("paymentCode").src = "../images/Shopping_Cart/AlipayQRCode.png"
-            document.getElementById("message").innerHTML = "Scan the following QR Code to pay and click \"Check Out\". After checkout, please send us the payment verification by screen cap to +852 5577 8560."
+            document.getElementById("message").innerHTML =
+                "Scan the following QR Code to pay and click \"Check Out\". After checkout, please send us the payment verification by screen cap to +852 5577 8560."
         } else if (pay === "cash") {
             payment = "Cash On Delivery"
             document.getElementById("paymentMethod").innerHTML = "Payment: Cash"
@@ -452,12 +465,14 @@ session_start();
             payment = "FPS"
             document.getElementById("paymentMethod").innerHTML = "Payment: FPS"
             document.getElementById("paymentCode").src = "../images/Shopping_Cart/FPSQRCode.png"
-            document.getElementById("message").innerHTML = "Scan the following QR Code to pay and click \"Check Out\". After checkout, please send us the payment verification by screen cap to +852 5577 8560."
+            document.getElementById("message").innerHTML =
+                "Scan the following QR Code to pay and click \"Check Out\". After checkout, please send us the payment verification by screen cap to +852 5577 8560."
         } else if (pay === "payme") {
             payment = "PayMe"
             document.getElementById("paymentMethod").innerHTML = "Payment: PayMe"
             document.getElementById("paymentCode").src = "../images/Shopping_Cart/PayMeQRCode.png"
-            document.getElementById("message").innerHTML = "Scan the following QR Code to pay and click \"Check Out\". After checkout, please send us the payment verification by screen cap to +852 5577 8560."
+            document.getElementById("message").innerHTML =
+                "Scan the following QR Code to pay and click \"Check Out\". After checkout, please send us the payment verification by screen cap to +852 5577 8560."
         }
     }
 
