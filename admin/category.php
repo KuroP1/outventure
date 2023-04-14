@@ -41,7 +41,7 @@
                         <label class="insert_item" for="category">Category Name:</label>
                         <input class="insert_select" type="text" name="category" required><br>
 
-                        <label class="insert_item" for="subCategory">Sub Category Name:</label>
+                        <label class="insert_item" for="subCategory">Sub Category Name: Secperate by , (e.g. Casual, Running)</label>
                         <input class="insert_input" type="text" name="subCategory" required><br>
 
                         <input class="submit_btn" type="submit" name="submit" value="Add Category">
@@ -68,7 +68,7 @@
                             ?>
                         </select><br>
 
-                        <label class="insert_item" for="newSubCategory">Sub Category Name:</label>
+                        <label class="insert_item" for="newSubCategory">Sub Category Name: Secperate by , (e.g. Casual, Running)</label>
                         <input class='insert_input' type="text" name="newSubCategory" required><br>
 
                         <input class="submit_btn" type="submit" name="submit" value="Add Sub Category">

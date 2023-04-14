@@ -25,7 +25,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             mysqli_stmt_execute($subCategoriesfindstmt);
             $subCategoriesfindresult = mysqli_stmt_get_result($subCategoriesfindstmt);
             if ($subCategoriesfindresult->num_rows > 0) {
-                echo "<div class='alert alert-danger'>Sub Category is already exist.</div>";
+                echo "<script>
+                alert('Sub Category $subCategoryArray[$i] Aleady Exist in Category $category.');
+                window.location.href='category.php';
+                </script>";
             } else {
                 $sql2 = "INSERT INTO SubCategories (SubCategoryName, CategoryName) VALUES (?, ?)";
                 $stmt2 = mysqli_stmt_init($conn);
@@ -35,12 +38,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 } else {
                     mysqli_stmt_bind_param($stmt2, "ss", $subCategoryArray[$i], $category);
                     mysqli_stmt_execute($stmt2);
-
-                    header("Location: category.php");
                 }
             }
         }
     }
+
+    echo "<script>
+    alert('Sub Category $subCategory Successfully Added to Category $category.');
+    window.location.href='category.php';
+    </script>";
 }
 
 //close the database connection

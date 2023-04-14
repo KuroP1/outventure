@@ -17,7 +17,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         mysqli_stmt_execute($categoriesfindstmt);
         $categoriesfindresult = mysqli_stmt_get_result($categoriesfindstmt);
         if ($categoriesfindresult->num_rows > 0) {
-            echo "<div class='alert alert-danger'>Category is already exist.</div>";
+            echo "<script>
+            alert('Category $category Already Exist.');
+            window.location.href='category.php';
+            </script>";
         } else {
             // add cate
             $sql = "INSERT INTO Categories (CategoryName) VALUES (?)";
@@ -28,8 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             } else {
                 mysqli_stmt_bind_param($stmt, "s", $category);
                 mysqli_stmt_execute($stmt);
-
-                header("Location: admin_dashboard.php");
             }
 
             // add subcate
@@ -48,10 +49,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 } else {
                     mysqli_stmt_bind_param($stmt2, "ss", $subCategoryArray[$i], $category);
                     mysqli_stmt_execute($stmt2);
-
-                    header("Location: category.php");
                 }
             }
+
+            echo "<script>
+            alert('Successfully Added to Category $category with Sub Category $subCategory .');
+            window.location.href='category.php';
+            </script>";
         }
     }
 }
