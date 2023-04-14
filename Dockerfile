@@ -18,6 +18,9 @@ COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 
 RUN a2enmod rewrite
 
+# Copy PHP configuration
+COPY php.ini /usr/local/etc/php/
+
 EXPOSE 80
 
 # Start server
