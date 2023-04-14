@@ -109,58 +109,54 @@ session_start();
             <div class="product-label" id="product-label">
                 <span class="product-label-text">PRODUCT</span>
             </div>
-            <div class="fliters">
-                <div>
-                    <div class="select-box-title">Sorting</div>
-                    <select class="select-box" type="select" onchange="myFunction()" require>
-                        <option value="like">Like</option>
-                        <option value="highestprice">Highest Price</option>
-                        <option value="lowestprice">Lowest Price</option>
-                    </select>
-                </div>
-                <div>
-                    <div class="select-box-title">Category</div>
-                    <select class="select-box" id="category" type="select" name="category" onchange="myFunction()" required>
-                        <?php
-                        ini_set('display_errors', 1);
-                        error_reporting(E_ALL);
-                        require("config/database.php");
-                        $viewSQL = "SELECT * FROM categories";
-                        $res = mysqli_query($conn, $viewSQL);
-                        if (mysqli_num_rows($res) > 0) {
-                            while ($categories = mysqli_fetch_assoc($res)) {
-                                echo "<option value='" . $categories['CategoryName'] . "'>" . $categories['CategoryName'] . "</option>";
+            <form action="index.php#product-section" method="POST">
+                <div class="fliters">
+                    <div>
+                        <div class="select-box-title">Category</div>
+                        <select class="select-box" id="category" type="select" name="category" onchange="myFunction()" required>
+                            <option value="all">All Product</option>
+                            <?php
+                            ini_set('display_errors', 1);
+                            error_reporting(E_ALL);
+                            require("config/database.php");
+                            $viewSQL = "SELECT * FROM categories";
+                            $res = mysqli_query($conn, $viewSQL);
+                            if (mysqli_num_rows($res) > 0) {
+                                while ($categories = mysqli_fetch_assoc($res)) {
+                                    echo "<option value='" . $categories['CategoryName'] . "'>" . $categories['CategoryName'] . "</option>";
+                                }
                             }
-                        }
-                        ?>
-                    </select>
-                </div>
-                <div>
-                    <div class="select-box-title">Sub-Category</div>
-                    <select class="select-box" id="subCategory" type="select" name="subCategory" required>
-                        <?php
-                        ini_set('display_errors', 1);
-                        error_reporting(E_ALL);
-                        require_once("config/database.php");
-                        $viewSQL = "SELECT * FROM subcategories";
-                        $res = mysqli_query($conn, $viewSQL);
-                        $subCategoriesArray = array();
+                            ?>
+                        </select>
+                    </div>
+                    <div>
+                        <div class="select-box-title">Sub-Category</div>
+                        <select class="select-box" id="subCategory" type="select" name="subCategory" required>
+                            <option value="all">All Product</option>
+                            <?php
+                            ini_set('display_errors', 1);
+                            error_reporting(E_ALL);
+                            require_once("config/database.php");
+                            $viewSQL = "SELECT * FROM subcategories";
+                            $res = mysqli_query($conn, $viewSQL);
+                            $subCategoriesArray = array();
 
-                        // print out categories select value
-                        if (mysqli_num_rows($res) > 0) {
-                            while ($subCategories = mysqli_fetch_assoc($res)) {
-                                // display subcategories based on category select value
-                                array_push($subCategoriesArray, $subCategories['SubCategoryName'], $subCategories['CategoryName']);
+                            // print out categories select value
+                            if (mysqli_num_rows($res) > 0) {
+                                while ($subCategories = mysqli_fetch_assoc($res)) {
+                                    // display subcategories based on category select value
+                                    array_push($subCategoriesArray, $subCategories['SubCategoryName'], $subCategories['CategoryName']);
+                                }
                             }
-                        }
-                        ?>
-
-                    </select>
+                            ?>
+                        </select>
+                    </div>
+                    <button type="submit">Search</button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
-    <div class="product-section">
+    <div id="product-section" class="product-section">
         <div class="grid-product-list">
             <div class="container-fluid">
                 <div class="row align-items-center justify-content-center">
@@ -168,11 +164,32 @@ session_start();
                     <?php
                     ini_set('display_errors', 1);
                     error_reporting(E_ALL);
-
+                    $category = "";
+                    $subCategory = "";
                     require_once("config/database.php");
-                    $productSQL = "SELECT * FROM products";
-                    $res = mysqli_query($conn, $productSQL);
 
+                    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                        $category = $_POST['category'];
+                        $subCategory = $_POST['subCategory'];              
+                    } else {
+                        $category = "all";
+                        $subCategory = "all";
+                    }
+
+                    if ($category == "all" && $subCategory == "all") {
+                        $productSQL = "SELECT * FROM products";
+                        $res = mysqli_query($conn, $productSQL);
+                    } else if ($category != "all" && $subCategory == "all") {
+                        $productSQL = "SELECT * FROM products WHERE CategoryName = '$category'";
+                        $res = mysqli_query($conn, $productSQL);
+                    } else if ($category == "all" && $subCategory != "all") {
+                        $productSQL = "SELECT * FROM products WHERE SubCategoryName = '$subCategory'";
+                        $res = mysqli_query($conn, $productSQL);
+                    } else {
+                        $productSQL = "SELECT * FROM products WHERE CategoryName = '$category' AND SubCategoryName = '$subCategory'";
+                        $res = mysqli_query($conn, $productSQL);
+                    }
+     
                     if (mysqli_num_rows($res) > 0) {
                         while ($product = mysqli_fetch_assoc($res)) {
                             $productName = $product['ProductName'];
@@ -257,7 +274,13 @@ session_start();
         while (selectElement.options.length > 0) {
             selectElement.remove(0);
         }
+
         var categoryName = document.getElementById("category").value;
+        var mySelect1 = document.getElementById('subCategory'),
+            newOption1 = document.createElement('option');
+        newOption1.value = ""
+        newOption1.innerHTML = ""
+        mySelect1.appendChild(newOption1);
         for (var i = 0; i < categoriesArray.length; i++) {
             if (categoryName == categoriesArray[i]) {
                 // create option for subcategory
@@ -268,5 +291,20 @@ session_start();
                 mySelect.appendChild(newOption);
             }
         }
+
+        if (categoryName === "all") {
+            var mySelect = document.getElementById('subCategory'),
+                newOption = document.createElement('option');
+            newOption.value = "all";
+            newOption.innerHTML = "All Product";
+            mySelect.appendChild(newOption);
+        }
+
     }
+
+    // Add an event listener for the 'change' event on the subcategory dropdown
+    document.getElementById('subCategory').addEventListener('change', function() {
+        // Set global variable subcate
+        subcate = this.value;
+    });
 </script>
