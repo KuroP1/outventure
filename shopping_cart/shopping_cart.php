@@ -40,7 +40,7 @@ if (!isset($_SESSION['currentUser'])) {
                     </svg>
                 </div>
                 <div class='sub-navbar-middle'>
-                    <a href='/outventure/' class='sub-navbar-middle-text'>Product</a>
+                    <a href='/outventure/index.php#product-section"' class='sub-navbar-middle-text'>Product</a>
                     <a href='/outventure/about_us/about_us.php' class='sub-navbar-middle-text'>About Us</a>
                     <a href='/outventure/profile/profile.php' class='sub-navbar-middle-text'>Profile</a>
                     <a href='#' class='sub-navbar-middle-text'>Login</a>

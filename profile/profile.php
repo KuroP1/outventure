@@ -36,7 +36,7 @@ if (!isset($_SESSION["currentUser"]) && !isset($_SESSION["isAdmin"])) {
                     </svg>
                 </div>
                 <div class="sub-navbar-middle">
-                    <a href="/outventure/" class="sub-navbar-middle-text">Product</a>
+                    <a href="/outventure/index.php#product-section"" class="sub-navbar-middle-text">Product</a>
                     <a href="/outventure/about_us/about_us.php" class="sub-navbar-middle-text">About Us</a>
                     <a href="#" class="sub-navbar-middle-text" style="color: #FFC700;">Profile</a>
                     <?php
@@ -86,7 +86,7 @@ if (!isset($_SESSION["currentUser"]) && !isset($_SESSION["isAdmin"])) {
             </div>
         </div>
         <div id="mobile-sub-navbar-middle" style="transform: translateY(-100%); z-index: -1;">
-            <a href="/outventure/" class="sub-navbar-middle-text">Product</a>
+            <a href="/outventure/index.php#product-section"" class="sub-navbar-middle-text">Product</a>
             <a href="/outventure/about_us/about_us.php" class="sub-navbar-middle-text">About Us</a>
             <a href="#" class="sub-navbar-middle-text" style="color: #FFC700;">Profile</a>
             <a href="#" class="sub-navbar-middle-text">Login</a>

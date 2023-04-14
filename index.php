@@ -32,7 +32,7 @@ session_start();
                     <img class="Logo" src="images/Logo2.png" alt="Logo" />
                 </a>
                 <div class="navigation">
-                    <a class="navItem" href="index.php">Product</a>
+                    <a class="navItem" href="index.php?#product-section">Product</a>
                     <a class="navItem" href="/outventure/about_us/about_us.php">About Us</a>
                     <a class="navItem" href="/outventure/profile/profile.php">Profile</a>
                     <?php
@@ -99,7 +99,7 @@ session_start();
                     </button>
                     </input>
                 </div>
-                <a class="navItem" href="index.php">Product</a>
+                <a class="navItem" href="index.php#product-section">Product</a>
                 <a class="navItem" href="/outventure/about_us/about_us.php">About Us</a>
                 <a class="navItem" href="/outventure/profile/profile.php">Profile</a>
                 <?php

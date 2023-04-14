@@ -36,7 +36,7 @@ session_start();
                         </svg>
                     </div>
                     <div class="sub-navbar-middle">
-                        <a href="/outventure/" class="sub-navbar-middle-text">Product</a>
+                        <a href="/outventure/index.php#product-section" class="sub-navbar-middle-text">Product</a>
                         <a href="#" class="sub-navbar-middle-text" style="color: #FFC700;">About Us</a>
                         <a href="/outventure/profile/profile.php" class="sub-navbar-middle-text">Profile</a>
                         <?php
@@ -88,7 +88,7 @@ session_start();
             </div>
         </div>
         <div id="mobile-sub-navbar-middle" style="transform: translateY(-100%); z-index: -1;">
-            <a href="/outventure/" class="sub-navbar-middle-text">Product</a>
+            <a href="/outventure/index.php?#product-section" class="sub-navbar-middle-text">Product</a>
             <a href="#" class="sub-navbar-middle-text" style="color: #FFC700;">About Us</a>
             <a href="/outventure/profile/profile.php" class="sub-navbar-middle-text">Profile</a>
             <?php
