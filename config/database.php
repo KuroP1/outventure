@@ -2,8 +2,7 @@
 $servername = "outventure.chfgk5zp2zgw.ap-northeast-1.rds.amazonaws.com";
 $database = "outventure";
 $username = "admin";
-$password = "WH#vCFxKDNGqj9*N
-";
+$password = "WH#vCFxKDNGqj9*N";
 
 // Create connection
 
