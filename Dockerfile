@@ -1,7 +1,5 @@
 FROM php:8.2.4-apache
 
-RUN a2enmod rewrite
-
 RUN docker-php-ext-install mysqli pdo pdo_mysql \
     && pecl install redis \
     && docker-php-ext-enable redis
