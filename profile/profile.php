@@ -104,7 +104,12 @@ if (!isset($_SESSION["currentUser"]) && !isset($_SESSION["isAdmin"])) {
                 <!-- Left inforamtion and menu -->
                 <div class="left-container">
                     <div class="user-info-container">
-                        <img class="avatar" src="../images/profile/avatar.png" alt="avatar" />
+                        <div class='avatar'>
+                            <?php
+                            $firstLetter = substr($_SESSION['currentUser'], 0, 1);
+                            echo "<span class='avatar-text'>{$firstLetter}</span>";
+                            ?>
+                        </div>
                         <?php
                         require_once "../config/database.php";
                         $sql = "SELECT * FROM users WHERE Username ='{$_SESSION['currentUser']}'";
@@ -326,11 +331,11 @@ if (!isset($_SESSION["currentUser"]) && !isset($_SESSION["isAdmin"])) {
 </html>
 
 <script>
-function GoToDetail(id) {
-    window.location.href = "profile_order_detail.php?id=" + id;
-}
+    function GoToDetail(id) {
+        window.location.href = "profile_order_detail.php?id=" + id;
+    }
 
-function GoToProductDetail(name) {
-    window.location.href = "/outventure/product/product_detail.php?name=" + name;
-}
+    function GoToProductDetail(name) {
+        window.location.href = "/outventure/product/product_detail.php?name=" + name;
+    }
 </script>

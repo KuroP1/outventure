@@ -203,7 +203,8 @@ a:hover {
 .product-detail-info-price,
 .product-detail-info-addtocart {
   display: flex;
-  align-items: center;
+  align-items: start;
+  justify-content: start;
   margin: 15px 0 15px 0;
 }
 
@@ -295,6 +296,9 @@ a:hover {
   transition: 0.2s;
   font-weight: 600;
   cursor: pointer;
+}
+.add-to-cart-btn {
+  margin: 0px !important;
 }
 
 .product-detail-info-spec-detail-text {
@@ -553,7 +557,7 @@ a:hover {
     background-color: #ffffff;
     border-radius: 20px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    width: 980px;
+    width: 880px;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -567,6 +571,6 @@ a:hover {
     justify-content: start;
     align-items: start;
     text-align: start;
-    max-width: 1020px;
+    max-width: 920px;
   }
 }

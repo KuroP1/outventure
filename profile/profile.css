@@ -157,10 +157,6 @@ a {
   font-weight: 600;
 }
 
-.avatar {
-  width: 140px;
-  margin: 0 0 10px 0;
-}
 .email-text-1 {
   border: 0;
   border-radius: 10px;
@@ -352,6 +348,18 @@ tr:hover:not(:first-child) {
   font-size: 16px;
   color: #9d9d9d;
 }
+.avatar {
+  width: 140px;
+  height: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #387d6b;
+  border-radius: 50%;
+  font-size: 70px;
+  color: white;
+  margin-bottom: 20px;
+}
 
 @media (min-width: 640px) {
   .main-container {
@@ -384,11 +392,6 @@ tr:hover:not(:first-child) {
 
   .right-container {
     width: 100%;
-  }
-
-  .avatar {
-    width: 140px;
-    margin: 0 0 10px 0;
   }
 
   .username-text {
@@ -486,11 +489,6 @@ tr:hover:not(:first-child) {
 
   .right-container {
     width: 100%;
-  }
-
-  .avatar {
-    width: 140px;
-    margin: 0 0 10px 0;
   }
 
   .username-text {
@@ -591,11 +589,6 @@ tr:hover:not(:first-child) {
 
   .right-container {
     width: 65%;
-  }
-
-  .avatar {
-    width: 140px;
-    margin: 0 0 10px 0;
   }
 
   .username-text {

@@ -107,6 +107,7 @@
   font-weight: 600;
   color: #000;
   cursor: pointer;
+  text-decoration: none;
 }
 .add-button:focus {
   outline: none;
@@ -115,6 +116,7 @@
 .add-button:hover {
   color: #ffb800;
   transition: all 0.2s ease-in-out;
+  text-decoration: none;
 }
 
 .minus-button {
@@ -130,6 +132,7 @@
   font-weight: 600;
   color: #000;
   cursor: pointer;
+  text-decoration: none;
 }
 .minus-button:focus {
   outline: none;
@@ -137,6 +140,7 @@
 .minus-button:hover {
   color: #ffb800;
   transition: all 0.2s ease-in-out;
+  text-decoration: none;
 }
 
 .desktop {
@@ -460,7 +464,6 @@
     align-items: center;
     padding: 0px 20px;
     margin-top: 20px;
-    height: 300px;
     background-color: #fff;
     border-radius: 12px;
     font-family: "Poppins", sans-serif;
@@ -478,6 +481,13 @@
   }
   .content .header {
     font-weight: 700;
+    padding-right: 10px;
+  }
+  .minus-button {
+    padding-left: 10px;
+  }
+  .add-button {
+    padding-left: 6px;
   }
   .quantity {
     display: flex;

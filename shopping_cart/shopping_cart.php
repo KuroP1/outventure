@@ -390,6 +390,7 @@ if (!isset($_SESSION['currentUser'])) {
                 mysqli_close($conn);
 
                 // Display the total price
+                echo "$";
                 echo $total;
                 ?>
                 </span>
