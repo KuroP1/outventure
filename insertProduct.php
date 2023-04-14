@@ -63,8 +63,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_FILES['productImage']) {
                                     move_uploaded_file($tmpname, $image_upload_path);
 
                                     // Insert into database
-                                    $sql = "INSERT INTO Products (ProductName, ProductDescription, ProductPrice, ProductQuantity, ProductSize, ProductColor, CategoryName, SubCategoryName) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-                                    $sql2 = "INSERT INTO Images (ImagePath, ProductName) VALUES (?, ?)";
+                                    $sql = "INSERT INTO products (ProductName, ProductDescription, ProductPrice, ProductQuantity, ProductSize, ProductColor, CategoryName, SubCategoryName) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                                    $sql2 = "INSERT INTO images (ImagePath, ProductName) VALUES (?, ?)";
                                     $stmt = mysqli_stmt_init($conn);
                                     $stmt2 = mysqli_stmt_init($conn);
                                     if (!mysqli_stmt_prepare($stmt, $sql) || !mysqli_stmt_prepare($stmt2, $sql2)) {

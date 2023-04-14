@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </script>";
         } else {
             // add cate
-            $sql = "INSERT INTO Categories (CategoryName) VALUES (?)";
+            $sql = "INSERT INTO categories (CategoryName) VALUES (?)";
             $stmt = mysqli_stmt_init($conn);
 
             if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
 
             for ($i = 0; $i < count($subCategoryArray); $i++) {
-                $sql2 = "INSERT INTO SubCategories (SubCategoryName, CategoryName) VALUES (?, ?)";
+                $sql2 = "INSERT INTO subCategories (SubCategoryName, CategoryName) VALUES (?, ?)";
                 $stmt2 = mysqli_stmt_init($conn);
 
                 if (!mysqli_stmt_prepare($stmt2, $sql2)) {

@@ -75,7 +75,7 @@ if (isset($_GET['id'])) {
                                 move_uploaded_file($tmpname, $image_upload_path);
 
                                 // Insert into database
-                                $sql2 = "INSERT INTO Images (ImagePath, ProductName) VALUES (?, ?)";
+                                $sql2 = "INSERT INTO images (ImagePath, ProductName) VALUES (?, ?)";
                                 $stmt2 = mysqli_stmt_init($conn);
                                 if (!mysqli_stmt_prepare($stmt2, $sql2)) {
                                     echo "SQL statement failed!";
@@ -156,7 +156,7 @@ if (isset($_GET['id'])) {
 
 <body onload="toProductEdit()">
     <div class="side_bar">
-        <a href=' '>
+    <a href='/'>
             <img class="logo" width='200px' src="../images/Logo2.png" alt="logo2" class="logo2">
         </a>
         <div class="nav_section">

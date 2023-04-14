@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $currentDate = date("Y-m-d h:m:s");
 
             // Insert the order into the Orders table
-            $sqlInsert = "INSERT INTO Orders (OrderDate, OrderID, paymentMethod, orderStatus, Username, Address, Amount, ProductName, BuyQuantity, ProductColor, ProductSize) VALUES ('$currentDate', '$orderID', '$paymentMethod', '$orderStatus', '$username', '$address', $amount, '$productName', $buyQuantity, '$productColor', '$productSize')";
+            $sqlInsert = "INSERT INTO orders (OrderDate, OrderID, paymentMethod, orderStatus, Username, Address, Amount, ProductName, BuyQuantity, ProductColor, ProductSize) VALUES ('$currentDate', '$orderID', '$paymentMethod', '$orderStatus', '$username', '$address', $amount, '$productName', $buyQuantity, '$productColor', '$productSize')";
             mysqli_query($conn, $sqlInsert);
 
             // Remove item from the cart

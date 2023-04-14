@@ -392,7 +392,7 @@ if (count($products) > 0) {
 
 
                                 // Prepare the SQL query to insert the comment
-                                $InsertCommentsql = "INSERT INTO Comments (Comment, Username, ProductName,CommentDate ) VALUES (?, ?, ?, ?)";
+                                $InsertCommentsql = "INSERT INTO comments (Comment, Username, ProductName,CommentDate ) VALUES (?, ?, ?, ?)";
                                 $InsertCommentstmt = $conn->prepare($InsertCommentsql);
 
                                 $InsertCommentstmt->bind_param("ssss", $comment, $username, $product_name, $date);

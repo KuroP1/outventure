@@ -14,22 +14,22 @@ require_once('../config/database.php');
 function updateCart($cart, $action, $cartNumber, $conn)
 {
     if ($action == "add") {
-        $updateCartSQL2 = "UPDATE Cart SET ProductPrice = ProductPrice + (ProductPrice / BuyQuantity)  WHERE CartID = ?";
+        $updateCartSQL2 = "UPDATE cart SET ProductPrice = ProductPrice + (ProductPrice / BuyQuantity)  WHERE CartID = ?";
         $stmt2 = $conn->prepare($updateCartSQL2);
         $stmt2->bind_param('s', $cart);
         $stmt2->execute();
 
-        $updateCartSQL = "UPDATE Cart SET BuyQuantity = BuyQuantity + 1 WHERE CartID = ?";
+        $updateCartSQL = "UPDATE cart SET BuyQuantity = BuyQuantity + 1 WHERE CartID = ?";
         $stmt = $conn->prepare($updateCartSQL);
         $stmt->bind_param('s', $cart);
         $stmt->execute();
     } else if ($action == "minus" && $cartNumber > 1) {
-        $updateCartSQL2 = "UPDATE Cart SET ProductPrice = ProductPrice - (ProductPrice / BuyQuantity)  WHERE CartID = ?";
+        $updateCartSQL2 = "UPDATE cart SET ProductPrice = ProductPrice - (ProductPrice / BuyQuantity)  WHERE CartID = ?";
         $stmt2 = $conn->prepare($updateCartSQL2);
         $stmt2->bind_param('s', $cart);
         $stmt2->execute();
 
-        $updateCartSQL = "UPDATE Cart SET BuyQuantity = BuyQuantity - 1 WHERE CartID = ?";
+        $updateCartSQL = "UPDATE cart SET BuyQuantity = BuyQuantity - 1 WHERE CartID = ?";
         $stmt = $conn->prepare($updateCartSQL);
         $stmt->bind_param('s', $cart);
         $stmt->execute();

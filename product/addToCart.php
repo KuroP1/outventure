@@ -24,7 +24,7 @@ if (isset($_POST)) {
     $productSubCategory = $data['productSubCategory'];
     $username = $_SESSION["currentUser"];
 
-    $sql = "INSERT INTO Cart (ProductName, ProductPrice, BuyQuantity, ProductSize, ProductColor, CategoryName, SubCategoryName, Username) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO cart (ProductName, ProductPrice, BuyQuantity, ProductSize, ProductColor, CategoryName, SubCategoryName, Username) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         echo "SQL statement failed!";

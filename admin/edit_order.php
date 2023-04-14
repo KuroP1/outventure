@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body onload="toOrderHistory()">
     <div class="side_bar">
-        <a href=' '>
+        <a href='/'>
             <img class="logo" width='200px' src="../images/Logo2.png" alt="logo2" class="logo2">
         </a>
         <div class="nav_section">

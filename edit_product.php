@@ -19,7 +19,7 @@ if (isset($_GET['id'])) {
 
 
         // update the product record in the database
-        $sql = "UPDATE Products SET ProductName=?, ProductDescription=?, ProductQuantity=?, ProductSize=?, ProductColor=?, CategoryName=?, SubCategoryName=? WHERE ProductID=?";
+        $sql = "UPDATE products SET ProductName=?, ProductDescription=?, ProductQuantity=?, ProductSize=?, ProductColor=?, CategoryName=?, SubCategoryName=? WHERE ProductID=?";
         $stmt = mysqli_stmt_init($conn);
         if (mysqli_stmt_prepare($stmt, $sql)) {
             mysqli_stmt_bind_param($stmt, "ssissssi", $productName, $productDescription, $productQuantity, $productSize, $productColor, $category, $subCategory, $productID);
@@ -57,7 +57,7 @@ if (isset($_GET['id'])) {
                             move_uploaded_file($tmpname, $image_upload_path);
 
                             // Insert into database
-                            $sql2 = "INSERT INTO Images (ImagePath, ProductName) VALUES (?, ?)";
+                            $sql2 = "INSERT INTO images (ImagePath, ProductName) VALUES (?, ?)";
                             $stmt2 = mysqli_stmt_init($conn);
                             if (!mysqli_stmt_prepare($stmt2, $sql2)) {
                                 echo "SQL statement failed!";

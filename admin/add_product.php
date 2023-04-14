@@ -81,8 +81,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_FILES['productImage']) {
                                         move_uploaded_file($tmpname, $image_upload_path);
 
                                         // Insert into database
-                                        $sql = "INSERT INTO Products (ProductName, ProductDescription, ProductPrice, ProductQuantity, ProductSize, ProductColor, CategoryName, SubCategoryName, PositiveVote) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                                        $sql2 = "INSERT INTO Images (ImagePath, ProductName) VALUES (?, ?)";
+                                        $sql = "INSERT INTO products (ProductName, ProductDescription, ProductPrice, ProductQuantity, ProductSize, ProductColor, CategoryName, SubCategoryName, PositiveVote) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                                        $sql2 = "INSERT INTO images (ImagePath, ProductName) VALUES (?, ?)";
                                         $stmt = mysqli_stmt_init($conn);
                                         $stmt2 = mysqli_stmt_init($conn);
                                         $rating = 0;
@@ -149,7 +149,7 @@ mysqli_close($conn);
 
 <body onload="toProductEdit()">
     <div class="side_bar">
-        <a href=' '>
+        <a href='/'>
             <img class="logo" width='200px' src="../images/Logo2.png" alt="logo2" class="logo2">
         </a>
         <div class="nav_section">

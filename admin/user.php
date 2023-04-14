@@ -22,7 +22,7 @@ if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] <= 0) {
 
 <body onload="toUserManage()">
     <div class="side_bar">
-        <a href=' '>
+        <a href='/'>
             <img class="logo" width='200px' src="../images/Logo2.png" alt="logo2" class="logo2">
         </a>
         <div class="nav_section">
