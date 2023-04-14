@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 window.location.href='category.php';
                 </script>";
             } else {
-                $sql2 = "INSERT INTO subCategories (SubCategoryName, CategoryName) VALUES (?, ?)";
+                $sql2 = "INSERT INTO subcategories (SubCategoryName, CategoryName) VALUES (?, ?)";
                 $stmt2 = mysqli_stmt_init($conn);
 
                 if (!mysqli_stmt_prepare($stmt2, $sql2)) {

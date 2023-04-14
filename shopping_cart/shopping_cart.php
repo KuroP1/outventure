@@ -30,7 +30,7 @@ if (!isset($_SESSION['currentUser'])) {
         <!-- NavBar -->
         <div class='sub-navbar'>
             <div class='sub-navbar-container'>
-                <a href=''><img class='sub-navbar-logo' src='../images/Logo2.png' alt='Logo' /></a>
+                <a href='/'><img class='sub-navbar-logo' src='../images/Logo2.png' alt='Logo' /></a>
                 <div onclick='ShowMobileMainMenu()' class='main-burger-tag-container'>
                     <svg class='burger-tag' xmlns='http://www.w3.org/2000/svg' width='35' height='35' viewBox='0 0 24 24' style='fill: rgba(255, 255, 255, 1);transform: msFilter;'>
                         <path d='M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z'></path>
@@ -40,7 +40,19 @@ if (!isset($_SESSION['currentUser'])) {
                     <a href='/index.php#product-section"' class='sub-navbar-middle-text'>Product</a>
                     <a href='/about_us/about_us.php' class='sub-navbar-middle-text'>About Us</a>
                     <a href='/profile/profile.php' class='sub-navbar-middle-text'>Profile</a>
-                    <a href='#' class='sub-navbar-middle-text'>Login</a>
+                    <?php
+                    if (isset($_SESSION["currentUser"])) {
+                        echo '<a href="/authentication/logout.php" class="sub-navbar-middle-text">Logout</a>';
+                    } else {
+                        echo '<a href="/authentication/login.php" class="sub-navbar-middle-text">Login</a>';
+                    }
+                    ?>
+
+                    <?php
+                    if (isset($_SESSION["currentUser"]) && $_SESSION["isAdmin"] > "0") {
+                        echo '<a href="/admin/user.php" class="sub-navbar-middle-text">Admin</a>';
+                    }
+                    ?>
                 </div>
                 <div class='sub-navbar-right'>
                     <div class='search-bar'>

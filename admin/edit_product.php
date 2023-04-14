@@ -30,7 +30,7 @@ if (isset($_GET['id'])) {
             </script>";
         } else {
             // update the product record in the database
-            $sql = "UPDATE Products SET ProductName=?, ProductDescription=?, ProductQuantity=?, ProductSize=?, ProductColor=?, CategoryName=?, SubCategoryName=?, ProductPrice=? WHERE ProductID=?";
+            $sql = "UPDATE products SET ProductName=?, ProductDescription=?, ProductQuantity=?, ProductSize=?, ProductColor=?, CategoryName=?, SubCategoryName=?, ProductPrice=? WHERE ProductID=?";
             $stmt = mysqli_stmt_init($conn);
             if (mysqli_stmt_prepare($stmt, $sql)) {
                 mysqli_stmt_bind_param($stmt, "ssissssii", $productName, $productDescription, $productQuantity, $productSize, $productColor, $category, $subCategory, $productPrice, $productID);
