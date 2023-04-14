@@ -15,9 +15,7 @@ session_start();
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet'>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="navbar.js"></script>
     <script src="index.js"></script>
@@ -52,15 +50,12 @@ session_start();
                 <div class="product">
                     <div class="search-bar">
                         <form action="search.php" method="GET">
-                            <input class="search-bar-input" placeholder="Search Product" type"text" name="name"
-                                id="name">
+                            <input class="search-bar-input" placeholder="Search Product" type"text" name="name" id="name">
 
                         </form>
                         <button class="search-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                style="fill: rgba(255, 255, 255, 1);transform: msFilter;">
-                                <path
-                                    d="M19.023 16.977a35.13 35.13 0 0 1-1.367-1.384c-.372-.378-.596-.653-.596-.653l-2.8-1.337A6.962 6.962 0 0 0 16 9c0-3.859-3.14-7-7-7S2 5.141 2 9s3.14 7 7 7c1.763 0 3.37-.66 4.603-1.739l1.337 2.8s.275.224.653.596c.387.363.896.854 1.384 1.367l1.358 1.392.604.646 2.121-2.121-.646-.604c-.379-.372-.885-.866-1.391-1.36zM9 14c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: msFilter;">
+                                <path d="M19.023 16.977a35.13 35.13 0 0 1-1.367-1.384c-.372-.378-.596-.653-.596-.653l-2.8-1.337A6.962 6.962 0 0 0 16 9c0-3.859-3.14-7-7-7S2 5.141 2 9s3.14 7 7 7c1.763 0 3.37-.66 4.603-1.739l1.337 2.8s.275.224.653.596c.387.363.896.854 1.384 1.367l1.358 1.392.604.646 2.121-2.121-.646-.604c-.379-.372-.885-.866-1.391-1.36zM9 14c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z">
                                 </path>
                             </svg>
                         </button>
@@ -72,13 +67,10 @@ session_start();
                     </a>
                 </div>
                 <div class="menu-bar">
-                    <svg id="burger-btn" class="ham hamRotate ham1" viewBox="0 0 100 100" width="60"
-                        onclick="toggleActive()">
-                        <path class="line top"
-                            d="m 30,33 h 40 c 0,0 9.044436,-0.654587 9.044436,-8.508902 0,-7.854315 -8.024349,-11.958003 -14.89975,-10.85914 -6.875401,1.098863 -13.637059,4.171617 -13.637059,16.368042 v 40" />
+                    <svg id="burger-btn" class="ham hamRotate ham1" viewBox="0 0 100 100" width="60" onclick="toggleActive()">
+                        <path class="line top" d="m 30,33 h 40 c 0,0 9.044436,-0.654587 9.044436,-8.508902 0,-7.854315 -8.024349,-11.958003 -14.89975,-10.85914 -6.875401,1.098863 -13.637059,4.171617 -13.637059,16.368042 v 40" />
                         <path class="line middle" d="m 30,50 h 40" />
-                        <path class="line bottom"
-                            d="m 30,67 h 40 c 12.796276,0 15.357889,-11.717785 15.357889,-26.851538 0,-15.133752 -4.786586,-27.274118 -16.667516,-27.274118 -11.88093,0 -18.499247,6.994427 -18.435284,17.125656 l 0.252538,40" />
+                        <path class="line bottom" d="m 30,67 h 40 c 12.796276,0 15.357889,-11.717785 15.357889,-26.851538 0,-15.133752 -4.786586,-27.274118 -16.667516,-27.274118 -11.88093,0 -18.499247,6.994427 -18.435284,17.125656 l 0.252538,40" />
                     </svg>
                 </div>
             </div>
@@ -90,16 +82,14 @@ session_start();
 
                     </form>
                     <button class="search-icon-mobile">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            style="fill: rgba(255, 255, 255, 1);transform: msFilter;">
-                            <path
-                                d="M19.023 16.977a35.13 35.13 0 0 1-1.367-1.384c-.372-.378-.596-.653-.596-.653l-2.8-1.337A6.962 6.962 0 0 0 16 9c0-3.859-3.14-7-7-7S2 5.141 2 9s3.14 7 7 7c1.763 0 3.37-.66 4.603-1.739l1.337 2.8s.275.224.653.596c.387.363.896.854 1.384 1.367l1.358 1.392.604.646 2.121-2.121-.646-.604c-.379-.372-.885-.866-1.391-1.36zM9 14c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: msFilter;">
+                            <path d="M19.023 16.977a35.13 35.13 0 0 1-1.367-1.384c-.372-.378-.596-.653-.596-.653l-2.8-1.337A6.962 6.962 0 0 0 16 9c0-3.859-3.14-7-7-7S2 5.141 2 9s3.14 7 7 7c1.763 0 3.37-.66 4.603-1.739l1.337 2.8s.275.224.653.596c.387.363.896.854 1.384 1.367l1.358 1.392.604.646 2.121-2.121-.646-.604c-.379-.372-.885-.866-1.391-1.36zM9 14c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z">
                             </path>
                         </svg>
                     </button>
                     </input>
                 </div>
-                <a class="navItem" href="index.php#product-section">Product</a>
+                <a class="navItem" href="index.php/#product-section">Product</a>
                 <a class="navItem" href="/outventure/about_us/about_us.php">About Us</a>
                 <a class="navItem" href="/outventure/profile/profile.php">Profile</a>
                 <?php
@@ -123,8 +113,7 @@ session_start();
                 <div class="fliters">
                     <div>
                         <div class="select-box-title">Category</div>
-                        <select class="select-box" id="category" type="select" name="category" onchange="myFunction()"
-                            required>
+                        <select class="select-box" id="category" type="select" name="category" onchange="myFunction()" required>
                             <option value="all">All Product</option>
                             <?php
                             ini_set('display_errors', 1);
@@ -223,9 +212,9 @@ session_start();
                                 if (mysqli_num_rows($favouriteRes) > 0) {
                                     $svgFillColor = 'white';
                                 }
-                            }
 
-                            echo
+
+                                echo
                                 "
                                         <div class='col-12 col-md-6 col-xl-3'>
                                             <div class='product-card'>
@@ -254,6 +243,37 @@ session_start();
             </div>
         </div>
         ";
+                            } else {
+                                echo
+                                "
+                                        <div class='col-12 col-md-6 col-xl-3'>
+                                            <div class='product-card'>
+                                                <div class='product-image-container'>
+                                                    <a href='/outventure/product/product_detail.php?name=" . $product["ProductName"] . "'><img class='product-image' src='$imagePath' alt='Product' /></a>
+                                                </div>
+                                                <div class='product-name'> " . $product["ProductName"] . "</div>
+                                                <div class='product-category'>" . $product["CategoryName"] . " > " . $product["SubCategoryName"] . "</div>
+                                                <div class='product-price'>$" . $product["ProductPrice"] . "</div>
+                                                <a href='' style='text-decoration:none;'>
+                                                <div class='product-star-rating'>
+                                                        <?xml version='1.0' encoding='utf-8'?>
+                    <svg width='20px' class='like_btn' height='20px' viewBox='0 0 24 24' fill='" . $svgFillColor . "'
+                        xmlns='http://www.w3.org/2000/svg'>
+                        <path
+                            d='M8 10V20M8 10L4 9.99998V20L8 20M8 10L13.1956 3.93847C13.6886 3.3633 14.4642 3.11604 15.1992 3.29977L15.2467 3.31166C16.5885 3.64711 17.1929 5.21057 16.4258 6.36135L14 9.99998H18.5604C19.8225 9.99998 20.7691 11.1546 20.5216 12.3922L19.3216 18.3922C19.1346 19.3271 18.3138 20 17.3604 20L8 20'
+                            stroke='#000000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' />
+                    </svg>
+                    " . $product["PositiveVote"] . "
+
+                </div>
+                </a>
+                <div class='botton-section'>
+                    <a href='/outventure/product/product_detail.php?name=" . $product["ProductName"] . "'>View More</a>
+                </div>
+            </div>
+        </div>
+        ";
+                            }
                         }
                     }
 
@@ -314,7 +334,7 @@ session_start();
     }
 
     // Add an event listener for the 'change' event on the subcategory dropdown
-    document.getElementById('subCategory').addEventListener('change', function () {
+    document.getElementById('subCategory').addEventListener('change', function() {
         // Set global variable subcate
         subcate = this.value;
     });
