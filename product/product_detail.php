@@ -337,10 +337,6 @@ if (count($products) > 0) {
                             <?php
                             //user input comment and saved to database
                             if (isset($_POST['comment'])) {
-                                $comment = $_POST['comment'];
-                                $username = $_SESSION['currentUser'];
-                                $date = date("Y-m-d");
-                                $product_name = $_GET["name"];
                                 // Connect to the database
                                 require("../config/database.php");
 
@@ -348,10 +344,17 @@ if (count($products) > 0) {
                                 if ($conn->connect_error) {
                                     die("Connection failed: " . $conn->connect_error);
                                 }
+                                $comment = $_POST['comment'];
+                                $username = $_SESSION['currentUser'];
+
+                                $date = date("Y-m-d");
+                                $product_name = $_GET["name"];
+
 
                                 // Prepare the SQL query to insert the comment
                                 $InsertCommentsql = "INSERT INTO Comments (Comment, Username, ProductName,CommentDate ) VALUES (?, ?, ?, ?)";
                                 $InsertCommentstmt = $conn->prepare($InsertCommentsql);
+
                                 $InsertCommentstmt->bind_param("ssss", $comment, $username, $product_name, $date);
 
                                 // Execute the query
@@ -411,6 +414,7 @@ if (count($products) > 0) {
                     echo "<div class='product-detail-comment'>";
                     echo "<div class='comment_content'>";
                     echo $comment['Username'] . "<br>";
+
                     echo "<br>";
                     //echo a textarea
                     echo "<div class='comment'>";
