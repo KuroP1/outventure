@@ -10,7 +10,8 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./:/var/www/html/
+      - ./:/var/www/html/public
+
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: outventure-phpmyadmin
@@ -18,8 +19,8 @@ services:
     ports:
       - "8080:80"
     environment:
-      PMA_HOST: outventure.chfgk5zp2zgw.ap-northeast-1.rds.amazonaws.com
+      PMA_HOST: outventure-2.chfgk5zp2zgw.ap-northeast-1.rds.amazonaws.com
       PMA_PORT: 3306
       PMA_USER: admin
-      PMA_PASSWORD: WH#vCFxKDNGqj9*N
+      PMA_PASSWORD: CtwMZN3+cy7bN6$B
       PMA_ARBITRARY: 1
