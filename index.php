@@ -119,11 +119,12 @@ session_start();
             <div class="product-label" id="product-label">
                 <span class="product-label-text">PRODUCT</span>
             </div>
-            <form action="index.php#product-section" method="POST">
+            <form class='filter-container' action="index.php#product-section" method="POST">
                 <div class="fliters">
                     <div>
                         <div class="select-box-title">Category</div>
-                        <select class="select-box" id="category" type="select" name="category" onchange="myFunction()" required>
+                        <select class="select-box" id="category" type="select" name="category" onchange="myFunction()"
+                            required>
                             <option value="all">All Product</option>
                             <?php
                             ini_set('display_errors', 1);
@@ -161,7 +162,7 @@ session_start();
                             ?>
                         </select>
                     </div>
-                    <button type="submit">Search</button>
+                    <button class=filter-btn type="submit">Search</button>
                 </div>
             </form>
         </div>
@@ -180,7 +181,7 @@ session_start();
 
                     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         $category = $_POST['category'];
-                        $subCategory = $_POST['subCategory'];              
+                        $subCategory = $_POST['subCategory'];
                     } else {
                         $category = "all";
                         $subCategory = "all";
@@ -199,7 +200,7 @@ session_start();
                         $productSQL = "SELECT * FROM products WHERE CategoryName = '$category' AND SubCategoryName = '$subCategory'";
                         $res = mysqli_query($conn, $productSQL);
                     }
-     
+
                     if (mysqli_num_rows($res) > 0) {
                         while ($product = mysqli_fetch_assoc($res)) {
                             $productName = $product['ProductName'];
@@ -313,7 +314,7 @@ session_start();
     }
 
     // Add an event listener for the 'change' event on the subcategory dropdown
-    document.getElementById('subCategory').addEventListener('change', function() {
+    document.getElementById('subCategory').addEventListener('change', function () {
         // Set global variable subcate
         subcate = this.value;
     });
