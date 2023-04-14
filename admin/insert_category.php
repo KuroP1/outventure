@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $category = $_POST['category'];
     $subCategory = $_POST['subCategory'];
 
-    //add a checking function if product is already exist
+    //add a checking function if category is already exist
     $categoriesfindquery = "SELECT * FROM Categories WHERE CategoryName=?";
     $categoriesfindstmt = mysqli_stmt_init($conn);
     if (mysqli_stmt_prepare($categoriesfindstmt, $categoriesfindquery)) {
