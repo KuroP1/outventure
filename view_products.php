@@ -4,7 +4,7 @@
 function viewProducts()
 {
     include 'config/database.php';
-    $sql = "SELECT * FROM Products";
+    $sql = "SELECT * FROM products";
     $result = mysqli_query($conn, $sql);
     $products = array();
     if (mysqli_num_rows($result) > 0) {
@@ -16,4 +16,3 @@ function viewProducts()
     mysqli_close($conn);
     return $products;
 }
-?>

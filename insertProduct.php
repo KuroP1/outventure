@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_FILES['productImage']) {
     $productColor = $_POST['productColor'];
     $category = $_POST['category'];
     $subCategory = $_POST['subCategory'];
-    $productPrice = $_POST['productPrice']; 
+    $productPrice = $_POST['productPrice'];
 
     require_once 'config/database.php';
     if (!$conn) {
@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_FILES['productImage']) {
     }
 
     //add a checking function if product is already exist
-    $productfindquery = "SELECT * FROM Products WHERE ProductName=?";
+    $productfindquery = "SELECT * FROM products WHERE ProductName=?";
     $productfindstmt = mysqli_stmt_init($conn);
     if (mysqli_stmt_prepare($productfindstmt, $productfindquery)) {
         mysqli_stmt_bind_param($productfindstmt, "s", $productName);
@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_FILES['productImage']) {
             echo "<div class='alert alert-danger'>Product is already exist.</div>";
         } else {
             //add a checking function if categoryID is valid, if valid then insert the product
-            $findCategoryquery = "SELECT * FROM Categories WHERE CategoryName=?";
+            $findCategoryquery = "SELECT * FROM categories WHERE CategoryName=?";
             $findCategorystmt = mysqli_stmt_init($conn);
             if (mysqli_stmt_prepare($findCategorystmt, $findCategoryquery)) {
                 mysqli_stmt_bind_param($findCategorystmt, "i", $category);
@@ -102,4 +102,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_FILES['productImage']) {
 
 //close the database connection
 mysqli_close($conn);
-?>

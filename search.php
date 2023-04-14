@@ -23,7 +23,7 @@ ob_start();
     $search_query = $conn->real_escape_string($search_query);
 
     // sql query to search for products with exact match
-    $sql = "SELECT * FROM Products WHERE ProductName = '$search_query'";
+    $sql = "SELECT * FROM products WHERE ProductName = '$search_query'";
 
 
 

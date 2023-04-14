@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_FILES['productImage']) {
     }
 
     //add a checking function if product is already exist
-    $productfindquery = "SELECT * FROM Products WHERE ProductName=?";
+    $productfindquery = "SELECT * FROM products WHERE ProductName=?";
     $productfindstmt = mysqli_stmt_init($conn);
     if (mysqli_stmt_prepare($productfindstmt, $productfindquery)) {
         mysqli_stmt_bind_param($productfindstmt, "s", $productName);
@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_FILES['productImage']) {
             </script>";
         } else {
             //add a checking function if categoryID is valid, if valid then insert the product
-            $findCategoryquery = "SELECT * FROM Categories WHERE CategoryName=?";
+            $findCategoryquery = "SELECT * FROM categories WHERE CategoryName=?";
             $findCategorystmt = mysqli_stmt_init($conn);
             if (mysqli_stmt_prepare($findCategorystmt, $findCategoryquery)) {
                 mysqli_stmt_bind_param($findCategorystmt, "i", $category);

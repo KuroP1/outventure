@@ -429,7 +429,7 @@ if (count($products) > 0) {
                     }
 
                     // Prepare the SQL query to fetch comments for the given product name
-                    $ViewCommentsql = "SELECT * FROM Comments WHERE ProductName = ?";
+                    $ViewCommentsql = "SELECT * FROM comments WHERE ProductName = ?";
                     $ViewCommentstmt = $conn->prepare($ViewCommentsql);
                     $ViewCommentstmt->bind_param("s", $product_name);
 

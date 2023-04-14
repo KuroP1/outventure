@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     for ($i = 0; $i < count($subCategoryArray); $i++) {
-        $subCategoriesfindquery = "SELECT SubCategoryName, CategoryName FROM SubCategories WHERE SubCategoryName=? AND CategoryName=?";
+        $subCategoriesfindquery = "SELECT SubCategoryName, CategoryName FROM subcategories WHERE SubCategoryName=? AND CategoryName=?";
         $subCategoriesfindstmt = mysqli_stmt_init($conn);
 
         if (mysqli_stmt_prepare($subCategoriesfindstmt, $subCategoriesfindquery)) {

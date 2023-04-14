@@ -5,7 +5,7 @@ function getAccounts()
 {
     global $conn;
 
-    $sql = "SELECT * FROM Users";
+    $sql = "SELECT * FROM users";
     $result = $conn->query($sql);
 
     $accounts = array();
@@ -17,4 +17,3 @@ function getAccounts()
 
     return $accounts;
 }
-?>

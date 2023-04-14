@@ -13,7 +13,7 @@ error_reporting(E_ALL);
 require_once('../config/database.php');
 function deleteUser($username, $conn)
 {
-    $deleteUserSQL = "DELETE FROM Users WHERE Username = ?";
+    $deleteUserSQL = "DELETE FROM users WHERE Username = ?";
     $stmt = $conn->prepare($deleteUserSQL);
     $stmt->bind_param('s', $username);
     $stmt->execute();

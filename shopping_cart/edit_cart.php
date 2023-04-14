@@ -34,7 +34,7 @@ function updateCart($cart, $action, $cartNumber, $conn)
         $stmt->bind_param('s', $cart);
         $stmt->execute();
     } else if ($action == "delete") {
-        $updateCartSQL = "DELETE FROM Cart WHERE CartID = ?";
+        $updateCartSQL = "DELETE FROM cart WHERE CartID = ?";
         $stmt = $conn->prepare($updateCartSQL);
         $stmt->bind_param('s', $cart);
         $stmt->execute();

@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Generate a unique orderID outside the loop
         do {
             $orderID = rand(0, 999999);
-            $sqlCheck = "SELECT * FROM Orders WHERE OrderID = $orderID";
+            $sqlCheck = "SELECT * FROM orders WHERE OrderID = $orderID";
             $resultCheck = mysqli_query($conn, $sqlCheck);
         } while (mysqli_num_rows($resultCheck) > 0);
 

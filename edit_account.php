@@ -29,8 +29,6 @@ if (isset($_POST["submit"])) {
     $stmt->execute();
     $result = $stmt->get_result();
     $account = $result->fetch_assoc();
-
-
 }
 
 $conn->close();

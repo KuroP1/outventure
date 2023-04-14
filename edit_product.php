@@ -72,14 +72,13 @@ if (isset($_GET['id'])) {
                             header("Location: admin_dashboard.php?error=$em");
                         }
                     }
-
                 }
             }
         }
     }
 
     // get the current product record from the database
-    $sql = "SELECT * FROM Products WHERE ProductID=?";
+    $sql = "SELECT * FROM products WHERE ProductID=?";
     $stmt = mysqli_stmt_init($conn);
     if (mysqli_stmt_prepare($stmt, $sql)) {
         mysqli_stmt_bind_param($stmt, "i", $productID);
@@ -139,8 +138,7 @@ if (isset($_GET['id'])) {
         <?php foreach ($imagePath as $image) { ?>
             <img src="<?php echo $image; ?>" alt="product image" width="100" height="100">
             <!-- handle delete image -->
-            <a
-                href="deleteimage.php?image=<?php echo $image; ?>&name=<?php echo $product['ProductName']; ?>&id=<?php echo $productID; ?>&length=<?php echo $imageCount; ?>">Delete</a>
+            <a href="deleteimage.php?image=<?php echo $image; ?>&name=<?php echo $product['ProductName']; ?>&id=<?php echo $productID; ?>&length=<?php echo $imageCount; ?>">Delete</a>
         <?php } ?>
 
         <br>

@@ -43,10 +43,10 @@
     }
     ?>
     <?php
-    if (isset($_GET['error'])): ?>
-    <p>
-        <?php echo $_GET['error']; ?>
-    </p>
+    if (isset($_GET['error'])) : ?>
+        <p>
+            <?php echo $_GET['error']; ?>
+        </p>
     <?php endif; ?>
     <h2>Insert Product</h2>
     <form action="insertProduct.php" method="POST" enctype="multipart/form-data">
@@ -160,7 +160,7 @@
     if (mysqli_num_rows($resOrder) > 0) {
         echo "<table>";
         //order table have OrderDate OrderID paymentMethod orderStatus Username Amount ProductName BuyQuantity 
-    
+
         echo "<tr><th>OrderID</th><th>ProductName</th><th>BuyQuantity</th><th>Amount</th><th>Username</th><th>OrderStatus</th></th><th>OrderDate</th><th>Action</th><th>Delete</th></tr>";
 
         while ($orders = mysqli_fetch_assoc($resOrder)) {
@@ -177,36 +177,36 @@
 </html>
 
 <script>
-var fullCategoriesArray = <?php echo json_encode($subCategoriesArray); ?>;
-var categoriesArray = [];
-var subCategoriesArray = [];
+    var fullCategoriesArray = <?php echo json_encode($subCategoriesArray); ?>;
+    var categoriesArray = [];
+    var subCategoriesArray = [];
 
-for (var i = 0; i < fullCategoriesArray.length; i++) {
-    if (i % 2 == 0) {
-        subCategoriesArray.push(fullCategoriesArray[i]);
-    } else {
-        categoriesArray.push(fullCategoriesArray[i]);
-    }
-}
-
-function myFunction() {
-    // clear select
-    var selectElement = document.getElementById('subCategory');
-    while (selectElement.options.length > 0) {
-        selectElement.remove(0);
-    }
-
-    var categoryName = document.getElementById("category").value;
-
-    for (var i = 0; i < categoriesArray.length; i++) {
-        if (categoryName == categoriesArray[i]) {
-            // create option for subcategory
-            var mySelect = document.getElementById('subCategory'),
-                newOption = document.createElement('option');
-            newOption.value = subCategoriesArray[i];
-            newOption.innerHTML = subCategoriesArray[i];
-            mySelect.appendChild(newOption);
+    for (var i = 0; i < fullCategoriesArray.length; i++) {
+        if (i % 2 == 0) {
+            subCategoriesArray.push(fullCategoriesArray[i]);
+        } else {
+            categoriesArray.push(fullCategoriesArray[i]);
         }
     }
-}
+
+    function myFunction() {
+        // clear select
+        var selectElement = document.getElementById('subCategory');
+        while (selectElement.options.length > 0) {
+            selectElement.remove(0);
+        }
+
+        var categoryName = document.getElementById("category").value;
+
+        for (var i = 0; i < categoriesArray.length; i++) {
+            if (categoryName == categoriesArray[i]) {
+                // create option for subcategory
+                var mySelect = document.getElementById('subCategory'),
+                    newOption = document.createElement('option');
+                newOption.value = subCategoriesArray[i];
+                newOption.innerHTML = subCategoriesArray[i];
+                mySelect.appendChild(newOption);
+            }
+        }
+    }
 </script>

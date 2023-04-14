@@ -6,7 +6,7 @@ error_reporting(E_ALL);
 if (isset($_GET['id'])) {
     $productID = $_GET['id'];
 
-    $oldSql = "SELECT * FROM Products WHERE ProductID = $productID";
+    $oldSql = "SELECT * FROM products WHERE ProductID = $productID";
     $oldResult = mysqli_query($conn, $oldSql);
     $row = mysqli_fetch_assoc($oldResult);
     $oldProductName = $row['ProductName'];
@@ -96,7 +96,7 @@ if (isset($_GET['id'])) {
     }
 
     // get the current product record from the database
-    $sql = "SELECT * FROM Products WHERE ProductID=?";
+    $sql = "SELECT * FROM products WHERE ProductID=?";
     $stmt = mysqli_stmt_init($conn);
     if (mysqli_stmt_prepare($stmt, $sql)) {
         mysqli_stmt_bind_param($stmt, "i", $productID);

@@ -79,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     require("../config/database.php");
 
                     $currentOrderID = $_GET['id'];
-                    $viewOrderProductSQL = "SELECT * from orders WHERE OrderID='$currentOrderID'";
+                    $viewOrderProductSQL = "SELECT * FROM orders WHERE OrderID='$currentOrderID'";
                     $result = mysqli_query($conn, $viewOrderProductSQL);
                     $orderProduct = array();
                     if (mysqli_num_rows($result) > 0) {

@@ -13,7 +13,7 @@ error_reporting(E_ALL);
 
 function deleteImage($image_upload_path, $productName, $conn)
 {
-    $deleteProductSQL2 = "DELETE FROM Images WHERE ProductName = ? AND ImagePath = ?";
+    $deleteProductSQL2 = "DELETE FROM images WHERE ProductName = ? AND ImagePath = ?";
     $stmt2 = $conn->prepare($deleteProductSQL2);
     $stmt2->bind_param('ss', $productName, $image_upload_path);
     $stmt2->execute();
