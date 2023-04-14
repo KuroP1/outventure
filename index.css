@@ -80,7 +80,6 @@ body {
   font-family: "poppins", sans-serif;
   font-weight: 300 !important;
   text-decoration: none;
-  padding-top: 10px;
   transition: 0.3s;
 }
 .navItem:hover {
@@ -92,6 +91,18 @@ body {
 }
 .top-menu .navItem {
   color: white;
+  text-decoration: none;
+  font-size: 18px;
+  padding-top: 12px;
+}
+.navigation .navItem:first-child {
+  color: #ffc700;
+  text-decoration: none;
+  font-size: 18px;
+}
+.product_nav_item {
+  color: #ffc700 !important;
+  background-color: #ffc700 !important;
   text-decoration: none;
   font-size: 18px;
   padding-top: 12px;

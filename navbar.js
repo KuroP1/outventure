@@ -8,4 +8,6 @@ function ShowMobileMainMenu() {
     mobileMenu.style.transform = "translateY(-100%)";
     mobileMenu.style.zIndex = "-1";
   }
+
+  console.log("object");
 }
