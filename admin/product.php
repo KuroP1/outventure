@@ -16,6 +16,7 @@ if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] <= 0) {
     <link rel="stylesheet" href="admin.css">
     <link rel="stylesheet" href="../global.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="icon" type="image/x-icon" href="../images/Logo_Small.png">
     <script src="admin.js"></script>
     <title>Document</title>
 </head>

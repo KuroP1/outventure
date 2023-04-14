@@ -46,6 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" href="admin.css">
     <link rel="stylesheet" href="../global.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="icon" type="image/x-icon" href="../images/Logo_Small.png">
     <script src="admin.js"></script>
     <title>Document</title>
 </head>
@@ -60,6 +61,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <a href="/admin/product.php" id="product-manage-btn" onclick="toProductManage()">Product
                 Manage</a>
             <a href="/admin/order.php" id="order-history-btn" onclick="toOrderHistory()">Order History</a>
+            <a href="/admin/category.php" id="order-history-btn" onclick="toCategory()">
+                Category Manage</a>
         </div>
         <img class="logo" src="../images/Logo.png" alt="logo2" class="logo2">
     </div>
@@ -242,6 +245,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <a href="/admin/product.php" id="product-manage-btn" onclick="toProductManage()">Product Manage</a>
                         <a href="/admin/order.php" id="order-history-btn" onclick="toOrderHistory()">Order
                             History</a>
+                        <a href="/admin/category.php" id="order-history-btn" onclick="toCategory()">
+                            Category Manage</a>
                     </div>
                 </div>
             </div>
