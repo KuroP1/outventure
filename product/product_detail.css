@@ -97,8 +97,13 @@ a:hover {
   align-items: start;
   padding: 10px 40px 100px 40px;
 }
-.mobile-sub-navbar-middle{
-    back
+.mobile-sub-navbar-middle {
+  position: relative;
+  top: 0;
+}
+.sub-navbar-middle-text {
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 .comment_content {
   display: flex;

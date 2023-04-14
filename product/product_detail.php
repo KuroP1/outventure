@@ -106,7 +106,7 @@ if (count($products) > 0) {
         <div class='mobile-sub-navbar-middle' id="mobile-sub-navbar-middle"
             style="transform: translateY(-100%); z-index: -1;">
             <a href="/outventure/" class="sub-navbar-middle-text">Product</a>
-            <a href="#" class="su b-navbar-middle-text" style="color: #FFC700;">About Us</a>
+            <a href="#" class="sub-navbar-middle-text" style="color: #FFC700;">About Us</a>
             <a href="/outventure/profile/profile.php" class="sub-navbar-middle-text">Profile</a>
             <?php
             if (isset($_SESSION["currentUser"])) {
