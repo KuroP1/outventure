@@ -1,5 +1,10 @@
 FROM php:8.2.4-apache
 
+# Set up Apache virtual host
+COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
+
+RUN a2enmod rewrite
+
 RUN docker-php-ext-install mysqli pdo pdo_mysql \
     && pecl install redis \
     && docker-php-ext-enable redis
