@@ -127,12 +127,15 @@ if (!isset($_SESSION["currentUser"]) && !isset($_SESSION["isAdmin"])) {
                             style="background-color: #FFFFFF; color: #232323;">Personal Information</span>
                         <span onclick="Back('oh')" id="mobile-menu-text-3"
                             style="background-color: #232323; color: #FFFFFF;">Order History</span>
-
+                        <span onclick="Back('fp')" id="mobile-menu-text-3"
+                            style="background-color: #232323; color: #FFFFFF;">Favourite Product</span>
                     </div>
                     <div class="menu-container">
                         <span onclick="Back('pi')" id="menu-text-1" style="color: #387D6B;">Personal
                             Information</span>
                         <span onclick="Back('oh')" id="menu-text-3" style="color: #000000;">Order History</span>
+                        <span onclick="MenuDisplay('fp')" id="menu-text-4" style="color: #000000;">Favourite
+                            Product</span>
                     </div>
                 </div>
                 <!-- Right inforamtion display -->
@@ -241,7 +244,7 @@ if (!isset($_SESSION["currentUser"]) && !isset($_SESSION["isAdmin"])) {
                                                 }
                                                 echo
                                                     "
-                                                <tr>
+                                                    <tr onclick='GoToProductDetail(\"" . $productName . "\")'>
                                                     <td>" . "<img src='$imagePath' alt='image' width='80'>" . "</td>
                                                     <td>" . $resOrderProduct["ProductName"] . "</td>
                                                     <td>" . $resOrderProduct["ProductColor"] . "</td>
@@ -260,7 +263,7 @@ if (!isset($_SESSION["currentUser"]) && !isset($_SESSION["isAdmin"])) {
                                     error_reporting(E_ALL);
                                     require("../config/database.php");
 
-                                    $viewOrderSQL = "SELECT OrderID, GROUP_CONCAT(ProductName) as ProductNames, GROUP_CONCAT(BuyQuantity) as BuyQuantities, SUM(Amount) as TotalAmount, Username, OrderDate, paymentMethod, orderStatus
+                                    $viewOrderSQL = "SELECT OrderID, address , GROUP_CONCAT(ProductName) as ProductNames, GROUP_CONCAT(BuyQuantity) as BuyQuantities, SUM(Amount) as TotalAmount, Username, OrderDate, paymentMethod, orderStatus
                         FROM orders WHERE OrderID='$currentOrderID'
                         GROUP BY OrderID, Username, OrderDate, paymentMethod, orderStatus";
                                     $resOrder = mysqli_query($conn, $viewOrderSQL);
@@ -272,6 +275,9 @@ if (!isset($_SESSION["currentUser"]) && !isset($_SESSION["isAdmin"])) {
                                 </div>
                                 <div>
                                     <span>Username: </span> " . $orders["Username"] . "
+                                </div>
+                                <div>
+                                    <span>Address: </span> " . $orders["address"] . "
                                 </div>
                                 <div>
                                     <span>Total Price: </span>    " . $orders["TotalAmount"] . "
@@ -288,6 +294,72 @@ if (!isset($_SESSION["currentUser"]) && !isset($_SESSION["isAdmin"])) {
                             </div>
                         </div>
                     </div>
+                    <!-- Favourite -->
+                    <div id="right-container-favourite" style="display:none;">
+                        <div class="right-container-top-text">
+                            <span class="right-container-top-text-main">Favourite Product</span>
+                            <span class="right-container-top-text-sub">Here is you favourite, click and view the
+                                product.</span>
+                        </div>
+                        <div class=".order-history-container">
+                            <div class="order-history-card">
+                                <table>
+                                    <tr>
+                                        <th>Image</th>
+                                        <th>Name</th>
+                                        <th>Price</th>
+                                    </tr>
+
+                                    <?php
+                                    ini_set('display_errors', 1);
+                                    error_reporting(E_ALL);
+                                    require("../config/database.php");
+                                    $viewFavouriteProductSQL = "SELECT * FROM favourite WHERE Username ='{$_SESSION['currentUser']}'";
+                                    $resFavouriteProduct = mysqli_query($conn, $viewFavouriteProductSQL);
+
+                                    if ($resFavouriteProduct) { // Check if the result is not false
+                                        if (mysqli_num_rows($resFavouriteProduct) > 0) {
+                                            while ($favouriteProduct = mysqli_fetch_assoc($resFavouriteProduct)) {
+                                                $viewProductSQL = "SELECT * FROM products WHERE ProductName = '{$favouriteProduct['ProductName']}'";
+                                                $resProduct = mysqli_query($conn, $viewProductSQL);
+                                                if ($resProduct) { // Check if the result is not false
+                                                    if (mysqli_num_rows($resProduct) > 0) {
+                                                        while ($product = mysqli_fetch_assoc($resProduct)) {
+                                                            $productName = $product['ProductName'];
+                                                            $imageSQL = "SELECT ImagePath FROM images WHERE ProductName = '$productName' LIMIT 1";
+                                                            $res2 = mysqli_query($conn, $imageSQL);
+                                                            $imagePath = '';
+
+                                                            if (mysqli_num_rows($res2) > 0) {
+                                                                $image = mysqli_fetch_assoc($res2);
+                                                                $imagePath = $image['ImagePath'];
+                                                            }
+                                                            echo "
+                                                            <tr onclick='GoToProductDetail(\"" . $productName . "\")'>
+                                                                    <td><img src='" . $imagePath . "' width='80'></td>
+                                                                    <td>" . $product["ProductName"] . "</td>
+                                                                    <td>" . "$" . $product["ProductPrice"] . "</td>
+                                                                </tr>
+                                                                ";
+                                                        }
+                                                    }
+                                                } else {
+                                                    // Display the error message
+                                                    echo "Error: " . mysqli_error($conn);
+                                                }
+                                            }
+                                        }
+                                    } else {
+                                        // Display the error message
+                                        echo "Error: " . mysqli_error($conn);
+                                    }
+
+
+                                    ?>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -301,5 +373,9 @@ if (!isset($_SESSION["currentUser"]) && !isset($_SESSION["isAdmin"])) {
 
     function Back(link) {
         window.location.href = "profile.php";
+    }
+
+    function GoToProductDetail(name) {
+        window.location.href = "/outventure/product/product_detail.php?name=" + name;
     }
 </script>
