@@ -371,7 +371,7 @@ if (isset($_GET['id'])) {
             </div>
             <div class="dropdown-container" id="dropdown-container">
                 <div class="dropdown-content">
-                    <img class="logo" src="/images/Logo2.png" alt="logo2" class="logo2">
+                    <img class="logo" src="../images/Logo2.png" alt="logo2" class="logo2">
                     <div class="nav_section">
                         <a href="#" onclick="toUserManage()">User Manage</a>
                         <a href="#" onclick="toProductManage()">Product Manage</a>

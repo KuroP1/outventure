@@ -104,7 +104,12 @@ if (!isset($_SESSION["currentUser"]) && !isset($_SESSION["isAdmin"])) {
                 <!-- Left inforamtion and menu -->
                 <div class="left-container">
                     <div class="user-info-container">
-                        <img class="avatar" src="../images/profile/avatar.png" alt="avatar" />
+                        <div class='avatar'>
+                            <?php
+                            $firstLetter = substr($_SESSION['currentUser'], 0, 1);
+                            echo "<span class='avatar-text'>{$firstLetter}</span>";
+                            ?>
+                        </div>
                         <?php
                         require_once "../config/database.php";
                         $sql = "SELECT * FROM users WHERE Username ='{$_SESSION['currentUser']}'";
