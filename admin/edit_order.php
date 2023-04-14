@@ -252,7 +252,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
             <div class="dropdown-container" id="dropdown-container">
                 <div class="dropdown-content">
-                    <img class="logo" src="/images/Logo2.png" alt="logo2" class="logo2">
+                    <img class="logo" src="../images/Logo2.png" alt="logo2" class="logo2">
                     <div class="nav_section">
                         <a href="/outventure/admin/user.php" id="user-manage-btn" onclick="toUserManage()">User
                             Manage</a>

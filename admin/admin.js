@@ -9,9 +9,11 @@ function toggleActive() {
 
   if (!isOpen) {
     //get height of top-section
+    console.log(topSection.offsetHeight);
     height = topSection.offsetHeight;
     console.log(height);
     topMenu.style.height = height + "px";
+    console.log(topMenu.style.height);
     isOpen = true;
     topMenu.style.zIndex = "50";
     topMenu.style.transitionDuration = "0.5s";
