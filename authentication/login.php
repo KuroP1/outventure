@@ -53,7 +53,6 @@ if (isset($_POST["submit"])) {
                 die();
             }
 
-
             //session_start();
             $_SESSION["currentUser"] = $row['Username'];
             $_SESSION["isAdmin"] = $row['isAdmin'];
