@@ -104,6 +104,7 @@ if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] <= 0) {
                                 if (mysqli_num_rows($res2) > 0) {
                                     $image = mysqli_fetch_assoc($res2);
                                     $imagePath = $image['ImagePath'];
+                                    
                                 }
                                 echo
                                     "

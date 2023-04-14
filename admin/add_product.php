@@ -35,7 +35,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_FILES['productImage']) {
         mysqli_stmt_execute($productfindstmt);
         $productfindresult = mysqli_stmt_get_result($productfindstmt);
         if ($productfindresult->num_rows > 0) {
-            echo "<div class='alert alert-danger'>Product is already exist.</div>";
+            echo "<script>
+            alert('Product Already Exist.');
+            window.location.href='add_product.php';
+            </script>";
         } else {
             //add a checking function if categoryID is valid, if valid then insert the product
             $findCategoryquery = "SELECT * FROM Categories WHERE CategoryName=?";
@@ -49,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_FILES['productImage']) {
                     $countImg = count($_FILES["productImage"]["name"]);
                     if ($countImg > 5) {
                         echo "<script>
-                        alert('You can only upload at most 5 images.');
+                        alert('You Can Only Ppload At Most 5 Images.');
                         window.location.href='add_product.php';
                         </script>";
                     } else {
@@ -62,8 +65,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_FILES['productImage']) {
                                 $img_size = $_FILES['productImage']['size'][$i];
 
                                 if ($img_size > 1250000) {
-                                    $em = "Sorry, your file is too large.";
-                                    header("Location: admindashboard.php?error=$em");
+                                    echo "<script>
+                                    alert('File Size Too Large.');
+                                    window.location.href='add_product.php';
+                                    </script>";
                                 } else {
                                     $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
                                     $img_ex_lc = strtolower($img_ex);
@@ -93,15 +98,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_FILES['productImage']) {
                                             mysqli_stmt_bind_param($stmt2, "ss", $image_upload_path, $productName);
                                             mysqli_stmt_execute($stmt2);
 
-                                            header("Location: product.php");
+                                            echo "<script>
+                                            alert('Product Created.');
+                                            window.location.href='product.php';
+                                            </script>";
                                         }
                                     } else {
-                                        $em = "You can't upload files of this type";
-                                        header("Location: product.php?error=$em");
+                                        echo "<script>
+                                        alert('File Type Not Supported.');
+                                        window.location.href='add_product.php';
+                                        </script>";
                                     }
                                 }
                             } else {
-                                die("Something went wrong");
+                                echo "<script>
+                                alert('Please Upload at least 1 Image.');
+                                window.location.href='add_product.php';
+                                </script>";
+                                die();
                             }
                         }
                     }
@@ -139,10 +153,13 @@ mysqli_close($conn);
             <img class="logo" width='200px' src="../images/Logo2.png" alt="logo2" class="logo2">
         </a>
         <div class="nav_section">
-            <a href="/outventure/admin/user.php" id="user-manage-btn" onclick="toUserManage()">User Manage</a>
-            <a href="/outventure/admin/product.php" id="product-manage-btn" onclick="toProductManage()">Product
+            <a href="/outventure/admin/user.php" id="user-manage-btn" onclick="toUserManage()">User
                 Manage</a>
-            <a href="/outventure/admin/order.php" id="order-history-btn" onclick="toOrderHistory()">Order History</a>
+            <a href="/outventure/admin/product.php" id="product-manage-btn" onclick="toProductManage()">Product Manage</a>
+            <a href="/outventure/admin/order.php" id="order-history-btn" onclick="toOrderHistory()">Order
+                History</a>
+            <a href="/outventure/admin/category.php" id="category-btn" onclick="toCategory()">
+                Category Manage</a>
         </div>
         <img class="logo" src="../images/Logo.png" alt="logo2" class="logo2">
     </div>
@@ -167,38 +184,31 @@ mysqli_close($conn);
                                 <div class="col-3 pt-3">
                                     <div class='field'>
                                         <b>Name:</b>
-                                        <input class='name-edit-input' type="text" name="productName" id="productName"
-                                            required>
+                                        <input class='name-edit-input' type="text" name="productName" id="productName" required>
                                         </input>
                                     </div>
                                 </div>
                                 <div class="col-3 pt-3">
                                     <div class='field'>
                                         <b>Price:</b>
-                                        <input class='name-edit-input' type="number" name="productPrice" min="1"
-                                            required>
+                                        <input class='name-edit-input' type="number" name="productPrice" min="1" required>
                                         </input>
                                     </div>
                                 </div>
                                 <div class="col-3 pt-3">
                                     <div class='field'>
                                         <b>Stock:</b>
-                                        <input class='name-edit-input' type="number" name="productQuantity" min="1"
-                                            required>
+                                        <input class='name-edit-input' type="number" name="productQuantity" min="1" required>
                                         </input>
                                     </div>
                                 </div>
                                 <div class="col-3 edit-btn-container">
                                     <label class="edit-btn">
-                                        <input id="upload_img" style="display:none;" type="file" name="productImage[]"
-                                            multiple>
+                                        <input id="upload_img" style="display:none;" type="file" name="productImage[]" multiple>
                                         <div id="file-upload-filename">
                                             <span>Upload Image</span>
-                                            <svg class='mb-1' width=" 18" height="17" viewBox="0 0 18 17" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                    d="M16.7974 0.745559C15.7726 -0.230749 14.1112 -0.230758 13.0865 0.745559L11.6172 2.14539L4.70189 8.73368C4.58979 8.84052 4.51027 8.97435 4.47182 9.12085L3.59713 12.4542C3.52261 12.7382 3.60994 13.0386 3.8272 13.2455C4.04445 13.4525 4.35977 13.5358 4.65785 13.4648L8.15656 12.6314C8.31041 12.5948 8.4508 12.519 8.56294 12.4122L15.4279 5.87183L16.9475 4.42407C17.9723 3.44776 17.9723 1.86484 16.9475 0.888534L16.7974 0.745559ZM14.3234 1.92407C14.665 1.59863 15.2189 1.59863 15.5604 1.92407L15.7105 2.06704C16.0521 2.39248 16.0521 2.92013 15.7105 3.24556L14.8214 4.09266L13.4609 2.74583L14.3234 1.92407ZM12.2237 3.92456L13.5842 5.27138L7.49731 11.0705L5.64784 11.511L6.11019 9.74902L12.2237 3.92456ZM1.82164 5.1563C1.82164 4.69607 2.21325 4.32297 2.69633 4.32297H7.06976C7.55285 4.32297 7.94445 3.94988 7.94445 3.48963C7.94445 3.0294 7.55285 2.6563 7.06976 2.6563H2.69633C1.2471 2.6563 0.0722656 3.77559 0.0722656 5.1563V14.3229C0.0722656 15.7037 1.2471 16.8229 2.69633 16.8229H12.3179C13.7671 16.8229 14.9419 15.7037 14.9419 14.3229V10.1563C14.9419 9.6961 14.5503 9.32293 14.0673 9.32293C13.5842 9.32293 13.1926 9.6961 13.1926 10.1563V14.3229C13.1926 14.7832 12.801 15.1563 12.3179 15.1563H2.69633C2.21325 15.1563 1.82164 14.7832 1.82164 14.3229V5.1563Z"
-                                                    fill="white" />
+                                            <svg class='mb-1' width=" 18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M16.7974 0.745559C15.7726 -0.230749 14.1112 -0.230758 13.0865 0.745559L11.6172 2.14539L4.70189 8.73368C4.58979 8.84052 4.51027 8.97435 4.47182 9.12085L3.59713 12.4542C3.52261 12.7382 3.60994 13.0386 3.8272 13.2455C4.04445 13.4525 4.35977 13.5358 4.65785 13.4648L8.15656 12.6314C8.31041 12.5948 8.4508 12.519 8.56294 12.4122L15.4279 5.87183L16.9475 4.42407C17.9723 3.44776 17.9723 1.86484 16.9475 0.888534L16.7974 0.745559ZM14.3234 1.92407C14.665 1.59863 15.2189 1.59863 15.5604 1.92407L15.7105 2.06704C16.0521 2.39248 16.0521 2.92013 15.7105 3.24556L14.8214 4.09266L13.4609 2.74583L14.3234 1.92407ZM12.2237 3.92456L13.5842 5.27138L7.49731 11.0705L5.64784 11.511L6.11019 9.74902L12.2237 3.92456ZM1.82164 5.1563C1.82164 4.69607 2.21325 4.32297 2.69633 4.32297H7.06976C7.55285 4.32297 7.94445 3.94988 7.94445 3.48963C7.94445 3.0294 7.55285 2.6563 7.06976 2.6563H2.69633C1.2471 2.6563 0.0722656 3.77559 0.0722656 5.1563V14.3229C0.0722656 15.7037 1.2471 16.8229 2.69633 16.8229H12.3179C13.7671 16.8229 14.9419 15.7037 14.9419 14.3229V10.1563C14.9419 9.6961 14.5503 9.32293 14.0673 9.32293C13.5842 9.32293 13.1926 9.6961 13.1926 10.1563V14.3229C13.1926 14.7832 12.801 15.1563 12.3179 15.1563H2.69633C2.21325 15.1563 1.82164 14.7832 1.82164 14.3229V5.1563Z" fill="white" />
                                             </svg>
                                         </div>
                                     </label>
@@ -208,8 +218,7 @@ mysqli_close($conn);
                                 <div class='col-12'>
                                     <div class='field'>
                                         <b>Description: Type \\n when you want to start a new line</b>
-                                        <textarea class='name-edit-inputarea' type="text" id="productDescription"
-                                            name="productDescription"></textarea>
+                                        <textarea class='name-edit-inputarea' type="text" id="productDescription" name="productDescription"></textarea>
                                     </div>
                                 </div>
                                 <div class=" col-6">
@@ -220,8 +229,7 @@ mysqli_close($conn);
                                     </div>
                                     <div class='field'>
                                         <b>Category</b>
-                                        <select class='name-edit-input' id="category" type="select" name="category"
-                                            onchange="myFunction()" required>
+                                        <select class='name-edit-input' id="category" type="select" name="category" onchange="myFunction()" required>
                                             <option value=""></option>
                                             <?php
                                             ini_set('display_errors', 1);
@@ -246,8 +254,7 @@ mysqli_close($conn);
                                     </div>
                                     <div class='field'>
                                         <b>Sub-Category</b>
-                                        <select class='name-edit-input' id="subCategory" type="select"
-                                            name="subCategory" required>
+                                        <select class='name-edit-input' id="subCategory" type="select" name="subCategory" required>
                                             <?php
                                             ini_set('display_errors', 1);
                                             error_reporting(E_ALL);
@@ -279,13 +286,10 @@ mysqli_close($conn);
             </form>
             <!-- end of table -->
             <div class=" burger_container">
-                <svg id="burger-btn" class="ham hamRotate ham1" viewBox="0 0 100 100" width="60"
-                    onclick="toggleActive()">
-                    <path class="line top"
-                        d="m 30,33 h 40 c 0,0 9.044436,-0.654587 9.044436,-8.508902 0,-7.854315 -8.024349,-11.958003 -14.89975,-10.85914 -6.875401,1.098863 -13.637059,4.171617 -13.637059,16.368042 v 40" />
+                <svg id="burger-btn" class="ham hamRotate ham1" viewBox="0 0 100 100" width="60" onclick="toggleActive()">
+                    <path class="line top" d="m 30,33 h 40 c 0,0 9.044436,-0.654587 9.044436,-8.508902 0,-7.854315 -8.024349,-11.958003 -14.89975,-10.85914 -6.875401,1.098863 -13.637059,4.171617 -13.637059,16.368042 v 40" />
                     <path class="line middle" d="m 30,50 h 40" />
-                    <path class="line bottom"
-                        d="m 30,67 h 40 c 12.796276,0 15.357889,-11.717785 15.357889,-26.851538 0,-15.133752 -4.786586,-27.274118 -16.667516,-27.274118 -11.88093,0 -18.499247,6.994427 -18.435284,17.125656 l 0.252538,40" />
+                    <path class="line bottom" d="m 30,67 h 40 c 12.796276,0 15.357889,-11.717785 15.357889,-26.851538 0,-15.133752 -4.786586,-27.274118 -16.667516,-27.274118 -11.88093,0 -18.499247,6.994427 -18.435284,17.125656 l 0.252538,40" />
                 </svg>
             </div>
             <div class="dropdown-container" id="dropdown-container">

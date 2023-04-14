@@ -29,25 +29,11 @@
     </div>
 
     <div class="category-section" id="content">
-
         <div class="title">
             Category Manage
         </div>
         <hr class="h-line">
         <div class='category-container'>
-            <div class='Insert-category'>
-                <h2 class="insert_title">Insert Category</h2>
-                <form action="insert_category.php" method="POST">
-                    <label class="insert_item" for="category">Category Name:</label>
-                    <input class="insert_select" type="text" name="category" required><br>
-
-                    <label class="insert_item" for="subCategory">Sub Category Name:</label>
-                    <input class="insert_input" type="text" name="subCategory" required><br>
-
-                    <input class="submit_btn" type="submit" name="submit" value="Add Category">
-                </form>
-            </div>
-            <hr class="h-line">
             <div class='category-container'>
                 <div class='Insert-category'>
                     <h2 class="insert_title">Insert Category</h2>

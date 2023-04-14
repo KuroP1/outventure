@@ -88,7 +88,10 @@ if (isset($_GET['id'])) {
                     }
                 }
             }
-            header("Location: product.php");
+            echo "<script>
+            alert('Product Updated.');
+            window.location.href='product.php';
+            </script>";
         }
     }
 
