@@ -328,8 +328,8 @@ if (count($products) > 0) {
                 <div class='title'>
                     Comment
                 </div>
-                <div class="product-detail-comment">
 
+                <div class="product-detail-comment">
                     <div class='comment_content-2'>
                         <?php
                         //if login, show comment box
@@ -340,11 +340,6 @@ if (count($products) > 0) {
 
                             echo " <div class='top-section'>";
 
-
-
-
-                            //get username
-                        
                             $username = $_SESSION['currentUser'];
                             echo $username;
 
@@ -360,8 +355,6 @@ if (count($products) > 0) {
                             echo "</div>";
                         }
                         ?>
-
-
 
                         <div class="comment">
                             <form action="" method="post">
