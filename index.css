@@ -34,7 +34,18 @@ body {
   padding: 20px 0px;
   background-color: #232323;
 }
-
+.filter-btn {
+  border: 2px solid #fff;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 18px;
+  background-color: transparent;
+  height: 45px;
+  width: 300px;
+  margin-top: 25px;
+  align-self: flex-end;
+  margin-bottom: 5px;
+}
 .Logo {
   height: 100%;
   max-width: 200px;
@@ -356,6 +367,17 @@ body {
   color: #fff;
 }
 @media (min-width: 992px) {
+  .filter-btn {
+    border: 2px solid #fff;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 18px;
+    background-color: transparent;
+    height: 45px;
+    width: 150px;
+    align-self: flex-end;
+    margin-bottom: 5px;
+  }
   .product-card {
     width: 300px;
     height: 400px;
@@ -375,6 +397,17 @@ body {
     height: 100%;
     display: flex;
     padding-left: 100px;
+  }
+  .filter-container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 0px 40px;
+    height: 92px;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    background-color: transparent;
+    flex-direction: row;
   }
 
   .product {
