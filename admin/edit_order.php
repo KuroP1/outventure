@@ -131,13 +131,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 $imagePath = $image['ImagePath'];
                             }
                             echo
-                            "                                   
+                                "                                   
                             <div class='row'>
                             <div class='col table-content'>
                             " . "<img src='$imagePath' alt='image' width='80'>" . "
                             </div>
                             <div class='col table-content'>
+                            <div class='name_col '>
                                 " . $resOrderProduct["ProductName"] . "
+                                </div>
                             </div>
                             <div class='col table-content'>
                                 " . $resOrderProduct["ProductColor"] . "

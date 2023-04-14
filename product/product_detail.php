@@ -37,6 +37,7 @@ if (count($products) > 0) {
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
     <script src="../navbar.js"></script>
+    <script src="product_detail.js"></script>
 </head>
 
 <body>
@@ -99,10 +100,18 @@ if (count($products) > 0) {
                     </div>
             </div>
         </div>
-        <div id="mobile-sub-navbar-middle" style="transform: translateY(-100%); z-index: -1;">
-            <span id="mobile-sub-navbar-middle-text-1">Product</span>
-            <span id="mobile-sub-navbar-middle-text-2">About Us</span>
-            <span id="mobile-sub-navbar-middle-text-3" style="color: #FFC700;">Profile</span>
+        <div class='mobile-sub-navbar-middle' id="mobile-sub-navbar-middle"
+            style="transform: translateY(-100%); z-index: -1;">
+            <a href="/outventure/" class="sub-navbar-middle-text">Product</a>
+            <a href="#" class="su b-navbar-middle-text" style="color: #FFC700;">About Us</a>
+            <a href="/outventure/profile/profile.php" class="sub-navbar-middle-text">Profile</a>
+            <?php
+            if (isset($_SESSION["currentUser"])) {
+                echo '<a href="/outventure/authentication/logout.php" class="sub-navbar-middle-text">Logout</a>';
+            } else {
+                echo '<a href="/outventure/authentication/login.php" class="sub-navbar-middle-text">Login</a>';
+            }
+            ?>
         </div>
         <!-- product detail content -->
         <div class="main-container">
@@ -402,10 +411,11 @@ if (count($products) > 0) {
                     echo "<div class='product-detail-comment'>";
                     echo "<div class='comment_content'>";
                     echo $comment['Username'] . "<br>";
-
                     echo "<br>";
-                    echo "<textarea class='comment' name='comment' id='comment' cols='30' rows='10>";
-                    echo "</textarea>";
+                    //echo a textarea
+                    echo "<div class='comment'>";
+                    echo $comment['Comment'];
+                    echo "</div>";
                     echo "<br>";
                     echo "Date: " . $comment['CommentDate'] . "<br>";
                     echo "</div>";
