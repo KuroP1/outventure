@@ -59,7 +59,7 @@ $conn->close();
     <title>Document</title>
 </head>
 
-<body onload="toUserEdit()">
+<body onload="toUserManage()">
     <div class="side_bar">
         <a href='/'>
             <img class="logo" width='200px' src="../images/Logo2.png" alt="logo2" class="logo2">

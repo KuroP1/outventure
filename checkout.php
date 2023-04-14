@@ -51,7 +51,7 @@ if (!isset($_SESSION["currentUser"])) {
         } else {
             echo "No cart items found for user '$username'";
         }
-        var_dump($username);
+        // var_dump($username);
 
 
         ?>
