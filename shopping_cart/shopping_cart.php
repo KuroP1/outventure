@@ -5,6 +5,16 @@ if (!isset($_SESSION['currentUser'])) {
     exit();
 }
 
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+require("../config/database.php");
+$cartSQL = "SELECT Username FROM cart WHERE Username = '" . $_SESSION['currentUser'] . "'";
+$cartRes = mysqli_query($conn, $cartSQL);
+if (mysqli_num_rows($cartRes) <= 0) {
+    header("Location: ../index.php");
+    exit();
+} 
+
 ?>
 <!DOCTYPE html>
 <html lang='en'>
