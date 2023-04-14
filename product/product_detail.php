@@ -233,13 +233,13 @@ if (count($products) > 0) {
                             </a>
                             ";
 
-                            ?>
-                            </span>
-                        </div>
+                                    ?>
+                                </span>
+                            </div>
 
-                        <div class="product-detail-info-color">
-                            <span class="product-detail-info-color-text">Color: </span>
-                            <?php
+                            <div class="product-detail-info-color">
+                                <span class="product-detail-info-color-text">Color: </span>
+                                <?php
                                 ini_set('display_errors', 1);
                                 error_reporting(E_ALL);
                                 require_once("../view_products.php");
@@ -255,10 +255,10 @@ if (count($products) > 0) {
                                     }
                                 }
                                 ?>
-                        </div>
-                        <div class="product-detail-info-size">
-                            <span class="product-detail-info-size-text">Size: </span>
-                            <?php
+                            </div>
+                            <div class="product-detail-info-size">
+                                <span class="product-detail-info-size-text">Size: </span>
+                                <?php
                                 ini_set('display_errors', 1);
                                 error_reporting(E_ALL);
                                 require_once("../view_products.php");
@@ -273,21 +273,21 @@ if (count($products) > 0) {
                                     }
                                 }
                                 ?>
-                        </div>
-                        <div class="product-detail-info-price">
-                            <span class="product-detail-info-price-text">
-                                Price:
-                                <?php
+                            </div>
+                            <div class="product-detail-info-price">
+                                <span class="product-detail-info-price-text">
+                                    Price:
+                                    <?php
                                     echo "$" . $productPrice;
                                     ?>
-                            </span>
-                        </div>
-                        <div class="counter">
-                            <span class="down" onClick='decreaseCount(event, this)'>-</span>
-                            <input type="text" value="1">
-                            <span class="up" onClick='increaseCount(event, this)'>+</span>
-                        </div>
-                        <?php
+                                </span>
+                            </div>
+                            <div class="counter">
+                                <span class="down" onClick='decreaseCount(event, this)'>-</span>
+                                <input type="text" value="1">
+                                <span class="up" onClick='increaseCount(event, this)'>+</span>
+                            </div>
+                            <?php
                             if (isset($_SESSION['currentUser'])) {
                                 //<div class="product-detail-info-addtocart">
                                 //<button class="product-detail-info-addtocart-button">Add to Cart</button>
@@ -304,33 +304,34 @@ if (count($products) > 0) {
 
                             }
                             ?>
-                    </div>
-                </div>
-                <div class="product-detail-spec">
-                    <div class="product-detail-info-spec-title">
-                        <span class="product-detail-info-spec-text">
-                            <center>Descriptions:</center>
-                        </span>
-                    </div>
-                    <div class="product-detail-info-spec-detail">
-                        <span class="product-detail-info-spec-detail-text">
-                            <?php
+
+                        </div>
+                        <div class="product-detail-spec">
+                            <div class="product-detail-info-spec-title">
+                                <span class="product-detail-info-spec-text">
+                                    <center>Descriptions:</center>
+                                </span>
+                            </div>
+                            <div class="product-detail-info-spec-detail">
+                                <span class="product-detail-info-spec-detail-text">
+                                    <?php
                                     $productDescription = str_replace("\\n", "<p>", $productDescription);
                                     $productDescription = str_replace("\\", "", $productDescription);
                                     echo nl2br($productDescription);
                                     ?>
-                        </span>
+                                </span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <<<<<<< HEAD <div class='title'>
-            Comment
-    </div>
-    <div class="product-detail-comment">
 
-        <div class='comment_content-2'>
-            <?php
+                <div class='title'>
+                    Comment
+                </div>
+                <div class="product-detail-comment">
+
+                    <div class='comment_content-2'>
+                        <?php
                         //if login, show comment box
                         if (
                             isset($_SESSION['currentUser']
@@ -338,6 +339,9 @@ if (count($products) > 0) {
                         ) {
 
                             echo " <div class='top-section'>";
+
+
+
 
                             //get username
                         
@@ -359,16 +363,17 @@ if (count($products) > 0) {
 
 
 
-            <div class="comment">
-                <form action="" method="post">
-                    <textarea class='comment' name="comment" id="comment" cols="30" rows="10"></textarea>
-                    <?php
+                        <div class="comment">
+                            <form action="" method="post">
+                                <textarea class='comment' name="comment" id="comment" cols="30" rows="10"></textarea>
+                                <?php
                                 if (isset($_SESSION['currentUser'])) {
                                     echo "<button type='submit' class='reply-btn'>Reply</button>";
                                 }
                                 ?>
-                </form>
-                <?php
+
+                            </form>
+                            <?php
                             //user input comment and saved to database
                             if (isset($_POST['comment'])) {
                                 // Connect to the database
@@ -400,12 +405,12 @@ if (count($products) > 0) {
                             }
                             ?>
 
-            </div>
+                        </div>
 
-        </div>
-    </div>
+                    </div>
+                </div>
 
-    <?php
+                <?php
                 //get comment
                 ini_set('display_errors', 1);
                 error_reporting(E_ALL);
@@ -448,6 +453,7 @@ if (count($products) > 0) {
                     echo "<div class='product-detail-comment'>";
                     echo "<div class='comment_content'>";
                     echo $comment['Username'] . "<br>";
+
                     echo "<br>";
                     //echo a textarea
                     echo "<div class='comment'>";
@@ -462,181 +468,181 @@ if (count($products) > 0) {
 
 
 
-    </div>
-    </div>
+            </div>
+        </div>
 </body>
 
 </html>
 <!-- Option Button -->
 <script>
-var colorArray = <?php echo json_encode($colorsArray); ?>;
-var sizeArray = <?php echo json_encode($sizesArray); ?>;
-// post value handle
-var productName = <?php echo json_encode($productName); ?>;
-var productPrice = <?php echo json_encode($productPrice); ?>;
-var productCategory = <?php echo json_encode($productCategory); ?>;
-var productSubCategory = <?php echo json_encode($productSubCategory); ?>;
-var buyQuantity = 1;
-var selectedColor = "";
-var selectedSize = "";
+    var colorArray = <?php echo json_encode($colorsArray); ?>;
+    var sizeArray = <?php echo json_encode($sizesArray); ?>;
+    // post value handle
+    var productName = <?php echo json_encode($productName); ?>;
+    var productPrice = <?php echo json_encode($productPrice); ?>;
+    var productCategory = <?php echo json_encode($productCategory); ?>;
+    var productSubCategory = <?php echo json_encode($productSubCategory); ?>;
+    var buyQuantity = 1;
+    var selectedColor = "";
+    var selectedSize = "";
 
 
-// handle counter
-function increaseCount(a, b) {
-    var input = b.previousElementSibling;
-    var value = parseInt(input.value, 10);
-    value = isNaN(value) ? 0 : value;
-    value++;
-    input.value = value;
-    buyQuantity = value;
-}
-
-function decreaseCount(a, b) {
-    var input = b.nextElementSibling;
-    var value = parseInt(input.value, 10);
-    if (value > 1) {
+    // handle counter
+    function increaseCount(a, b) {
+        var input = b.previousElementSibling;
+        var value = parseInt(input.value, 10);
         value = isNaN(value) ? 0 : value;
-        value--;
+        value++;
         input.value = value;
         buyQuantity = value;
     }
-}
 
-for (var i = 0; i < colorArray.length; i++) {
-    var button = document.createElement("button");
-    button.className = "product-detail-info-color-button";
-    button.innerHTML = colorArray[i];
-    document.querySelector(".product-detail-info-color").appendChild(button);
-}
-
-for (var i = 0; i < sizeArray.length; i++) {
-    var button = document.createElement("button");
-    button.className = "product-detail-info-size-button";
-    button.innerHTML = sizeArray[i];
-    document.querySelector(".product-detail-info-size").appendChild(button);
-}
-
-// handle color button
-var colorButtons = document.querySelectorAll(".product-detail-info-color-button");
-for (var i = 0; i < colorButtons.length; i++) {
-    colorButtons[i].addEventListener("click", function() {
-        for (var j = 0; j < colorButtons.length; j++) {
-            colorButtons[j].style.backgroundColor = "white";
-            colorButtons[j].style.color = "black";
+    function decreaseCount(a, b) {
+        var input = b.nextElementSibling;
+        var value = parseInt(input.value, 10);
+        if (value > 1) {
+            value = isNaN(value) ? 0 : value;
+            value--;
+            input.value = value;
+            buyQuantity = value;
         }
-        this.style.backgroundColor = "#FFC700";
-        this.style.color = "white";
-        document.querySelector(".product-detail-info-addtocart-button").style.border = "#FFC700";
-        selectedColor = this.innerHTML.trim();
-    });
-}
+    }
 
-// handle size button
-var sizeButtons = document.querySelectorAll(".product-detail-info-size-button");
-for (var i = 0; i < sizeButtons.length; i++) {
-    sizeButtons[i].addEventListener("click", function() {
-        for (var j = 0; j < sizeButtons.length; j++) {
-            sizeButtons[j].style.backgroundColor = "white";
-            sizeButtons[j].style.color = "black";
-        }
-        this.style.backgroundColor = "#FFC700";
-        this.style.color = "white";
-        document.querySelector(".product-detail-info-addtocart-button").style.border = "#FFC700";
-        selectedSize = this.innerHTML.trim();
-    });
-}
+    for (var i = 0; i < colorArray.length; i++) {
+        var button = document.createElement("button");
+        button.className = "product-detail-info-color-button";
+        button.innerHTML = colorArray[i];
+        document.querySelector(".product-detail-info-color").appendChild(button);
+    }
 
-// handle add to cart button
-if (selectedColor === "" || selectedSize === "") {
-    document.querySelector(".product-detail-info-addtocart-button").style.color = "white";
-    document.querySelector(".product-detail-info-addtocart-button").style.backgroundColor = "gray";
-    document.querySelector(".product-detail-info-addtocart-button").style.border = "gray";
-    document.querySelector(".product-detail-info-addtocart-button").style.cursor = "pointer";
-}
+    for (var i = 0; i < sizeArray.length; i++) {
+        var button = document.createElement("button");
+        button.className = "product-detail-info-size-button";
+        button.innerHTML = sizeArray[i];
+        document.querySelector(".product-detail-info-size").appendChild(button);
+    }
 
-document.querySelector(".product-detail-info-addtocart-button").addEventListener("mouseover", function() {
-    if (selectedColor !== "" && selectedSize !== "") {
+    // handle color button
+    var colorButtons = document.querySelectorAll(".product-detail-info-color-button");
+    for (var i = 0; i < colorButtons.length; i++) {
+        colorButtons[i].addEventListener("click", function () {
+            for (var j = 0; j < colorButtons.length; j++) {
+                colorButtons[j].style.backgroundColor = "white";
+                colorButtons[j].style.color = "black";
+            }
+            this.style.backgroundColor = "#FFC700";
+            this.style.color = "white";
+            document.querySelector(".product-detail-info-addtocart-button").style.border = "#FFC700";
+            selectedColor = this.innerHTML.trim();
+        });
+    }
+
+    // handle size button
+    var sizeButtons = document.querySelectorAll(".product-detail-info-size-button");
+    for (var i = 0; i < sizeButtons.length; i++) {
+        sizeButtons[i].addEventListener("click", function () {
+            for (var j = 0; j < sizeButtons.length; j++) {
+                sizeButtons[j].style.backgroundColor = "white";
+                sizeButtons[j].style.color = "black";
+            }
+            this.style.backgroundColor = "#FFC700";
+            this.style.color = "white";
+            document.querySelector(".product-detail-info-addtocart-button").style.border = "#FFC700";
+            selectedSize = this.innerHTML.trim();
+        });
+    }
+
+    // handle add to cart button
+    if (selectedColor === "" || selectedSize === "") {
         document.querySelector(".product-detail-info-addtocart-button").style.color = "white";
-        document.querySelector(".product-detail-info-addtocart-button").style.backgroundColor = "#FFC700";
-        document.querySelector(".product-detail-info-addtocart-button").style.border = "#FFC700";
+        document.querySelector(".product-detail-info-addtocart-button").style.backgroundColor = "gray";
+        document.querySelector(".product-detail-info-addtocart-button").style.border = "gray";
         document.querySelector(".product-detail-info-addtocart-button").style.cursor = "pointer";
     }
-});
 
-document.querySelector(".product-detail-info-addtocart-button").addEventListener("click", function() {
-    if (selectedColor === "" || selectedSize === "") {
-        alert("Please select color and size");
-    } else {
-        addToCart();
-    }
-});
-
-// post value handle
-function addToCart() {
-    let data = {
-        productName: productName,
-        productPrice: productPrice * buyQuantity,
-        buyQuantity: buyQuantity,
-        selectedSize: selectedSize,
-        selectedColor: selectedColor,
-        productCategory: productCategory,
-        productSubCategory: productSubCategory,
-    }
-
-    fetch("addToCart.php", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-            "Content-type": "application/json; charset=UTF-8"
+    document.querySelector(".product-detail-info-addtocart-button").addEventListener("mouseover", function () {
+        if (selectedColor !== "" && selectedSize !== "") {
+            document.querySelector(".product-detail-info-addtocart-button").style.color = "white";
+            document.querySelector(".product-detail-info-addtocart-button").style.backgroundColor = "#FFC700";
+            document.querySelector(".product-detail-info-addtocart-button").style.border = "#FFC700";
+            document.querySelector(".product-detail-info-addtocart-button").style.cursor = "pointer";
         }
-    }).then(
-        alert('Added To Cart!')
-    )
+    });
 
-    window.location.href = "../shopping_cart/shopping_cart.php"
-}
+    document.querySelector(".product-detail-info-addtocart-button").addEventListener("click", function () {
+        if (selectedColor === "" || selectedSize === "") {
+            alert("Please select color and size");
+        } else {
+            addToCart();
+        }
+    });
+
+    // post value handle
+    function addToCart() {
+        let data = {
+            productName: productName,
+            productPrice: productPrice * buyQuantity,
+            buyQuantity: buyQuantity,
+            selectedSize: selectedSize,
+            selectedColor: selectedColor,
+            productCategory: productCategory,
+            productSubCategory: productSubCategory,
+        }
+
+        fetch("addToCart.php", {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        }).then(
+            alert('Added To Cart!')
+        )
+
+        window.location.href = "../shopping_cart/shopping_cart.php"
+    }
 </script>
 
 <!-- Image Slider -->
 <script>
-// imageArray from php
-var imageArray = <?php echo json_encode($imageArray); ?>;
+    // imageArray from php
+    var imageArray = <?php echo json_encode($imageArray); ?>;
 
-// all array index
-var currentImageArrayIndex = 0
+    // all array index
+    var currentImageArrayIndex = 0
 
-// set first image
-document.querySelector(".slide").src = imageArray[currentImageArrayIndex]
+    // set first image
+    document.querySelector(".slide").src = imageArray[currentImageArrayIndex]
 
-// handle image next or prev with passed action
-function handleImage(action) {
-    if (action === "next") {
-        if (currentImageArrayIndex < imageArray.length - 1) {
-            currentImageArrayIndex++;
-            document.querySelector(".slide").src = imageArray[currentImageArrayIndex]
+    // handle image next or prev with passed action
+    function handleImage(action) {
+        if (action === "next") {
+            if (currentImageArrayIndex < imageArray.length - 1) {
+                currentImageArrayIndex++;
+                document.querySelector(".slide").src = imageArray[currentImageArrayIndex]
+            } else {
+                currentImageArrayIndex = 0;
+                document.querySelector(".slide").src = imageArray[currentImageArrayIndex]
+            }
         } else {
-            currentImageArrayIndex = 0;
-            document.querySelector(".slide").src = imageArray[currentImageArrayIndex]
-        }
-    } else {
-        if (currentImageArrayIndex > 0) {
-            currentImageArrayIndex--;
-            document.querySelector(".slide").src = imageArray[currentImageArrayIndex]
-        } else {
-            currentImageArrayIndex = imageArray.length - 1;
-            document.querySelector(".slide").src = imageArray[currentImageArrayIndex]
+            if (currentImageArrayIndex > 0) {
+                currentImageArrayIndex--;
+                document.querySelector(".slide").src = imageArray[currentImageArrayIndex]
+            } else {
+                currentImageArrayIndex = imageArray.length - 1;
+                document.querySelector(".slide").src = imageArray[currentImageArrayIndex]
+            }
         }
     }
-}
 
 
-// add event listener to next and prev button
-var slideNext = document.querySelector(".right-react-button")
-slideNext.addEventListener("click", function() {
-    handleImage("next")
-})
-var slidePrev = document.querySelector(".left-react-button")
-slidePrev.addEventListener("click", function() {
-    handleImage("prev")
-})
+    // add event listener to next and prev button
+    var slideNext = document.querySelector(".right-react-button")
+    slideNext.addEventListener("click", function () {
+        handleImage("next")
+    })
+    var slidePrev = document.querySelector(".left-react-button")
+    slidePrev.addEventListener("click", function () {
+        handleImage("prev")
+    })
 </script>
