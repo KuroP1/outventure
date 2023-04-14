@@ -1,16 +1,30 @@
-FROM php:7.4-apache
+# Set the base image to PHP 8.1.16 with Apache
+FROM php:8.2.4-apache
 
-# Enable required Apache modules
-RUN a2enmod rewrite
+# Install necessary PHP extensions and libraries
+RUN docker-php-ext-install mysqli pdo pdo_mysql \
+    && pecl install redis \
+    && docker-php-ext-enable redis
 
-# Install required PHP extensions
-RUN docker-php-ext-install mysqli pdo pdo_mysql
+# Install git, zip, and unzip
+RUN apt-get update && apt-get install -y \
+    git \
+    zip \
+    unzip
 
 # Set the working directory to /var/www/html
-WORKDIR /var/www/html/public
+WORKDIR /var/www/html
 
 # Copy the application code to the container
-COPY . .
+COPY . /var/www/html/public/
 
-# Expose port 80
+# Set up Apache virtual host
+COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
+
+RUN a2enmod rewrite
+
+# Expose port 80 for the web server
 EXPOSE 80
+
+# Start Apache web server
+CMD ["apache2-foreground"]
