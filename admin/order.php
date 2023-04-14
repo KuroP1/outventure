@@ -22,15 +22,15 @@ if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] <= 0) {
 
 <body onload="toOrderHistory()">
     <div class="side_bar">
-        <a href=' /outventure'>
+        <a href=' '>
             <img class="logo" width='200px' src="../images/Logo2.png" alt="logo2" class="logo2">
         </a>
         <div class="nav_section">
-            <a href="/outventure/admin/user.php" id="user-manage-btn" onclick="toUserManage()">User Manage</a>
-            <a href="/outventure/admin/product.php" id="product-manage-btn" onclick="toProductManage()">Product
+            <a href="/admin/user.php" id="user-manage-btn" onclick="toUserManage()">User Manage</a>
+            <a href="/admin/product.php" id="product-manage-btn" onclick="toProductManage()">Product
                 Manage</a>
-            <a href="/outventure/admin/order.php" id="order-history-btn" onclick="toOrderHistory()">Order History</a>
-            <a href="/outventure/admin/category.php" id="category-btn" onclick="toCategory()">
+            <a href="/admin/order.php" id="order-history-btn" onclick="toOrderHistory()">Order History</a>
+            <a href="/admin/category.php" id="category-btn" onclick="toCategory()">
                 Category Manage</a>
         </div>
         <img class="logo" src="../images/Logo.png" alt="logo2" class="logo2">
@@ -92,7 +92,7 @@ if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] <= 0) {
                             while ($orders = mysqli_fetch_assoc($resOrder)) {
                                 // echo "<tr><td>" . $orders['OrderID'] . "</td><td>" . $orders['ProductNames'] . "</td><td>" . $orders['BuyQuantities'] . "</td><td>" . $orders['TotalAmount'] . "</td><td>" . $orders['Username'] . "</td><td>" . $orders['orderStatus'] . "</td><td>" . $orders['OrderDate'] . "</td><td><a href='edit_order.php?id=" . $orders["OrderID"] . "'>Edit</a></td></tr>";
                                 echo
-                                    "
+                                "
                                 <div class='row align-items-center'>
                                 <div class='order-col col table-content'>
                                     " . $orders["OrderID"] . "
@@ -113,14 +113,14 @@ if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] <= 0) {
                                 " . $orders["orderStatus"] . "
                                 </div>
                                 <div class='order-col col table-content'>
-                                    <a href='/outventure/admin/edit_order.php?id=" . $orders["OrderID"] . "' onclick='toOrderHistory()'>
+                                    <a href='/admin/edit_order.php?id=" . $orders["OrderID"] . "' onclick='toOrderHistory()'>
                                         <svg width='26' height='26' viewBox='0 0 26 26' fill='none' xmlns='http://www.w3.org/2000/svg'>
                                             <path fill-rule='evenodd' clip-rule='evenodd' d='M22.9571 3.6421C21.7367 2.42171 19.7581 2.4217 18.5377 3.6421L16.7879 5.39189L8.55249 13.6273C8.41899 13.7608 8.32429 13.9281 8.2785 14.1112L7.23683 18.2779C7.14808 18.6329 7.25209 19.0084 7.51082 19.267C7.76955 19.5258 8.14506 19.6299 8.50004 19.5411L12.6667 18.4994C12.8499 18.4536 13.0171 18.3589 13.1506 18.2254L21.3261 10.0499L23.1358 8.24024C24.3562 7.01985 24.3562 5.0412 23.1358 3.82082L22.9571 3.6421ZM20.0108 5.11523C20.4176 4.70844 21.0772 4.70844 21.484 5.11523L21.6627 5.29395C22.0695 5.70076 22.0695 6.36031 21.6627 6.7671L20.6039 7.82597L18.9836 6.14244L20.0108 5.11523ZM17.5102 7.61585L19.1304 9.29938L11.8816 16.5483L9.67903 17.0989L10.2296 14.8964L17.5102 7.61585ZM5.1224 9.15553C5.1224 8.58023 5.58877 8.11386 6.16406 8.11386H11.3724C11.9477 8.11386 12.4141 7.6475 12.4141 7.07219C12.4141 6.4969 11.9477 6.03053 11.3724 6.03053H6.16406C4.43818 6.03053 3.03906 7.42964 3.03906 9.15553V20.6138C3.03906 22.3398 4.43818 23.7388 6.16406 23.7388H17.6224C19.3483 23.7388 20.7474 22.3398 20.7474 20.6138V15.4055C20.7474 14.8303 20.281 14.3638 19.7057 14.3638C19.1304 14.3638 18.6641 14.8303 18.6641 15.4055V20.6138C18.6641 21.1891 18.1977 21.6555 17.6224 21.6555H6.16406C5.58877 21.6555 5.1224 21.1891 5.1224 20.6138V9.15553Z' fill='#E1980A' />
                                         </svg>
                                     </a>
                                 </div>
                                 <div class='order-col col table-content-2'>
-                                    <a href='/outventure/admin/delete_order.php?id=" . $orders["OrderID"] . "' onclick='toOrderHistory()'>
+                                    <a href='/admin/delete_order.php?id=" . $orders["OrderID"] . "' onclick='toOrderHistory()'>
                                         <svg width='26' height='26' viewBox='0 0 26 26' fill='none' xmlns='http://www.w3.org/2000/svg'>
                                             <g clip-path='url(#clip0_124_294)'>
                                                 <path d='M10.8633 21.213C10.6288 21.2379 10.4187 21.0667 10.394 20.8305L9.62933 13.5176C9.60468 13.2815 9.77477 13.0699 10.0093 13.0451L10.434 13.0001C10.6685 12.9753 10.8787 13.1465 10.9033 13.3826L11.668 20.6955C11.6927 20.9317 11.5226 21.1432 11.2881 21.168L10.8633 21.213Z' fill='#BA1A1A' />
@@ -148,26 +148,22 @@ if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] <= 0) {
             </div>
             <!-- end of table -->
             <div class="burger_container">
-                <svg id="burger-btn" class="ham hamRotate ham1" viewBox="0 0 100 100" width="60"
-                    onclick="toggleActive()">
-                    <path class="line top"
-                        d="m 30,33 h 40 c 0,0 9.044436,-0.654587 9.044436,-8.508902 0,-7.854315 -8.024349,-11.958003 -14.89975,-10.85914 -6.875401,1.098863 -13.637059,4.171617 -13.637059,16.368042 v 40" />
+                <svg id="burger-btn" class="ham hamRotate ham1" viewBox="0 0 100 100" width="60" onclick="toggleActive()">
+                    <path class="line top" d="m 30,33 h 40 c 0,0 9.044436,-0.654587 9.044436,-8.508902 0,-7.854315 -8.024349,-11.958003 -14.89975,-10.85914 -6.875401,1.098863 -13.637059,4.171617 -13.637059,16.368042 v 40" />
                     <path class="line middle" d="m 30,50 h 40" />
-                    <path class="line bottom"
-                        d="m 30,67 h 40 c 12.796276,0 15.357889,-11.717785 15.357889,-26.851538 0,-15.133752 -4.786586,-27.274118 -16.667516,-27.274118 -11.88093,0 -18.499247,6.994427 -18.435284,17.125656 l 0.252538,40" />
+                    <path class="line bottom" d="m 30,67 h 40 c 12.796276,0 15.357889,-11.717785 15.357889,-26.851538 0,-15.133752 -4.786586,-27.274118 -16.667516,-27.274118 -11.88093,0 -18.499247,6.994427 -18.435284,17.125656 l 0.252538,40" />
                 </svg>
             </div>
             <div class="dropdown-container" id="dropdown-container">
                 <div class="dropdown-content">
                     <img class="logo" src="../images/Logo2.png" alt="logo2" class="logo2">
                     <div class="nav_section">
-                        <a href="/outventure/admin/user.php" id="user-manage-btn" onclick="toUserManage()">User
+                        <a href="/admin/user.php" id="user-manage-btn" onclick="toUserManage()">User
                             Manage</a>
-                        <a href="/outventure/admin/product.php" id="product-manage-btn"
-                            onclick="toProductManage()">Product Manage</a>
-                        <a href="/outventure/admin/order.php" id="order-history-btn" onclick="toOrderHistory()">Order
+                        <a href="/admin/product.php" id="product-manage-btn" onclick="toProductManage()">Product Manage</a>
+                        <a href="/admin/order.php" id="order-history-btn" onclick="toOrderHistory()">Order
                             History</a>
-                        <a href="/outventure/admin/category.php" id="category-btn" onclick="toCategory()">
+                        <a href="/admin/category.php" id="category-btn" onclick="toCategory()">
                             Category Manage</a>
                     </div>
                 </div>

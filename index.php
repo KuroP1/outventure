@@ -26,24 +26,24 @@ session_start();
     <div class="top-section" id="top-section">
         <div class="navigationSection">
             <div class="navBar">
-                <a href="/outventure">
+                <a href="">
                     <img class="Logo" src="images/Logo2.png" alt="Logo" />
                 </a>
                 <div class="navigation">
                     <a class="navItem" href="index.php?#product-section">Product</a>
-                    <a class="navItem" href="/outventure/about_us/about_us.php">About Us</a>
-                    <a class="navItem" href="/outventure/profile/profile.php">Profile</a>
+                    <a class="navItem" href="/about_us/about_us.php">About Us</a>
+                    <a class="navItem" href="/profile/profile.php">Profile</a>
                     <?php
                     if (isset($_SESSION["currentUser"])) {
-                        echo '<a href="/outventure/authentication/logout.php" class="sub-navbar-middle-text">Logout</a>';
+                        echo '<a href="/authentication/logout.php" class="sub-navbar-middle-text">Logout</a>';
                     } else {
-                        echo '<a href="/outventure/authentication/login.php" class="sub-navbar-middle-text">Login</a>';
+                        echo '<a href="/authentication/login.php" class="sub-navbar-middle-text">Login</a>';
                     }
                     ?>
 
                     <?php
                     if (isset($_SESSION["currentUser"]) && $_SESSION["isAdmin"] > "0") {
-                        echo '<a href="/outventure/admin/user.php" class="sub-navbar-middle-text">Admin</a>';
+                        echo '<a href="/admin/user.php" class="sub-navbar-middle-text">Admin</a>';
                     }
                     ?>
                 </div>
@@ -62,7 +62,7 @@ session_start();
                         </input>
                     </div>
                     <div class="vl"></div>
-                    <a class="shopping-cart" href='/outventure/shopping_cart/shopping_cart.php'>
+                    <a class="shopping-cart" href='/shopping_cart/shopping_cart.php'>
                         <img class="shopping-cart-icon" src="images/Home/shopping-cart.png" alt="Shopping Cart" />
                     </a>
                 </div>
@@ -90,13 +90,13 @@ session_start();
                     </input>
                 </div>
                 <a class="navItem" href="index.php/#product-section">Product</a>
-                <a class="navItem" href="/outventure/about_us/about_us.php">About Us</a>
-                <a class="navItem" href="/outventure/profile/profile.php">Profile</a>
+                <a class="navItem" href="/about_us/about_us.php">About Us</a>
+                <a class="navItem" href="/profile/profile.php">Profile</a>
                 <?php
                 if (isset($_SESSION["currentUser"])) {
-                    echo '<a href="/outventure/authentication/logout.php" class="sub-navbar-middle-text">Logout</a>';
+                    echo '<a href="/authentication/logout.php" class="sub-navbar-middle-text">Logout</a>';
                 } else {
-                    echo '<a href="/outventure/authentication/login.php" class="sub-navbar-middle-text">Login</a>';
+                    echo '<a href="/authentication/login.php" class="sub-navbar-middle-text">Login</a>';
                 }
                 ?>
 
@@ -219,12 +219,12 @@ session_start();
                                         <div class='col-12 col-md-6 col-xl-3'>
                                             <div class='product-card'>
                                                 <div class='product-image-container'>
-                                                    <a href='/outventure/product/product_detail.php?name=" . $product["ProductName"] . "'><img class='product-image' src='$imagePath' alt='Product' /></a>
+                                                    <a href='/product/product_detail.php?name=" . $product["ProductName"] . "'><img class='product-image' src='$imagePath' alt='Product' /></a>
                                                 </div>
                                                 <div class='product-name'> " . $product["ProductName"] . "</div>
                                                 <div class='product-category'>" . $product["CategoryName"] . " > " . $product["SubCategoryName"] . "</div>
                                                 <div class='product-price'>$" . $product["ProductPrice"] . "</div>
-                                                <a href='/outventure/add_to_favourite.php?name=" . $product["ProductName"] . "' style='text-decoration:none;'>
+                                                <a href='/add_to_favourite.php?name=" . $product["ProductName"] . "' style='text-decoration:none;'>
                                                 <div class='product-star-rating'>
                                                         <?xml version='1.0' encoding='utf-8'?>
                     <svg width='20px' class='like_btn' height='20px' viewBox='0 0 24 24' fill='" . $svgFillColor . "'
@@ -238,7 +238,7 @@ session_start();
                 </div>
                 </a>
                 <div class='botton-section'>
-                    <a href='/outventure/product/product_detail.php?name=" . $product["ProductName"] . "'>View More</a>
+                    <a href='/product/product_detail.php?name=" . $product["ProductName"] . "'>View More</a>
                 </div>
             </div>
         </div>
@@ -249,7 +249,7 @@ session_start();
                                         <div class='col-12 col-md-6 col-xl-3'>
                                             <div class='product-card'>
                                                 <div class='product-image-container'>
-                                                    <a href='/outventure/product/product_detail.php?name=" . $product["ProductName"] . "'><img class='product-image' src='$imagePath' alt='Product' /></a>
+                                                    <a href='/product/product_detail.php?name=" . $product["ProductName"] . "'><img class='product-image' src='$imagePath' alt='Product' /></a>
                                                 </div>
                                                 <div class='product-name'> " . $product["ProductName"] . "</div>
                                                 <div class='product-category'>" . $product["CategoryName"] . " > " . $product["SubCategoryName"] . "</div>
@@ -268,7 +268,7 @@ session_start();
                 </div>
                 </a>
                 <div class='botton-section'>
-                    <a href='/outventure/product/product_detail.php?name=" . $product["ProductName"] . "'>View More</a>
+                    <a href='/product/product_detail.php?name=" . $product["ProductName"] . "'>View More</a>
                 </div>
             </div>
         </div>

@@ -33,11 +33,10 @@ ob_start();
     // Check if any results were found
     if ($result->num_rows > 0) {
         //go to product_detail with name parameter immediately
-        header("Location: /outventure/product/product_detail.php?name=" . $search_query);
-
+        header("Location: /product/product_detail.php?name=" . $search_query);
     } else {
         echo '<script>alert("Invaild Product Name   ")</script>';
-        echo '<script>window.location.href = "/outventure/index.php";</script>';
+        echo '<script>window.location.href = "/index.php";</script>';
     }
 
     // Close the database connection

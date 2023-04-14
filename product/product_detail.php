@@ -45,7 +45,7 @@ if (count($products) > 0) {
         <!-- NavBar -->
         <div class="sub-navbar">
             <div class="sub-navbar-container">
-                <a href="/outventure/">
+                <a href="/">
                     <a href="../index.php"><img class="sub-navbar-logo" src="../images/Logo2.png" alt="Logo" /></a>
                     <div onclick="ShowMobileMainMenu()" class="main-burger-tag-container">
                         <svg class="burger-tag" xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: msFilter;">
@@ -53,20 +53,20 @@ if (count($products) > 0) {
                         </svg>
                     </div>
                     <div class="sub-navbar-middle">
-                        <a href="/outventure/index.php#product-section" class="sub-navbar-middle-text">Product</a>
+                        <a href="/index.php#product-section" class="sub-navbar-middle-text">Product</a>
                         <a href="#" class="sub-navbar-middle-text" style="color: #FFC700;">About Us</a>
-                        <a href="/outventure/profile/profile.php" class="sub-navbar-middle-text">Profile</a>
+                        <a href="/profile/profile.php" class="sub-navbar-middle-text">Profile</a>
                         <?php
                         if (isset($_SESSION["currentUser"])) {
-                            echo '<a href="/outventure/authentication/logout.php" class="sub-navbar-middle-text">Logout</a>';
+                            echo '<a href="/authentication/logout.php" class="sub-navbar-middle-text">Logout</a>';
                         } else {
-                            echo '<a href="/outventure/authentication/login.php" class="sub-navbar-middle-text">Login</a>';
+                            echo '<a href="/authentication/login.php" class="sub-navbar-middle-text">Login</a>';
                         }
                         ?>
 
                         <?php
                         if (isset($_SESSION["currentUser"]) && $_SESSION["isAdmin"] > "0") {
-                            echo '<a href="/outventure/admin/user.php" class="sub-navbar-middle-text">Admin</a>';
+                            echo '<a href="/admin/user.php" class="sub-navbar-middle-text">Admin</a>';
                         }
                         ?>
                     </div>
@@ -85,7 +85,7 @@ if (count($products) > 0) {
                             </input>
                         </div>
                         <span class="sub-navbar-right-vline">|</span>
-                        <a href='/outventure/shopping_cart/shopping_cart.php' class='shopping_cart'>
+                        <a href='/shopping_cart/shopping_cart.php' class='shopping_cart'>
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: msFilter;">
                                 <path d="M21.822 7.431A1 1 0 0 0 21 7H7.333L6.179 4.23A1.994 1.994 0 0 0 4.333 3H2v2h2.333l4.744 11.385A1 1 0 0 0 10 17h8c.417 0 .79-.259.937-.648l3-8a1 1 0 0 0-.115-.921zM17.307 15h-6.64l-2.5-6h11.39l-2.25 6z">
                                 </path>
@@ -97,14 +97,14 @@ if (count($products) > 0) {
             </div>
         </div>
         <div class='mobile-sub-navbar-middle' id="mobile-sub-navbar-middle" style="transform: translateY(-100%); z-index: -1;">
-            <a href="/outventure/index.php#product-section" class="sub-navbar-middle-text">Product</a>
+            <a href="/index.php#product-section" class="sub-navbar-middle-text">Product</a>
             <a href="#" class="sub-navbar-middle-text" style="color: #FFC700;">About Us</a>
-            <a href="/outventure/profile/profile.php" class="sub-navbar-middle-text">Profile</a>
+            <a href="/profile/profile.php" class="sub-navbar-middle-text">Profile</a>
             <?php
             if (isset($_SESSION["currentUser"])) {
-                echo '<a href="/outventure/authentication/logout.php" class="sub-navbar-middle-text">Logout</a>';
+                echo '<a href="/authentication/logout.php" class="sub-navbar-middle-text">Logout</a>';
             } else {
-                echo '<a href="/outventure/authentication/login.php" class="sub-navbar-middle-text">Login</a>';
+                echo '<a href="/authentication/login.php" class="sub-navbar-middle-text">Login</a>';
             }
             ?>
         </div>
@@ -205,7 +205,7 @@ if (count($products) > 0) {
 
                                         echo
                                         "
-                                        <a href='/outventure/add_to_favourite.php?name=" . $productName . "' style='text-decoration:none;'>
+                                        <a href='/add_to_favourite.php?name=" . $productName . "' style='text-decoration:none;'>
                                             <div class='product-star-rating'>
                                                     <?xml version='1.0' encoding='utf-8'?>
                                     <svg width='20px' class='like_btn' height='20px' viewBox='0 0 24 24'

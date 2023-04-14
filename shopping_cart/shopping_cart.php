@@ -20,9 +20,7 @@ if (!isset($_SESSION['currentUser'])) {
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css'>
     <link rel='preconnect' href='https://fonts.googleapis.com'>
     <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
-    <link
-        href='https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'
-        rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap' rel='stylesheet'>
     <script src='shopping_cart.js'></script>
     <script src='../navbar.js'></script>
 </head>
@@ -32,37 +30,32 @@ if (!isset($_SESSION['currentUser'])) {
         <!-- NavBar -->
         <div class='sub-navbar'>
             <div class='sub-navbar-container'>
-                <a href='/outventure'><img class='sub-navbar-logo' src='../images/Logo2.png' alt='Logo' /></a>
+                <a href=''><img class='sub-navbar-logo' src='../images/Logo2.png' alt='Logo' /></a>
                 <div onclick='ShowMobileMainMenu()' class='main-burger-tag-container'>
-                    <svg class='burger-tag' xmlns='http://www.w3.org/2000/svg' width='35' height='35'
-                        viewBox='0 0 24 24' style='fill: rgba(255, 255, 255, 1);transform: msFilter;'>
+                    <svg class='burger-tag' xmlns='http://www.w3.org/2000/svg' width='35' height='35' viewBox='0 0 24 24' style='fill: rgba(255, 255, 255, 1);transform: msFilter;'>
                         <path d='M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z'></path>
                     </svg>
                 </div>
                 <div class='sub-navbar-middle'>
-                    <a href='/outventure/index.php#product-section"' class='sub-navbar-middle-text'>Product</a>
-                    <a href='/outventure/about_us/about_us.php' class='sub-navbar-middle-text'>About Us</a>
-                    <a href='/outventure/profile/profile.php' class='sub-navbar-middle-text'>Profile</a>
+                    <a href='/index.php#product-section"' class='sub-navbar-middle-text'>Product</a>
+                    <a href='/about_us/about_us.php' class='sub-navbar-middle-text'>About Us</a>
+                    <a href='/profile/profile.php' class='sub-navbar-middle-text'>Profile</a>
                     <a href='#' class='sub-navbar-middle-text'>Login</a>
                 </div>
                 <div class='sub-navbar-right'>
                     <div class='search-bar'>
                         <input class='search-bar-input' placeholder='Search Product'>
                         <button class='search-icon'>
-                            <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'
-                                style='fill: rgba(255, 255, 255, 1);transform: msFilter;'>
-                                <path
-                                    d='M19.023 16.977a35.13 35.13 0 0 1-1.367-1.384c-.372-.378-.596-.653-.596-.653l-2.8-1.337A6.962 6.962 0 0 0 16 9c0-3.859-3.14-7-7-7S2 5.141 2 9s3.14 7 7 7c1.763 0 3.37-.66 4.603-1.739l1.337 2.8s.275.224.653.596c.387.363.896.854 1.384 1.367l1.358 1.392.604.646 2.121-2.121-.646-.604c-.379-.372-.885-.866-1.391-1.36zM9 14c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z'>
+                            <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' style='fill: rgba(255, 255, 255, 1);transform: msFilter;'>
+                                <path d='M19.023 16.977a35.13 35.13 0 0 1-1.367-1.384c-.372-.378-.596-.653-.596-.653l-2.8-1.337A6.962 6.962 0 0 0 16 9c0-3.859-3.14-7-7-7S2 5.141 2 9s3.14 7 7 7c1.763 0 3.37-.66 4.603-1.739l1.337 2.8s.275.224.653.596c.387.363.896.854 1.384 1.367l1.358 1.392.604.646 2.121-2.121-.646-.604c-.379-.372-.885-.866-1.391-1.36zM9 14c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z'>
                                 </path>
                             </svg>
                         </button>
                         </input>
                     </div>
                     <span class='sub-navbar-right-vline'>|</span>
-                    <svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 24 24'
-                        style='fill: rgba(255, 255, 255, 1);transform: msFilter;'>
-                        <path
-                            d='M21.822 7.431A1 1 0 0 0 21 7H7.333L6.179 4.23A1.994 1.994 0 0 0 4.333 3H2v2h2.333l4.744 11.385A1 1 0 0 0 10 17h8c.417 0 .79-.259.937-.648l3-8a1 1 0 0 0-.115-.921zM17.307 15h-6.64l-2.5-6h11.39l-2.25 6z'>
+                    <svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 24 24' style='fill: rgba(255, 255, 255, 1);transform: msFilter;'>
+                        <path d='M21.822 7.431A1 1 0 0 0 21 7H7.333L6.179 4.23A1.994 1.994 0 0 0 4.333 3H2v2h2.333l4.744 11.385A1 1 0 0 0 10 17h8c.417 0 .79-.259.937-.648l3-8a1 1 0 0 0-.115-.921zM17.307 15h-6.64l-2.5-6h11.39l-2.25 6z'>
                         </path>
                         <circle cx='10.5' cy='19.5' r='1.5'></circle>
                         <circle cx='17.5' cy='19.5' r='1.5'></circle>
@@ -142,11 +135,11 @@ if (!isset($_SESSION['currentUser'])) {
                                 " . $cart['ProductSize'] . "
                             </div>
                             <div class='col text-center'>
-                                <a class='minus-button' href='/outventure/shopping_cart/edit_cart.php?name=" . $cart["CartID"] . "&action=minus&cart=" . $cart["BuyQuantity"] . "'>
+                                <a class='minus-button' href='/shopping_cart/edit_cart.php?name=" . $cart["CartID"] . "&action=minus&cart=" . $cart["BuyQuantity"] . "'>
                                     <button class='minus-button'>-</button>
                                 </a>
                                 " . $cart['BuyQuantity'] . "
-                                <a class='add-button' href='/outventure/shopping_cart/edit_cart.php?name=" . $cart["CartID"] . "&action=add&cart=" . $cart["BuyQuantity"] . "'>
+                                <a class='add-button' href='/shopping_cart/edit_cart.php?name=" . $cart["CartID"] . "&action=add&cart=" . $cart["BuyQuantity"] . "'>
                                     <button class='add-button'>+</button>
                                 </a>
                             </div>
@@ -154,7 +147,7 @@ if (!isset($_SESSION['currentUser'])) {
                             " . '$' . $cart['ProductPrice'] . "
                             </div>
                             <div class='col text-center'>
-                                <a class='add-button' href='/outventure/shopping_cart/edit_cart.php?name=" . $cart["CartID"] . "&action=delete&cart=" . $cart["BuyQuantity"] . "'>
+                                <a class='add-button' href='/shopping_cart/edit_cart.php?name=" . $cart["CartID"] . "&action=delete&cart=" . $cart["BuyQuantity"] . "'>
                                     <svg width='26' height='26' viewBox='0 0 26 26' fill='none' xmlns='http://www.w3.org/2000/svg'>
                                         <g clip-path='url(#clip0_124_294)'>
                                             <path d='M10.8633 21.213C10.6288 21.2379 10.4187 21.0667 10.394 20.8305L9.62933 13.5176C9.60468 13.2815 9.77477 13.0699 10.0093 13.0451L10.434 13.0001C10.6685 12.9753 10.8787 13.1465 10.9033 13.3826L11.668 20.6955C11.6927 20.9317 11.5226 21.1432 11.2881 21.168L10.8633 21.213Z' fill='#BA1A1A' />
@@ -236,11 +229,11 @@ if (!isset($_SESSION['currentUser'])) {
                                         </span>
                                     </div>
                                     <div class='col text-center'>
-                                    <a class='minus-button' href='/outventure/shopping_cart/edit_cart.php?name=" . $cart["CartID"] . "&action=minus&cart=" . $cart["BuyQuantity"] . "'>
+                                    <a class='minus-button' href='/shopping_cart/edit_cart.php?name=" . $cart["CartID"] . "&action=minus&cart=" . $cart["BuyQuantity"] . "'>
                                         <button class='minus-button'>-</button>
                                     </a>
                                     " . $cart['BuyQuantity'] . "
-                                    <a class='add-button' href='/outventure/shopping_cart/edit_cart.php?name=" . $cart["CartID"] . "&action=add&cart=" . $cart["BuyQuantity"] . "'>
+                                    <a class='add-button' href='/shopping_cart/edit_cart.php?name=" . $cart["CartID"] . "&action=add&cart=" . $cart["BuyQuantity"] . "'>
                                         <button class='add-button'>+</button>
                                     </a>
                                 </div>
@@ -253,7 +246,7 @@ if (!isset($_SESSION['currentUser'])) {
                                         </span>
                                     </div>
                                     <div class='col text-center pt-2'>
-                                        <a class='add-button' href='/outventure/shopping_cart/edit_cart.php?name=" . $cart["CartID"] . "&action=delete&cart=" . $cart["BuyQuantity"] . "'>
+                                        <a class='add-button' href='/shopping_cart/edit_cart.php?name=" . $cart["CartID"] . "&action=delete&cart=" . $cart["BuyQuantity"] . "'>
                                             <svg width='26' height='26' viewBox='0 0 26 26' fill='none' xmlns='http://www.w3.org/2000/svg'>
                                                 <g clip-path='url(#clip0_124_294)'>
                                                     <path d='M10.8633 21.213C10.6288 21.2379 10.4187 21.0667 10.394 20.8305L9.62933 13.5176C9.60468 13.2815 9.77477 13.0699 10.0093 13.0451L10.434 13.0001C10.6685 12.9753 10.8787 13.1465 10.9033 13.3826L11.668 20.6955C11.6927 20.9317 11.5226 21.1432 11.2881 21.168L10.8633 21.213Z' fill='#BA1A1A' />
@@ -439,12 +432,12 @@ if (!isset($_SESSION['currentUser'])) {
     var span = document.getElementsByClassName("close")[0];
 
     // When the user clicks on <span> (x), close the modal
-    span.onclick = function () {
+    span.onclick = function() {
         modal.style.display = "none";
     }
 
     // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
+    window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
         }

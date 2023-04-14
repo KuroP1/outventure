@@ -149,16 +149,16 @@ mysqli_close($conn);
 
 <body onload="toProductEdit()">
     <div class="side_bar">
-        <a href=' /outventure'>
+        <a href=' '>
             <img class="logo" width='200px' src="../images/Logo2.png" alt="logo2" class="logo2">
         </a>
         <div class="nav_section">
-            <a href="/outventure/admin/user.php" id="user-manage-btn" onclick="toUserManage()">User
+            <a href="/admin/user.php" id="user-manage-btn" onclick="toUserManage()">User
                 Manage</a>
-            <a href="/outventure/admin/product.php" id="product-manage-btn" onclick="toProductManage()">Product Manage</a>
-            <a href="/outventure/admin/order.php" id="order-history-btn" onclick="toOrderHistory()">Order
+            <a href="/admin/product.php" id="product-manage-btn" onclick="toProductManage()">Product Manage</a>
+            <a href="/admin/order.php" id="order-history-btn" onclick="toOrderHistory()">Order
                 History</a>
-            <a href="/outventure/admin/category.php" id="category-btn" onclick="toCategory()">
+            <a href="/admin/category.php" id="category-btn" onclick="toCategory()">
                 Category Manage</a>
         </div>
         <img class="logo" src="../images/Logo.png" alt="logo2" class="logo2">
