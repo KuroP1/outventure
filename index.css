@@ -74,6 +74,15 @@ body {
   font-family: "poppins", sans-serif;
   font-weight: 300 !important;
 }
+.sub-navbar-middle-text {
+  color: #fff;
+  font-size: 18px;
+  font-family: "poppins", sans-serif;
+  font-weight: 300 !important;
+  text-decoration: none;
+  padding-top: 10px;
+  transition: 0.3s;
+}
 .navItem:hover {
   color: #ffc700;
   text-decoration: none;
